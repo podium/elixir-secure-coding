@@ -1,0 +1,100 @@
+# ESCT: Part 3 - Secure SDLC Concepts
+
+## Introduction
+
+asdf
+
+## Table of Contents
+
+* [No Secrets In Code](#no-secrets-in-code)
+* [Making Secret Rotation Easy](#making-secret-rotation-easy)
+* [Up-to-date Libraries / Packages](#up-to-date-libraries-/-packages)
+* [Using Reputable 3rd-Party Libraries](#using-reputable-3rd-party-libraries)
+* [Audit Logging](#audit-logging)
+* [Authorization Checks](#authorization-checks)
+* [Rate Limiting](#rate-limiting)
+* [Principle of Least Privilege](#principle-of-least-privlege)
+* [Sanitizing Errors](#santizing-errors)
+* [Generating Secrets](#generating-secrets)
+
+## No Secrets In Code
+
+asdf
+
+```elixir
+
+```
+
+## Making Secret Rotation Easy
+
+asdf
+
+```elixir
+
+```
+
+## Up-to-date Libraries / Packages
+
+asdf
+
+```elixir
+
+```
+
+## Using Reputable 3rd-Party Libraries
+
+asdf
+
+```elixir
+
+```
+
+## Audit Logging
+
+asdf
+
+```elixir
+
+```
+
+## Authorization Checks
+
+asdf
+
+```elixir
+
+```
+
+## Rate Limiting
+
+asdf
+
+```elixir
+
+```
+
+## Principle of Least Privilege
+
+asdf
+
+```elixir
+
+```
+
+## Santizing Errors
+
+asdf
+
+```elixir
+
+```
+
+## Generating Secrets
+
+asdf
+
+```elixir
+
+```
+
+[**Next Module: GraphQL Security ->**](./4-graphql.livemd)

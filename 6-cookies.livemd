@@ -1,0 +1,28 @@
+# ESCT: Part 6 - Cookie Security
+
+## Introduction
+
+asdf
+
+## Tables of Contents
+
+* [Ingredients of a Cookie](#ingredients-of-a-cookie)
+* [The Perfect Cookie](#the-perfect-cookie)
+
+## Ingredients of a Cookie
+
+asdf
+
+```elixir
+
+```
+
+## The Perfect Cookie
+
+Ooie-gooie and fresh out of the oven, perfectly golden brown.
+
+```elixir
+
+```
+
+[**Next Module: Security Anti-Patterns ->**](./7-anti-patterns.livemd)

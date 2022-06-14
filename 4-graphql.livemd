@@ -1,0 +1,46 @@
+# ESCT: Part 4 - GraphQL Security
+
+## Introduction
+
+asdf
+
+## Table of Contents
+
+* [Introspection Gatekeeper](#introspection-gatekeeper)
+* [Error Disclosure](#error-disclosure)
+* [Resource Exhaustion](#resource-disclosure)
+* [Cost Theory](#cost-theory)
+
+## Introspection Gatekeeper
+
+asdf
+
+```elixir
+
+```
+
+## Error Disclosure
+
+asdf
+
+```elixir
+
+```
+
+## Resource Exhaustion
+
+asdf
+
+```elixir
+
+```
+
+## Cost Theory
+
+asdf
+
+```elixir
+
+```
+
+[**Next Module: Elixir Security ->**](./5-elixir.livemd)

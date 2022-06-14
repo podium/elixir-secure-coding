@@ -1,0 +1,31 @@
+# ESCT: Part 8 - CI/CD Tools
+
+## Introduction
+
+asdf
+
+## Table of Contents
+
+* [Sobelow](#sobelow)
+* [Salus](#salus)
+* [Semgrep](#semgrep)
+
+## Sobelow
+
+asdf
+
+```elixir
+
+```
+
+## Salus
+
+asdf
+
+## Semgrep
+
+asdf
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**Next Module: The Secure Road ->**](./9-secure-road.livemd)

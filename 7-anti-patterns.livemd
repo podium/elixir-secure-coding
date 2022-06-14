@@ -1,0 +1,19 @@
+# ESCT: Part 7 - Security Anti-Patterns
+
+## Introduction
+
+asdf
+
+## Tables of Contents
+
+* [Security Through Obscurity](#security-through-obscurity)
+
+## Security Through Obscurity
+
+asdf
+
+```elixir
+
+```
+
+[**Next Module: CI/CD Tools ->**](./8-cicd.livemd)

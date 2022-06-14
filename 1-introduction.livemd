@@ -1,0 +1,48 @@
+# ESCT: Part 1 - Introduction
+
+## Overview
+
+Found in this series of modules is a curriculum for teaching Secure Coding concepts and ideas centered around the Elixir ecosystem. Core principles of Application Security have been sourced from other available resources from the community and pieced together into this Elixir Livebook format to allow for an interactive spin.
+
+It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material has been crafted by the Product Security team at Podium and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
+
+## Who This Is For
+
+This curriculum is for any Software Developer / Engineer / Maker / Hacker looking to better their own knowledge of the Web Application space, especially as it pertains to Elixir Phoenix applications.
+
+## How To Use This Livebook
+
+* Brief overview of Livebook tech / how to use it / link to resources on getting started
+* Talk about the types of problemsets contained within and the expectation for each
+* Talk about how the grading works
+
+## Training Modules
+
+1. Introducion (You Are Here)
+2. [OWASP](./2-owasp.livemd)
+3. [Secure SDLC](./3-ssdlc.livemd)
+4. [GraphQL Security](./4-graphql.livemd)
+5. [Elixir Security](./5-elixir.livemd)
+6. [Cookie Security](./6-cookies.livemd)
+7. [Security Anti-Patterns](./7-anti-patterns.livemd)
+8. [CI/CD Tools](./8-cicd.livemd)
+9. [The Secure Road](./9-secure-road.livemd)
+
+## Future Modules
+
+Outlined below are some sections we've identified that would be helpful to add to this training material, but determined in our first pass to punt it later down the line as it wouldn't immediately benefit our engineers. If you feel like you would like to contribute to this project, consider building out a module for one of these sections!
+
+* REST Security
+
+## Acknowledgements
+
+* OWASP
+* Sobelow
+* https://docs.guardrails.io/docs/category/elixir
+* https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/
+* Shopify GraphQL Cost Theory
+* https://jupyter4edu.github.io/jupyter-edu-book/index.html
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**Next Module: OWASP ->**](./2-owasp.livemd)

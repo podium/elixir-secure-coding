@@ -1,0 +1,25 @@
+# ESCT: Part 9 - The Secure Road
+
+## Introduction
+
+> <i>Two roads diverged in a wood, and I,<br />
+> I took the one less traveled by,<br />
+> And that has made all the difference.<br />
+> \- Robert Frost, The Road Not Taken (1916)</i>
+
+## Table of Contents
+
+* [Example: Service to Service Authentication](#example:-service-to-service-authentication)
+* [Example: User Authorization](#example:-user-authorization)
+
+## Example: Service to Service Authentication
+
+asdf
+
+## Example: User Authorization
+
+asdf
+
+```elixir
+
+```

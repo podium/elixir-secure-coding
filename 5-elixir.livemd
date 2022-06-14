@@ -1,0 +1,73 @@
+# ESCT: Part 5 - Elixir Security
+
+## Introduction
+
+asdf
+
+## Table of Contents
+
+* [Atom Exhaustion](#atom-exhaustion)
+* [Protecting Sensitive Data](#protecting-sensitive-data)
+* [Untrusted Code](#untrusted-code)
+* [Timing Attacks](#timing-attacks)
+* [Boolean Coercion](#boolean-coercion)
+* [(De-)Serialization](#\(de-\)serialization)
+* [Spawning External Executables](#spawning-external-executables)
+
+## Atom Exhaustion
+
+asdf
+
+```elixir
+
+```
+
+## Protecting Sensitive Data
+
+asdf
+
+```elixir
+
+```
+
+## Untrusted Code
+
+asdf
+
+```elixir
+
+```
+
+## Timing Attacks
+
+asdf
+
+```elixir
+
+```
+
+## Boolean Coercion
+
+asdf
+
+```elixir
+
+```
+
+## (De-)Serialization
+
+asdf
+
+```elixir
+
+```
+
+## Spawning External Executables
+
+asdf
+
+```elixir
+
+```
+
+[**Next Module: Cookie Security ->**](./6-cookies.livemd)

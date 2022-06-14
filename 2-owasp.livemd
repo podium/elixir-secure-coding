@@ -1,0 +1,18 @@
+# ESCT: Part 2 - OWASP
+
+## Introduction
+
+Introduce / review OWASP
+
+## Applicable OWASP Top 10
+
+* Broken Access Control
+* Injection
+* Insecure Design
+* Security Misconfigurations
+* Vulnerable and Outdated Components
+* Identification and AuthN Failures
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**Next Module: Secure SDLC Concepts ->**](./3-ssdlc.livemd)
