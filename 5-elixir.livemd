@@ -1,5 +1,9 @@
 # ESCT: Part 5 - Elixir Security
 
+```elixir
+Mix.install([:benchwarmer, :plug])
+```
+
 ## Introduction
 
 asdf
@@ -43,7 +47,34 @@ asdf
 asdf
 
 ```elixir
+defmodule Susceptible do
+  def compare(input, value) do
+    case input do
+      ^value -> :ok
+      _ -> :access_denied
+    end
+  end
+end
 
+defmodule Constant do
+  def compare(input, value) do
+    case Plug.Crypto.secure_compare(input, value) do
+      true -> :ok
+      false -> :access_denied
+    end
+  end
+end
+
+password = "HASH_OF_THE_USERS_ACTUAL_PASSWORD"
+# DO NOT EDIT ANY CODE ABOVE THIS LINE
+
+user_input = "HASH_OF_asdfasdf"
+
+# DO NOT EDIT ANY CODE BELOW THIS LINE (you may uncomment IO.puts)
+Benchwarmer.benchmark(fn -> Susceptible.compare(user_input, password) end)
+Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
+
+# IO.puts(:comparison_ran)
 ```
 
 ## Boolean Coercion
@@ -51,7 +82,7 @@ asdf
 asdf
 
 ```elixir
-
+# inverse challenge where you have to purposefully coerce a boolean
 ```
 
 ## (De-)Serialization
