@@ -66,11 +66,11 @@ defmodule Constant do
 end
 
 password = "HASH_OF_THE_USERS_ACTUAL_PASSWORD"
-# DO NOT EDIT ANY CODE ABOVE THIS LINE
+# DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
 
 user_input = "HASH_OF_asdfasdf"
 
-# DO NOT EDIT ANY CODE BELOW THIS LINE (you may uncomment IO.puts)
+# DO NOT EDIT ANY CODE BELOW THIS LINE (you may uncomment IO.puts) =============
 Benchwarmer.benchmark(fn -> Susceptible.compare(user_input, password) end)
 Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
 
@@ -82,7 +82,23 @@ Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
 asdf
 
 ```elixir
-# inverse challenge where you have to purposefully coerce a boolean
+defmodule SecurityCheck do
+  def validate(input, password_hash) do
+    case Plug.Crypto.secure_compare(input, password_hash) do
+      true -> :ok
+      false -> :access_denied
+    end
+  end
+
+  defexception message: "There was an issue"
+end
+
+password = "some_secure_password_hash"
+user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
+:ok
+
+# if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end
+# if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
 ```
 
 ## (De-)Serialization
