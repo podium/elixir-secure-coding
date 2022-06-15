@@ -1,7 +1,7 @@
 # ESCT: Part 5 - Elixir Security
 
 ```elixir
-Mix.install([:benchwarmer, :plug])
+Mix.install([:benchwarmer, :kino, :plug])
 ```
 
 ## Introduction
@@ -39,7 +39,13 @@ asdf
 asdf
 
 ```elixir
+name = Kino.Input.text("What's your name?")
+```
 
+```elixir
+textfield_value = Kino.Input.read(name)
+{result, binding} = Code.eval_string("a", a: textfield_value)
+"Hello, " <> result
 ```
 
 ## Timing Attacks
