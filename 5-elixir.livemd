@@ -23,7 +23,19 @@ asdf
 asdf
 
 ```elixir
+random_number = :rand.uniform(10000)
+malicious_user_input = Integer.to_string(random_number)
 
+prev_count = :erlang.system_info(:atom_count)
+
+try do
+  # ONLY CHANGE THIS FUNCTION, DO NOT CHANGE THE ARGUMENT
+  String.to_atom(malicious_user_input)
+rescue
+  e -> {ArgumentError, e}
+end
+
+IO.puts(:erlang.system_info(:atom_count) == prev_count)
 ```
 
 ## Protecting Sensitive Data
@@ -47,6 +59,10 @@ textfield_value = Kino.Input.read(name)
 {result, binding} = Code.eval_string("a", a: textfield_value)
 "Hello, " <> result
 ```
+
+**BONUS QUESTION**: How would you go about securing the code above?
+
+Hint: Deleting it *entirely* is a fair approach 😉
 
 ## Timing Attacks
 
