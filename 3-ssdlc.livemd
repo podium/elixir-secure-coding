@@ -8,7 +8,6 @@ asdf
 
 * [No Secrets In Code](#no-secrets-in-code)
 * [Making Secret Rotation Easy](#making-secret-rotation-easy)
-* [Up-to-date Libraries / Packages](#up-to-date-libraries-/-packages)
 * [Using Reputable 3rd-Party Libraries](#using-reputable-3rd-party-libraries)
 * [Audit Logging](#audit-logging)
 * [Authorization Checks](#authorization-checks)
@@ -26,14 +25,6 @@ asdf
 ```
 
 ## Making Secret Rotation Easy
-
-asdf
-
-```elixir
-
-```
-
-## Up-to-date Libraries / Packages
 
 asdf
 

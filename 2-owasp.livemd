@@ -4,15 +4,127 @@
 
 Introduce / review OWASP
 
-## Applicable OWASP Top 10
+## Tables of Contents
 
-* Broken Access Control
-* Injection
-* Insecure Design
-* Security Misconfigurations
-* Vulnerable and Outdated Components
-* Identification and AuthN Failures
+* [Glossary](#glossary)
+* [OWASP Top 10](#owasp-top-10)
+  * [Broken Access Control](#broken-access-control)
+  * [Cryptographic Failures](#cryptographic-failures)
+  * [Injection](#injection)
+  * [Insecure Design](#insecure-design)
+  * [Security Misconfiguration](#security-misconfiguration)
+  * [Vulnerable and Outdated Components](#vulnerable-and-outdated-components)
+  * [Identification and Authentication Failures](#identification-and-authentication-failures)
+  * [Software and Data Integrity Failures](#software-and-data-integrity-failures)
+  * [Security Logging and Monitoring Failures](#security-logging-and-monitoring-failures)
+  * [Server-Side Request Forgery](#server-side-request-forgery)
 
-<!-- livebook:{"break_markdown":true} -->
+## Glossary
+
+asdf
+
+## OWASP Top 10
+
+asdf
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Broken Access Control
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Cryptographic Failures
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Injection
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Insecure Design
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Security Misconfiguration
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Vulnerable and Outdated Components
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Identification and Authentication Failures
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Software and Data Integrity Failures
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Security Logging and Monitoring Failures
+
+asdf
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":3} -->
+
+## Server-Side Request Forgery
+
+asdf
+
+```elixir
+
+```
 
 [**Next Module: Secure SDLC Concepts ->**](./3-ssdlc.livemd)
