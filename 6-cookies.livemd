@@ -28,4 +28,4 @@ Ooie-gooie and fresh out of the oven, perfectly golden brown.
 
 ```
 
-[**Next Module: Security Anti-Patterns ->**](./7-anti-patterns.livemd)
+[**<- Previous Module: Elixir Security**](./5-elixir.livemd) || [**Next Module: Security Anti-Patterns ->**](./7-anti-patterns.livemd)

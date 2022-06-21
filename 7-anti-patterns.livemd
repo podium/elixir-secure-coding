@@ -20,4 +20,4 @@ asdf
 # The same code example but in cleartext
 ```
 
-[**Next Module: CI/CD Tools ->**](./8-cicd.livemd)
+[**<- Previous Module: Cookie Security**](./6-cookies.livemd) || [**Next Module: CI/CD Tools ->**](./8-cicd.livemd)

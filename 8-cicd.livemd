@@ -24,4 +24,4 @@ asdf
 
 <!-- livebook:{"break_markdown":true} -->
 
-[**Next Module: The Secure Road ->**](./9-secure-road.livemd)
+[**<- Previous Module: Security Anti-Patterns**](./7-anti-patterns.livemd) || [**Next Module: The Secure Road ->**](./9-secure-road.livemd)

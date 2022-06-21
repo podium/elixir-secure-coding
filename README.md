@@ -1,5 +1,13 @@
 # elixir-secure-coding
 
+### Project Todos:
+- Lean harder into Elixir-isms for examples / prescriptiveness
+- Add more sources to text
+  - Superscript sources / citations
+  - Potentially add historical examples of compromises deriving from different exploiot types 
+- Customize text more (it's rather copy-pasty right now)
+- Iterate on / create new examples
+
 ### README Todos:
 - Secure Elixir Logo
 - Screenshots

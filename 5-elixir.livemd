@@ -139,4 +139,4 @@ asdf
 
 ```
 
-[**Next Module: Cookie Security ->**](./6-cookies.livemd)
+[**<- Previous Module: GraphQL Security**](./4-graphql.livemd) || [**Next Module: Cookie Security ->**](./6-cookies.livemd)

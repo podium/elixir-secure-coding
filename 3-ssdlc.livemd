@@ -83,4 +83,4 @@ asdf
 
 ```
 
-[**Next Module: GraphQL Security ->**](./4-graphql.livemd)
+[**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)

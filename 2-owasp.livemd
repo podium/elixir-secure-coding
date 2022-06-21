@@ -258,4 +258,4 @@ This Livebook is running on your machine or in the cloud and as such it will res
 # TODO: Make request to icanhazip.com mocked up to look like "malicious user input" to represent SSRF
 ```
 
-[**Next Module: Secure SDLC Concepts ->**](./3-ssdlc.livemd)
+[**<- Previous Module: Introduction**](./1-introduction.livemd) || [**Next Module: Secure SDLC Concepts ->**](./3-ssdlc.livemd)
