@@ -2,7 +2,15 @@
 
 ## Introduction
 
-Introduce / review OWASP
+The [Open Web Application Security Project (OWASP)](https://owasp.org/) is a nonprofit foundation that works to improve the security of software. Their programming includes:
+
+* Community-led open source software projects
+* Over 250+ local chapters worldwide
+* Educational and training conferences
+
+They are an open community dedicated to enabling organizations to conceive, develop, acquire, operate, and maintain applications that can be trusted. All of their projects, tools, documents, forums, and chapters are free and open to anyone interested in improving application security.
+
+Having been in the Application Security space since 2001, they are somewhat of the defacto standard when it comes to best practices. It is *highly* encouraged to give their site a visit and look around at available materials!
 
 ## Tables of Contents
 
@@ -21,17 +29,31 @@ Introduce / review OWASP
 
 ## Glossary
 
-asdf
+**Common Weakness Enumerations (CWEs)** - TODO: Define
+
+**Common Vulnerabilities and Exposures (CVEs)** - TODO: Define
+
+**Common Vulnerability Scoring System (CVSS)** - TODO: Define
 
 ## OWASP Top 10
 
-asdf
+The OWASP Top 10 is a standard awareness document for developers and web application security. It represents a broad consensus about the most critical security risks to web applications. Every few years, OWASP will update the Top 10 list / rankings - with the most recent revision being 2021.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Broken Access Control
 
-asdf
+### Description
+
+Access control enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data or performing a business function outside the user's limits.
+
+### Prevention
+
+Access control is only effective in trusted server-side code or server-less API, where the attacker cannot modify the access control check or metadata.
+
+### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
+
+TODO: Build example or quiz question
 
 ```elixir
 
@@ -41,17 +63,62 @@ asdf
 
 ## Cryptographic Failures
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+* Don't store sensitive data unnecessarily. 
+  * Discard it as soon as possible or use PCI DSS compliant tokenization or even truncation.
+  * Data that is not retained cannot be stolen.
+* Ensure up-to-date and strong standard algorithms, protocols, and keys are in place; use proper key management.
+* Encrypt all data in transit with secure protocols.
+  * Use TLS with forward secrecy (FS) ciphers, cipher prioritization by the server, and other secure parameters.
+  * Enforce encryption using directives like HTTP Strict Transport Security (HSTS).
+* Make sure to encrypt all sensitive data at rest.
+* Disable caching for responses that contain sensitive data.
+* Do not use legacy protocols such as FTP and SMTP.
+* Store passwords using strong and salted hashing functions with a delay factor. 
+  * Argon2, scrypt, bcrypt or PBKDF2 are good examples.
+* Always use [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption) instead of just encryption.
+* Ensure that cryptographic randomness is used where appropriate, and that it has not been seeded in a predictable way or with low entropy.
+* Avoid deprecated cryptographic functions and padding schemes, such as MD5, SHA1, PKCS number 1 v1.5
+* Classify data processed, stored, or transmitted by an application. Identify which data is sensitive according to privacy laws, regulatory requirements, or business needs.
+  * Apply required security controls as per the data classification.
+
+### <span style="color:red">QUIZ</span>
+
+**Which of the following functions is performing password comparisons in the most secure way?**
+
+*Please uncomment the function call that you believe is correct.*
 
 ```elixir
-
+# TODO: Write functions
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Injection
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+* Don't blindly trust user input.
+* Use an allowlist if functionality permits.
+  * Denylists are an acceptable ancilliary protection, but they should not be the only form of protection for user input as there is no way to unilaterally protect against all malicious input possibilities.
+* Use a safe API, namely use the [Ecto](https://hexdocs.pm/ecto/Ecto.html) library as its queries use parameterized inputs by default.
+* Use positive server-side input validation.
+  * This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.
+* For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.
+* Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.
+
+### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
+
+TODO: Build example or quiz question
 
 ```elixir
 
@@ -61,37 +128,77 @@ asdf
 
 ## Insecure Design
 
-asdf
+### Description
 
-```elixir
+TODO: Describe
 
-```
+### Prevention
+
+* Establish and use a secure development lifecycle with AppSec professionals to help evaluate and design security and privacy-related controls
+* Establish and use a library of secure design patterns or paved road ready to use components
+* Use threat modeling for critical authentication, access control, business logic, and key flows
+* Integrate security language and controls into user stories
+* Integrate plausibility checks at each tier of your application (from frontend to backend)
+* Write unit and integration tests to validate that all critical flows are resistant to the threat model. Compile use-cases and misuse-cases for each tier of your application.
+* Segregate tier layers on the system and network layers depending on the exposure and protection needs
+* Segregate tenants robustly by design throughout all tiers
+* Limit resource consumption by user or service
 
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Security Misconfiguration
 
-asdf
+### Description
 
-```elixir
+TODO: Describe
 
-```
+### Prevention
+
+TODO: Prevent
 
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Vulnerable and Outdated Components
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+* Keep all dependencies and/or components up to date on an on-going basis.
+* Remove unused dependencies, unnecessary features, components, files, and documentation.
+* Continuously inventory the versions of both client-side and server-side components and their dependencies.
+* Only obtain components from official sources over secure links.
+  * Prefer signed packages to reduce the chance of including a modified, malicious component.
+* Monitor for libraries and components that are unmaintained or do not create security patches for older versions.
+  * If patching is not possible, consider deploying a virtual patch to monitor, detect, or protect against the discovered issue.
+
+### <span style="color:red">QUIZ</span>
+
+**Which of the outdated components is vulnerable?**
+
+*Please update the vulnerable package to the latest version.*
 
 ```elixir
-
+# TODO: Mix install many packages with one being vulnerable
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Identification and Authentication Failures
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
+
+TODO: Build example or quiz question
 
 ```elixir
 
@@ -101,17 +208,29 @@ asdf
 
 ## Software and Data Integrity Failures
 
-asdf
+### Description
 
-```elixir
+TODO: Describe
 
-```
+### Prevention
+
+TODO: Prevent
 
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Security Logging and Monitoring Failures
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
+
+TODO: Build example or quiz question
 
 ```elixir
 
@@ -121,10 +240,22 @@ asdf
 
 ## Server-Side Request Forgery
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:blue">EXAMPLE</span>
+
+**Run the code below and notice the data returned**; the website that is requested returns the IP address belonging to whatever made the request.
+
+This Livebook is running on your machine or in the cloud and as such it will respond with whatever IP address belongs to it, but this is representative of the machine the code is running on communicating with an external source based on potentially malicious input
 
 ```elixir
-
+# TODO: Make request to icanhazip.com mocked up to look like "malicious user input" to represent SSRF
 ```
 
 [**Next Module: Secure SDLC Concepts ->**](./3-ssdlc.livemd)

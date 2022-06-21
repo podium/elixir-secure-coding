@@ -1,5 +1,12 @@
 # ESCT: Part 6 - Cookie Security
 
+```elixir
+Mix.install([:phoenix, :plug])
+
+alias Phoenix.ConnTest
+ConnTest.build_conn()
+```
+
 ## Introduction
 
 asdf
@@ -12,10 +19,6 @@ asdf
 ## Ingredients of a Cookie
 
 asdf
-
-```elixir
-
-```
 
 ## The Perfect Cookie
 

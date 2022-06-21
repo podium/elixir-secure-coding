@@ -14,10 +14,6 @@ asdf
 
 asdf
 
-```elixir
-
-```
-
 ## Salus
 
 asdf

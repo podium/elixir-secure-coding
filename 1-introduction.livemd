@@ -4,7 +4,7 @@
 
 Found in this series of modules is a curriculum for teaching Secure Coding concepts and ideas centered around the Elixir ecosystem. Core principles of Application Security have been sourced from other available resources from the community and pieced together into this Elixir Livebook format to allow for an interactive spin.
 
-It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material has been crafted by the Product Security team at Podium and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
+It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material has been crafted by the Product Security team at [Podium](https://www.podium.com/) and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
 
 ## Who This Is For
 

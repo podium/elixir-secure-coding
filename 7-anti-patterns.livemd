@@ -13,7 +13,11 @@ asdf
 asdf
 
 ```elixir
+# Obfuscated code example
+```
 
+```elixir
+# The same code example but in cleartext
 ```
 
 [**Next Module: CI/CD Tools ->**](./8-cicd.livemd)

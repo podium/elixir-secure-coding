@@ -8,7 +8,6 @@ asdf
 
 * [No Secrets In Code](#no-secrets-in-code)
 * [Making Secret Rotation Easy](#making-secret-rotation-easy)
-* [Using Reputable 3rd-Party Libraries](#using-reputable-3rd-party-libraries)
 * [Audit Logging](#audit-logging)
 * [Authorization Checks](#authorization-checks)
 * [Rate Limiting](#rate-limiting)
@@ -29,14 +28,6 @@ IO.puts(super_secret_password)
 ```
 
 ## Making Secret Rotation Easy
-
-asdf
-
-```elixir
-
-```
-
-## Using Reputable 3rd-Party Libraries
 
 asdf
 
