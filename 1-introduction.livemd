@@ -64,6 +64,7 @@ Outlined below are some sections we've identified that would be helpful to add t
   * Defense In Depth
   * Zero Trust Model
 * Elixir Security
+  * Protecting Sensitive Data
   * (De-)Serialization
   * Spawning External Executables
   * Deployment Hardening
