@@ -50,9 +50,9 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 6. [Cookie Security](./6-cookies.livemd) - ~10 minutes
 7. [Security Anti-Patterns](./7-anti-patterns.livemd) - ~15 minutes
 8. [CI/CD Tools](./8-cicd.livemd) - TBD minutes
-9. [The Secure Road](./9-secure-road.livemd) - TBD minutes
+9. [The Secure Road](./9-secure-road.livemd) - ~10 minutes
 
-Total Time for Completion: ~1hr35m + TBD
+Total Time for Completion: ~1hr45m + TBD
 
 ## Future Modules
 
