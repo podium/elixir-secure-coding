@@ -44,11 +44,11 @@ Having been in the Application Security space since 2001, they are somewhat of t
 
 ## Glossary
 
-**Common Weakness Enumerations (CWEs)** - TODO: Define
+**Common Weakness Enumerations (CWEs)** - Category system for hardware and software weaknesses and vulnerabilities. E.g. CWE-121 is for stack-based buffer overflows.
 
-**Common Vulnerabilities and Exposures (CVEs)** - TODO: Define
+**Common Vulnerabilities and Exposures (CVEs)** - System that provides a reference-method for publicly known information-security vulnerabilities and exposures. E.g. The Log4j exploit was [CVE-2021-44228](https://nvd.nist.gov/vuln/detail/CVE-2021-44228).
 
-**Common Vulnerability Scoring System (CVSS)** - TODO: Define
+**Common Vulnerability Scoring System (CVSS)** - An industry standard for assessing and scoring the severity of vulnerabilities. Scores are calculated based on a formula that approximates ease and impact of an exploit. Scores range from 0 to 10, with 10 being the most severe.
 
 ## OWASP Top 10
 
@@ -145,7 +145,7 @@ TODO: Describe
 * Use an allowlist if functionality permits.
   * Denylists are an acceptable ancilliary protection, but they should not be the only form of protection for user input as there is no way to unilaterally protect against all malicious input possibilities.
 * Use a safe API, namely use the [Ecto](https://hexdocs.pm/ecto/Ecto.html) library as its queries use parameterized inputs by default.
-* Use positive server-side input validation.
+* Use server-side input validation.
   * This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.
 * For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.
 * Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.
