@@ -32,10 +32,10 @@ A.b([3, 4, 5, 2, 1])
 *Uncomment the line with your answer.*
 
 ```elixir
-# answer = "Bubble Sort"
-# answer = "Merge Sort"
-# answer = "Quick Sort"
-# answer = "Random Sort"
+# answer = :bubble_sort
+# answer = :merge_sort
+# answer = :quick_sort
+# answer = :random_sort
 
 IO.puts(answer)
 ```
