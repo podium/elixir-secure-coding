@@ -13,11 +13,31 @@ asdf
 asdf
 
 ```elixir
-# Obfuscated code example
+defmodule A do
+  def b([]), do: []
+
+  def b([p | q]) do
+    {l, r} = Enum.split_with(q, &(&1 < p))
+    b(l) ++ [p | b(r)]
+  end
+end
+
+A.b([3, 4, 5, 2, 1])
 ```
 
+### <span style="color:red;">Quiz</span>
+
+**What sort method is the module above using?**
+
+*Uncomment the line with your answer.*
+
 ```elixir
-# The same code example but in cleartext
+# answer = "Bubble Sort"
+# answer = "Merge Sort"
+# answer = "Quick Sort"
+# answer = "Random Sort"
+
+IO.puts(answer)
 ```
 
 [**<- Previous Module: Cookie Security**](./6-cookies.livemd) || [**Next Module: CI/CD Tools ->**](./8-cicd.livemd)
