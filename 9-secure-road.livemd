@@ -20,8 +20,6 @@ asdf
 
 asdf
 
-```elixir
-
-```
+<!-- livebook:{"break_markdown":true} -->
 
 [**<- Previous Module: CI/CD Tools**](./8-cicd.livemd)

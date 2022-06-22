@@ -6,12 +6,12 @@ asdf
 
 ## Table of Contents
 
-* [Introspection Gatekeeper](#introspection-gatekeeper)
+* [Disabling Introspection](#disabling-introspection)
 * [Error Disclosure](#error-disclosure)
 * [Resource Exhaustion](#resource-disclosure)
-* [Cost Theory](#cost-theory)
+  * [Cost Theory](#cost-theory)
 
-## Introspection Gatekeeper
+## Disabling Introspection
 
 asdf
 
@@ -34,6 +34,8 @@ asdf
 ```elixir
 
 ```
+
+<!-- livebook:{"branch_parent_index":4} -->
 
 ## Cost Theory
 

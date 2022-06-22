@@ -19,7 +19,7 @@ This curriculum is for any Software Developer / Engineer / Maker / Hacker lookin
 ## Training Modules
 
 1. Introducion (You Are Here)
-2. [OWASP](./2-owasp.livemd)
+2. [OWASP](./2-owasp.livemd) - ~30 minutes
 3. [Secure SDLC Concepts](./3-ssdlc.livemd)
 4. [GraphQL Security](./4-graphql.livemd)
 5. [Elixir Security](./5-elixir.livemd)
@@ -41,6 +41,8 @@ Outlined below are some sections we've identified that would be helpful to add t
   * (De-)Serialization
   * Spawning External Executables
 * REST Security
+* CI/CD Tools
+  * Semgrep - *pending Elixir support*
 
 ## Acknowledgements
 

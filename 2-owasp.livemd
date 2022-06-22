@@ -210,7 +210,7 @@ TODO: Describe
 
 ### <span style="color:red">QUIZ</span>
 
-**Which of the outdated components is vulnerable?**
+**Which of the outdated components currently installed is vulnerable?**
 
 *Please change the atom below to the name of the vulnerable package installed in this Livebook AND update the afflicted package.*
 

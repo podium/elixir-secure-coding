@@ -1,5 +1,9 @@
 # ESCT: Part 8 - CI/CD Tools
 
+```elixir
+Mix.install([:sobelow])
+```
+
 ## Introduction
 
 asdf
@@ -7,18 +11,15 @@ asdf
 ## Table of Contents
 
 * [Sobelow](#sobelow)
-* [Salus](#salus)
-* [Semgrep](#semgrep)
+  * [Salus](#salus)
 
 ## Sobelow
 
 asdf
 
+<!-- livebook:{"branch_parent_index":2} -->
+
 ## Salus
-
-asdf
-
-## Semgrep
 
 asdf
 
