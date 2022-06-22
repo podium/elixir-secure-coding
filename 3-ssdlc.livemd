@@ -8,7 +8,6 @@ asdf
 
 * [No Secrets In Code](#no-secrets-in-code)
 * [Making Secret Rotation Easy](#making-secret-rotation-easy)
-* [Audit Logging](#audit-logging)
 * [Rate Limiting](#rate-limiting)
 * [Principle of Least Privilege](#principle-of-least-privlege)
 
@@ -38,14 +37,6 @@ IO.puts(super_secret_password)
 
 asdf
 
-## User Audit Logging
-
-asdf
-
-```elixir
-
-```
-
 ## Rate Limiting
 
 asdf
@@ -57,7 +48,5 @@ asdf
 ## Principle of Least Privilege
 
 asdf
-
-<!-- livebook:{"break_markdown":true} -->
 
 [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
