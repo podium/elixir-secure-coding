@@ -2,7 +2,13 @@
 
 ## Introduction
 
-asdf
+In Software Engineering, an Anti-Pattern typically is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
+
+Note the reference to "a common response." Anti-patterns are not occasional mistakes, they are common ones, and are nearly always followed with good intentions.
+
+A **Security Anti-Pattern** can be thought of in a similar way - they are an ineffective security measure taken that can result in a false sense of security when it comes to risk mitigation / remediation.
+
+Important to differentiate though that Security Anti-Patterns are not themselves insecurites or even things to fully avoid - simply they cannot be applied in a vacuum and should always accompany a more hollistic solution to fixing a security issue.
 
 ## Tables of Contents
 
