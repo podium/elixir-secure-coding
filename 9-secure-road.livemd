@@ -7,6 +7,18 @@
 > And that has made all the difference.<br />
 > \- Robert Frost, The Road Not Taken (1916)</i>
 
+Wow! Look at us, it was a long journey to get here and major kudos to you for getting through it all. I bet your killing those quiz questions!
+
+Now that we've begun to scratch the surface when it comes to Secure Coding with Elixir, now is as good a time as any to step back and think about how you should approach coding securely moving forward.
+
+Thinking about Robert Frost's poem above - choosing to build code in a secure manner is allegorically akin to the road less traveled (otherwise there wouldn't be a need for Secure Coding Training like this one!).
+
+When we build code using insecure techniques (intentionally or unintentionally) then technical debt is created in the form of security debt; even if building insecure code took less time, you inveitably will have to fix the security issues at some point.
+
+Can you imagine if Robert Frost decided to take the road *more* traveled, walked all that way, just to find out the road is out a ways ahead and had to walk back just to go down the road less traveled? It's the same for building Secure Code from the get-go.
+
+With all that in mind, in this final module let's explore some examples of Data Systems that you *could* build...but they may not be the *most* secure systems from the onset and how we can go about rearchitecting them to be better.
+
 ## Table of Contents
 
 * [Example: Service to Service Authentication](#example:-service-to-service-authentication)
