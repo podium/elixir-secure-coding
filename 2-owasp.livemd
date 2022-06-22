@@ -1,5 +1,9 @@
 # ESCT: Part 2 - OWASP
 
+```elixir
+Mix.install([:httpoison])
+```
+
 ## Introduction
 
 The [Open Web Application Security Project (OWASP)](https://owasp.org/) is a nonprofit foundation that works to improve the security of software. Their programming includes:
@@ -255,7 +259,19 @@ TODO: Prevent
 This Livebook is running on your machine or in the cloud and as such it will respond with whatever IP address belongs to it, but this is representative of the machine the code is running on communicating with an external source based on potentially malicious input
 
 ```elixir
-# TODO: Make request to icanhazip.com mocked up to look like "malicious user input" to represent SSRF
+user_inputted_url = "http://icanhazip.com"
+
+case HTTPoison.get(user_inputted_url) do
+  {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+    IO.puts("This is the IP belonging to your Livebook instance:")
+    IO.puts(body)
+
+  {:ok, %HTTPoison.Response{status_code: 404}} ->
+    IO.puts("Not found :(")
+
+  {:error, %HTTPoison.Error{reason: reason}} ->
+    IO.inspect(reason)
+end
 ```
 
 [**<- Previous Module: Introduction**](./1-introduction.livemd) || [**Next Module: Secure SDLC Concepts ->**](./3-ssdlc.livemd)
