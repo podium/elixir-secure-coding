@@ -9,11 +9,9 @@ asdf
 * [No Secrets In Code](#no-secrets-in-code)
 * [Making Secret Rotation Easy](#making-secret-rotation-easy)
 * [Audit Logging](#audit-logging)
-* [Authorization Checks](#authorization-checks)
 * [Rate Limiting](#rate-limiting)
 * [Principle of Least Privilege](#principle-of-least-privlege)
 * [Sanitizing Errors](#santizing-errors)
-* [Generating Secrets](#generating-secrets)
 
 ## No Secrets In Code
 
@@ -43,14 +41,6 @@ asdf
 
 ```
 
-## Authorization Checks
-
-asdf
-
-```elixir
-
-```
-
 ## Rate Limiting
 
 asdf
@@ -68,14 +58,6 @@ asdf
 ```
 
 ## Santizing Errors
-
-asdf
-
-```elixir
-
-```
-
-## Generating Secrets
 
 asdf
 
