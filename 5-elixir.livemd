@@ -95,15 +95,25 @@ Hint: Deleting it *entirely* is a fair approach 😉
 
 ### Description
 
-TODO: Describe
+A timing attack is a side-channel attack in which the attacker attempts to compromise a cryptosystem by analyzing the time taken to execute cryptographic algorithms.
+
+Plainly speaking, response time it takes to compute a given function measured at the pico-second level is analyized for microscopic variations.
+
+This technique is primarily used to analyze string comparisons of secret values to brute-force the identify of the secret.
+
+e.g. When comparing two strings, the function exits when variation is detected. Take a secret value `MY_SECRET` and a user input `MY_PASSWORD`, the string compariosn (`MY_PASSWORD == MY_SECRET`) would go character by character until there's a complete match or a discrepency. So if the new input was `MY_SAUCE`, that new string would take marginally longer to compare against the secret than `MY_PASSWORD` because of one more similar character as `MY_SECRET`.
 
 ### Prevention
 
-TODO: Prevent
+It's simple enough to protect against these types of attacks, especially during string comparisons. You need to execute functions in a way the performs them in constant time. In Elixir (and many other languages), you can use a secure string compare function that will take the same time to compare strings since it won't immediately fail at the point of first difference and instead check the full length of the string every time.
+
+Note: constant time operations tend to take longer, that is the trade off for security. But the difference is measured in clock cycles at that point.
 
 ### <span style="color:red;">Quiz</span>
 
-TODO: Explain
+**Observe the two functions outlined below, one is susceptible to timing attacks and the other uses constant time to compare strings. Change the value of `user_input` and see if you notice any time difference in the execution time.**
+
+*Simply uncomment the IO.puts on the last line of the code block for credit on this question.*
 
 ```elixir
 defmodule Susceptible do
