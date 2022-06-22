@@ -8,13 +8,35 @@ It is worth stating that this material is a work in progress and is open to cont
 
 ## Who This Is For
 
-This curriculum is for any Software Developer / Engineer / Maker / Hacker looking to better their own knowledge of the Web Application space, especially as it pertains to Elixir Phoenix applications.
+This curriculum is for any Software Developer / Engineer / Maker / Hacker looking to better their own knowledge of the Web Application Security space, especially as it pertains to Elixir Phoenix applications.
 
 ## How To Use This Livebook
 
-* Brief overview of Livebook tech / how to use it / link to resources on getting started
-* Talk about the types of problemsets contained within and the expectation for each
-* Talk about how the grading works
+### Livebooks
+
+If you've never used Elixir [Livebooks](https://livebook.dev/) before, you're in for a treat! They are a very exciting new tool that is actively under development - very similar in application to [Jupyter Notebooks](https://jupyter.org/).
+
+It would not do the Livebook any justice to try and summize here how to fully take advantage of the Livebook ecosystem, for a great introduction there is a great tutorial offered in local installations of Livebook.
+
+**For the purposes of this Training material, just know that you need to run the "Setup" step for the "Notebook dependencies and setup" section at the very top of EVERY module before running any code samples found within the module you're working on.**
+
+### Examples & Quiz Questions
+
+Spread throughout the Training material, you will find sections labeled <span style="color:blue;">**Example**</span> and <span style="color:red;">**Quiz**</span>. The idea here is those are relevant (and runnable) code examples in Elixir for the section you're learning about. <span style="color:blue;">**Examples**</span> are just for your education, whereas there will be graded componente to <span style="color:red;">**Quiz**</span> questions.
+
+Don't worry! If you've done the reading for the associated section, you should breeze through it and each question will outline what specifically needs to be done to successfully complete it! Here's an example <span style="color:red;">**Quiz**</span> question layout:
+
+### <span style="color:red;">**Quiz**</span>
+
+**This is what the question prompt would look like!**
+
+*This is the description on what the auto-grader is looking for in order to pass the question successfully*
+
+### Auto-grader
+
+Meticulous care has been put into the <span style="color:red;">**Quiz**</span> questions thus far in order to allow for programmatic grading of answers. This has been done to accomodate the usage of these Training materials en masse for organizations to level up the entirety of their Engineering teams.
+
+As such, each <span style="color:red;">**Quiz**</span> question is very specific about what to change and what not to change in the code sample - this is to maintain the integrity of the grader and provide immediate feedback to the taker if they succeeded or not. **Please do not unneccessarily change the code examples more than what is asked of you in the question!**
 
 ## Training Modules
 
