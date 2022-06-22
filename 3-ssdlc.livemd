@@ -14,7 +14,17 @@ asdf
 
 ## No Secrets In Code
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:red">QUIZ</span>
+
+**Remove the hard-coded secret from the code sample below and replace it with an environment variable named `envar_secret'**
 
 ```elixir
 # let's assume there is an environment variable named 'envar_secret'

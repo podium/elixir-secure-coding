@@ -22,6 +22,7 @@ Cookies are mainly used for three purposes:
 
 * [Ingredients of a Cookie](#ingredients-of-a-cookie)
 * [The Perfect Cookie](#the-perfect-cookie)
+* [Elixir Phoenix Cookies](#elixir-phoenix-cookies)
 
 ## Ingredients of a Cookie
 
@@ -71,13 +72,17 @@ TODO: Define
 
 ## The Perfect Cookie
 
-Ooie-gooie and fresh out of the oven, perfectly golden brown.
+Ooie-gooie and fresh out of the oven, perfectly golden brown. Here are some attributes that would go into making one of the most secure cookies out there!
 
-* **Cookie Prefix:** __Host
-* **Path:** /
-* **Secure:** True
-* **HttpOnly:** True
-* **SameSite:** Strict
+* **Cookie Prefix:** `__Host`
+* **Path:** `/`
+* **Secure:** `True`
+* **HttpOnly:** `True`
+* **SameSite:** `Strict`
+
+Ideally the cookie is also cryptographically signed or encrypted, but how that is done is typically up to the implementation.
+
+For instance, in the next section the Plug library gives you the ability to perform those actions within the `put_resp_cookie/4` function call. But if you store JSON Web Tokens (JWTs) as the value of your cookie, you can achieve similar signature results through the JWTs themselves.
 
 ## Elixir Phoenix Cookies
 

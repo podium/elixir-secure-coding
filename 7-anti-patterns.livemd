@@ -11,7 +11,9 @@ asdf
 
 ## Security Through Obscurity
 
-asdf
+### Description
+
+TODO: Describe
 
 ```elixir
 defmodule A do
@@ -43,7 +45,9 @@ IO.puts(answer)
 
 ## Frontend Authorization Checks
 
-asdf
+### Description
+
+TODO: Describe
 
 <!-- livebook:{"break_markdown":true} -->
 

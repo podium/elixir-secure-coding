@@ -18,7 +18,19 @@ asdf
 
 ## Atom Exhaustion
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:red;">Quiz</span>
+
+**Fix the vulnerable function below by changing the String function used on line 7.**
+
+*You should get a `true` result when you successfully fix the function.*
 
 ```elixir
 random_number = :rand.uniform(10000)
@@ -33,12 +45,19 @@ rescue
   e -> {ArgumentError, e}
 end
 
+IO.puts("Are you protected against Atom Exhaustion?")
 IO.puts(:erlang.system_info(:atom_count) == prev_count)
 ```
 
 ## Protecting Sensitive Data
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
 
 ```elixir
 
@@ -46,7 +65,17 @@ asdf
 
 ## Untrusted Code
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:blue;">Example</span>
+
+TODO: Explain
 
 ```elixir
 name = Kino.Input.text("What's your name?")
@@ -64,7 +93,17 @@ Hint: Deleting it *entirely* is a fair approach 😉
 
 ## Timing Attacks
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:red;">Quiz</span>
+
+TODO: Explain
 
 ```elixir
 defmodule Susceptible do
@@ -99,7 +138,17 @@ Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
 
 ## Boolean Coercion
 
-asdf
+### Description
+
+TODO: Describe
+
+### Prevention
+
+TODO: Prevent
+
+### <span style="color:red;">Quiz</span>
+
+TODO: Explain
 
 ```elixir
 defmodule SecurityCheck do
