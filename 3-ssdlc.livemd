@@ -27,7 +27,7 @@ A very easy way to prevent secrets being added to go though is to access them vi
 
 ### <span style="color:red">QUIZ</span>
 
-**Remove the hard-coded secret from the code sample below and replace it with an environment variable named `envar_secret'.**
+**Remove the hard-coded secret from the code sample below and replace it with an environment variable named `envar_secret`.**
 
 *Use `System.get_env/1` on line 2.*
 
