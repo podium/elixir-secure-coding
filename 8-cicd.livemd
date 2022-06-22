@@ -6,7 +6,9 @@ Mix.install([:sobelow])
 
 ## Introduction
 
-asdf
+> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+
+*TODO: Write Introduction*
 
 ## Table of Contents
 
@@ -15,13 +17,29 @@ asdf
 
 ## Sobelow
 
-asdf
+### Description
+
+*TODO: Make Description*
+
+### Usage
+
+*TODO: Outline Usage*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
 
 <!-- livebook:{"branch_parent_index":2} -->
 
 ## Salus
 
-asdf
+### Description
+
+*TODO: Make Description*
+
+### Usage
+
+*TODO: Outline Usage*
 
 <!-- livebook:{"break_markdown":true} -->
 
