@@ -43,7 +43,7 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 ## Training Modules
 
 1. Introducion (You Are Here)
-2. [OWASP](./2-owasp.livemd) - ~30 minutes
+2. [OWASP](./2-owasp.livemd) - ~40 minutes
 3. [Secure SDLC Concepts](./3-ssdlc.livemd)
 4. [GraphQL Security](./4-graphql.livemd)
 5. [Elixir Security](./5-elixir.livemd)
@@ -51,6 +51,8 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 7. [Security Anti-Patterns](./7-anti-patterns.livemd)
 8. [CI/CD Tools](./8-cicd.livemd)
 9. [The Secure Road](./9-secure-road.livemd)
+
+Total Time for Completion: ~X minutes
 
 ## Future Modules
 
