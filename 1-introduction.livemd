@@ -47,12 +47,12 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 3. [Secure SDLC Concepts](./3-ssdlc.livemd) - ~15 minutes
 4. [GraphQL Security](./4-graphql.livemd) - TBD minutes
 5. [Elixir Security](./5-elixir.livemd) - TBD minutes
-6. [Cookie Security](./6-cookies.livemd) - TBD minutes
+6. [Cookie Security](./6-cookies.livemd) - ~10 minutes
 7. [Security Anti-Patterns](./7-anti-patterns.livemd) - ~15 minutes
 8. [CI/CD Tools](./8-cicd.livemd) - TBD minutes
 9. [The Secure Road](./9-secure-road.livemd) - TBD minutes
 
-Total Time for Completion: ~1hr10m + TBD
+Total Time for Completion: ~1hr20m + TBD
 
 ## Future Modules
 

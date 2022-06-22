@@ -32,43 +32,100 @@ HTTP Cookies have attributes that influence how they are managed by the client(s
 
 #### Secure
 
-TODO: Define
+Cookies with the Secure attribute ensures that they will only be transmitted over HTTPS.
+
+The Secure attribute only protects the confidentiality of a
+cookie against Man in the Middle attackers - there is no integrity
+protection. E.g. An attacker could still edit a cookie in transit, but not read it
 
 #### HttpOnly
 
-TODO: Define
+This attribute disables the cookie from being accessed via client-side JavaScript. This is the number one cookie protection against Cross-Site Scripting.
 
-#### Path
-
-TODO: Define
+HttpOnly enabled cookies can still be replaced by overflowing the cookie jar from JavaScript
 
 #### Domain
 
-TODO: Define
+The Domain attribute specifies which hosts can receive a cookie.
+
+* If unspecified, the attribute defaults to the same host that set the cookie, excluding subdomains.
+* If Domain is specified, then subdomains are always included.
+
+Therefore, specifying Domain is *less* restrictive than omitting it. However, it can be helpful when subdomains need to share information about a user.
+
+For example, if you set `Domain=mozilla.org`, cookies are available on subdomains like `developer.mozilla.org`.
+
+#### Path
+
+The Path attribute indicates a URL path that must exist in the requested URL in order to send the Cookie header. The `%x2F` ("/") character is considered a directory separator, and subdirectories match as well.
+
+For example, if you set `Path=/docs`, these request paths match:
+
+* `/docs`
+* `/docs/`
+* `/docs/Web/`
+* `/docs/Web/HTTP`
+
+But these request paths don't:
+
+* `/`
+* `/docsets`
+* `/fr/docs`
 
 #### SameSite
 
-TODO: Define
+The SameSite attribute lets servers specify whether/when cookies are sent with cross-site requests. This provides some protection against Cross-Site Request Forgery attacks (CSRF).
 
-### Additional Protections
+There are three different settings for the SameSite attribute:
 
-TODO: Define
+* **Strict** - The cookie is only sent to the site where it originated.
+* **Lax** - Similar to "Strict" except that cookies are sent when the user navigates to the cookie's origin site. 
+  * E.g. Following a link from an external site.
+* **None** - specifies that cookies are sent on both originating and cross-site requests, but only in secure contexts (i.e., if SameSite=None then the Secure attribute must also be set).
+
+If no SameSite attribute is set, the cookie is treated as Lax.
 
 #### Prefixes
 
-TODO: Define
+Because of the design of the cookie mechanism, a server can't confirm that a cookie was set from a secure origin or even tell where a cookie was originally set.
+
+A vulnerable application on a subdomain can set a cookie with the Domain attribute, which gives access to that cookie on all other subdomains.
+
+However, you can use Cookie Prefixes to assert specific facts about the cookie. The browser will reject cookies with these prefixes if they don't comply with their restrictions.
+
+Two prefixes are available:
+
+##### `__Host-`
+
+If a cookie name has this prefix, it's accepted in a `Set-Cookie` header only if it meets all these conditions:
+
+* It's also marked with the "Secure" attribute
+* It was sent from a secure origin
+* It does not include a Domain attribute
+* It has the Path attribute set to `/`
+
+This way, these cookies can be seen as "domain-locked".
+
+##### `__Secure-`
+
+If a cookie name has this prefix, it's accepted in a Set-Cookie header only if it meets all these conditions:
+
+* It's marked with the Secure attribute
+* It was sent from a secure origin.
+
+This is weaker than the __Host- prefix.
 
 #### Strict Secure Cookies
 
-TODO: Define
+This adds restrictions on cookies marked with the "Secure" attribute. Currently, Secure cookies cannot be accessed by insecure (e.g. HTTP) origins. However, insecure origins can still add Secure cookies, delete them, or indirectly evict them. This feature modifies the cookie jar so that insecure origins cannot in any way touch Secure cookies. This does leave a carve out for cookie eviction, which still may cause the deletion of Secure cookies, but only after all non-Secure cookies are evicted.
 
 #### Signed Cookies
 
-TODO: Define
+*TODO: Define*
 
 #### Encrypted Cookies
 
-TODO: Define
+*TODO: Define*
 
 ## The Perfect Cookie
 
