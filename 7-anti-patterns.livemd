@@ -7,6 +7,7 @@ asdf
 ## Tables of Contents
 
 * [Security Through Obscurity](#security-through-obscurity)
+* [Frontend Authorization Checks](#frontend-authorization-checks)
 
 ## Security Through Obscurity
 
@@ -39,5 +40,11 @@ A.b([3, 4, 5, 2, 1])
 
 IO.puts(answer)
 ```
+
+## Frontend Authorization Checks
+
+asdf
+
+<!-- livebook:{"break_markdown":true} -->
 
 [**<- Previous Module: Cookie Security**](./6-cookies.livemd) || [**Next Module: CI/CD Tools ->**](./8-cicd.livemd)
