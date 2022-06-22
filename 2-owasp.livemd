@@ -80,7 +80,9 @@ TODO: Build example or quiz question
 
 ### Description
 
-TODO: Describe
+The focus here is on failures or lack of cryptography on communications and data - which often lead to exposure of sensitive data.
+
+Notable CWEs included are CWE-259: Use of Hard-coded Password, CWE-327: Broken or Risky Crypto Algorithm, and CWE-331 Insufficient Entropy.
 
 ### Prevention
 
@@ -137,7 +139,9 @@ end
 
 ### Description
 
-TODO: Describe
+When an application or process takes input that can be modified / manipulated by a hostile user - it opens the door to injection. Injection based attacks hijack intended functionality to cause havoc on the underlying system and perform various actions ranging from data exfiltration to account takeovers.
+
+Notable CWEs included are CWE-79: Cross-site Scripting, CWE-89: SQL Injection, and CWE-73: External Control of File Name or Path.
 
 ### Prevention
 
@@ -164,19 +168,25 @@ TODO: Build example or quiz question
 
 ### Description
 
-TODO: Describe
+There is a difference between "Insecure Design" and "Insecure Implementation". We differentiate between design flaws and implementation defects for the simple reason that they have different root causes and remediation.
+
+A secure design can still have implementation defects leading to vulnerabilities that may be exploited. Whereas an insecure design cannot be fixed by a perfect implementation as by definition, needed security controls were never created to defend against specific attacks.
+
+One of the factors that contribute to insecure design is the lack of business risk profiling inherent in the software or system being developed, and thus the failure to determine what level of security design is required.
+
+Secure design is a culture and methodology that constantly evaluates threats and ensures that code is robustly designed and tested to prevent known attack methods.
 
 ### Prevention
 
-* Establish and use a secure development lifecycle with AppSec professionals to help evaluate and design security and privacy-related controls
-* Establish and use a library of secure design patterns or paved road ready to use components
-* Use threat modeling for critical authentication, access control, business logic, and key flows
-* Integrate security language and controls into user stories
-* Integrate plausibility checks at each tier of your application (from frontend to backend)
+* Establish and use a secure development lifecycle with AppSec professionals to help evaluate and design security and privacy-related controls.
+* Establish and use a library of secure design patterns or paved road ready to use components.
+* Use threat modeling for critical authentication, access control, business logic, and key flows.
+* Integrate security language and controls into user stories.
+* Integrate plausibility checks at each tier of your application (from frontend to backend).
 * Write unit and integration tests to validate that all critical flows are resistant to the threat model. Compile use-cases and misuse-cases for each tier of your application.
-* Segregate tier layers on the system and network layers depending on the exposure and protection needs
-* Segregate tenants robustly by design throughout all tiers
-* Limit resource consumption by user or service
+* Segregate tier layers on the system and network layers depending on the exposure and protection needs.
+* Segregate tenants robustly by design throughout all tiers.
+* Limit resource consumption by user or service.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -184,11 +194,31 @@ TODO: Describe
 
 ### Description
 
-TODO: Describe
+Aside from what is obvious from the name of this concern area, Security Misconfiguration encompasses all areas of the technology stack - from insecure defaults on Docker containers, to bad copy-paste firewall rules on a bare metal machine.
+
+Further Examples:
+
+* Missing appropriate security hardening across any part of the application stack or improperly configured permissions on cloud services.
+* Unnecessary features are enabled or installed (e.g., unnecessary ports, services, pages, accounts, or privileges).
+* Default accounts and their passwords are still enabled and unchanged.
+* Error handling reveals stack traces or other overly informative error messages to users.
+* For upgraded systems, the latest security features are disabled or not configured securely.
+* The security settings in the application servers, application frameworks, libraries, databases, etc., are not set to secure values.
+* The server does not send security headers or directives, or they are not set to secure values.
+
+Notable CWEs included are CWE-16 Configuration and CWE-611 Improper Restriction of XML External Entity Reference.
 
 ### Prevention
 
-TODO: Prevent
+* A repeatable hardening process makes it fast and easy to deploy another environment that is appropriately locked down.
+  * Development, QA, and production environments should all be configured identically, with different credentials used in each environment.
+  * This process should be automated to minimize the effort required to set up a new secure environment.
+* A minimal platform without any unnecessary features, components, documentation, and samples.
+  * Remove or do not install unused features and frameworks.
+* Have a thorough and robust patch management process.
+* Continual review and update of the configurations appropriate to all security notes, updates, and patches.
+* Review cloud storage permissions.
+* An automated process to verify the effectiveness of the configurations and settings in all environments.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
