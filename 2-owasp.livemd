@@ -66,14 +66,6 @@ Access control enforces policy such that users cannot act outside of their inten
 
 Access control is only effective in trusted server-side code or server-less API, where the attacker cannot modify the access control check or metadata.
 
-### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
-
-TODO: Build example or quiz question
-
-```elixir
-
-```
-
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Cryptographic Failures
@@ -153,14 +145,6 @@ Notable CWEs included are CWE-79: Cross-site Scripting, CWE-89: SQL Injection, a
   * This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.
 * For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.
 * Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.
-
-### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
-
-TODO: Build example or quiz question
-
-```elixir
-
-```
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -308,14 +292,6 @@ Notable CWEs included are CWE-297: Improper Validation of Certificate with Host 
 * Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login. 
   * Session identifier should not be in the URL, be securely stored, and invalidated after logout, idle,
 
-### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
-
-TODO: Build example or quiz question
-
-```elixir
-
-```
-
 <!-- livebook:{"branch_parent_index":3} -->
 
 ## Software and Data Integrity Failures
@@ -359,14 +335,6 @@ Notable CWES include CWE-778 Insufficient Logging to include CWE-117 Improper Ou
 * Ensure high-value transactions have an audit trail with integrity controls to prevent tampering or deletion, such as append-only database tables or similar.
 * Establish or adopt an incident response and recovery plan.
 * Do not expose error logs in response to client when not necessary.
-
-### <span style="color:blue">EXAMPLE</span> / <span style="color:red">QUIZ</span>
-
-TODO: Build example or quiz question
-
-```elixir
-
-```
 
 <!-- livebook:{"branch_parent_index":3} -->
 
