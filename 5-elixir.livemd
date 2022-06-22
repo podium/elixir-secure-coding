@@ -61,15 +61,17 @@ IO.puts(:erlang.system_info(:atom_count) == prev_count)
 
 ### Description
 
-TODO: Describe
+The BEAM runtime has very little support for access control between running processes: code that runs somewhere in a BEAM instance has almost unlimited access to the VM and the interface to the host on which it runs. Moreover, a process on a node in a distributed Erlang cluster has the same level of access to the other nodes as well.
+
+It is therefore not possible to isolate untrusted processes in some sort of sandbox.
 
 ### Prevention
 
-TODO: Prevent
+Do not use `Code.eval_file/1,2`, `Code.eval_string/1,2,3` and `Code.eval_quoted/1,2,3` on untrusted input, or in production code at all.
 
 ### <span style="color:blue;">Example</span>
 
-Below is a very contribed example of taking user input and running it as code. If you run the first code block, you can input your name (or anything you wish your own computer to run) in the following code block.
+Below is a very contrived example of taking user input and running it as code. If you run the first code block, you can input your name (or anything you wish your own computer to run) in the following code block.
 
 ```elixir
 name = Kino.Input.text("What's your name?")
