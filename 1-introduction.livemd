@@ -10,6 +10,8 @@ It is worth stating that this material is a work in progress and is open to cont
 
 This curriculum is for any Software Developer / Engineer / Maker / Hacker looking to better their own knowledge of the Web Application Security space, especially as it pertains to Elixir Phoenix applications.
 
+This Training material is also ideally used in an educational environment for organizations to level up their Engineering teams Security knowledge. Quiz questions have been crafted within and an auto-grader that can be deployed in the CI/CD pipeline for local forks of this repo will be made available soon.
+
 ## How To Use This Livebook
 
 ### Livebooks
@@ -22,9 +24,9 @@ It would not do the Livebook any justice to try and summize here how to fully ta
 
 ### Examples & Quiz Questions
 
-Spread throughout the Training material, you will find sections labeled <span style="color:blue;">**Example**</span> and <span style="color:red;">**Quiz**</span>. The idea here is those are relevant (and runnable) code examples in Elixir for the section you're learning about. <span style="color:blue;">**Examples**</span> are just for your education, whereas there will be graded componente to <span style="color:red;">**Quiz**</span> questions.
+Spread throughout the Training material, you will find sections labeled <span style="color:blue;">**Example**</span> and <span style="color:red;">**Quiz**</span>. The idea here is those are relevant (and runnable) code examples in Elixir for the section you're learning about. <span style="color:blue;">**Examples**</span> are just for your education, whereas there will be graded component to <span style="color:red;">**Quiz**</span> questions.
 
-Don't worry! If you've done the reading for the associated section, you should breeze through it and each question will outline what specifically needs to be done to successfully complete it! Here's an example <span style="color:red;">**Quiz**</span> question layout:
+**Don't worry!** If you've done the reading for the associated section, you should breeze through it and each question will outline what specifically needs to be done to successfully complete it! Here's an example <span style="color:red;">**Quiz**</span> question layout:
 
 ### <span style="color:red;">**Quiz**</span>
 
