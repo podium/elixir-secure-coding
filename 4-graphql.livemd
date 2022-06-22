@@ -2,7 +2,9 @@
 
 ## Introduction
 
-asdf
+> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+
+*TODO: Write Introduction*
 
 ## Table of Contents
 
@@ -13,7 +15,17 @@ asdf
 
 ## Disabling Introspection
 
-asdf
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
 
 ```elixir
 
@@ -21,7 +33,17 @@ asdf
 
 ## Error Disclosure
 
-asdf
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
 
 ```elixir
 
@@ -29,7 +51,17 @@ asdf
 
 ## Resource Exhaustion
 
-asdf
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
 
 ```elixir
 
@@ -39,7 +71,17 @@ asdf
 
 ## Cost Theory
 
-asdf
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
 
 ```elixir
 
