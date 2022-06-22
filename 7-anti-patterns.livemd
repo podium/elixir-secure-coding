@@ -13,7 +13,17 @@ asdf
 
 ### Description
 
-TODO: Describe
+Security Through Obscurity is defined as the idea that any Data System is secure as long as information about its inner workings remain hidden, making it less likely that they will be exploited by a malicious attacker.
+
+Obscurity means keeping the underlying system's security loopholes a secret to all but the most important stakeholders, such as key developers, designers, project managers or owners.
+
+Typically, a hacker's approach in exploiting a system begins with mapping the attack surface. If there is no public information on those weak areas, hackers will find the system more difficult to penetrate and will eventually delay or postpone its malicious objective.
+
+**Here's the secret**...hackers are really, *really* good at figuring out what you don't want them to. If you were to take an obfuscator to your code before deploying it to production, you would definitely throw a wrench in an attackers plan, but it just delays the inevitable. It is not a tangible, technical mechanism that cannot be undone (e.g. hashing algorithms).
+
+### <span style="color:blue;">Example</span>
+
+Review / run this obfuscated function, try to figure out what it does. Would it be really that much easier if it wasn't obfuscated?
 
 ```elixir
 defmodule A do
@@ -26,6 +36,23 @@ defmodule A do
 end
 
 A.b([3, 4, 5, 2, 1])
+```
+
+### <span style="color:blue;">Example</span> - Redux
+
+How about this, same exact function before - but this time with human readable names. Does it make it easier or harder to understand what the function is doing? Technically the code is still obfuscated...
+
+```elixir
+defmodule Penguin do
+  def slide([]), do: []
+
+  def slide([pebble | quartz]) do
+    {lake, rock} = Enum.split_with(quartz, &(&1 < pebble))
+    slide(lake) ++ [pebble | slide(rock)]
+  end
+end
+
+Penguin.slide([3, 4, 5, 2, 1])
 ```
 
 ### <span style="color:red;">Quiz</span>
