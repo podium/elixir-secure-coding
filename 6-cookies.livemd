@@ -4,12 +4,19 @@
 Mix.install([:phoenix, :plug])
 
 alias Phoenix.ConnTest
-ConnTest.build_conn()
+alias Plug
+conn = ConnTest.build_conn()
 ```
 
 ## Introduction
 
-asdf
+An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser via HTTP headers or set via JavaScript. The browser may store the cookie and send it back to the same server with later requests.
+
+Cookies are mainly used for three purposes:
+
+1. **Session management** - Logins, shopping carts, game scores, or anything else the server should remember
+2. **Personalization** - User preferences, themes, and other settings
+3. **Tracking** - Recording and analyzing user behavior
 
 ## Tables of Contents
 
@@ -18,14 +25,83 @@ asdf
 
 ## Ingredients of a Cookie
 
-asdf
+### Attributes
+
+HTTP Cookies have attributes that influence how they are managed by the client(s) that consumes them. It is through the values set within these attributes that makes or breaks their security.
+
+#### Secure
+
+TODO: Define
+
+#### HttpOnly
+
+TODO: Define
+
+#### Path
+
+TODO: Define
+
+#### Domain
+
+TODO: Define
+
+#### SameSite
+
+TODO: Define
+
+### Additional Protections
+
+TODO: Define
+
+#### Prefixes
+
+TODO: Define
+
+#### Strict Secure Cookies
+
+TODO: Define
+
+#### Signed Cookies
+
+TODO: Define
+
+#### Encrypted Cookies
+
+TODO: Define
 
 ## The Perfect Cookie
 
 Ooie-gooie and fresh out of the oven, perfectly golden brown.
 
-```elixir
+* **Cookie Prefix:** __Host
+* **Path:** /
+* **Secure:** True
+* **HttpOnly:** True
+* **SameSite:** Strict
 
+## Elixir Phoenix Cookies
+
+In the Phoenix Framework, you would use functionality found within the [Plug library](https://hexdocs.pm/plug/Plug.Conn.html#put_resp_cookie/4) to set a cookie.
+
+### <span style="color:red;">Quiz</span>
+
+**Given the "Perfect Cookie" outlined above, how would you assign that cookie using the Plug library?**
+
+*Fill out the `put_resp_cookie/4` function arguments with the settings outlined in the previous section, no other code changes should be necessary.*
+
+```elixir
+cookie_name = "CHANGE_ME_TOO"
+
+conn
+|> Plug.Conn.put_resp_cookie(
+  cookie_name,
+  <<42::16>>
+  # domain: ,
+  # path: ,
+  # secure: ,
+  # http_only: ,
+  # same_site: 
+)
 ```
 
 [**<- Previous Module: Elixir Security**](./5-elixir.livemd) || [**Next Module: Security Anti-Patterns ->**](./7-anti-patterns.livemd)
