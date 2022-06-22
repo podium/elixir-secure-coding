@@ -64,6 +64,7 @@ Outlined below are some sections we've identified that would be helpful to add t
 * Elixir Security
   * (De-)Serialization
   * Spawning External Executables
+  * Deployment Hardening
 * REST Security
 * CI/CD Tools
   * Semgrep - *pending Elixir support*
