@@ -1,7 +1,12 @@
 # ESCT: Part 2 - OWASP
 
 ```elixir
-Mix.install([:httpoison])
+Mix.install([:bcrypt_elixir, :httpoison])
+
+md5_hash = :crypto.hash(:md5, "users_password")
+bcrypt_salted_hash = Bcrypt.hash_pwd_salt("users_password")
+
+:ok
 ```
 
 ## Introduction
@@ -98,7 +103,26 @@ TODO: Describe
 *Please uncomment the function call that you believe is correct.*
 
 ```elixir
-# TODO: Write functions
+defmodule PasswordCompare do
+  def option_one(password, md5_hash) do
+    case :crypto.hash(:md5, password) == md5_hash do
+      true -> :entry_granted_op1
+      false -> :entry_denied_op1
+    end
+  end
+
+  def option_two(password, bcrypt_salted_hash) do
+    case Bcrypt.verify_pass(password, bcrypt_salted_hash) do
+      true -> :entry_granted_op2
+      false -> :entry_denied_op2
+    end
+  end
+end
+
+# DO NOT CHANGE CODE ABOVE THIS LINE =========================
+
+# PasswordCompare.option_one("users_password", md5_hash)
+# PasswordCompare.option_two("users_password", bcrypt_salted_hash)
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->
@@ -256,7 +280,7 @@ TODO: Prevent
 
 **Run the code below and notice the data returned**; the website that is requested returns the IP address belonging to whatever made the request.
 
-This Livebook is running on your machine or in the cloud and as such it will respond with whatever IP address belongs to it, but this is representative of the machine the code is running on communicating with an external source based on potentially malicious input
+This Livebook is running on your machine or in the cloud and as such it will respond with whatever IP address belongs to it, but this is representative of the machine the code is running on communicating with an external source based on potentially malicious input.
 
 ```elixir
 user_inputted_url = "http://icanhazip.com"
