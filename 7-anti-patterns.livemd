@@ -80,7 +80,30 @@ IO.puts(answer)
 
 ### Description
 
-TODO: Describe
+#### Scenario
+
+Here's a scenario that helps paint the picture of this Security Anti-Pattern:
+
+You're signing up for an account to a free SaaS product and upon account creation, you're asked to input your desired password. It can be anything you want provided it follows the criteria outlined:
+
+* Must be longer than 8 characters
+* Must contain at least one of each:
+  * Uppercase letter
+  * Lowercase letter
+  * Number
+  * Symbol
+
+Pretty secure criteria! You type `this_is_MY_super_secure_password` and hit enter. You get an error, "Missing number" - shoot! You've heard that you shouldn't add a 1 to the end of passwords and this is the password you use for everything so you really, really want it.
+
+You decide to proxy the request and see that the password is never actually being sent to the server when you press enter - the validation check MUST be happening exclusively client-side.
+
+You appease the JavaScript by adding a 1 to the end then proxy the request in transit, seeing that your input (`this_is_MY_super_secure_password1`) is about to be sent as the one of the payload data objects to the server. Before it leaves your browser though, you change the payload back to your original password that didn't met the criteria and let the request go through.
+
+To your surprise; the server didn't balk at you! You go to log in to the site with your desired password and it worked!
+
+#### Issue
+
+In this very contrived, yet realistic, scenario; only front-end checks are being applied to user input restrictions. Does this mean you should never do front-end checks? Not at all, they can lead to ideal UI/UX for legitimate users. But they should ALWAYS be used in tandem with their server-side equivalents as well.
 
 <!-- livebook:{"break_markdown":true} -->
 
