@@ -15,8 +15,6 @@ asdf
 * [Untrusted Code](#untrusted-code)
 * [Timing Attacks](#timing-attacks)
 * [Boolean Coercion](#boolean-coercion)
-* [(De-)Serialization](#\(de-\)serialization)
-* [Spawning External Executables](#spawning-external-executables)
 
 ## Atom Exhaustion
 
@@ -118,25 +116,10 @@ end
 password = "some_secure_password_hash"
 user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
 :ok
+# DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
 
 # if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end
 # if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
-```
-
-## (De-)Serialization
-
-asdf
-
-```elixir
-
-```
-
-## Spawning External Executables
-
-asdf
-
-```elixir
-
 ```
 
 [**<- Previous Module: GraphQL Security**](./4-graphql.livemd) || [**Next Module: Cookie Security ->**](./6-cookies.livemd)

@@ -30,8 +30,16 @@ This curriculum is for any Software Developer / Engineer / Maker / Hacker lookin
 
 ## Future Modules
 
-Outlined below are some sections we've identified that would be helpful to add to this training material, but determined in our first pass to punt it later down the line as it wouldn't immediately benefit our engineers. If you feel like you would like to contribute to this project, consider building out a module for one of these sections!
+Outlined below are some sections we've identified that would be helpful to add to this training material, but determined in our first pass to punt it later down the line and work on it later.
 
+*If you feel like you would like to contribute to this project, consider building out a module for one of these sections!*
+
+* Secure SDLC Concepts
+  * Defense In Depth
+  * Zero Trust Model
+* Elixir Security
+  * (De-)Serialization
+  * Spawning External Executables
 * REST Security
 
 ## Acknowledgements
