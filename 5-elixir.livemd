@@ -140,15 +140,26 @@ Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
 
 ### Description
 
-TODO: Describe
+Elixir has a concept of a "truthy" value, where anything other than `false` or `nil` is considered `true`.
+
+This can lead to subtle and unexpected bugs, especially when interworking with Erlang libraries. Imagine a library that performs cryptographic signature validation, with a return type of `{:ok | {:error, atom()}`. If this function were mistakenly called in a context where a "truthy" value is expected, the return value would always be considered true.
 
 ### Prevention
 
-TODO: Prevent
+By using expressions that do not use boolean coercion, the incorrect assumption about the function's return type is caught early:
+
+* Prefer `case` over `if`, `unless` or `cond`
+* Prefer `and` over `&&`
+* Prefer `or` over `||`
+* Prefer `not` over `!`
+
+The latter will raise a "BadBooleanError" when the function returns :ok or {:error, _}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
 
 ### <span style="color:red;">Quiz</span>
 
-TODO: Explain
+**The function `SecurityCheck` below does not return a truthy value but is treated as such in both of the commented out function calls, which if statement is the correct way to call this function?**
+
+*Uncomment the if statement that uses the correct boolean comparison.*
 
 ```elixir
 defmodule SecurityCheck do
