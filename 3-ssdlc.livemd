@@ -77,14 +77,14 @@ More often than not, rate limiting should be as specific as possible. For instan
 
 #### Network Layer
 
-TODO: Explain how to prevent from the network layer
+*TODO: Explain how to prevent from the network layer*
 
 #### Application Layer
 
-TODO: Explain how to prevent from the application layer using Hammer
+*TODO: Explain how to prevent from the application layer using Hammer*
 
 ```elixir
-
+# TODO: Create example function using Hammer library
 ```
 
 ## Principle of Least Privilege
