@@ -42,7 +42,7 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 
 ## Training Modules
 
-1. Introducion (You Are Here)
+1. Introduction (You Are Here)
 2. [OWASP](./2-owasp.livemd) - ~40 minutes
 3. [Secure SDLC Concepts](./3-ssdlc.livemd) - ~15 minutes
 4. [GraphQL Security](./4-graphql.livemd) - TBD minutes

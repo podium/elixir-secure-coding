@@ -1,30 +1,52 @@
+<div align="center">
+
 # Elixir Secure Coding Training (ESCT)
 
-### Quick Installation
+[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Fpodium%2Felixir-secure-coding)
+<br />
 
-> Prerequisite: have Docker CLI installed
+![GitHub contributors](https://img.shields.io/github/contributors-anon/podium/elixir-secure-coding)
+![GitHub last commit](https://img.shields.io/github/last-commit/podium/elixir-secure-coding)
+![GitHub issues by-label](https://img.shields.io/github/issues-raw/podium/elixir-secure-coding/topic-addition)
+![GitHub closed pull requests by-label](https://img.shields.io/github/issues-pr-closed-raw/podium/elixir-secure-coding/topic-addition)
+<br />
 
-1. Download / fork this repo
-2. Open a terminal and cd into the repo folder
-3. run the following command `sudo docker run -p 8080:8080 -p 8081:8081 --pull always -v $(pwd):/data -e envar_secret="c0ngr@ts" livebook/livebook`
-4. Copy and paste into your browser the URL that is outputted from step 3
-5. From within Livebook in your browser, located `1-introduction.livemd` in the `/data` folder and open it
-6. Have fun! 
+![GitHub forks](https://img.shields.io/github/forks/podium/elixir-secure-coding?style=social)
+![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Furl%3Dhttps%253A%252F%252Fgithub.com%252Fpodium%252Felixir-secure-coding%26text%3DCheck%2520out%2520Elixir%2520Secure%2520Coding%2520Training%2520-%2520originally%2520authored%2520by%2520%40HoldenOullette%2520for%2520%40PodiumHQ%253A)
+<br />
 
-### Project Todos:
-- Lean harder into Elixir-isms for examples / prescriptiveness
-- Add more sources to text
-  - Superscript sources / citations
-  - Potentially add historical examples of compromises deriving from different exploiot types
-- Customize text more (it's rather copy-pasty right now)
-- Iterate on / create new examples
+### An all-encompassing, opinionated cybersecurity curriculum designed for enterprise use at software companies using the [Elixir](https://elixir-lang.org/) programming language. 
 
-### README Todos:
-- Secure Elixir Logo
-- Screenshots
-- Badging (Livebook, License, etc.)
-- Quick links at the top linking to sections within the README (Website | Usage | etc.)
-- Decouple info from 1-introduction.livemd that's better suited here (acknowledgements, what this is, future modules, etc.)
-- How to "install" for Learners
-- How to "install" for Educators
-- Contributing section / link to CONTRIBUTING.md
+[About](#about) |
+[Curriculum](#curriculum) |
+[Usage](#usage) |
+[Contributing](#contributing) |
+[Acknowledgements](#acknowledgements) |
+[License](#license)
+
+<hr />
+</div>
+
+## About
+Administered via Elixir [Livebooks](https://livebook.dev/), the ESCT was originally designed by [Holden Oullette](https://twitter.com/HoldenOullette) for [Podium](https://www.podium.com)'s 
+
+## Curriculum
+asdf
+
+## Usage
+asdf
+
+### For "Learners"
+asdf
+
+### For "Educators"
+asdf
+
+## Contributing
+asdf
+
+## Acknowledgements
+asdf
+
+## License
+![GitHub](https://img.shields.io/github/license/podium/elixir-secure-coding)
