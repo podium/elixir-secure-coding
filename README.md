@@ -1,5 +1,7 @@
 <div align="center">
 
+<a href="https://github.com/podium/elixir-secure-coding/archive/master.zip"><img src="./assets/images/secure_elixir_gold.png" alt="Elixir Secure Coding Training" width="25%"></a>
+
 # Elixir Secure Coding Training (ESCT)
 
 [![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Fpodium%2Felixir-secure-coding)
