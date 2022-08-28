@@ -47,7 +47,7 @@ prev_count = :erlang.system_info(:atom_count)
 
 try do
   malicious_user_input
-  # ONLY CHANGE THIS LINE
+  # ONLY CHANGE LINE 8
   |> String.to_atom()
 rescue
   e -> {ArgumentError, e}

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Found in this series of modules is a curriculum for teaching Secure Coding concepts and ideas centered around the Elixir ecosystem. Core principles of Application Security have been sourced from other available resources from the community and pieced together into this Elixir Livebook format to allow for an interactive spin.
+Found in this series of modules is a curriculum for teaching Secure Coding concepts and ideas centered around the Elixir ecosystem. Core principles of Application Security have been sourced from other available resources within the community and pieced together into this Elixir Livebook format to allow for an interactive spin.
 
 It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material has been crafted by the Product Security team at [Podium](https://www.podium.com/) and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
 
@@ -16,9 +16,9 @@ This Training material is also ideally used in an educational environment for or
 
 ### Livebooks
 
-If you've never used Elixir [Livebooks](https://livebook.dev/) before, you're in for a treat! They are a very exciting new tool that is actively under development - very similar in application to [Jupyter Notebooks](https://jupyter.org/).
+If you've never used an Elixir [Livebook](https://livebook.dev/) before, you're in for a treat! They are a very exciting new tool that is actively under development - very similar in application to [Jupyter Notebooks](https://jupyter.org/), but for the Elixir ecosystem!
 
-It would not do the Livebook any justice to try and summize here how to fully take advantage of the Livebook ecosystem, for a great introduction there is a great tutorial offered in local installations of Livebook.
+It would not do the Livebook any justice to try and summize here how to fully take advantage of all its capabilities, for a better introduction there is a great tutorial offered in local installations of Livebook.
 
 **For the purposes of this Training material, just know that you need to run the "Setup" step for the "Notebook dependencies and setup" section at the very top of EVERY module before running any code samples found within the module you're working on.**
 
@@ -53,35 +53,6 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 9. [The Secure Road](./9-secure-road.livemd) - ~10 minutes
 
 Total Time for Completion: ~1hr45m + TBD
-
-## Future Modules
-
-Outlined below are some sections we've identified that would be helpful to add to this training material, but determined in our first pass to punt it later down the line and work on it later.
-
-*If you feel like you would like to contribute to this project, consider building out a module for one of these sections!*
-
-* Secure SDLC Concepts
-  * Defense In Depth
-  * Zero Trust Model
-* Elixir Security
-  * Protecting Sensitive Data
-  * (De-)Serialization
-  * Spawning External Executables
-  * Deployment Hardening
-* REST Security
-* CI/CD Tools
-  * Semgrep - *pending Elixir support*
-
-## Acknowledgements
-
-* OWASP
-* Sobelow
-* Salus
-* https://docs.guardrails.io/docs/category/elixir
-* https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/
-* Shopify GraphQL Cost Theory
-* https://jupyter4edu.github.io/jupyter-edu-book/index.html
-* jonatanklosko - for helping with creating a script to assist with grading
 
 <!-- livebook:{"break_markdown":true} -->
 

@@ -14,6 +14,7 @@ Mix.install([:sobelow])
 
 * [Sobelow](#sobelow)
   * [Salus](#salus)
+* [Semgrep](#semgrep)
 
 ## Sobelow
 
@@ -32,6 +33,16 @@ Mix.install([:sobelow])
 <!-- livebook:{"branch_parent_index":2} -->
 
 ## Salus
+
+### Description
+
+*TODO: Make Description*
+
+### Usage
+
+*TODO: Outline Usage*
+
+## Semgrep
 
 ### Description
 
