@@ -38,37 +38,37 @@ Today individuals or companies wishing to try out the ESCT can and are encourage
 If you find an issue, wish to suggest an idea, or start a discussion; please see our [CONTRIBUTING Guide](./CONTRIBUTING.md)!
 
 ## Curriculum
-Currently the curriculum is broken into the follow 8 primary topics, each containing multiple lessons:
-1. **OWASP**
+Currently the curriculum is broken into the following 8 primary topics, each containing multiple lessons:
+1. [OWASP](./modules/2-owasp.livemd)
     - OWASP Top 10
-2. **Secure SDLC**
+2. [Secure SDLC](./modules/3-ssdlc.livemd)
     - No Secrets In Code
     - Making Secret Rotation Easy
     - Rate Limiting
     - Principle of Least Privilege
-3. **GraphQL Security**
+3. [GraphQL Security](./modules/4-graphql.livemd)
     - Disabling Introspection
     - Error Disclosure
     - Resource Exhaustion
       - Cost Theory
-4. **Elixir Security**
+4. [Elixir Security](./modules/5-elixir.livemd)
     - Atom Exhaustion
     - Protecting Sensitive Data
     - Untrusted Code
     - Timing Attacks
     - Boolean Coercion
-5. **Cookie Security**
+5. [Cookie Security](./modules/6-cookies.livemd)
     - Ingredients of a Cookie
     - The Perfect Cookie
     - Elixir Phoenix Cookies
-6. **Security Anti-Patterns**
+6. [Security Anti-Patterns](./modules/7-anti-patterns.livemd)
     - Security Through Obscurity
     - Frontend Authorization Checks
-7. **CI/CD Tooling**
+7. [CI/CD Tooling](./modules/8-cicd.livemd)
     - Sobelow
       - Salus
     - Semgrep
-8. **The Secure Road**
+8. [The Secure Road](./modules/9-secure-road.livemd)
     - Service to Service Authentication
     - User Authorization
 
