@@ -1,0 +1,207 @@
+# ESCT: Part 5 - Elixir Security
+
+```elixir
+Mix.install([:benchwarmer, :kino, :plug])
+```
+
+## Introduction
+
+Luckily for developers in the Elixir ecosystem (and unluckily for folks trying to create Secure Coding Training materials), Elixir is a rather secure language by default.
+
+But even the dullest blades can hurt someone! This module goes over Elixir specific insecurities to look out for when using the language to build with.
+
+## Table of Contents
+
+* [Atom Exhaustion](#atom-exhaustion)
+* [Protecting Sensitive Data](#protecting-sensitive-data)
+* [Untrusted Code](#untrusted-code)
+* [Timing Attacks](#timing-attacks)
+* [Boolean Coercion](#boolean-coercion)
+
+## Atom Exhaustion
+
+### Description
+
+Each unique atom value in use in the virtual machine takes up an entry in the global atom table. New atom values are appended to this table as needed, but entries are never removed. The size of the table is determined at startup, based on the `+t` emulator flag, with a default of 1,048,576 entries. If an attempt is made to add a new value while the table is at capacity, the virtual machine crashes.
+
+Because of the above, care should be taken to not create an unbounded number of atoms. In particular, creating atoms from untrusted input can lead to denial-of-service (DoS) vulnerabilities.
+
+### Prevention
+
+The best way to prevent atom exhaustion is by ensuring no new atom values are created at runtime: as long as any atom value required by the application is referenced in code, that value will be defined in the atom table when the code is loaded.
+
+The conversion of other types into atoms can then be constrained to only allow existing values using the `to_existing_atom/1` function variants.
+
+Beware of functions in applications/libraries that create atoms from input values.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/atom_exhaustion
+
+### <span style="color:red;">Quiz</span>
+
+**Fix the vulnerable function below by changing the String function used on line 7.**
+
+*You should get a `true` result when you successfully fix the function.*
+
+```elixir
+random_number = :rand.uniform(10000)
+malicious_user_input = Integer.to_string(random_number)
+prev_count = :erlang.system_info(:atom_count)
+
+try do
+  malicious_user_input
+  # ONLY CHANGE LINE 8
+  |> String.to_atom()
+rescue
+  e -> {ArgumentError, e}
+end
+
+IO.puts("Are you protected against Atom Exhaustion?")
+IO.puts(:erlang.system_info(:atom_count) == prev_count)
+```
+
+## Untrusted Code
+
+### Description
+
+The BEAM runtime has very little support for access control between running processes: code that runs somewhere in a BEAM instance has almost unlimited access to the VM and the interface to the host on which it runs. Moreover, a process on a node in a distributed Erlang cluster has the same level of access to the other nodes as well.
+
+It is therefore not possible to isolate untrusted processes in some sort of sandbox.
+
+### Prevention
+
+Do not use `Code.eval_file/1,2`, `Code.eval_string/1,2,3` and `Code.eval_quoted/1,2,3` on untrusted input, or in production code at all.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/sandboxing
+
+### <span style="color:blue;">Example</span>
+
+Below is a very contrived example of taking user input and running it as code. If you run the first code block, you can input your name (or anything you wish your own computer to run) in the following code block.
+
+```elixir
+name = Kino.Input.text("What's your name?")
+```
+
+```elixir
+textfield_value = Kino.Input.read(name)
+{result, binding} = Code.eval_string("a", a: textfield_value)
+"Hello, " <> result
+```
+
+**BONUS QUESTION**: How would you go about securing the code above?
+
+Hint: Deleting it *entirely* is a fair approach 😉
+
+## Timing Attacks
+
+### Description
+
+A timing attack is a side-channel attack in which the attacker attempts to compromise a cryptosystem by analyzing the time taken to execute cryptographic algorithms.
+
+Plainly speaking, response time it takes to compute a given function measured at the pico-second level is analyized for microscopic variations.
+
+This technique is primarily used to analyze string comparisons of secret values to brute-force the identify of the secret.
+
+e.g. When comparing two strings, the function exits when variation is detected. Take a secret value `MY_SECRET` and a user input `MY_PASSWORD`, the string compariosn (`MY_PASSWORD == MY_SECRET`) would go character by character until there's a complete match or a discrepency. So if the new input was `MY_SAUCE`, that new string would take marginally longer to compare against the secret than `MY_PASSWORD` because of one more similar character as `MY_SECRET`.
+
+### Prevention
+
+It's simple enough to protect against these types of attacks, especially during string comparisons. You need to execute functions in a way the performs them in constant time. In Elixir (and many other languages), you can use a secure string compare function that will take the same time to compare strings since it won't immediately fail at the point of first difference and instead check the full length of the string every time.
+
+Note: constant time operations tend to take longer, that is the trade off for security. But the difference is measured in clock cycles at that point.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/timing_attacks
+
+### <span style="color:red;">Quiz</span>
+
+**Observe the two functions outlined below, one is susceptible to timing attacks and the other uses constant time to compare strings. Change the value of `user_input` and see if you notice any time difference in the execution time.**
+
+*Simply uncomment the IO.puts on the last line of the code block for credit on this question.*
+
+```elixir
+defmodule Susceptible do
+  def compare(input, value) do
+    case input do
+      ^value -> :ok
+      _ -> :access_denied
+    end
+  end
+end
+
+defmodule Constant do
+  def compare(input, value) do
+    case Plug.Crypto.secure_compare(input, value) do
+      true -> :ok
+      false -> :access_denied
+    end
+  end
+end
+
+password = "HASH_OF_THE_USERS_ACTUAL_PASSWORD"
+# DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
+
+user_input = "HASH_OF_asdfasdf"
+
+# DO NOT EDIT ANY CODE BELOW THIS LINE (you may uncomment IO.puts) =============
+Benchwarmer.benchmark(fn -> Susceptible.compare(user_input, password) end)
+Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
+
+# IO.puts(:comparison_ran)
+```
+
+## Boolean Coercion
+
+### Description
+
+Elixir has a concept of a "truthy" value, where anything other than `false` or `nil` is considered `true`.
+
+This can lead to subtle and unexpected bugs, especially when interworking with Erlang libraries. Imagine a library that performs cryptographic signature validation, with a return type of `{:ok | {:error, atom()}`. If this function were mistakenly called in a context where a "truthy" value is expected, the return value would always be considered true.
+
+### Prevention
+
+By using expressions that do not use boolean coercion, the incorrect assumption about the function's return type is caught early:
+
+* Prefer `case` over `if`, `unless` or `cond`
+* Prefer `and` over `&&`
+* Prefer `or` over `||`
+* Prefer `not` over `!`
+
+The latter will raise a "BadBooleanError" when the function returns :ok or {:error, _}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/elixir_truthy
+
+### <span style="color:red;">Quiz</span>
+
+**The function `SecurityCheck` below does not return a truthy value but is treated as such in both of the commented out function calls, which if statement is the correct way to call this function?**
+
+*Uncomment the if statement that uses the correct boolean comparison.*
+
+```elixir
+defmodule SecurityCheck do
+  def validate(input, password_hash) do
+    case Plug.Crypto.secure_compare(input, password_hash) do
+      true -> :ok
+      false -> :access_denied
+    end
+  end
+
+  defexception message: "There was an issue"
+end
+
+password = "some_secure_password_hash"
+user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
+:ok
+# DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
+
+# if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end
+# if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
+```
+
+[**<- Previous Module: GraphQL Security**](./4-graphql.livemd) || [**Next Module: Cookie Security ->**](./6-cookies.livemd)

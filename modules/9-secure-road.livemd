@@ -1,0 +1,55 @@
+# ESCT: Part 9 - The Secure Road
+
+## Introduction
+
+> <i>Two roads diverged in a wood, and I,<br />
+> I took the one less traveled by,<br />
+> And that has made all the difference.<br />
+> \- Robert Frost, The Road Not Taken (1916)</i>
+
+Wow! Look at us, it was a long journey to get here and major kudos to you for getting through it all. I bet your killing those quiz questions!
+
+Now that we've begun to scratch the surface when it comes to Secure Coding with Elixir, now is as good a time as any to step back and think about how you should approach coding securely moving forward.
+
+Thinking about Robert Frost's poem above - choosing to build code in a secure manner is allegorically akin to the road less traveled (otherwise there wouldn't be a need for Secure Coding Training like this one!).
+
+When we build code using insecure techniques (intentionally or unintentionally) then technical debt is created in the form of security debt; even if building insecure code took less time, you inveitably will have to fix the security issues at some point.
+
+Can you imagine if Robert Frost decided to take the road *more* traveled, walked all that way, just to find out the road is out a ways ahead and had to walk back just to go down the road less traveled? It's the same for building Secure Code from the get-go.
+
+With all that in mind, in this final module let's explore some examples of Data Systems that you *could* build...but they may not be the *most* secure systems from the onset and how we can go about rearchitecting them to be better.
+
+## Table of Contents
+
+* [Example: Service to Service Authentication](#example:-service-to-service-authentication)
+* [Example: User Authorization](#example:-user-authorization)
+
+## Example: Service to Service Authentication
+
+In a microservice architecture, it is common for backend services to need to communicate with one another - sometimes that could be a call and response interaction other times a "fire and forget" interaction. Regardless of how they interface with one another, there still remains a need for the receipent of the interaction to verify the communication is coming from a trusted source.
+
+In its most basic form, you can have this authentication paradigm look like a Service to Service Token - where the reciepent looks for a securely generated code provided as data along with the request.
+
+Now let's say in our scenario, the receiving service is being communicated with by multiple senders (meaning more than one other service is writing to its API). Would it be better to:
+
+A) Have a single, securely generated token that each of the sender services has a copy of and the receiver checks against its copy of the token or;
+
+B) Each sender service has a unique securely generated token and the receiver stores copies of each of those to check against whenever a request comes through?
+
+The answer in this case is **B** - even though technically both solutions *could* work, having a single version of the token increases the likelihood and impact if said token were leaked / exposed. Additionally, it would make it much harder to rotate the token in all the various services without causing an outage.
+
+In the event of a token exposure in situation B, you would simple have to rotate the single token pairing between the sender and the receiver with effecting or compromising other services.
+
+## Example: User Authorization
+
+Consider a system that utilizes [Role Based Access Control](https://auth0.com/docs/manage-users/access-control/rbac) as its users authorization paradigm. When building out new product functionality that you only want the most priviledged role type(s) to be able to perform, would it be better to:
+
+A) Create an allowlist with explicitly approved roles defined that is checked against when a request comes through or;
+
+B) Create a denylist with every role that should not be allowed to perform the action checked against when a request comes through?
+
+In this example, the answer is **A** - with an allowlist, if a new role type is added later down the line, by default this new role type wouldn't blindly be able to perform the action. If it is the intention to allow the new role to perform the action, then the addition of the role to the allowlist is all that is required.
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**<- Previous Module: CI/CD Tools**](./8-cicd.livemd)

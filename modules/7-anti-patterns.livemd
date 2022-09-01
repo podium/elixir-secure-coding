@@ -1,0 +1,110 @@
+# ESCT: Part 7 - Security Anti-Patterns
+
+## Introduction
+
+In Software Engineering, an Anti-Pattern typically is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
+
+Note the reference to "a common response." Anti-patterns are not occasional mistakes, they are common ones, and are nearly always followed with good intentions.
+
+A **Security Anti-Pattern** can be thought of in a similar way - they are an ineffective security measure taken that can result in a false sense of security when it comes to risk mitigation / remediation.
+
+Important to differentiate though that Security Anti-Patterns are not themselves insecurites or even things to fully avoid - simply they cannot be applied in a vacuum and should always accompany a more hollistic solution to fixing a security issue.
+
+## Tables of Contents
+
+* [Security Through Obscurity](#security-through-obscurity)
+* [Frontend Authorization Checks](#frontend-authorization-checks)
+
+## Security Through Obscurity
+
+### Description
+
+Security Through Obscurity is defined as the idea that any Data System is secure as long as information about its inner workings remain hidden, making it less likely that they will be exploited by a malicious attacker.
+
+Obscurity means keeping the underlying system's security loopholes a secret to all but the most important stakeholders, such as key developers, designers, project managers or owners.
+
+Typically, a hacker's approach in exploiting a system begins with mapping the attack surface. If there is no public information on those weak areas, hackers will find the system more difficult to penetrate and will eventually delay or postpone its malicious objective.
+
+**Here's the secret**...hackers are really, *really* good at figuring out what you don't want them to. If you were to take an obfuscator to your code before deploying it to production, you would definitely throw a wrench in an attackers plan, but it just delays the inevitable. It is not a tangible, technical mechanism that cannot be undone (e.g. hashing algorithms).
+
+### <span style="color:blue;">Example</span>
+
+Review / run this obfuscated function, try to figure out what it does. Would it be really that much easier if it wasn't obfuscated?
+
+```elixir
+defmodule A do
+  def b([]), do: []
+
+  def b([p | q]) do
+    {l, r} = Enum.split_with(q, &(&1 < p))
+    b(l) ++ [p | b(r)]
+  end
+end
+
+A.b([3, 4, 5, 2, 1])
+```
+
+### <span style="color:blue;">Example</span> - Redux
+
+How about this, same exact function before - but this time with human readable names. Does it make it easier or harder to understand what the function is doing? Technically the code is still obfuscated...
+
+```elixir
+defmodule Penguin do
+  def slide([]), do: []
+
+  def slide([pebble | quartz]) do
+    {lake, rock} = Enum.split_with(quartz, &(&1 < pebble))
+    slide(lake) ++ [pebble | slide(rock)]
+  end
+end
+
+Penguin.slide([3, 4, 5, 2, 1])
+```
+
+### <span style="color:red;">Quiz</span>
+
+**What sort method is the module above using?**
+
+*Uncomment the line with your answer.*
+
+```elixir
+# answer = :bubble_sort
+# answer = :merge_sort
+# answer = :quick_sort
+# answer = :random_sort
+
+IO.puts(answer)
+```
+
+## Frontend Authorization Checks
+
+### Description
+
+#### Scenario
+
+Here's a scenario that helps paint the picture of this Security Anti-Pattern:
+
+You're signing up for an account to a free SaaS product and upon account creation, you're asked to input your desired password. It can be anything you want provided it follows the criteria outlined:
+
+* Must be longer than 8 characters
+* Must contain at least one of each:
+  * Uppercase letter
+  * Lowercase letter
+  * Number
+  * Symbol
+
+Pretty secure criteria! You type `this_is_MY_super_secure_password` and hit enter. You get an error, "Missing number" - shoot! You've heard that you shouldn't add a 1 to the end of passwords and this is the password you use for everything so you really, really want it.
+
+You decide to proxy the request and see that the password is never actually being sent to the server when you press enter - the validation check MUST be happening exclusively client-side.
+
+You appease the JavaScript by adding a 1 to the end then proxy the request in transit, seeing that your input (`this_is_MY_super_secure_password1`) is about to be sent as the one of the payload data objects to the server. Before it leaves your browser though, you change the payload back to your original password that didn't met the criteria and let the request go through.
+
+To your surprise; the server didn't balk at you! You go to log in to the site with your desired password and it worked!
+
+#### Issue
+
+In this very contrived, yet realistic, scenario; only front-end checks are being applied to user input restrictions. Does this mean you should never do front-end checks? Not at all, they can lead to ideal UI/UX for legitimate users. But they should ALWAYS be used in tandem with their server-side equivalents as well.
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**<- Previous Module: Cookie Security**](./6-cookies.livemd) || [**Next Module: CI/CD Tools ->**](./8-cicd.livemd)

@@ -1,0 +1,67 @@
+# ESCT: Part 8 - CI/CD Tools
+
+```elixir
+Mix.install([:sobelow])
+```
+
+## Introduction
+
+Just like there's more to making software than just writing code, there's more to *securing* software than just reviewing code.
+
+Part of the development lifecycle includes deploying code and it is here that we can institute automated tooling and tests to assist in the detection of insecurities and potentially prevent vulnerabilities from reach production whatsoever!
+
+This module will cover over some of the automated processes you may see in a CI/CD pipeline and how they work at a high level. Important to note is most of these tools can be run in a number of different ways - meaning they don't *have* to be run in the CI/CD pipeline and instead can be run locally.
+
+## Table of Contents
+
+* [Sobelow](#sobelow)
+  * [Salus](#salus)
+* [Semgrep](#semgrep)
+
+## Sobelow
+
+### Description
+
+[Sobelow](https://github.com/nccgroup/sobelow) is the de facto king of detecting Elixir Phoenix vulnerabilities.
+
+Built in Elixir, for Elixir, by NCC Group - this tool will try to determine whether your codebase has a number of web vulnerabilities as well as the insecurites outlined in [Module 5 - Elixir Security](./5-elixir.livemd).
+
+### Usage
+
+Refer to Sobelow's [README](https://github.com/nccgroup/sobelow#installation) for the simplest instructions on how to use it.
+
+<!-- livebook:{"branch_parent_index":2} -->
+
+## Salus
+
+### Description
+
+[Salus](https://github.com/coinbase/salus) is a Static Application Security Testing (SAST) orchestration tool - developed by the Security team over at Coinbase. Under the hood it is a Ruby program that determines the language of what codebase it is attempting to run on and with selectively run other open source SAST tools for that language.
+
+There is currently an [PR in progress](https://github.com/coinbase/salus/pull/651) for integrating Sobelow into Salus.
+
+Using a tool like Salus to deploy in your pipelines rather than just plain Sobelow is handy for those other lingering projects in your environment that have yet to migrate over fully to Elixir - as we should aim to support all projects equally from a security perspective.
+
+### Usage
+
+Refer to Salus's [README](https://github.com/coinbase/salus#using-salus) for the simplest instructions on how to use it.
+
+## Semgrep
+
+### Description
+
+[Semgrep](https://semgrep.dev/) is an amazingly powerful semantic code analysis tool. It uses Abstract Syntax Trees to break down 20+ languages into common ground so that it may apply both language agnostic and language specific rulesets on your code.
+
+Those rulesets can be rapidly spun up and shared with a community at large since they are simply YAML files.
+
+It wasn't until very recently that Podium collaborated with r2c (the maintainers of Semgrep) to get experimental Elixir support into Semgrep. It is very much early days and there are no current publicly available rulesets available - but there is concerted effort to rapidly increase support and have it be another tool in the arsenal for CI/CD security for Elixir.
+
+### Usage
+
+Semgrep is extra special in that it can be used in a plethora of different ways. Since we are in a module specifically about CI/CD tooling, it is obvious that it can be implemented in a way that it will rule high confident rules as blocking if failing, informational / low-confident rules as warning, and also run silently reporting to some external source.
+
+What makes Semgrep's usage so powerful is that same set of rules can run passively in the background as part of your IDE - ensuring that if you have no errors in your IDE, you won't run into any errors when you go to merge your code and it hits the CI/CD checks.
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**<- Previous Module: Security Anti-Patterns**](./7-anti-patterns.livemd) || [**Next Module: The Secure Road ->**](./9-secure-road.livemd)

@@ -1,0 +1,92 @@
+# ESCT: Part 3 - Secure SDLC Concepts
+
+## Introduction
+
+Welcome to Part 3! This section is dedicated to discussing some of the more abstract, non-vulnerability related parts of Application Security. Concepts to keep in mind as you work your craft at building code.
+
+## Table of Contents
+
+* [No Secrets In Code](#no-secrets-in-code)
+* [Making Secret Rotation Easy](#making-secret-rotation-easy)
+* [Rate Limiting](#rate-limiting)
+* [Principle of Least Privilege](#principle-of-least-privlege)
+
+## No Secrets In Code
+
+### Description
+
+While it may seem obvious, having secrets such as passwords or auth_tokens hard coded in your files is a big yikes! Even if you catch it later, more than likely your code has been uploaded to a Version Control System and is now in your commit history - which can be [scary / difficult to undo](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
+
+More than that, while it may be convienent for testing / building typically in production you don't care about those secrets anyways - so you might as well incorporate them securely from the get go!
+
+### Prevention
+
+There are a number of different ways you can manage your secrets for use in production systems. Most of them are implementation specific which varies on your build and deploy processes.
+
+A very easy way to prevent secrets being added to go though is to access them via Environment Variables!
+
+### <span style="color:red">QUIZ</span>
+
+**Remove the hard-coded secret from the code sample below and replace it with an environment variable named `envar_secret`.**
+
+*Use `System.get_env/1` on line 2.*
+
+```elixir
+# let's assume there is an environment variable named 'envar_secret'
+super_secret_password = "p@ssw0rd"
+
+# DO NOT CHANGE CODE BELOW THIS COMMENT
+IO.puts(super_secret_password)
+```
+
+## Making Secret Rotation Easy
+
+### Description
+
+So the unthinkable happened and a secret value you didn't want getting out there, got out there. It happens to the best of them...[a lot](https://www.google.com/search?q=secret+token+exposed+tech+company&source=lnms&tbm=nws).
+
+Let's just hope that we made it easy to rotate tokens out! What's that you say? If we change a Service to Service token in one place, we would have to change it simultaneously in every service that uses it? Well...how many services do we have...? **1000**?!
+
+### Prevention
+
+The half-serious situation described above outlines a common problem that can be solved by integrating your applications to use a Key Management Service (KMS) to handle secrets. A simple enough solution that is harder to implement later on, so you're best to integrate it from the onset.
+
+Additionally, thought can be put into how you architect data flows with regards to how secrets will be used (as to avoid a secret being used in multiple places).
+
+## Rate Limiting
+
+### Description
+
+Rate limiting restricts the number of requests that can be allowed in a certain time frame on a specific resource. Rate limiting can be implemented to protect against a variety of attacks or abuses:
+
+* Preventing Denial Of Service attacks (limiting the number of calls to expensive endpoints)
+* Limiting brute force attempts (such as on one time codes and passwords)
+* Programmatic abuse of services
+
+### Prevention
+
+When rate limiting a new action, begin by asking these questions:
+
+* "What are the maximum number of calls to my action that a reasonable non-malicious user would feasibly make in a given time period?"
+* "Is calling this action an expensive operation? If yes, how many calls in a minute would be enough to overburden the service?"
+* "Is this action a candidate for brute force attacks?" (E.g. passwords, authentication tokens, one time passcodes)
+
+If the answer to one or more of those questions is yes, consider putting a limit on the number of times that the action can be called. Good rate limiting keeps in mind legitimate use cases and does not block regular user functionality, but protects the service from malicious or burdensome behavior.
+
+More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
+
+## Principle of Least Privilege
+
+Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity* is only strictly given the essential privileges needed to perform its requirement.
+
+E.g. A script that executes on a cron schedule that monitors the output of a log file only needs read privileges and should not be given write privileges.
+
+**Entity: generic term for an arbitrary process, user, program, etc. found within a Data System*
+
+### Benefits of the Principle
+
+* **Better Data System Stability** - When an entity is limited in the scope of changes it can make to a system, it is easier to test its possible actions and interactions in the context of the Data System.
+* **Better Data System Security** - When an entity is limited in the system-wide actions it may perform, vulnerabilities / compromises in one application cannot be used to exploit the rest of the business or adjacent Data Systems.
+* **Ease of Deployment** - In general, the fewer privileges an entity requires, the easier it is to deploy within a larger environment.
+  <br /><br />
+  [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)

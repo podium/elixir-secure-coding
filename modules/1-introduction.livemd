@@ -1,0 +1,59 @@
+# ESCT: Part 1 - Introduction
+
+## Overview
+
+Found in this series of modules is a curriculum for teaching Secure Coding concepts and ideas centered around the Elixir ecosystem. Core principles of Application Security have been sourced from other available resources within the community and pieced together into this Elixir Livebook format to allow for an interactive spin.
+
+It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material was originally crafted by the Product Security team at [Podium](https://www.podium.com/) and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
+
+## Who This Is For
+
+This curriculum is for any Software Developer / Engineer / Maker / Hacker looking to better their own knowledge of the Web Application Security space, especially as it pertains to Elixir Phoenix applications.
+
+This Training material is also ideally used in an educational environment for organizations to level up their Engineering teams Security knowledge. Quiz questions have been crafted within and an auto-grader that can be deployed in the CI/CD pipeline for local forks of this repo will be made available soon.
+
+## How To Use This Livebook
+
+### Livebooks
+
+If you've never used an Elixir [Livebook](https://livebook.dev/) before, you're in for a treat! They are a very exciting new tool that is actively under development - very similar in application to [Jupyter Notebooks](https://jupyter.org/), but for the Elixir ecosystem!
+
+It would not do the Livebook any justice to try and summize here how to fully take advantage of all its capabilities, for a better introduction there is a great tutorial offered in local installations of Livebook.
+
+**For the purposes of this Training material, just know that you need to run the "Setup" step for the "Notebook dependencies and setup" section at the very top of EVERY module before running any code samples found within the module you're working on.**
+
+### Examples & Quiz Questions
+
+Spread throughout the Training material, you will find sections labeled <span style="color:blue;">**Example**</span> and <span style="color:red;">**Quiz**</span>. The idea here is those are relevant (and runnable) code examples in Elixir for the section you're learning about. <span style="color:blue;">**Examples**</span> are just for your education, whereas there will be graded component to <span style="color:red;">**Quiz**</span> questions.
+
+**Don't worry!** If you've done the reading for the associated section, you should breeze through it and each question will outline what specifically needs to be done to successfully complete it! Here's an example <span style="color:red;">**Quiz**</span> question layout:
+
+### <span style="color:red;">**Quiz**</span>
+
+**This is what the question prompt would look like!**
+
+*This is the description on what the auto-grader is looking for in order to pass the question successfully*
+
+### Auto-grader
+
+Meticulous care has been put into the <span style="color:red;">**Quiz**</span> questions thus far in order to allow for programmatic grading of answers. This has been done to accomodate the usage of these Training materials en masse for organizations to level up the entirety of their Engineering teams.
+
+As such, each <span style="color:red;">**Quiz**</span> question is very specific about what to change and what not to change in the code sample - this is to maintain the integrity of the grader and provide immediate feedback to the taker if they succeeded or not. **Please do not unneccessarily change the code examples more than what is asked of you in the question!**
+
+## Training Modules
+
+1. Introduction (You Are Here)
+2. [OWASP](./2-owasp.livemd) - ~40 minutes
+3. [Secure SDLC Concepts](./3-ssdlc.livemd) - ~15 minutes
+4. [GraphQL Security](./4-graphql.livemd) - ~15 minutes
+5. [Elixir Security](./5-elixir.livemd) - ~15 minutes
+6. [Cookie Security](./6-cookies.livemd) - ~10 minutes
+7. [Security Anti-Patterns](./7-anti-patterns.livemd) - ~15 minutes
+8. [CI/CD Tools](./8-cicd.livemd) - ~10 minutes
+9. [The Secure Road](./9-secure-road.livemd) - ~10 minutes
+
+Total Time for Completion: ~2hr10m
+
+<!-- livebook:{"break_markdown":true} -->
+
+[**Next Module: OWASP ->**](./2-owasp.livemd)
