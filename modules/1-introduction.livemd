@@ -4,7 +4,7 @@
 
 Found in this series of modules is a curriculum for teaching Secure Coding concepts and ideas centered around the Elixir ecosystem. Core principles of Application Security have been sourced from other available resources within the community and pieced together into this Elixir Livebook format to allow for an interactive spin.
 
-It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material has been crafted by the Product Security team at [Podium](https://www.podium.com/) and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
+It is worth stating that this material is a work in progress and is open to contributions in order to make this the one-stop shop for Developer Secure Coding Training (for Elixir). The initial training material was originally crafted by the Product Security team at [Podium](https://www.podium.com/) and as such, contains very opinionated lessons to help contribute to the Secure SDLC of Podium's engineers. The more general this material can be made through outside contributors, the more secure we can make the Elixir community.
 
 ## Who This Is For
 
@@ -45,14 +45,14 @@ As such, each <span style="color:red;">**Quiz**</span> question is very specific
 1. Introduction (You Are Here)
 2. [OWASP](./2-owasp.livemd) - ~40 minutes
 3. [Secure SDLC Concepts](./3-ssdlc.livemd) - ~15 minutes
-4. [GraphQL Security](./4-graphql.livemd) - TBD minutes
+4. [GraphQL Security](./4-graphql.livemd) - ~15 minutes
 5. [Elixir Security](./5-elixir.livemd) - ~15 minutes
 6. [Cookie Security](./6-cookies.livemd) - ~10 minutes
 7. [Security Anti-Patterns](./7-anti-patterns.livemd) - ~15 minutes
-8. [CI/CD Tools](./8-cicd.livemd) - TBD minutes
+8. [CI/CD Tools](./8-cicd.livemd) - ~10 minutes
 9. [The Secure Road](./9-secure-road.livemd) - ~10 minutes
 
-Total Time for Completion: ~1hr45m + TBD
+Total Time for Completion: ~2hr10m
 
 <!-- livebook:{"break_markdown":true} -->
 
