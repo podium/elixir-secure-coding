@@ -75,18 +75,6 @@ If the answer to one or more of those questions is yes, consider putting a limit
 
 More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
 
-#### Network Layer
-
-*TODO: Explain how to prevent from the network layer*
-
-#### Application Layer
-
-*TODO: Explain how to prevent from the application layer using Hammer*
-
-```elixir
-# TODO: Create example function using Hammer library
-```
-
 ## Principle of Least Privilege
 
 Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity* is only strictly given the essential privileges needed to perform its requirement.
