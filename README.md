@@ -9,8 +9,8 @@
 
 ![GitHub contributors](https://img.shields.io/github/contributors-anon/podium/elixir-secure-coding)
 ![GitHub last commit](https://img.shields.io/github/last-commit/podium/elixir-secure-coding)
-![GitHub issues by-label](https://img.shields.io/github/issues-raw/podium/elixir-secure-coding/topic-addition)
-![GitHub closed pull requests by-label](https://img.shields.io/github/issues-pr-closed-raw/podium/elixir-secure-coding/topic-addition)
+![GitHub issues by-label](https://img.shields.io/github/issues-raw/podium/elixir-secure-coding/new%20content)
+![GitHub pull requests by-label](https://img.shields.io/github/issues-pr-raw/podium/elixir-secure-coding/new%20content)
 <br />
 
 ![GitHub forks](https://img.shields.io/github/forks/podium/elixir-secure-coding?style=social)
