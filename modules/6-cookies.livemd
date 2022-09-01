@@ -119,14 +119,6 @@ This is weaker than the __Host- prefix.
 
 This adds restrictions on cookies marked with the "Secure" attribute. Currently, Secure cookies cannot be accessed by insecure (e.g. HTTP) origins. However, insecure origins can still add Secure cookies, delete them, or indirectly evict them. This feature modifies the cookie jar so that insecure origins cannot in any way touch Secure cookies. This does leave a carve out for cookie eviction, which still may cause the deletion of Secure cookies, but only after all non-Secure cookies are evicted.
 
-#### Signed Cookies
-
-*TODO: Define*
-
-#### Encrypted Cookies
-
-*TODO: Define*
-
 ## The Perfect Cookie
 
 Ooie-gooie and fresh out of the oven, perfectly golden brown. Here are some attributes that would go into making one of the most secure cookies out there!
