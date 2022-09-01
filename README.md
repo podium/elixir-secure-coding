@@ -86,7 +86,7 @@ Using the ESCT as a consumer of the content is easy by just following these simp
 5. **When you think you're finished, create a PR to **your own fork** of the training repo**
     - You will receive feedback as to whether you completed it or not in the CI stage of your version control system<sup>*</sup>
 
-*<sup>\*</sup>Feedback functionality only works in GitLab right now, GitHub support is [in the works](#)*
+*<sup>\*</sup>Feedback functionality will initially work in GitLab, GitHub support is [in the works](https://github.com/podium/elixir-secure-coding/issues/17) but lower priority*
 
 ### For "Educators"
 Using the ESCT as a purveyor of the curriculum is relatively straight-forward:
