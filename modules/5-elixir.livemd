@@ -34,6 +34,10 @@ The conversion of other types into atoms can then be constrained to only allow e
 
 Beware of functions in applications/libraries that create atoms from input values.
 
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/atom_exhaustion
+
 ### <span style="color:red;">Quiz</span>
 
 **Fix the vulnerable function below by changing the String function used on line 7.**
@@ -68,6 +72,10 @@ It is therefore not possible to isolate untrusted processes in some sort of sand
 ### Prevention
 
 Do not use `Code.eval_file/1,2`, `Code.eval_string/1,2,3` and `Code.eval_quoted/1,2,3` on untrusted input, or in production code at all.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/sandboxing
 
 ### <span style="color:blue;">Example</span>
 
@@ -104,6 +112,10 @@ e.g. When comparing two strings, the function exits when variation is detected. 
 It's simple enough to protect against these types of attacks, especially during string comparisons. You need to execute functions in a way the performs them in constant time. In Elixir (and many other languages), you can use a secure string compare function that will take the same time to compare strings since it won't immediately fail at the point of first difference and instead check the full length of the string every time.
 
 Note: constant time operations tend to take longer, that is the trade off for security. But the difference is measured in clock cycles at that point.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/timing_attacks
 
 ### <span style="color:red;">Quiz</span>
 
@@ -160,6 +172,10 @@ By using expressions that do not use boolean coercion, the incorrect assumption 
 * Prefer `not` over `!`
 
 The latter will raise a "BadBooleanError" when the function returns :ok or {:error, _}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/elixir_truthy
 
 ### <span style="color:red;">Quiz</span>
 
