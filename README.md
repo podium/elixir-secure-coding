@@ -31,9 +31,9 @@
 ## About
 Originally developed for [Podium](https://www.podium.com)'s Elixir engineers by its Product Security team, the ESCT was designed to be integrated into developer onboarding processes - teaching developers about Application Security using context that applies to them. 
 
-The content originally focused exclusively on what Podium uses, but quickly grew to encapsulate more areas of Application Security. The material itself is composed of views from the Product Security team at Podium as well as information sourced from reputable public information - attribution has been given wherever possible.
+The content originally focused exclusively on what technology Podium uses, but quickly grew to encapsulate more areas of Application Security. The material itself is composed of views from the Product Security team at Podium as well as information sourced from reputable public information - attribution has been given wherever possible.
 
-Today individuals or companies wishing to try out the ESCT can and are encouraged to fork a copy of their own - please follow the relevant instructions below depending on your use case.
+Today, individuals or companies wishing to try out the ESCT can and are encouraged to fork a copy of their own - please follow the relevant instructions [below](#usage) depending on your use case.
 
 If you find an issue, wish to suggest an idea, or start a discussion; please see our [CONTRIBUTING Guide](./CONTRIBUTING.md)!
 
@@ -77,19 +77,23 @@ Currently the curriculum is broken into the following 8 primary topics, each con
 ## Usage
 ### For "Learners"
 Using the ESCT as a consumer of the content is easy by just following these simple steps:
-1. Fork this repo into a space you control
+1. **Fork this repo into a space you control**
     - Important to note: if you were instructed to use this course by your company, double check with the folks who are running things for your company to ensure they don't have a customized version of the training materials
-2. Clone your forked repo
-3. Load the Live Markdown files in an instance of Livebook
+2. **Clone your forked repo**
+3. **Load the Live Markdown files in an instance of Livebook**
     - For further instructions on getting Livebook setup locally, please refer to [their documentation](https://livebook.dev/#install).
-4. Complete the training as instructed and save your progress along the way!
-5. When you think you're finished, create a PR to ***your own fork*** of the training repo
+4. **Complete the training as instructed and save your progress along the way!**
+5. **When you think you're finished, create a PR to **your own fork** of the training repo**
     - You will receive feedback as to whether you completed it or not in the CI stage of your version control system<sup>*</sup>
 
 *<sup>\*</sup>Feedback functionality only works in GitLab right now, GitHub support is [in the works](#)*
 
 ### For "Educators"
-TODO
+Using the ESCT as a purveyor of the curriculum is relatively straight-forward:
+1. **Determine if you need to customize the content to better suit your business** - whether that's changing the contents to reflect internal only information or if you simply want to remove modules your engineers won't find useful.
+    - If you determine that you wish to customize the content, fork the repository into your companies VCS with the necessary adjustments made.
+    - In the future, there may need to be additional configuration steps regarding establishing configuration secrets for reporting purposes - at which you would also do that at this time.
+2. **Instruct your workforce to follow the "Learners" instructions above using whichever version of the ESCT you would rather them use**
 
 ## Contributing
 Please refer to our [CONTRIBUTING Guide](./CONTRIBUTING.md) for more details on how to add to this project!
