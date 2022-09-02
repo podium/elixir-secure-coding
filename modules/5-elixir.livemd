@@ -105,7 +105,7 @@ Plainly speaking, response time it takes to compute a given function measured at
 
 This technique is primarily used to analyze string comparisons of secret values to brute-force the identify of the secret.
 
-e.g. When comparing two strings, the function exits when variation is detected. Take a secret value `MY_SECRET` and a user input `MY_PASSWORD`, the string compariosn (`MY_PASSWORD == MY_SECRET`) would go character by character until there's a complete match or a discrepency. So if the new input was `MY_SAUCE`, that new string would take marginally longer to compare against the secret than `MY_PASSWORD` because of one more similar character as `MY_SECRET`.
+e.g. When comparing two strings, the function exits when variation is detected. Take a secret value `MY_SECRET` and a user input `MY_PASSWORD`, the string compariosn (`MY_PASSWORD == MY_SECRET`) would go character by character until there's a complete match or a discrepancy. So if the new input was `MY_SAUCE`, that new string would take marginally longer to compare against the secret than `MY_PASSWORD` because of one more similar character as `MY_SECRET`.
 
 ### Prevention
 

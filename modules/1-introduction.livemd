@@ -36,9 +36,9 @@ Spread throughout the Training material, you will find sections labeled <span st
 
 ### Auto-grader
 
-Meticulous care has been put into the <span style="color:red;">**Quiz**</span> questions thus far in order to allow for programmatic grading of answers. This has been done to accomodate the usage of these Training materials en masse for organizations to level up the entirety of their Engineering teams.
+Meticulous care has been put into the <span style="color:red;">**Quiz**</span> questions thus far in order to allow for programmatic grading of answers. This has been done to accommodate the usage of these Training materials en masse for organizations to level up the entirety of their Engineering teams.
 
-As such, each <span style="color:red;">**Quiz**</span> question is very specific about what to change and what not to change in the code sample - this is to maintain the integrity of the grader and provide immediate feedback to the taker if they succeeded or not. **Please do not unneccessarily change the code examples more than what is asked of you in the question!**
+As such, each <span style="color:red;">**Quiz**</span> question is very specific about what to change and what not to change in the code sample - this is to maintain the integrity of the grader and provide immediate feedback to the taker if they succeeded or not. **Please do not unnecessarily change the code examples more than what is asked of you in the question!**
 
 ## Training Modules
 
