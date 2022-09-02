@@ -4,7 +4,7 @@
 
 # Elixir Secure Coding Training (ESCT)
 
-[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Fpodium%2Felixir-secure-coding%2Fmodules%2F1-introduction.livemd)
+[![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Fpodium%2Felixir-secure-coding%2Fblob%2Fmain%2Fmodules%2F1-introduction.livemd)
 <br />
 
 ![GitHub contributors](https://img.shields.io/github/contributors-anon/podium/elixir-secure-coding)
