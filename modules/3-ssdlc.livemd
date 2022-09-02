@@ -17,7 +17,7 @@ Welcome to Part 3! This section is dedicated to discussing some of the more abst
 
 While it may seem obvious, having secrets such as passwords or auth_tokens hard coded in your files is a big yikes! Even if you catch it later, more than likely your code has been uploaded to a Version Control System and is now in your commit history - which can be [scary / difficult to undo](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository).
 
-More than that, while it may be convienent for testing / building typically in production you don't care about those secrets anyways - so you might as well incorporate them securely from the get go!
+More than that, while it may be convenient for testing / building typically in production you don't care about those secrets anyways - so you might as well incorporate them securely from the get go!
 
 ### Prevention
 
