@@ -17,7 +17,7 @@
 ![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Furl%3Dhttps%253A%252F%252Fgithub.com%252Fpodium%252Felixir-secure-coding%26text%3DCheck%2520out%2520Elixir%2520Secure%2520Coding%2520Training%2520-%2520originally%2520authored%2520by%2520%40HoldenOullette%2520for%2520%40PodiumHQ%253A)
 <br />
 
-### An all-encompassing, opinionated cybersecurity curriculum designed for enterprise use at software companies using the [Elixir](https://elixir-lang.org/) programming language. 
+### An all-encompassing, opinionated cybersecurity curriculum designed for enterprise use at software companies using the [Elixir](https://elixir-lang.org/) programming language.
 
 [About](#about) |
 [Curriculum](#curriculum) |
@@ -29,7 +29,7 @@
 </div>
 
 ## About
-Originally developed for [Podium](https://www.podium.com)'s Elixir engineers by its Product Security team, the ESCT was designed to be integrated into developer onboarding processes - teaching developers about Application Security using context that applies to them. 
+Originally developed for [Podium](https://www.podium.com)'s Elixir engineers by its Product Security team, the ESCT was designed to be integrated into developer onboarding processes - teaching developers about Application Security using context that applies to them.
 
 The content originally focused exclusively on what technology Podium uses, but quickly grew to encapsulate more areas of Application Security. The material itself is composed of views from the Product Security team at Podium as well as information sourced from reputable public information - attribution has been given wherever possible.
 
@@ -47,7 +47,6 @@ Currently the curriculum is broken into the following 8 primary topics, each con
     - Rate Limiting
     - Principle of Least Privilege
 3. [GraphQL Security](./modules/4-graphql.livemd)
-    - Disabling Introspection
     - Error Disclosure
     - Resource Exhaustion
       - Cost Theory
