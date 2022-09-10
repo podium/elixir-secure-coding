@@ -101,7 +101,7 @@ Hint: Deleting it *entirely* is a fair approach 😉
 
 A timing attack is a side-channel attack in which the attacker attempts to compromise a cryptosystem by analyzing the time taken to execute cryptographic algorithms.
 
-Plainly speaking, response time it takes to compute a given function measured at the pico-second level is analyized for microscopic variations.
+Plainly speaking, response time it takes to compute a given function measured at the pico-second level is analyzed for microscopic variations.
 
 This technique is primarily used to analyze string comparisons of secret values to brute-force the identify of the secret.
 
