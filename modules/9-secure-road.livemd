@@ -7,7 +7,7 @@
 > And that has made all the difference.<br />
 > \- Robert Frost, The Road Not Taken (1916)</i>
 
-Wow! Look at us, it was a long journey to get here and major kudos to you for getting through it all. I bet your killing those quiz questions!
+Wow! Look at us, it was a long journey to get here and major kudos to you for getting through it all. I bet you're killing those quiz questions!
 
 Now that we've begun to scratch the surface when it comes to Secure Coding with Elixir, now is as good a time as any to step back and think about how you should approach coding securely moving forward.
 
