@@ -160,7 +160,7 @@ Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
 
 Elixir has a concept of a "truthy" value, where anything other than `false` or `nil` is considered `true`.
 
-This can lead to subtle and unexpected bugs, especially when interworking with Erlang libraries. Imagine a library that performs cryptographic signature validation, with a return type of `{:ok | {:error, atom()}`. If this function were mistakenly called in a context where a "truthy" value is expected, the return value would always be considered true.
+This can lead to subtle and unexpected bugs, especially when interworking with Erlang libraries. Imagine a library that performs cryptographic signature validation, with a return type of `:ok | {:error, atom()}`. If this function were mistakenly called in a context where a "truthy" value is expected, the return value would always be considered true.
 
 ### Prevention
 
