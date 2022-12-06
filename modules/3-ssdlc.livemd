@@ -33,7 +33,7 @@ A very easy way to prevent secrets being added to go though is to access them vi
 
 ```elixir
 # let's assume there is an environment variable named 'envar_secret'
-super_secret_password = "p@ssw0rd"
+super_secret_password = System.get_env("envar_secret")
 
 # DO NOT CHANGE CODE BELOW THIS COMMENT
 IO.puts(super_secret_password)

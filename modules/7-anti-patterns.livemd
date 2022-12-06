@@ -68,7 +68,7 @@ Penguin.slide([3, 4, 5, 2, 1])
 *Uncomment the line with your answer.*
 
 ```elixir
-# answer = :bubble_sort
+answer = :bubble_sort
 # answer = :merge_sort
 # answer = :quick_sort
 # answer = :random_sort
