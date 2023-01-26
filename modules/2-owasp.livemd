@@ -11,7 +11,6 @@ Mix.install([
 
 md5_hash = :crypto.hash(:md5, "users_password")
 bcrypt_salted_hash = Bcrypt.hash_pwd_salt("users_password")
-
 :ok
 ```
 

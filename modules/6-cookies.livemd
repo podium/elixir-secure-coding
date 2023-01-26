@@ -6,6 +6,7 @@ Mix.install([:phoenix, :plug])
 alias Phoenix.ConnTest
 alias Plug
 conn = ConnTest.build_conn()
+:ok
 ```
 
 ## Introduction
