@@ -3,6 +3,7 @@ defmodule GradingServerWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    #plug SimpleTokenAuthentication
   end
 
   scope "/api", GradingServerWeb do
