@@ -206,7 +206,7 @@ Opt-in is the process that describes an affirmative action user takes to offer t
 ##### Which One To Use? 
 If you want to be legally compliant, it is safer to have both the options with opt-out as the default.
 
-<img src="./main/assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="600" height="450">
+<img src="../assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="600" height="450">
 
 
 
