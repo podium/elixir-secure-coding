@@ -7,6 +7,7 @@ defmodule GradingServerWeb.Router do
 
   scope "/api", GradingServerWeb do
     pipe_through :api
+    resources "/answers", AnswerController, except: [:new, :edit]
   end
 
   pipeline :browser do
