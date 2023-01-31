@@ -42,7 +42,8 @@ defmodule GradingServer.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.4"},
       #{:jason, "~> 1.4"}, uncomment when {:jason, "1.5.0"} is out for GA
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:sobelow, "~> 0.11"}
     ]
   end
 

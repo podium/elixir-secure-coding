@@ -7,11 +7,13 @@ defmodule GradingServerWeb.Router do
 
   scope "/api", GradingServerWeb do
     pipe_through :api
-    resources "/answers", AnswerController, except: [:new, :edit]
+    get "/", DefaultController, :index
+    resources "/answers", AnswerController, only: [:index, :show]
   end
 
   pipeline :browser do
     plug :accepts, ["html"]
+    plug :put_secure_browser_headers, %{"content-security-policy" => "default-src 'self'"}
   end
 
   scope "/", GradingServerWeb do
