@@ -212,13 +212,12 @@ Opt-in is the process that describes an affirmative action user takes to offer t
 #### Which One To Use? 
 If you want to be legally compliant, it is safer to have both the options with opt-out as the default.
 
+<img src="../assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450">
+
 ### Resources
 
 1. https://allaboutcookies.org/privacy-issues-cookies
 2. https://www.cookielawinfo.com/opt-in-vs-opt-out/
-
-<img src="../assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450">
-
 
 
 [**<- Previous Module: Elixir Security**](./5-elixir.livemd) || [**Next Module: Security Anti-Patterns ->**](./7-anti-patterns.livemd)
