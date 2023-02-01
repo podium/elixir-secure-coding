@@ -1,1 +1,90 @@
+# ESCT: Part 4 - GraphQL Security
 
+## Introduction
+
+> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+
+*TODO: Write Introduction*
+
+## Table of Contents
+
+* [Disabling Introspection](#disabling-introspection)
+* [Error Disclosure](#error-disclosure)
+* [Resource Exhaustion](#resource-disclosure)
+  * [Cost Theory](#cost-theory)
+
+## Disabling Introspection
+
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Error Disclosure
+
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Resource Exhaustion
+
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+<!-- livebook:{"branch_parent_index":4} -->
+
+## Cost Theory
+
+### Description
+
+*TODO: Write Description*
+
+### Prevention
+
+*TODO: Write Prevention*
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+[**<- Previous Module: Secure SDLC Concepts**](./3-ssdlc.livemd) || [**Next Module: Elixir Security ->**](./5-elixir.livemd)
