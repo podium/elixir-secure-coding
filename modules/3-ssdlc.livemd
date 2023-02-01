@@ -57,7 +57,7 @@ Additionally, thought can be put into how you architect data flows with regards 
 
 ### Description
 
-While performing their designed operations, applications send traffic across networks, make client requests, generate server responses, and consume processing and memory capacity from the computing machines on which they are hosted. They often have components, like APIs that interact with data sources and services.  Modern applications have a lot of things happening.
+While performing their designed operations; applications send traffic across networks, make client requests, generate server responses, and consume processing and memory capacity from the computing machines on which they are hosted. They often have components, like APIs that interact with data sources and services. Simply put - modern applications have a lot of things happening!
 
 When building an application, it is necessary to consider approaches to manage the access and use of all relevant internal and external resources involved in the context of the application.  This will help ensure the continued availablilty of the application and it's functionality for all legitimate users and entities. This is particularly important for applications that run critical infrastructure and other key services organizations rely on for business operations.
 
