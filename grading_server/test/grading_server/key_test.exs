@@ -15,12 +15,17 @@ defmodule GradingServer.KeyTest do
       assert Key.list_answers() == [answer]
     end
 
-    test "get_answer!/1 returns the answer with given id" do
+    test "get_answer/1 returns the answer with given id" do
       answer = answer_fixture()
-      assert Key.get_answer!(answer.id) == answer
+      assert Key.get_answer(answer.question_id) == answer
     end
 
-    test "create_answer/1 with valid data creates a answer" do
+    test "get_answer_by!/1 returns the answer with given id" do
+      answer = answer_fixture()
+      assert Key.get_answer_by!(answer.id) == answer
+    end
+
+    test "create_answer/1 with valid data creates an answer" do
       valid_attrs = %{answer: "some answer", help_text: "some help_text", question_id: 42}
 
       assert {:ok, %Answer{} = answer} = Key.create_answer(valid_attrs)
@@ -46,16 +51,16 @@ defmodule GradingServer.KeyTest do
     test "update_answer/2 with invalid data returns error changeset" do
       answer = answer_fixture()
       assert {:error, %Ecto.Changeset{}} = Key.update_answer(answer, @invalid_attrs)
-      assert answer == Key.get_answer!(answer.id)
+      assert answer == Key.get_answer_by!(answer.id)
     end
 
     test "delete_answer/1 deletes the answer" do
       answer = answer_fixture()
       assert {:ok, %Answer{}} = Key.delete_answer(answer)
-      assert_raise Ecto.NoResultsError, fn -> Key.get_answer!(answer.id) end
+      assert_raise Ecto.NoResultsError, fn -> Key.get_answer_by!(answer.id) end
     end
 
-    test "change_answer/1 returns a answer changeset" do
+    test "change_answer/1 returns an answer changeset" do
       answer = answer_fixture()
       assert %Ecto.Changeset{} = Key.change_answer(answer)
     end
