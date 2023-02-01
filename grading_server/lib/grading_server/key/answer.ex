@@ -15,5 +15,6 @@ defmodule GradingServer.Key.Answer do
     answer
     |> cast(attrs, [:question_id, :answer, :help_text])
     |> validate_required([:question_id, :answer, :help_text])
+    |> unique_constraint(:question_id)
   end
 end

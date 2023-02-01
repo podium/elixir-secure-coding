@@ -24,18 +24,34 @@ defmodule GradingServer.Key do
   @doc """
   Gets a single answer.
 
+  Returns `nil` if the Answer does not exist.
+
+  ## Examples
+
+      iex> get_answer(123)
+      %Answer{}
+
+      iex> get_answer(456)
+      nil
+
+  """
+  def get_answer(question_id), do: Repo.get_by(Answer, question_id: question_id)
+
+  @doc """
+  Gets a single answer.
+
   Raises `Ecto.NoResultsError` if the Answer does not exist.
 
   ## Examples
 
-      iex> get_answer!(123)
+      iex> get_answer_by!(123)
       %Answer{}
 
-      iex> get_answer!(456)
+      iex> get_answer_by!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_answer!(id), do: Repo.get!(Answer, id)
+  def get_answer_by!(id), do: Repo.get!(Answer, id)
 
   @doc """
   Creates a answer.
