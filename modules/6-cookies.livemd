@@ -176,7 +176,7 @@ conn
 |> Plug.Conn.put_resp_cookie(
   cookie_name,
   <<42::16>>
-  domain: ,
+  # domain: ,
   # path: ,
   # secure: ,
   # http_only: ,
