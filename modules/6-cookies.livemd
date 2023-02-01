@@ -159,6 +159,12 @@ The encryption you use can be a one-way lookup of the cookie value. It is possib
 
 For instance, in the next section the Plug library gives you the ability to perform those actions within the `put_resp_cookie/4` function call. But if you store JSON Web Tokens (JWTs) as the value of your cookie, you can achieve similar signature results through the JWTs themselves.
 
+
+### Resources
+
+1. https://cloud.google.com/cdn/docs/using-signed-cookies#:~:text=Signed%20cookies%20give%20time%2Dlimited,t%20feasible%20in%20your%20application
+2. https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html
+
 ## Elixir Phoenix Cookies
 
 In the Phoenix Framework, you would use functionality found within the [Plug library](https://hexdocs.pm/plug/Plug.Conn.html#put_resp_cookie/4) to set a cookie.
@@ -203,8 +209,13 @@ Opt-out cookies are essentially cookies used to avoid cookies. When a website cr
 #### Opt In Cookies 
 Opt-in is the process that describes an affirmative action user takes to offer their consent for companies to use their data. Unticked checkboxes or buttons are the most common way in which you can implement opt-in mechanisms to obtain users’ consent.
 
-##### Which One To Use? 
+#### Which One To Use? 
 If you want to be legally compliant, it is safer to have both the options with opt-out as the default.
+
+### Resources
+
+1. https://allaboutcookies.org/privacy-issues-cookies
+2. https://www.cookielawinfo.com/opt-in-vs-opt-out/
 
 <img src="../assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450">
 
