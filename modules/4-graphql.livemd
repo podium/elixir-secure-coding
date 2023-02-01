@@ -2,7 +2,7 @@
 
 ## Introduction
 
-GraphQL is a query language used to interact with and retrieve data from an application's data sources. It's structure is desinged for flexible and precise queries that efficiently interact with complex, highly nested data sets.  Using GraphQL, information is retreived by stepping through data as if it were arranged as a group of connected nodes instead of a strictly hierarchical set up. Think more of a labyrinth than a tree.  GraphQL can be implemented as a component of an application's API and has two main security considerations:
+GraphQL is a query language used to interact with and retrieve data from an application's data sources. It's structure is designed for flexible and precise queries that efficiently interact with complex, highly nested data sets.  Using GraphQL, information is retrieved by stepping through data as if it were arranged as a group of connected nodes instead of a strictly hierarchical set up. Think more of a labyrinth than a tree.  GraphQL can be implemented as a component of an application's API and has two main security considerations:
 
 * Security concerns common to all APIs 
 * Security related to characteristics of the query language itself
