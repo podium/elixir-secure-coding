@@ -2,89 +2,160 @@
 
 ## Introduction
 
-> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+GraphQL is a query language used to interact with and retrieve data from an application's data sources. It's structure is desinged for flexible and precise queries that efficiently interact with complex, highly nested data sets.  Using GraphQL, information is retreived by stepping through data as if it were arranged as a group of connected nodes instead of a strictly hierarchical set up. Think more of a labyrinth than a tree.  GraphQL can be implemented as a component of an application's API and has two main security considerations:
 
-*TODO: Write Introduction*
+* Security concerns common to all APIs 
+* Security related to characteristics of the query language itself
+
+This module will highlight several security issues associated with GraphQL and recommendations for how to address. 
 
 ## Table of Contents
 
 * [Disabling Introspection](#disabling-introspection)
 * [Error Disclosure](#error-disclosure)
-* [Resource Exhaustion](#resource-disclosure)
-  * [Cost Theory](#cost-theory)
+* [Resource Exhaustion](#resource-exhaustion)
 
 ## Disabling Introspection
 
 ### Description
 
-*TODO: Write Description*
+Introspection queries are a way of enumerating a particular graphql implementation to discover details about the queries supported, data types available, and other information.  This includes mutation names, fields specific to an organization/dataset, query parameters, and types of objects in the data source,  all of which can help a user, including a malicious one, deduce and discover specifics about the data being stored.   If you are familiar with databases, this is similar to gathering info on the database schema that includes information about table names, fields, database, structure etc.  https://en.wikipedia.org/wiki/Database_schema
+
+This information can help a malicious actor in their information gathering/reconnaissnce efforts as they look for ways to attack your application and construct malicious queries and requests to compromise data.
 
 ### Prevention
 
-*TODO: Write Prevention*
+Best practice per OWASP is to limit access, including following least privilege, to introspection queries if it is not possible completely disable it. Please see references for more details.
+
+### References
+https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
+
+https://cybervelia.com/?p=736
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
+```
+Which of the OWASP API Security Top 10 2019 issues does disabling introspection queries address?
+a) API6:2019 Mass Assignment
+b) API10:2019 Insufficient Logging & Monitoring
+c) API3:2019 Excessive Data Exposure
+d) API4:2019 Lack of Resources & Rate Limiting
 ```
 
 ## Error Disclosure
 
 ### Description
 
-*TODO: Write Description*
+One of OWASP’s top 10 security risksfor API’s is API7:2019 Security Misconfiguration includes verbose error messages that can unintentionally provide information to help a malicious actor craft an attack on an application or otherwise exploit the api.  It is a best practice to limit the amount of valuable/meaningful information that gets sent back to any user in the event there is an issue with a service, or other application component, including APIs.
+
+Within the context of a GraphQL implementation, when errors occur, the server could send error messages that reveal internal details, application configurations, or data which if triggered by a malicious actor, could be used to further an attack on the application.   
 
 ### Prevention
 
-*TODO: Write Prevention*
+OWASP recommends explicitly defining and enforcing all API response payload schemas including error messages.
+Any errors disclosed from the server and displayed to the user should be limited and boring.
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
+Select the best example of a “good” error message, from the perspective of developer who is writing code that is intended to inform a user (who may or may not be a malicious actor) that the action they have attempted was unsuccessful:
 
-```elixir
-
+1 - 
 ```
+HTTP/2 401 Unauthorized
+Date: Tues, 16 Aug 2022 21:06:42 GMT
+…
+{
+	“error”:”token expired”
+{
+```
+
+2-
+```
+HTTP/2 200 OK
+Date: Tues, 16 Aug 2021 22:06:42 GMT
+…
+{
+	“errors”:[
+		{
+			“locations”:[
+			{
+				“column”:2,
+				:line”:2
+			}
+			],
+			“message”: “Parsing failed at 
+		}
+	]
+}
+```
+3-
+```
+HTTP/2 200 OK
+Date: Tues, 16 Aug 2022 21:06:42 GMT
+…
+{
+	“error”:”ID token for user 55e4cb07 at org 1234 expired”
+{
+```
+4- 
+```
+HTTP/2 404 File Not Found
+Date: Tues, 16 Aug 2022 21:06:42 GMT
+…
+{
+	“error”:”/www/home/file.txt not found ”
+{
+```
+### References
+https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
+
+https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
+
 
 ## Resource Exhaustion
 
 ### Description
 
-*TODO: Write Description*
+When building an application, it is necessary to manage the access and use of all relevant internal and external resources involved in the context of the application.  This will help ensure the continued availablilty of the application and it's functionality for all legitimate users and entities.
+
+Resource exhaustion occurs when memory, processes handling application requests, network traffic being generated, server capacity, and other host operating system, network, or device limitations are exceeded while an application is running.  When resource allocation is not well managed, applications become vulnerable to negative impacts in performance, unintentional service failures, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
+
+Resource exhaustion can occur inadvertently through legitimate use or could be triggered intentionally in a ddos attacks by a maliciou acctor who send a large number or heavy requests to overload the application.  
 
 ### Prevention
 
-*TODO: Write Prevention*
+Refer to the Rate Limiting Lesson in Part 3 - Secure SDLC Concepts
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
+The Elixir language has a built-in rate-limiter called Hammer (https://hexdocs.pm/hammer/frontpage.html).  Some organizations chose to apply limits based on userId as in the example below. 
 
-```elixir
+The check_rate function below takes 3 arguments:
+
+1. The first is what we've decided apply the limit to, in this case, the userID
+2. The second, 60_000, represents the number of milliseconds in 1 minute (1000 milliseconds per 1 second, 60 seconds in 1 minute)
+3. The last, 10, represents the number of times the userID can appear to have done a particular action before we stop them.  In this case, 10 times. 
 
 ```
+# limit file uploads to x per minute per user
+userId = getUserId()
+case Hammer.check_rate("action:#{userId}", 60_000, 10) do
+  {:allow, _count} ->
+    # let them do it
+  {:deny, _limit} ->
+    # nope
+end
+```
 
+### GraphQl References
+https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
+https://owasp.org/www-project-api-security/
+https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
+https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
+https://owasp.org/www-project-api-security/  
+https://www.howtographql.com/advanced/4-security/
+(https://hexdocs.pm/hammer/tutorial.html)
 <!-- livebook:{"branch_parent_index":4} -->
 
-## Cost Theory
-
-### Description
-
-*TODO: Write Description*
-
-### Prevention
-
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
 
 [**<- Previous Module: Secure SDLC Concepts**](./3-ssdlc.livemd) || [**Next Module: Elixir Security ->**](./5-elixir.livemd)
