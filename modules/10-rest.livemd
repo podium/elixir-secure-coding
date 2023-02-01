@@ -1,23 +1,36 @@
-# ESCT: Part 4 - GraphQL Security
+# ESCT: Part X - REST Security (DRAFT)
 
 ## Introduction
 
-> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+REST stands for REpresentational State Transfer.  It is an approach used by applications to govern communications, commonly as an API (Application programming interface).
 
-*TODO: Write Introduction*
+Characteristics of a RESTful style of application data exchange include the use of the HTTP protocol, and specific methods to interact with data, resources, and functionality.
+
+REST a “software architectural style that defines the set of rules to be used for creating web services” and a service is said to follow the REST architectural style, or is considered “RESTful if it adheres to the approach explained here: https://www.geeksforgeeks.org/rest-api-architectural-constraints/?ref=lbp
+
+In applications that implement this style:
+Client - Sends requests based on CRUD functionality; That is Create, Retrieve, Update, and Delete via corresponding HTTP methods: POST, GET, PUT, DELETE 
+Protocol - HTTP and HTTP methods
+API Server - Hosts routes/api endpoints to resources; Routes in the form of URI/URLs for data/resource access or other backend services.
+Resources - Objects that are acted upon that get modified by the application functionality
+More information on the https://restfulapi.net/
+
+REST 6 Design Principles Characterize/distinguish a REST API from others like GraphQL, however, it shares many of the same security concerns and therefore the same mitigations.  
 
 ## Table of Contents
 
-* [Disabling Introspection](#disabling-introspection)
-* [Error Disclosure](#error-disclosure)
-* [Resource Exhaustion](#resource-disclosure)
-  * [Cost Theory](#cost-theory)
+* [API Security](#api-security)
+* [Secure Endpoints](#secure-endpoints)
+* [Disable old endpoints](#disable-endpoints)
+* [Restrict HTTP methods](#restrict-http-methods)
+* [Input Validation](#input-validation)
 
-## Disabling Introspection
+
+## API Security
 
 ### Description
 
-*TODO: Write Description*
+REST security involves ensuring authenticated users are able to send requests to the api endpoints, users are only able to send request to perform specific actions based on user permissions/roles, and also securing the endpoints and any data involved against things like enumeration, inadvertent data exposure, and untrusted input.
 
 ### Prevention
 
@@ -30,61 +43,15 @@
 ```elixir
 
 ```
-
-## Error Disclosure
-
-### Description
-
-*TODO: Write Description*
-
-### Prevention
-
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
-
-## Resource Exhaustion
-
-### Description
-
-*TODO: Write Description*
-
-### Prevention
-
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
+### References
++ https://owasp.org/www-project-api-security/
++ https://cheatsheetseries.owasp.org/cheatsheets/REST_Assessment_Cheat_Sheet.html
++ https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html
++ https://www.invicti.com/blog/web-security/rest-api-web-service-security/
++ https://restfulapi.net/security-essentials/
++ https://restfulapi.net/
++ https://stackoverflow.blog/2021/10/06/best-practices-for-authentication-and-authorization-for-rest-apis/
 
 <!-- livebook:{"branch_parent_index":4} -->
-
-## Cost Theory
-
-### Description
-
-*TODO: Write Description*
-
-### Prevention
-
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
 
 [**<- Previous Module: Secure SDLC Concepts**](./3-ssdlc.livemd) || [**Next Module: Elixir Security ->**](./5-elixir.livemd)
