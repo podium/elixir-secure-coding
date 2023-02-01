@@ -57,13 +57,39 @@ Additionally, thought can be put into how you architect data flows with regards 
 
 ### Description
 
-Rate limiting restricts the number of requests that can be allowed in a certain time frame on a specific resource. Rate limiting can be implemented to protect against a variety of attacks or abuses:
+While performing their designed operations, applications send traffic across networks, make client requests, generate server responses, and consume processing and memory capacity from the computing machines on which they are hosted. They often have components, like APIs that interact with data sources and services.  Modern applications have a lot of things happening.
+
+When building an application, it is necessary to consider approaches to manage the access and use of all relevant internal and external resources involved in the context of the application.  This will help ensure the continued availablilty of the application and it's functionality for all legitimate users and entities. This is particularly important for applications that run critical infrastructure and other key services organizations rely on for business operations.
+
+When resources are not well managed, applications become vulnerable to negative impacts in performance, unintentional service failures, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
+
+Implementing rate limiting is one security best practice that can help mitigate the ability of unlimited, undefined, or uncontrolled application input, to intentionally or inadvertently exahaust vital resources across all levels of application's context.
+
+### Implementation Approaches
+There are multiple approaches to implementing rate limiting within an application and in general the approach is based on at least one of the following problematic scenarios:
+
+* Malicious actor-generated abusive traffic designed to force the application into a compromised state 
+* Malicious or legitimate users perform large load activites that requires significant processing power 
+* Malicious or legitimate users sending large number of queries, often repeatedly to the service
+* Malicious or legitimate users sending large number of queries in a narrow timeframe
+
+Rate limiting can be implemented to protect against a variety of attacks or abuses:
 
 * Preventing Denial Of Service attacks (limiting the number of calls to expensive endpoints)
 * Limiting brute force attempts (such as on one time codes and passwords)
 * Programmatic abuse of services
 
 ### Prevention
+
+Per OWASP, consider limits on the following (please see Rate Limiting References below):
+
+* Execution timeouts
+* Max allocable memory
+* Number of file descriptors
+* Number of processes
+* Request payload size (e.g., uploads)
+* Number of requests per client/resource
+* Number of records per page to return in a single request response
 
 When rate limiting a new action, begin by asking these questions:
 
@@ -74,6 +100,10 @@ When rate limiting a new action, begin by asking these questions:
 If the answer to one or more of those questions is yes, consider putting a limit on the number of times that the action can be called. Good rate limiting keeps in mind legitimate use cases and does not block regular user functionality, but protects the service from malicious or burdensome behavior.
 
 More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
+
+### Rate Limiting References
+(https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting)
+(https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md)
 
 ## Principle of Least Privilege
 
