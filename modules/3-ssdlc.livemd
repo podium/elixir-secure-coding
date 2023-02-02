@@ -120,7 +120,7 @@ Zero Trust helps contain attackers because the access is segmented and has to be
 It's no surprise that MFA is a core part of the Zero Trust Model. Systems using MFA require more than one piece of evidence to authenticate a user, with the most common form being a one time password (OTP). 
 
 ### Reference
-- https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/
+1. https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/
 
 ## Defense In Depth
 
