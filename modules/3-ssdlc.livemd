@@ -10,6 +10,11 @@ Welcome to Part 3! This section is dedicated to discussing some of the more abst
 * [Making Secret Rotation Easy](#making-secret-rotation-easy)
 * [Rate Limiting](#rate-limiting)
 * [Zero Trust Model](#zero-trust-model)
+  * [Principle of Least Privilege](principle-of-least-privlege)
+  * [Device Access Control](device-access-control)
+  * [Microsegmentation](microsegmentation)
+  * [Preventing Lateral Movement](preventing-lateral-movement)
+  * [Multi Factor Authentication](multi-factor-authentication)
 * [Defense In Depth](#defense-in-depth)
 
 ## No Secrets In Code
@@ -110,7 +115,7 @@ Zero Trust is designed to contain attackers so that they can not move laterally.
 
 Zero Trust helps contain attackers because the access is segmented and has to be reestablished periodically, limiting them from moving across to other microsegments within the network. 
 
-### Multi Factor Authentication (MFA) 
+### Multi Factor Authentication
 
 It's no surprise that MFA is a core part of the Zero Trust Model. Systems using MFA require more than one piece of evidence to authenticate a user, with the most common form being a one time password (OTP). 
 
@@ -119,7 +124,18 @@ It's no surprise that MFA is a core part of the Zero Trust Model. Systems using 
 
 ## Defense In Depth
 
-Defense in depth is a security approach of having defense mechanisms in a layered approach to protect valuable assets. Castles take a similar approach, where they have a moat, ramparts, towers, and drawbridges instead of just one wall as protection. Using more than one of the following layers constitutes an example of defense in depth: 
+Defense in depth is a security approach of having defense mechanisms in a layered approach to protect valuable assets. Castles take a similar approach, where they have a moat, ramparts, towers, and drawbridges instead of just one wall as protection. 
+
+An example of developing a web application using defense in depth could be: 
+* The developers (like yourself) receive secure coding training
+* The codebase is checked automatically for vulnerabilities using Semgrep
+* The codebase is also checked for outdated dependencies using Dependabot
+* The application is regularly tested by the internal security team 
+* Multiple development environments are used such as Develpoment, Staging, and Production
+
+<br> </br> 
+
+Using more than one of the following layers constitutes an example of defense in depth: 
 
 ### System and Application 
 
@@ -127,14 +143,8 @@ Defense in depth is a security approach of having defense mechanisms in a layere
   * Hashing passwords 
   * Multi factor authentication (MFA) 
 * Encryption 
-  * [Cloak](https://github.com/danielberkompas/cloak) is an Elixir encryption library that implements several best practices and conveniences making it easy for developers 
 * Security Tooling 
-  * Vulnerability Scanners
-    * SAST supporting Elixir: [Semgrep](https://semgrep.dev/docs/supported-languages/) or [Sobelow](https://github.com/nccgroup/sobelow)
-  * Dependence Scanners
-    * Dependabot is an option 
-* Security Awareness Training 
-  * Like the Elixir Secure Coding Training 😉
+* Security Awareness Training (sounds familiar 😉) 
 * Logging and Monitoring 
 
 ### Network 
