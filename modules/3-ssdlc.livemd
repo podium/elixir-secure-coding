@@ -151,3 +151,6 @@ Defense in depth is a security approach of having defense mechanisms in a layere
 
 ### Reference
 1. https://www.forcepoint.com/cyber-edu/defense-depth
+
+
+[**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
