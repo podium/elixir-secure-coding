@@ -102,8 +102,8 @@ If the answer to one or more of those questions is yes, consider putting a limit
 More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
 
 ### Rate Limiting References
-(https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting)
-(https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md)
+1. https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting
+2. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md
 
 ## Principle of Least Privilege
 
