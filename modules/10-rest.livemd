@@ -87,7 +87,7 @@ Running old version that still have access to data, espectially if that data is 
 
 ### Prevention
 
-Completely deprecate any old version of an API.  Inventory all API servers, hosts, endpoints and keep documents upto date. Be aware that older version may still be running in your environment and can be discoverable and abused by malicious actors.  
+Completely deprecate any old version of an API.  Inventory all API servers, hosts, endpoints and keep documents up to date. Be aware that older version may still be running in your environment and can be discoverable and abused by malicious actors.  
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
@@ -121,7 +121,7 @@ When designing/building an api, documentation should include an allow list of pe
 API may pass untrusted input via URL parameters and request content making the API vulnerable to  
 Injection Flaws (API8:2019) which represent a 
 
-Another issue for APIs is incoming may contain a large payload, or particularly if publically exposed, could be the target for a denial of service attack. 
+Another issue for APIs is incoming may contain a large payload, or particularly if publicly exposed, could be the target for a denial of service attack. 
 
 (See rate limiting section for more)
 
