@@ -17,12 +17,14 @@ More information on the https://restfulapi.net/
 
 REST 6 Design Principles Characterize/distinguish a REST API from others like GraphQL, however, it shares many of the same security concerns and therefore the same mitigations.  
 
+This Module highlights some of the key concerns around apis implemented with the REST style.
+
 ## Table of Contents
 
-* [API Security](#api-security)
-* [Secure Endpoints](#secure-endpoints)
-* [Disable old endpoints](#disable-endpoints)
-* [Restrict HTTP methods](#restrict-http-methods)
+* [General API Security](#api-security)
+* [Authentication Authorization and Access Controls](#authentication-authorization-and-access-controls)
+* [Deprecate Old API Endpoints](#deprecate-old-endpoints)
+* [Restrict HTTP Methods](#restrict-http-methods)
 * [Input Validation](#input-validation)
 
 
@@ -30,11 +32,19 @@ REST 6 Design Principles Characterize/distinguish a REST API from others like Gr
 
 ### Description
 
-REST security involves ensuring authenticated users are able to send requests to the api endpoints, users are only able to send request to perform specific actions based on user permissions/roles, and also securing the endpoints and any data involved against things like enumeration, inadvertent data exposure, and untrusted input.
+REST security overlaps with API Security, those issues that are applicable regardless of the API implementation (GraphQL, etc.) , and generally involves ensuring authenticated users are able to send requests to the api endpoints, users are only able to send request to perform specific actions based on user permissions/roles, and also securing the endpoints and any data involved against things like enumeration, inadvertent data exposure, and untrusted input.  Ensuring the protection of data as it is transmitted and limiting the ability to act on resources according to roles, permissions. 
+
+APIs are succeptible to a number of attacks like denial of service, inadvertent data exposure and unauthorized access to functions and data.  See OWASP API Security Project for a list of API Security Top 10 2019 issues.
 
 ### Prevention
 
-*TODO: Write Prevention*
+Ensure API is clearly/strictly defined with repspect to who/entities both internal and external have access to the api.  Document the api and ensure it is up to date as later versions are implemented. 
+
+Implemented and validate content types, appropriate security headers, and ensure no sensitive information (like api keys) is sent in the API's HTTP requests, and set up audit logs for critical operations, and ensure there is no data leakage through overly verbose error messages.
+
+Clear define/understand the data that is collected and transmitti by the api, particularly sensitive data. Ensure old APIS are completely deprecated. Beware of old versions that may exist/ be exposed through applications that use cloud services.
+
+Only use HTTPS, configure appropriate security headers, validate content types, and implement some form of authentication.
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
@@ -43,7 +53,91 @@ REST security involves ensuring authenticated users are able to send requests to
 ```elixir
 
 ```
-### References
+
+## Authentication Authorization and Access Controls
+
+### Description
+
+REST security involves ensuring authenticated users are able to send requests to the api endpoints, users are only able to send request to perform specific actions based on user permissions/roles, and also securing the endpoints and any data involved against things like enumeration, inadvertent data exposure, and untrusted input.
+
+Access Controls, Authorization, Authenticantion are closely linked in their implementation to secure API call requests and to ensure only permitted activity due to REST api's being stateless in nature.  Stateless meaning each call acts as an independent, self-contained, requests that is not aware of previous or subsequent requests.  As such, each call is usually made with some combination of password, key, or token  
+
+### Prevention
+
+Ensure API calls are restricted/allowed based on an allow list, 
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Deprecate Old Endpoints
+
+### Description
+
+OWASP API9:2019 Improper Assets Management 
+As application gros and changes, API's may be updated. When api's are updated to current versions, the older version of the API may still be exposed/accessible 
+
+https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa9-improper-assets-management.md
+
+Running old version that still have access to data, espectially if that data is sensitive can be discovered by malicious actors.  This can be easily done if the api url contains version identifiers, like v1/.../ v2/.../, and the url are tampered with to retrieve legacy versions. 
+
+### Prevention
+
+Completely deprecate any old version of an API.  Inventory all API servers, hosts, endpoints and keep documents upto date. Be aware that older version may still be running in your environment and can be discoverable and abused by malicious actors.  
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+## Restrict HTTP Methods
+
+### Description
+Access and other interactions with resources in a Resftully implemented api are done using HTTP methods, with requests/calls sending requests using 
+POST, GET, PUSH, DELETE Methods for Creating, Reading, Updating, and Deleting Resources respectively and the service using HTTP Return Codes in response.  
+
+### Prevention
+When designing/building an api, documentation should include an allow list of permitted methods (actions) that are allowed to be processed by the api server, and therefore allowed to be performed on the data/resources.
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Input Validation
+
+### Description
+
+API may pass untrusted input via URL parameters and request content making the API vulnerable to  
+Injection Flaws (API8:2019) which represent a 
+
+Another issue for APIs is incoming may contain a large payload, or particularly if publically exposed, could be the target for a denial of service attack. 
+
+(See rate limiting section for more)
+
+### Prevention
+Validating incoming URL and request elements to the API server and establishing a white list and configuring the server to reject all requests that aren't on the approaved whitelist 
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+### Additional References
 + https://owasp.org/www-project-api-security/
 + https://cheatsheetseries.owasp.org/cheatsheets/REST_Assessment_Cheat_Sheet.html
 + https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html
