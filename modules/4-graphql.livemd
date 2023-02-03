@@ -19,7 +19,9 @@ This module will highlight several security issues associated with GraphQL and r
 
 ### Description
 
-Introspection queries are a way of enumerating a particular graphql implementation to discover details about the queries supported, data types available, and other information.  This includes mutation names, fields specific to an organization/dataset, query parameters, and types of objects in the data source,  all of which can help a user, including a malicious one, deduce and discover specifics about the data being stored.   If you are familiar with databases, this is similar to gathering info on the database schema that includes information about table names, fields, database, structure etc.  https://en.wikipedia.org/wiki/Database_schema
+Introspection queries are a way of enumerating a particular GraphQL implementation to discover details about the queries supported, data types available, and other information. This includes mutation names, fields specific to an organization / dataset, query parameters, and types of objects in the data source,  all of which can help a user, including a malicious one, deduce and discover specifics about the data being stored. 
+
+If you are familiar with databases, this is similar to gathering info on the [database schema]( https://en.wikipedia.org/wiki/Database_schema) that includes information about table names, fields, database, structure etc.
 
 This information can help a malicious actor in their information gathering/reconnaissnce efforts as they look for ways to attack your application and construct malicious queries and requests to compromise data.
 
