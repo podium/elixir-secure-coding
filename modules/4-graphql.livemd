@@ -107,9 +107,8 @@ Date: Tues, 16 Aug 2022 21:06:42 GMT
 {
 ```
 ### References
-https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
-
-https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
+1. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
+2. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
 
 
 ## Resource Exhaustion
