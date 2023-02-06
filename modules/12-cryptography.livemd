@@ -1,0 +1,115 @@
+# ESCT: Part 12 - Cryptography (Draft)
+
+## Introduction
+
+> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+
+
+## Table of Contents
+
+* [Past and Present](#past-and-present)
+* [Types and Algorithms](#types-and-algorithms)
+* [Implementation in Modern Applications](#implementation-in-modern-applications)
+* [Related Concepts](#related-concepts)
+* [Security Concerns](#security-concerns)
+
+## Past and Present
+
+### Description
+
+Like many concepts/technologies in security, cryptography is not new.  Centuries of devisings ways to send messages between and among 
+known and trusted senders/receivers while making those messages unreadable for enemies or anyone else for whom the message is not intended.
+Secret codes, etc. 
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Types and Algorithms
+
+### Description
+Different types depending on
+-how data gets chopped up to be encrypted
+-how many keys are involved in the encryption/decryption process 
+-how the keys get generated/used (symmetric/asymmetric)
+-key size
+-number of cycles
+-for complex algorithms etc..
+
+Old (Cracked - don't use)
+DES,etc.
+
+Newer (Resilient/proven secure by industry)
+AES
+
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Implementation in Modern Applications
+
+### Description
+In-transit
+TLS/SSL
+SSH
+
+At rest
+Algorithms above
+
+Best practices for secure algorithms
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Related Concepts
+
+### Description
+
+Hash - Sometimes implemented alongside encryption but has a different purpose
+Digital Certificates - Application of cryptography/private keys
+Encoding - Can be confused because it is also a way to represent data that looks different from it's plaintext start
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+## Security Concerns
+
+Key Management
+Hardcoding keys in code
+Old/Cracked protocols 
+
+Recommendations
+-Recommended algorithms
+-Sources for publishing notices when algorithms become cracked/obsolete and new
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+
+```
+
+[**<- Previous Module: Secure SDLC Concepts**](./3-ssdlc.livemd) || [**Next Module: Elixir Security ->**](./5-elixir.livemd)
