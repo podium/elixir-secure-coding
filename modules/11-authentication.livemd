@@ -20,10 +20,11 @@ In this module, we will covers some of the related concepts that can be confused
 
 * [Confusion with Authorization and Access](#confusion-with-authorization-and-access)
 * [Multi-factor Authentication](#multi-factor-authentication)
-* [Token-Based Implementations](#token-based-implementations)
-* [Authentication Channels](#authentication-channels)
-* [Security Concerns](#security-concerns)
+* [Token-Based Implementations](#token-based-implementation)
+* [Sessions](#sessions)
+* [Authentication and Security Concerns](#authentication-and-security-concerns)
 * [Prevention and Countermeasures](#prevention-and-countermeasures)
+* [Quiz](#quiz)
 
 ## Confusion with Authorization and Access
 
@@ -69,7 +70,6 @@ Open Authorization(OAuth) is a protocol in which a multi-step arrangement genera
 
 Originally built for authorization, as it's name suggests, it has evolved for use in the authentication and authorization mechanisms.  A very good resource that describes the OAuth in context of it's history and current implementations is here: https://www.youtube.com/watch?v=996OiexHze0
 
-
 JSON Web Tokens (abbreviated JWT, pronounced "jot")
 Multi-use tokens for authentication and session.  
 Three components, header contains information identifying type of token and algorithm used for the signature, payload/body that contains data about the disposition of the token, signature - which serves as an integrity check to establish if the token has been modified or tampered with. 
@@ -78,26 +78,32 @@ Base64 encoded and cryptographically signed
 
 Tokens, like other authentication credentials, etc. must be protected in transit and at rest. 
 
-## Authentication Channels
+## Sessions
 
 ### Description
 
 Authentication is the first step a user must complete to access a secure application/data.  For an application, that means something must be sent from 
-
 user->application authentication mechanism
 and from
-application authentication mechanism-> user
+application authentication mechanism-> user - 
 
-user presents themselves in-person, or over a channel via electical signals
-application responds over that same channel
+Once an entity is authenticated, subsequent activity/interactions need to be tracked/attributed to the same entity.  This is done by 
+establishing and manage a Session. This allows a user, once authenticated to have access to the application without having to show their credentials every time they want to perform an action.
 
-WebSocket Connections ...
+Sessions save and keep updated the state of a user while the use an application.  Opening time and closing time at a museum.  A ticket and/or stamp gets you in and you can come and go in areas allowed by public/membership, but once the museum closes, you have to leave and come back another day.  If you have a membership or ticket for multiple visits, you have to show your card/ticket at the door again.
 
-Establish/Manage a Session
+Sessions do something similar this for applications.  Depending on the application, howeever, they may be 
 
-Session-less ... fire and forget
+Session and Sessionless 
 
-## Security Concerns
+Session is being able to come and go so long as you're carrying your membership card. 
+
+Session-less ... fire and forget purchasing a single day pass for the museam.  You don't get a membership card with your name, and if you're paying cash, probably can't track you individually.
+
+
+## Authentication and Security Concerns
+
+An application's authentication mechanism is a critical component.  If not securely designed, it can provide an attack vector for malicious actors to gain access to legitimate user accounts, privileged application features, and 
 
 Authentication, credentials, should never be stored in cleartext, hardcoded in code base, 
 Credential Stuffing Attacks
@@ -110,18 +116,44 @@ Authentication Issues, Weaknesses, Failures make an appearance on multiple lists
 OWASP Top 10 for Web Applications A07:2021-Identification and Authentication Failurs (used to be called Broken Authenticication
 
 ## Prevention and Countermeasures
+Use built and tested authentication mechanisms in your code language framework.  Due to the complexity, it is 
 
+## Quiz
+Authentication is a key component of an application but given its integration with some of the other concepts mentioned in this module, it's implementation in your products can become complex. This module touched on some of the highlights but please refer to the references below for extensive explainations of authentication and related. 
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
 
-```elixir
+```
+Which of the following OWASP Top 10 Web Application Security Risks are related to the abuse of credentials or flaws in mult-factor authentication implementation?
+1)A02:2021-Cryptographic Failures
+2)A05:2021-Security Misconfiguration
+3)A07:2021-Identification and Authentication Failures
+4)A08:2017-Insecure Deserialization
+
+```
+
+```
+Which two are examples of a credential that can be used in an application's authentication process?
+1)token
+2)api call
+3)session
+4)username and password
+
+```
+```
+Which statement best characterizes how an entity trying to be properly authenticated goes about it?
+1)Hello, I just came from X street and would like to enter your establishment. I am who I say I am and I can show you proof.  May I enter?
+2)Let me in, now! Let me in , now! Let me in, now!!!!! 
+3)Trust me, I'm harmless
+4)Yes, I know that id doesn't look like me but my friend said I can use it so it's ok
 
 ```
 
 ### References
 https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
+https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/06-Session_Management_Testing/README
 https://owasp.org/www-community/attacks/Credential_stuffing
 https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/10-Testing_JSON_Web_Tokens
 
