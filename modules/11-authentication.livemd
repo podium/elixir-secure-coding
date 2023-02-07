@@ -6,15 +6,15 @@
 
 Authentication is the process of establishing that an entity, whether person or machine, is who they say they are. In this process the entity starts by "knocking on the door", perhaps even announcing themselves and showing their id card when prompted. Identification(id) cards usually contain a photograph, name, description, and other personal information.  Id cards are usually issued by a trusted organization.  
 
-Then, someone or something compares the information on the id card with the entity as they currently appear to be in realtime, as they have anounced themselves.  One of two things follow: 
+Then, someone or something compares the information on the id card with the entity as they currently appear to be in realtime, as they have announced themselves.  One of two things follow: 
 
-- The information on the card, matches verbal annoucement, and matches the entity as it has presented itself in that moment.  Authentication is successful and completed.  Further communication and access can proceed. 
+- The information on the card, matches verbal announcement, and matches the entity as it has presented itself in that moment.  Authentication is successful and completed.  Further communication and access can proceed. 
 
 - Something between the information on the card, what was said in the verbal announcement, and the entity in that moment doesn't match.  Imagine you get a knock on your door, you ask who it is, and the person on the other side says you have a package delivery.  In fact, you're not expecting a package and when you look through the peek hole, the person is not wearing a uniform and doesn't have a package in their hands.  Something doesn't match.  They don't seem to be who they say they are.  Authentication fails and other that notifying the entity of the failure, no further communication proceeds and certainly no access is granted. 
 
-Authentication is the mechanism that helps guard the front door of an application.  It's the mechanism that helps control the outter rim. In the context of cyberspace, in the most simple implementations, this usually means a username and a password but a variety of credentials can be used.
+Authentication is the mechanism that helps guard the front door of an application.  It's the mechanism that helps control the outer rim. In the context of cyberspace, in the most simple implementations, this usually means a username and a password but a variety of credentials can be used.
 
-In this module, we will covers some of the related concepts that can be confused with authentication, but that interact with it to secure a system or applicaiton as well as some of the different ways authentication can be implemented.
+In this module, we will covers some of the related concepts that can be confused with authentication, but that interact with it to secure a system or application as well as some of the different ways authentication can be implemented.
 
 ## Table of Contents
 
@@ -92,7 +92,7 @@ establishing and manage a Session. This allows a user, once authenticated to hav
 
 Sessions save and keep updated the state of a user while the use an application.  Opening time and closing time at a museum.  A ticket and/or stamp gets you in and you can come and go in areas allowed by public/membership, but once the museum closes, you have to leave and come back another day.  If you have a membership or ticket for multiple visits, you have to show your card/ticket at the door again.
 
-Sessions do something similar this for applications.  Depending on the application, howeever, they may be 
+Sessions do something similar this for applications.  Depending on the application, however, they may be 
 
 Session and Sessionless 
 
@@ -119,7 +119,7 @@ OWASP Top 10 for Web Applications A07:2021-Identification and Authentication Fai
 Use built and tested authentication mechanisms in your code language framework.  Due to the complexity, it is 
 
 ## Quiz
-Authentication is a key component of an application but given its integration with some of the other concepts mentioned in this module, it's implementation in your products can become complex. This module touched on some of the highlights but please refer to the references below for extensive explainations of authentication and related. 
+Authentication is a key component of an application but given its integration with some of the other concepts mentioned in this module, it's implementation in your products can become complex. This module touched on some of the highlights but please refer to the references below for extensive explanations of authentication and related. 
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
