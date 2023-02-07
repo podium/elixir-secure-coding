@@ -89,4 +89,14 @@ E.g. A script that executes on a cron schedule that monitors the output of a log
 * **Better Data System Security** - When an entity is limited in the system-wide actions it may perform, vulnerabilities / compromises in one application cannot be used to exploit the rest of the business or adjacent Data Systems.
 * **Ease of Deployment** - In general, the fewer privileges an entity requires, the easier it is to deploy within a larger environment.
   <br /><br />
+  
+  
+ ### Sobelow 
+ ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+*TODO: Make Example or Quiz Question*
+
+```elixir
+``` 
+  
   [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
