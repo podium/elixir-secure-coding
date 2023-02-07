@@ -94,9 +94,24 @@ E.g. A script that executes on a cron schedule that monitors the output of a log
  ### Sobelow 
  ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
+https://hexdocs.pm/sobelow/readme.html
+
+There are a number of security issues published 
+Common Weakness Enumeration (CWE) - [CWE's](https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html)
+OWASP Top 10 [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+to start.  Scanning tools like Sobelow map code patterns that may contain weakness that match these issues and report them back to developers/users.
+Depending on the tool, one or more of the issues listed may be supported/discoverable and tools by programming language.
+
 *TODO: Make Example or Quiz Question*
 
-```elixir
+For example, let's say you are interested in Injection Vulnerabilities.  There are several types of injection.  Referring to the CWE list, we see that #17 CWE-77 is for Command Injection, #25 CWE-94 is Code Injection, and #3 CWE-89 is SQL Injection.  If we look at the Owasp Top 10 for 2021, A03:2021-Injection is third on the list.  Sobelow has the capability to detect these types of attacks.
+
+Injection issues are places in an application where a malicious actor can send commands, queries, that get processed as authorized code, to trigger the application into performing an unauthorized action.
+
+
+```elixir vulnerable code - 
+
 ``` 
   
+Reference: https://docs.guardrails.io/docs/vulnerabilities/elixir/insecure_use_of_dangerous_function
   [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
