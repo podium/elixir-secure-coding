@@ -4,7 +4,17 @@
 
 > ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
 
-Authentication is the concept and refers to mechanisms for establishing an entity (person or machine) is who they say they are. 
+Authentication is the process of establishing that an entity, whether person or machine, is who they say they are. In this process the entity starts by "knocking on the door", perhaps even announcing themselves and showing their id card when prompted. Identification(id) cards usually contain a photograph, name, description, and other personal information.  Id cards are usually issued by a trusted organization.  
+
+Then, someone or something compares the information on the id card with the entity as they currently appear to be in realtime, as they have anounced themselves.  One of two things follow: 
+
+- The information on the card, matches verbal annoucement, and matches the entity as it has presented itself in that moment.  Authentication is successful and completed.  Further communication and access can proceed. 
+
+- Something between the information on the card, what was said in the verbal announcement, and the entity in that moment doesn't match.  Imagine you get a knock on your door, you ask who it is, and the person on the other side says you have a package delivery.  In fact, you're not expecting a package and when you look through the peek hole, the person is not wearing a uniform and doesn't have a package in their hands.  Something doesn't match.  They don't seem to be who they say they are.  Authentication fails and other that notifying the entity of the failure, no further communication proceeds and certainly no access is granted. 
+
+Authentication is the mechanism that helps guard the front door of an application.  It's the mechanism that helps control the outter rim. In the context of cyberspace, in the most simple implementations, this usually means a username and a password but a variety of credentials can be used.
+
+In this module, we will covers some of the related concepts that can be confused with authentication, but that interact with it to secure a system or applicaiton as well as some of the different ways authentication can be implemented.
 
 ## Table of Contents
 
@@ -12,77 +22,61 @@ Authentication is the concept and refers to mechanisms for establishing an entit
 * [Multi-factor Authentication](#multi-factor-authentication)
 * [Token-Based Implementations](#token-based-implementations)
 * [Authentication Channels](#authentication-channels)
+* [Security Concerns](#security-concerns)
+* [Prevention and Countermeasures](#prevention-and-countermeasures)
 
 ## Confusion with Authorization and Access
 
 ### Description
 
+Thinking back to the example above, authentication is required for access beyond being on the property and standing on the doorstep.  Once an entity has been authenticated, then they are granted access. Access immediately follows Authentication, but how much access an entity is allowed and the actions they are permitted to, is authorized, to perform are governed by a set of permissions or access controls referred to as Authorization.  
+
+Authorization can be addressed based on a set of credentials.  Depending on the application, credentials can consist of a username and password pair,  or may included other things like tokens, which will be covered, later in this module.  Credentials are what entities use to for access but are also presented as part of the authentication process.  A little confusing, right?
+
+When implemented in an application/system, this often appears to happen in a single step. You login and if you get a successful response you get access to the application.
+
 Multiple concepts that are very closely related.  One of the concepts we'll discuss later, OAuth, originally designed for authorization, has evolved into providing 
 authentication as well (not intended).  Authorization and Access are very similar concepts and are implemented together, sometimes within the Authorization mechanism.
-Confusing, right?
 
-### Security Concerns
+Another related concept is session management.  Depending on the architecture of the system or application, once an entity is authenticated, subsequent activity/interactions need to be tracked/attributed to the same entity.  This functions like a hand stamp for re-entry to an event or amusement park accept it is unique to you. 
 
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
+Authorization, Identity, Credentials, Access, Access Controls, Permissions, Session and Session Management are all terms you will come across when implementing Authentication in applications.  While each has distinct definitions, consider them as mutually interactive contributors/participants in an integrated system that works to allow into an application only what is verified and trusted, tracks and monitors the activity of what's been allowed in, and ensures what does get in, only has access to what they absolutely need in order to perform their specific function.  How these are implemented and their specific configuration/arrangement is unique to the design of each application. 
 
 ## Multi-factor Authentication
 
 ### Description
 
-Factors refer to 3 checks that work together to establish identity. 
+Multi-factor Authentication (MFA) is a way of implementing authentication so that more than one aspect of an entity is checked when it presents itself. from the initial simple example, checking both the information on the id card (something they have) and asking the entity to verbally state their name (something they know), for instance. 
+
+When implemented in applications, these aspects are referred to as factors and Authentication can be implemented using one of these factors (single-factor) or 2 or more (multi-factor):
+
 Something you know/that is in your brain - Password
 Something you have/possess/have physical or digital access to - Code generated by outside party; key
 Something you are/something unique to you as a person - fingerprint, facial recognition, other biometrics, palm scan, retinal scan
 
-Authentication can be implemented using one of these factors (single-factor) or 2 or more (multi-factor)
-
-Authentication mechanism can be complex...
-Security concerns/examples of multi-factor authentication getting hacked
-
-### Security Concerns
-
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
+Authentication mechanism can be simple or complex.  Security industry best practices recommend implementing multi-factor authentication wherever possible.
 
 ## Token-based Implementation
 
 ### Description
 
-Tokens are ... long strings of random characters used to identify an entity, session, as a badge for access.
+Tokens are ... long strings of random characters used to identify an entity, session, as a badge for access.  Used for authentication, used for session management, provided by authorization servers. 
 
-Common implementations include OAuth:  [
-](https://www.youtube.com/watch?v=996OiexHze0)
+
+Common implementations include OAuth: 
+
+Open Authorization(OAuth) is a protocol in which a multi-step arrangement generates a token for a specific users, the user presents as a credential in lieu of a password.  Client-server model, there is an extra server (authorization/token generating service or server) that after a user authenticates with it, it generateds a token, and brokers authentication/authorization between initial entity and a resource.
+
+Originally built for authorization, as it's name suggests, it has evolved for use in the authentication and authorization mechanisms.  A very good resource that describes the OAuth in context of it's history and current implementations is here: https://www.youtube.com/watch?v=996OiexHze0
+
 
 JSON Web Tokens (abbreviated JWT, pronounced "jot")
+Multi-use tokens for authentication and session.  
+Three components, header contains information identifying type of token and algorithm used for the signature, payload/body that contains data about the disposition of the token, signature - which serves as an integrity check to establish if the token has been modified or tampered with. 
 
-### Security Concerns
+Base64 encoded and cryptographically signed
 
-*TODO: Write Prevention*
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-
-*TODO: Make Example or Quiz Question*
-
-```elixir
-
-```
-
-<!-- livebook:{"branch_parent_index":4} -->
+Tokens, like other authentication credentials, etc. must be protected in transit and at rest. 
 
 ## Authentication Channels
 
@@ -103,10 +97,20 @@ Establish/Manage a Session
 
 Session-less ... fire and forget
 
+## Security Concerns
 
-### Security Concerns
+Authentication, credentials, should never be stored in cleartext, hardcoded in code base, 
+Credential Stuffing Attacks
+Security concerns/examples of multi-factor authentication getting hacked
+Multi-factor authentication (MFA) fatigue attack - aka MFA Bombing - aka MFA Spamming
+Bypassing MFA
+JWT token vulnerabilities
 
-*TODO: Write Prevention*
+Authentication Issues, Weaknesses, Failures make an appearance on multiple lists
+OWASP Top 10 for Web Applications A07:2021-Identification and Authentication Failurs (used to be called Broken Authenticication
+
+## Prevention and Countermeasures
+
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
@@ -115,5 +119,10 @@ Session-less ... fire and forget
 ```elixir
 
 ```
+
+### References
+https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+https://owasp.org/www-community/attacks/Credential_stuffing
+https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/06-Session_Management_Testing/10-Testing_JSON_Web_Tokens
 
 [**<- Previous Module: Secure SDLC Concepts**](./3-ssdlc.livemd) || [**Next Module: Elixir Security ->**](./5-elixir.livemd)
