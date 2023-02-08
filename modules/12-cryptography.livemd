@@ -40,15 +40,25 @@ Different types depending on
 -number of cycles
 -for complex algorithms etc..
 
+symmetric encryption - secret key - one key used for encryption and decrption .  Use this for performance/efficiency
+--application 
+asymmetric encrytion - aka public-key cryptography - two keys, one for encrypting one for decrpyting, one shared (pubic) one kept secret(private)
+--application digital signatures 
+
 Old (Cracked - don't use)
-DES,etc.
 
 Newer (Resilient/proven secure by industry)
-AES
+AES - symmetric;  CBC and GCM modes most secure
 
+Diffie-Hellman key exchange
+RSA
 
+TLS cipher suites 
 
+[symmetric cryptography](https://developer.mozilla.org/en-US/docs/Glossary/Symmetric-key_cryptography)
+[NIST](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-77r1.pdf)
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
 
 *TODO: Make Example or Quiz Question*
 
@@ -68,10 +78,26 @@ Algorithms above
 
 Best practices for secure algorithms
 
+Use those recommended by NIST -
+Progamming language frameworks have built in libraries.
+
+For elixir, ExCrypto module[ExCrypto](https://hexdocs.pm/ex_crypto/ExCrypto.html)
+
+Consider what needs to be encrypted - sensitive data or any other data that 
+Data classification, regulatory implications that must be protected from unauthorized access/seeing
+
+Confidentiality
+
+For in-transit 
+use HTTPS which implements encrpytion over a channel. Diffie-Hellman 
+[Serving over HTTPS
+](https://hexdocs.pm/plug/https.html)
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
 *TODO: Make Example or Quiz Question*
+[
+](https://hexdocs.pm/plug/https.html)
 
 ```elixir
 
@@ -81,10 +107,19 @@ Best practices for secure algorithms
 
 ### Description
 
-Hash - Sometimes implemented alongside encryption but has a different purpose
-Digital Certificates - Application of cryptography/private keys
-Encoding - Can be confused because it is also a way to represent data that looks different from it's plaintext start
+Hash - Sometimes implemented alongside encryption but has a different purpose;
+Cryptography used for confidentiality; keeping information secret except for intended receipient/audience.  Hashes are used to ensure the 
+integrity of the data, meaning ensuring from it's creation/generation to it's final state, it remains unmodified and untampered with.  
+Hashes also used as a substitute for storing data in it's original form.  A one way function that - compare starting hash from known good data, to end hash which will indicate changes.  Hashing passwords is a common application.  Comparing hashes to determine if correct password entered.
+Hash Algorithms - SHA1, SHA2, MD5 (obsolete) - follow recommendations from 
 
+NIST [Approved Hash Algorithms](https://csrc.nist.gov/Projects/Hash-Functions)
+
+Digital Certificates - Application of cryptography/private keys
+
+
+NIST
+[Erlang crypto module](https://elixir-lang.org/getting-started/erlang-libraries.html#the-crypto-module) 
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
@@ -104,6 +139,28 @@ Recommendations
 -Recommended algorithms
 -Sources for publishing notices when algorithms become cracked/obsolete and new
 
+Cryptographic Failures are the number two most common issue on the OWASP Top 10
+A02:2021 – Cryptographic Failures
+
+Related weaknesses include
+Notable Common Weakness Enumerations (CWEs) include CWE-327: Broken or Risky Crypto Algorithm, and CWE-331 Insufficient Entropy.
+
+All amount to data being inadvertently being sent in cleartext, sensitive data, the use of old, weak or custom cryptographic algorithms or protocols that are ineffective against attacker efforts to uncover keys,  .  Best practics is to never build your own crypto mechanisms.  Use proven and secure:
+Secure Hashes:  SHA-1 has been deprecated as of 2011 with a transition plan released in 2022.  Recommenation to move towards orther families SHA256
+Secure Encryption Algorithms; AES is the current standard;  secure modes must be emplemented
+AES-GCM, AES-CTR, AES-CBC, AESCCM (128, 192, 256-bit keys)
+For authentication/TLS RSA, DSA, and ECDSA with 128-bit
+security strength (for example, RSA with
+3072-bit or larger key)
+
+[
+](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-77r1.pdf)[
+NIST](https://www.nist.gov/cryptography)
+[Encryption Standard](https://csrc.nist.gov/Projects/block-cipher-techniques)
+https://csrc.nist.gov/Projects/Hash-Functions
+[Elixir encryption, hashing, etc. Modules](https://elixir-lang.org/getting-started/erlang-libraries.html#the-crypto-module)
+[OWASP Top10](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/)
+[Use TLS](https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html)
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
 *TODO: Make Example or Quiz Question*
