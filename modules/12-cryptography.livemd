@@ -40,9 +40,9 @@ Different types depending on
 -number of cycles
 -for complex algorithms etc..
 
-symmetric encryption - secret key - one key used for encryption and decrption .  Use this for performance/efficiency
+symmetric encryption - secret key - one key used for encryption and decryption .  Use this for performance/efficiency
 --application 
-asymmetric encrytion - aka public-key cryptography - two keys, one for encrypting one for decrpyting, one shared (pubic) one kept secret(private)
+asymmetric encryption - aka public-key cryptography - two keys, one for encrypting one for decrpyting, one shared (pubic) one kept secret(private)
 --application digital signatures 
 
 Old (Cracked - don't use)
@@ -79,7 +79,7 @@ Algorithms above
 Best practices for secure algorithms
 
 Use those recommended by NIST -
-Progamming language frameworks have built in libraries.
+Programming language frameworks have built in libraries.
 
 For elixir, ExCrypto module[ExCrypto](https://hexdocs.pm/ex_crypto/ExCrypto.html)
 
@@ -108,7 +108,7 @@ use HTTPS which implements encrpytion over a channel. Diffie-Hellman
 ### Description
 
 Hash - Sometimes implemented alongside encryption but has a different purpose;
-Cryptography used for confidentiality; keeping information secret except for intended receipient/audience.  Hashes are used to ensure the 
+Cryptography used for confidentiality; keeping information secret except for intended recipient/audience.  Hashes are used to ensure the 
 integrity of the data, meaning ensuring from it's creation/generation to it's final state, it remains unmodified and untampered with.  
 Hashes also used as a substitute for storing data in it's original form.  A one way function that - compare starting hash from known good data, to end hash which will indicate changes.  Hashing passwords is a common application.  Comparing hashes to determine if correct password entered.
 Hash Algorithms - SHA1, SHA2, MD5 (obsolete) - follow recommendations from 
