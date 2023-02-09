@@ -127,7 +127,7 @@ Resource exhaustion can occur inadvertently through legitimate use or could be t
 The structure of GraphQL queries make it particularly succeptible to this type of attack. Servers that handle GraphQL requests originate from untrusted input; from client requests.   Client requests are user/attacker controlled input (context unvalidated/unsanitized input)
 Queries that take a long time to process/traverse data/retrieve data consume 
 Long operations 
-In addition to sanizatizing input - consider ways to measure the cost of a query.  Next section covers one approach.
+In addition to sanizatizing input - consider ways to measure the cost of a query and based on known available resources, reduce the risk of resource exhaustion due to expensive queries.  Next section covers one approach.
 
 
 ### Prevention
@@ -151,9 +151,10 @@ Example of code where input is validated and where it isn't:
 
 ### Description
 
+Resource intensive queries, like those where a Graphql query tries to traverse and then return a significant amount of highly nest data can cause a server/service to expend a significant amount of it's processing power and other resources.  These high cost queries can render a server useless.  
 One approach for implementing validation on incoming queries to determine their "cost" in terms of the resources the use.  Queries are defined by how much load they place on the server/service processing the request 
 
-This approach also helps implement Rate limiting by establishing a query cost based on the type, operation, and expected performance of each unique GraphQL request for data, and by anticipating the load on the server.
+This approach also helps implement Rate limiting by establishing a query cost based on the type, operation, and expected performance of each unique GraphQL request for data, and by anticipating the load on the server.  Budgeting / allowance.
 
 More details of this approach are described in the reference below.
 
