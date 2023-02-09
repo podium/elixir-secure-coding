@@ -125,12 +125,12 @@ Service X sends Token for limited access to Social Media Account (instead of sha
 
 https://www.youtube.com/watch?v=996OiexHze0
 
-If you're familiar with Kerberos, somewhat similar - three primary entities, requesting, service one, service 2, intermediary server that handles issuing tokens that get presented in lieu of credentials
+Three primary entities, requesting, service one, service 2, intermediary server that handles issuing tokens that get presented in lieu of credentials
 
 ``` 
 [OAuth2.Client module ](https://hexdocs.pm/oauth2/OAuth2.Client.html)
 
-
+```
 
 ## Sessions
 
