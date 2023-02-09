@@ -101,6 +101,34 @@ If the answer to one or more of those questions is yes, consider putting a limit
 
 More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
 
+Two approaches to rate limiting
+-Application Level...
+-Network level...
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+
+The Elixir language has a built-in rate-limiter called Hammer (https://hexdocs.pm/hammer/frontpage.html).  Some organizations chose to apply limits based on userId as in the example below. 
+
+The check_rate function below takes 3 arguments:
+
+1. The first is what we've decided apply the limit to, in this case, the userID
+2. The second, 60_000, represents the number of milliseconds in 1 minute (1000 milliseconds per 1 second, 60 seconds in 1 minute)
+3. The last, 10, represents the number of times the userID can appear to have done a particular action before we stop them.  In this case, 10 times. 
+
+```
+# limit file uploads to x per minute per user
+userId = getUserId()
+case Hammer.check_rate("action:#{userId}", 60_000, 10) do
+  {:allow, _count} ->
+    # let them do it
+  {:deny, _limit} ->
+    # nope
+end
+```
+
+
 ### Rate Limiting References
 1. https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting
 2. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md
