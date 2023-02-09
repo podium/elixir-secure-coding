@@ -80,7 +80,7 @@ Base64 encoded and cryptographically signed
 
 Tokens, like other authentication credentials, etc. must be protected in transit and at rest. 
 
-Why use JWT? For post authentication authorization Can be signed and encrypted -> trust; low overhead; Integrity of information being transmited and non-repudiation; JWT checkers validate token; token belongs to user
+Why use JWT? For post authentication authorization Can be signed and encrypted -> trust; low overhead; Integrity of information being transmitted and non-repudiation; JWT checkers validate token; token belongs to user
 
 Expiration /Refresh
 
