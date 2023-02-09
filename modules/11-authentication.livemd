@@ -63,6 +63,8 @@ Authentication mechanism can be simple or complex.  Security industry best pract
 
 Tokens are ... long strings of random characters used to identify an entity, session, as a badge for access.  Used for authentication, used for session management, provided by authorization servers. 
 
+Generate token, assign token to user, check token validity, expire token.
+
 
 Common implementations include OAuth: 
 
@@ -77,6 +79,58 @@ Three components, header contains information identifying type of token and algo
 Base64 encoded and cryptographically signed
 
 Tokens, like other authentication credentials, etc. must be protected in transit and at rest. 
+
+Why use JWT? For post authentication authorization Can be signed and encrypted -> trust; low overhead; Integrity of information being transmited and non-repudiation; JWT checkers validate token; token belongs to user
+
+Expiration /Refresh
+
+Why use OAuth? when Users need access to third party services, outside of your environment where you don't want to share your credentials with those third parties.  In OAuth protocol/architecture, an authorization service brokers access and grants users an access token to present, in place of credentials. 
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+Create/Generate Token
+```
+
+
+```
+
+
+
+
+Validate Token
+```
+def connect(%{"authorize" => token}, socket, _connect_info) do  //
+  case JwtChecker.validate_token(token)do
+  ...
+  ...
+```
+
+https://dev.to/onpointvn/implement-jwt-authentication-with-phoenix-token-n58
+(https://hexdocs.pm/guardian/Guardian.Token.Jwt.html)
+
+https://elixirschool.com/blog/jwt-auth-with-joken/
+
+
+
+### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+
+Oauth simple
+
+User Authenticated into Application/Service X
+Application/Service X prompts user if they want to login using social media account credentials
+User Logs into social media account/other service
+Authorization Server/Service Generates Access Token 
+Service X sends Token for limited access to Social Media Account (instead of sharing credentials)
+
+https://www.youtube.com/watch?v=996OiexHze0
+
+If you're familiar with Kerberos, somewhat similar - three primary entities, requesting, service one, service 2, intermediary server that handles issuing tokens that get presented in lieu of credentials
+
+``` 
+[OAuth2.Client module ](https://hexdocs.pm/oauth2/OAuth2.Client.html)
+
+
 
 ## Sessions
 
