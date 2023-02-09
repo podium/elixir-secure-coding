@@ -123,9 +123,22 @@ Resource exhaustion occurs when memory, processes handling application requests,
 
 Resource exhaustion can occur inadvertently through legitimate use or could be triggered intentionally in a ddos attacks by a maliciou acctor who send a large number or heavy requests to overload the application.  
 
+The structure of GraphQL queries make it particularly succeptible to this type of attack. Servers that handle GraphQL requests originate from untrusted input; from client requests.   Client requests are user/attacker controlled input (context unvalidated/unsanitized input)
+Queries that take a long time to process/traverse data/retrieve data consume 
+Long operations 
+
+
 ### Prevention
 
 Refer to the Rate Limiting Lesson in Part 3 - Secure SDLC Concepts
+
+Input Validation and Sanitization.
+Attack vector is a query that is not checked for size, depth, (OWASP issues -> ) Secure coding practice of validation all input. Parameterizing queries.
+Implementing checks in your code for queries / operations that that perform resource exhaustive actions or calls.
+
+Example of code where input is validated and where it isn't:
+
+
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
