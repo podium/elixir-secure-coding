@@ -14,6 +14,7 @@ This module will highlight several security issues associated with GraphQL and r
 * [Disabling Introspection](#disabling-introspection)
 * [Error Disclosure](#error-disclosure)
 * [Resource Exhaustion](#resource-exhaustion)
+* [Cost Theory](#cost-theory)
 
 ## Disabling Introspection
 
@@ -126,6 +127,7 @@ Resource exhaustion can occur inadvertently through legitimate use or could be t
 The structure of GraphQL queries make it particularly succeptible to this type of attack. Servers that handle GraphQL requests originate from untrusted input; from client requests.   Client requests are user/attacker controlled input (context unvalidated/unsanitized input)
 Queries that take a long time to process/traverse data/retrieve data consume 
 Long operations 
+In addition to sanizatizing input - consider ways to measure the cost of a query.  Next section covers one approach.
 
 
 ### Prevention
@@ -136,30 +138,27 @@ Input Validation and Sanitization.
 Attack vector is a query that is not checked for size, depth, (OWASP issues -> ) Secure coding practice of validation all input. Parameterizing queries.
 Implementing checks in your code for queries / operations that that perform resource exhaustive actions or calls.
 
-Example of code where input is validated and where it isn't:
 
 
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+Example of code where input is validated and where it isn't:
 
-The Elixir language has a built-in rate-limiter called Hammer (https://hexdocs.pm/hammer/frontpage.html).  Some organizations chose to apply limits based on userId as in the example below. 
 
-The check_rate function below takes 3 arguments:
+<!-- livebook:{"branch_parent_index":4} -->
 
-1. The first is what we've decided apply the limit to, in this case, the userID
-2. The second, 60_000, represents the number of milliseconds in 1 minute (1000 milliseconds per 1 second, 60 seconds in 1 minute)
-3. The last, 10, represents the number of times the userID can appear to have done a particular action before we stop them.  In this case, 10 times. 
+## Cost Theory
 
-```
-# limit file uploads to x per minute per user
-userId = getUserId()
-case Hammer.check_rate("action:#{userId}", 60_000, 10) do
-  {:allow, _count} ->
-    # let them do it
-  {:deny, _limit} ->
-    # nope
-end
-```
+### Description
+
+One approach for implementing validation on incoming queries to determine their "cost" in terms of the resources the use.  Queries are defined by how much load they place on the server/service processing the request 
+
+This approach also helps implement Rate limiting by establishing a query cost based on the type, operation, and expected performance of each unique GraphQL request for data, and by anticipating the load on the server.
+
+More details of this approach are described in the reference below.
+
+### References
+https://shopify.engineering/rate-limiting-graphql-apis-calculating-query-complexity
 
 ### GraphQl References
 https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
