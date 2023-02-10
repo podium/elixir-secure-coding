@@ -2,12 +2,9 @@
 
 ## Introduction
 
-GraphQL is a query language used to interact with and retrieve data from an application's data sources. It's structure is designed for flexible and precise queries that efficiently interact with complex, highly nested data sets.  Using GraphQL, information is retrieved by stepping through data as if it were arranged as a group of connected nodes instead of a strictly hierarchical set up. Think more of a labyrinth than a tree.  GraphQL can be implemented as a component of an application's API and has two main security considerations:
+GraphQL is a query language used to interact with and retrieve data from an application's data sources. Its structure is designed for flexible and precise queries that efficiently interact with complex, highly nested data sets.  Using GraphQL, information is retrieved by stepping through data as if it were arranged as a group of connected nodes instead of a strictly hierarchical set up. Think more of a labyrinth than a tree.  
 
-* Security concerns common to all APIs 
-* Security related to characteristics of the query language itself
-
-This module will highlight several security issues associated with GraphQL and recommendations for how to address. 
+Since GraphQL can be implemented as a component of an application's API, there are security issues common to all APIs present, as well as concerns related to characteristics of the query language itself.  This module will highlight several security issues associated with GraphQL and recommendations for how to address them.
 
 ## Table of Contents
 
@@ -20,18 +17,17 @@ This module will highlight several security issues associated with GraphQL and r
 
 ### Description
 
-Introspection queries are a way of enumerating a particular GraphQL implementation to discover details about the queries supported, data types available, and other information. This includes mutation names, fields specific to an organization / dataset, query parameters, and types of objects in the data source,  all of which can help a user, including a malicious one, deduce and discover specifics about the data being stored. 
+Introspection queries are a way of enumerating a particular GraphQL implementation to discover details about the queries supported, data types available, and other information. This includes mutation names, fields specific to an organization or dataset, query parameters, and types of objects in the data source.  Obtaining this information can help a user, including a malicious one, deduce and discover specifics about the data being stored. 
 
 If you are familiar with databases, this is similar to gathering info on the [database schema]( https://en.wikipedia.org/wiki/Database_schema) that includes information about table names, fields, database, structure etc.
 
-This information can help a malicious actor in their information gathering/reconnaissnce efforts as they look for ways to attack your application and construct malicious queries and requests to compromise data.
+Malicious actors in their information gathering/reconnaissnce efforts can leverage this information as they look for ways to attack your application and construct malicious queries and requests to compromise data.
 
-Excessive Data Exposure is number 3 on OWASP API Security Top 2019 and API's with this issue return too much and/or sensitive information in response to incoming requests.  Since introspection provides this option for GraphQL as a feature, and that is dual use, has a useful purpose for developers, etc. but can be leveraged by malicious users, introspection can serve as an attack vector. 
-
+Excessive Data Exposure is number 3 on OWASP's API Security Top 2019 and APIs with this issue return too much and/or sensitive information in response to incoming requests and queries.  Although it provides a useful function for GraphQL developers, the information returned by introspection can help facilitate attack. 
 
 ### Prevention
 
-Best practice per OWASP is to limit access, including following least privilege, to introspection queries if it is not possible completely disable it. Please see references for more details.
+Best practice per OWASP is to limit access, including following least privilege, to introspection queries if it is not possible to completely disable it. Please see references for more details.
 
 ### References
 https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
@@ -57,14 +53,14 @@ IO.puts(answer)
 
 ### Description
 
-One of OWASP’s top 10 security risksfor API’s is API7:2019 Security Misconfiguration includes verbose error messages that can unintentionally provide information to help a malicious actor craft an attack on an application or otherwise exploit the api.  It is a best practice to limit the amount of valuable/meaningful information that gets sent back to any user in the event there is an issue with a service, or other application component, including APIs.
+Another one of OWASP’s top 10 security risks for API’s is API7:2019 Security Misconfiguration.  This issue includes api's that issue overly verbose error messages that can unintentionally provide information to help a malicious actor seeking to craft an attack on an application or otherwise exploit the api.  It is a best practice to limit the amount of meaningful information that gets sent back to any user in the event there is an issue with a service, or other application component, including APIs.
 
-Within the context of a GraphQL implementation, when errors occur, the server could send error messages that reveal internal details, application configurations, or data which if triggered by a malicious actor, could be used to further an attack on the application.   
+Within the context of a GraphQL implementation, when errors occur, the server could send error messages that reveal internal details, application configurations, or data which could be used to further an attack on the application.   
 
 ### Prevention
 
 OWASP recommends explicitly defining and enforcing all API response payload schemas including error messages.
-Any errors disclosed from the server and displayed to the user should be limited and boring.
+Any errors disclosed from the server and displayed to the user should be limited.  Boring is good when it comes to error messages displayed to users.
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
@@ -126,43 +122,25 @@ Date: Tues, 16 Aug 2022 21:06:42 GMT
 
 ### Description
 
-When building an application, it is necessary to manage the access and use of all relevant internal and external resources involved in the context of the application.  This will help ensure the continued availablilty of the application and it's functionality for all legitimate users and entities.
+When building an application, it is necessary to manage the access and use of all relevant internal and external resources involved in the context of the application.  This will help ensure the continued availablilty of the application and its functionality for all legitimate users and entities.
 
-Resource exhaustion occurs when memory, processes handling application requests, network traffic being generated, server capacity, and other host operating system, network, or device limitations are exceeded while an application is running.  When resource allocation is not well managed, applications become vulnerable to negative impacts in performance, unintentional service failures, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
+Resource exhaustion occurs when memory, processes handling application requests, network traffic transmissions, server capacity, storage, and other host operating system or device limitations are exceeded while an application is running.  When resource allocation is not well managed, applications become vulnerable to negative impacts in performance, unintentional service failures, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
 
-Resource exhaustion can occur inadvertently through legitimate use or could be triggered intentionally in a ddos attacks by a maliciou acctor who send a large number or heavy requests to overload the application.  
+Resource exhaustion can occur inadvertently through legitimate use or could be triggered intentionally in a dos attack by a malicious actor who sends a large number or resource intensive requests to overload the application.  
 
-The structure of GraphQL queries make it particularly succeptible to this type of attack. Servers that handle GraphQL requests originate from untrusted input; from client requests.   Client requests are user/attacker controlled input (context unvalidated/unsanitized input)
-Queries that take a long time to process/traverse data/retrieve data consume 
-Long operations 
-In addition to sanizatizing input - consider ways to measure the cost of a query and based on known available resources, reduce the risk of resource exhaustion due to expensive queries.  Next section covers one approach.
+The structure of GraphQL queries make it particularly succeptible to this type of attack as they can be crafted to perform long running and extensive operations, depending on the data being queried.
 
-
-### Prevention
-
-Refer to the Rate Limiting Lesson in Part 3 - Secure SDLC Concepts
-
-Input Validation and Sanitization.
-Attack vector is a query that is not checked for size, depth, (OWASP issues -> ) Secure coding practice of validation all input. Parameterizing queries.
-Implementing checks in your code for queries / operations that that perform resource exhaustive actions or calls.
-
-
-
-
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
-Example of code where input is validated and where it isn't:
-
-
-<!-- livebook:{"branch_parent_index":4} -->
+In addition to strategies like implementing some form of rate limiting to protect APIs in general (see the section about rate limiting in the previous module), another approach to protect GraphQL from resource exhaustion involves anticipating the cost of a query and allocating resources based on known available capacity.  The next section introduces this approach.
 
 ## Cost Theory
 
 ### Description
 
-Resource intensive queries, like those where a Graphql query tries to traverse and then return a significant amount of highly nest data can cause a server/service to expend a significant amount of it's processing power and other resources.  These high cost queries can render a server useless.  
-One approach for implementing validation on incoming queries to determine their "cost" in terms of the resources the use.  Queries are defined by how much load they place on the server/service processing the request 
+Resource intensive queries, like those where a Graphql query tries to traverse and then return a significant amount of highly nest data can cause a server/service to expend a significant amount of it's processing power and other resources.  These high cost queries can render a server and therefore the application useless.
 
-This approach also helps implement Rate limiting by establishing a query cost based on the type, operation, and expected performance of each unique GraphQL request for data, and by anticipating the load on the server.  Budgeting / allowance.
+One approach for implementing validation on incoming queries to determine their "cost" in terms of the resources the use.  Queries are defined by how much load they place on the server/service processing the request, allowing developers to plan for how best to manage resources.  This is a little like making a budget. 
+
+This approach also helps implement Rate limiting by establishing a query cost based on the type, operation, and expected performance of each unique GraphQL request for data, and by anticipating the load on the server.  
 
 More details of this approach are described in the reference below.
 
