@@ -127,7 +127,7 @@ Session-less, sometimes referred to as "fire and forget it" is like purchasing a
 
 An application's authentication mechanism is a critical component.  If not securely designed, it can provide an attack vector for malicious actors to gain access to legitimate user accounts, privileged application features, and sensitive data. 
 
--Authentication, credentials, should never be stored in cleartext, nore hardcoded in source code
+-Authentication, credentials, should never be stored in cleartext, nor hardcoded in source code
 Credential Stuffing Attacks
 Security concerns/examples of multi-factor authentication getting hacked
 Multi-factor authentication (MFA) fatigue attack - aka MFA Bombing - aka MFA Spamming
