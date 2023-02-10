@@ -42,6 +42,7 @@ For instance, there are a number of security issues published on the Common Weak
 
 Scanning tools like Sobelow map code patterns that may contain weakness that match these issues and report them back to developers/users.
 
+ ### <span style="color:blue;">Example</span> 
 Let's say you are interested in Injection Vulnerabilities.  There are several types of injection.  Referring to the CWE list, we see that #17 CWE-77 is for Command Injection, #25 CWE-94 is Code Injection, and #3 CWE-89 is SQL Injection.  If we look at the Owasp Top 10 for 2021, A03:2021-Injection is third on the list.  Sobelow has the capability to detect these types of attacks.
 
 Injection issues are places in an application where a malicious actor can send commands, queries, that get processed as authorized code, to trigger the application into performing an unauthorized action.
