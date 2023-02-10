@@ -26,6 +26,9 @@ If you are familiar with databases, this is similar to gathering info on the [da
 
 This information can help a malicious actor in their information gathering/reconnaissnce efforts as they look for ways to attack your application and construct malicious queries and requests to compromise data.
 
+Excessive Data Exposure is number 3 on OWASP API Security Top 2019 and API's with this issue return too much and/or sensitive information in response to incoming requests.  Since introspection provides this option for GraphQL as a feature, and that is dual use, has a useful purpose for developers, etc. but can be leveraged by malicious users, introspection can serve as an attack vector. 
+
+
 ### Prevention
 
 Best practice per OWASP is to limit access, including following least privilege, to introspection queries if it is not possible completely disable it. Please see references for more details.
@@ -35,14 +38,19 @@ https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Applicatio
 
 https://cybervelia.com/?p=736
 
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+### <span style="color:red;">Quiz</span>
+
+**Which of the OWASP API Security Top 10 2019 issues does disabling introspection queries address?**
+
+*Uncomment the line with your answer.*
 
 ```
-Which of the OWASP API Security Top 10 2019 issues does disabling introspection queries address?
-a) API6:2019 Mass Assignment
-b) API10:2019 Insufficient Logging & Monitoring
-c) API3:2019 Excessive Data Exposure
-d) API4:2019 Lack of Resources & Rate Limiting
+# answer = :API6_2019_Mass_Assignment
+# answer = :API10_2019_Insufficient_Logging_Monitoring
+# answer = :API3_2019_Excessive_Data_Exposure
+# answer = :API4_2019_Lack_of_Resources_Rate_Limiting
+
+IO.puts(answer)
 ```
 
 ## Error Disclosure
