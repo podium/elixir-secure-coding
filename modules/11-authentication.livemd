@@ -1,20 +1,16 @@
-# ESCT: Part 11 - Authentication (Draft)
+# ESCT: Part 11 - Authentication 
 
 ## Introduction
 
-> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
+Authentication is the process of establishing that an entity, whether person or machine, is who they say they are. In this process the entity starts by "knocking on the door", and presenting their id card and credentials when prompted. 
 
-Authentication is the process of establishing that an entity, whether person or machine, is who they say they are. In this process the entity starts by "knocking on the door", perhaps even announcing themselves and showing their id card when prompted. Identification(id) cards usually contain a photograph, name, description, and other personal information.  Id cards are usually issued by a trusted organization.  
+One of two things follow: 
+- The authentication attempt is successful and further communication including the granting of access can proceed. 
+- Authentication fails and other that notifying the entity of the failure, no further communication proceeds and no access is granted. 
 
-Then, someone or something compares the information on the id card with the entity as they currently appear to be in realtime, as they have announced themselves.  One of two things follow: 
+Imagine you get a knock on your door. You ask who it is, and the person on the other side says you have a package delivery.  In fact, you're not expecting a package and you can see the person is not wearing a uniform and doesn't have a package in their hands.  Something doesn't match.  They don't seem to be who they say they are and so, you don't open the door. 
 
-- The information on the card, matches verbal announcement, and matches the entity as it has presented itself in that moment.  Authentication is successful and completed.  Further communication and access can proceed. 
-
-- Something between the information on the card, what was said in the verbal announcement, and the entity in that moment doesn't match.  Imagine you get a knock on your door, you ask who it is, and the person on the other side says you have a package delivery.  In fact, you're not expecting a package and when you look through the peek hole, the person is not wearing a uniform and doesn't have a package in their hands.  Something doesn't match.  They don't seem to be who they say they are.  Authentication fails and other that notifying the entity of the failure, no further communication proceeds and certainly no access is granted. 
-
-Authentication is the mechanism that helps guard the front door of an application.  It's the mechanism that helps control the outer rim. In the context of cyberspace, in the most simple implementations, this usually means a username and a password but a variety of credentials can be used.
-
-In this module, we will covers some of the related concepts that can be confused with authentication, but that interact with it to secure a system or application as well as some of the different ways authentication can be implemented.
+Authentication is the mechanism that helps guard the front door of an application.  It's the mechanism that helps control who gets into your system and if they are there legitimately. 
 
 ## Table of Contents
 
@@ -30,18 +26,13 @@ In this module, we will covers some of the related concepts that can be confused
 
 ### Description
 
-Thinking back to the example above, authentication is required for access beyond being on the property and standing on the doorstep.  Once an entity has been authenticated, then they are granted access. Access immediately follows Authentication, but how much access an entity is allowed and the actions they are permitted to, is authorized, to perform are governed by a set of permissions or access controls referred to as Authorization.  
+Thinking back to the example above, authentication is establishing an entity is who they say they are.  For applications, this means, the user who is attempting to login, is the user who created and has control over the account.  But most applications have multiple levels of users, those with maxium access/privileges to move around and modify the application freely, and those with more restricted access. 
 
-Authorization can be addressed based on a set of credentials.  Depending on the application, credentials can consist of a username and password pair,  or may included other things like tokens, which will be covered, later in this module.  Credentials are what entities use to for access but are also presented as part of the authentication process.  A little confusing, right?
+Once an entity has been authenticated, then they are granted access but when implemented in an application/system, this often appears to happen in a single step. Users login and if you get a successful response you also get access to the application.  Access immediately follows Authentication, but how much access an entity is allowed and the actions they are permitted to, is authorized, to perform are governed by a set of permissions or access controls referred to as Authorization, which is often managed by a token or similar credentials. 
 
-When implemented in an application/system, this often appears to happen in a single step. You login and if you get a successful response you get access to the application.
+During the authentication and authorization process, validity of credentials and level of access are checked. Then, depending on the architecture of the system or application, once an entity is authenticated, is granted access,  subsequent activity/interactions need to be tracked/attributed to the same entity.  This functions like a hand stamp for re-entry to an event or amusement park accept it is unique to you. For applications, this means setting up and tracking an authenticated user's session, and this is often done using some kind of token, sometimes the same token that gets issued for access.
 
-Multiple concepts that are very closely related.  One of the concepts we'll discuss later, OAuth, originally designed for authorization, has evolved into providing 
-authentication as well (not intended).  Authorization and Access are very similar concepts and are implemented together, sometimes within the Authorization mechanism.
-
-Another related concept is session management.  Depending on the architecture of the system or application, once an entity is authenticated, subsequent activity/interactions need to be tracked/attributed to the same entity.  This functions like a hand stamp for re-entry to an event or amusement park accept it is unique to you. 
-
-Authorization, Identity, Credentials, Access, Access Controls, Permissions, Session and Session Management are all terms you will come across when implementing Authentication in applications.  While each has distinct definitions, consider them as mutually interactive contributors/participants in an integrated system that works to allow into an application only what is verified and trusted, tracks and monitors the activity of what's been allowed in, and ensures what does get in, only has access to what they absolutely need in order to perform their specific function.  How these are implemented and their specific configuration/arrangement is unique to the design of each application. 
+Authorization, Identity, Credentials, Access, Access Controls, Permissions, Session and Session Management are all terms you will come across when implementing Authentication in applications.  While each has distinct definitions, consider them as mutually interactive contributors to an integrated system that works to allow into an application only what is verified and trusted, tracks and monitors the activity of what's been allowed in, and ensures what does get in, only has access to what they absolutely need in order to perform their specific function.  How these are implemented and their specific configuration is unique to the design of each application. 
 
 ## Multi-factor Authentication
 
@@ -61,9 +52,10 @@ Authentication mechanism can be simple or complex.  Security industry best pract
 
 ### Description
 
-Tokens are ... long strings of random characters used to identify an entity, session, as a badge for access.  Used for authentication, used for session management, provided by authorization servers. 
+We mentioned earlier how both authorization (access) and sessions can be handled using tokens.  Access Tokens are built so that they contain information about what an authenticated user does and does not have access to, for how long, and they can also be used to manage the user's persistence/ongoing interactions with the application in a session.  
 
-Generate token, assign token to user, check token validity, expire token.
+Tokens are long strings of random characters used to identify an entity, session, as a badge for access and are usually generated by some token generating code, service or server.  In token-based implementations, at a highlevel the application or service generates tokens, assign token to users after they have been autenticated, check token validity as users access and use application functionality/features, and end/renew sessions by expiring and refresh tokens.
+
 
 
 Common implementations include OAuth: 
@@ -116,6 +108,7 @@ https://elixirschool.com/blog/jwt-auth-with-joken/
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
 Oauth simple
+One of the concepts we'll discuss later, OAuth, a protocol originally designed for authorization, has evolved into providing  authentication as well (not intended).  
 
 User Authenticated into Application/Service X
 Application/Service X prompts user if they want to login using social media account credentials
