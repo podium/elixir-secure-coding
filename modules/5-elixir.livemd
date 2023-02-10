@@ -13,10 +13,11 @@ But even the dullest blades can hurt someone! This module goes over Elixir speci
 ## Table of Contents
 
 * [Atom Exhaustion](#atom-exhaustion)
-* [Protecting Sensitive Data](#protecting-sensitive-data)
+* [Serialization and Deserialization](#serialization-and-deserialization)
 * [Untrusted Code](#untrusted-code)
 * [Timing Attacks](#timing-attacks)
 * [Boolean Coercion](#boolean-coercion)
+* [Protecting Sensitive Data](#protecting-sensitive-data)
 
 ## Atom Exhaustion
 
@@ -60,6 +61,22 @@ end
 IO.puts("Are you protected against Atom Exhaustion?")
 IO.puts(:erlang.system_info(:atom_count) == prev_count)
 ```
+
+## Serialization and Deserialization
+
+### Description
+
+Deserialization of untrusted input can result in atom creation, which can lead to your application being vulnerable to denial of service (DOS) attacks. When you do use a deserialization library, make sure that the library does not create arbitrary atoms: either configure the library to return strings/binaries or enable schema validation to constrain the input
+
+### Prevention
+
+* Use the :safe option when calling :erlang.binary_to_term/2 on untrusted input (should be familiar from atom exhaustion 😀)
+* Prevent function deserialisation from untrusted input, e.g. using Plug.Crypto.non_executable_binary_to_term/1,2
+
+### Resources
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/serialisation
+
 
 ## Untrusted Code
 
@@ -203,5 +220,46 @@ user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
 # if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end
 # if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
 ```
+
+## Protecting Sensitive Data
+
+### Description
+
+Sensitive data is any information that should be out of reach from all outsiders unless they have permission to access it, which in most cases would be considered "confidential data". Some examples of sensitive data are PHI (Protected Health Information) or PII (Personally Identifiable Information).
+
+### Prevention
+
+I think we can all agree that making sure this information is secure is important, but let's dive into how to actually protect it:
+
+## Wrapping
+
+Exceptions may result in console or log output that includes a stack trace. Mostly a stack trace shows the module/function/arity and the filename/line where the exception occurred, but for the function at the top of the stack the actual list of arguments may be included instead of the function arity.
+To prevent sensitive data from leaking in a stack trace, the value may be wrapped in a closure: a zero-arity anonymous function. The inner value can be easily unwrapped where it is needed by invoking the function. If an error occurs and function arguments are written to the console or a log, it is shown as #Fun<...> or #Function<...>. Secrets wrapped in a closure are also safe from introspection using Observer and from being written to crash dumps.
+
+### <span style="color:blue;">Example</span>
+
+```elixir
+wrapped_secret = fn -> System.get_env("SECRET") end
+```
+
+## Stacktrace Pruning
+
+Another approach, useful in functions that call the standard library (e.g. crypto) or other functions that do not support wrapping secrets in a closure, is stripping argument values from the stack trace when an exception occurs. This can be done by wrapping the function call(s) in a try … catch expression (Erlang) or adding a rescue clause to a function body (Elixir), and stripping the function arguments before re-raising the exception:
+
+## ETS Tables
+
+ETS tables can be declared as ‘private’ (:private option), preventing the table from being read by other processes, such as remote shell sessions. Private tables are also not visible in ‘observer’.
+
+### <span style="color:red;">Quiz</span>
+
+** We have decided that we do not want this ETS table to be read from other processes, so try making it private:
+
+```elixir
+cool_table = :ets.new(:cool_table, [])
+```
+
+## Reference
+
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/sensitive_data.html
 
 [**<- Previous Module: GraphQL Security**](./4-graphql.livemd) || [**Next Module: Cookie Security ->**](./6-cookies.livemd)
