@@ -59,25 +59,84 @@ Additionally, thought can be put into how you architect data flows with regards 
 
 While performing their designed operations, applications send traffic across networks, make client requests, generate server responses, and consume processing and memory capacity from the computing machines on which they are hosted. They often have components, like APIs that interact with data sources and services. Simply put - modern applications have a lot of things happening!
 
-When building an application, it is necessary to consider approaches to manage the access and use of all relevant internal / external resources involved in the context of the application. This will help ensure the continued availability of the application and it's functionality for all legitimate users and entities. This is particularly important for applications that run critical infrastructure and other key services organizations rely on for business operations.
+When building an application, it is necessary to consider approaches to manage the stress on all internal and external resources involved within the context of the application. This will help ensure the continued availability of the application and its functionality for all legitimate users and entities. This is particularly important for applications that run critical infrastructure and other key services organizations rely on for business operations.
 
-When resources are not well managed, applications become vulnerable to negative impacts in performance, unintentional service failures, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
+When resources are not well managed, applications become vulnerable to negative impacts in performance, service outages, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
 
-Implementing rate limiting is one security best practice that can help mitigate the ability of unlimited, undefined, or uncontrolled application input, to intentionally or inadvertently exahaust vital resources across all levels of application's context.
+Uncontrolled Resource Consumption is ranked 23rd on the list of most dangerous software weaknesses. (https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html). Implementing rate limiting is one security best practice that can help mitigate the likelihood of an application inadvertently or being deliberately triggered into consuming vital resources.
 
 ### Implementation Approaches
-There are multiple approaches to implementing rate limiting within an application and in general the approach is based on at least one of the following problematic scenarios:
+There are multiple approaches to implementing rate limiting within an application and in general the approach is based on anticipating at least one of the following problematic scenarios:
 
-* Malicious actor-generated abusive traffic designed to force the application into a compromised state 
+* Malicious actor-generating abusive traffic designed to force the application into a compromised state 
 * Malicious or legitimate users perform large load activities that requires significant processing power 
 * Malicious or legitimate users sending large number of queries, often repeatedly to the service
 * Malicious or legitimate users sending large number of queries in a narrow timeframe
 
-Rate limiting can be implemented to protect against a variety of attacks or abuses:
+Rate limiting can be implemented to protect against a variety of attacks or abuses by:
 
-* Preventing Denial Of Service attacks (limiting the number of calls to expensive endpoints)
+* Preventing Denial Of Service attacks (limiting the number of calls to resource expensive endpoints)
 * Limiting brute force attempts (such as on one time codes and passwords)
 * Programmatic abuse of services
+
+There are generally two approaches to rate limiting:  that which occurs at the application level, and that which occurs at the network level.
+
+### Application Level Rate Limiting  
+
+Application rate limiting involves limiting interactions with functionality within the application. While developing an application, it is important to implement constraints around how often users can perform certain actions. 
+
+For instance, an application that allows users to submit documents will want to limit file size and the number of repeated upload attempts.  Users who  upload gigantic files or who try to send too many files back-to-back could case a crash.  Implementing rate limiting around the file upload functionality will help ensure that components of the application that respond to unpredictable or intentionally malicious user input, will not exceed the application's server processing capacity or available storage space.
+
+### <span style="color:blue;">Example</span>
+
+The Elixir language has a built-in rate-limiter called Hammer (https://hexdocs.pm/hammer/frontpage.html).  Let's say there is an application that assigns users a userID and allows users to upload photos.  Developers could decide to apply limits based on userId as in the example below. 
+
+Note, the check_rate function below takes 3 arguments:
+
+1. The first is what we've decided apply the limit to, in this case, the userID.  Each user has a unique userID.
+2. The second, 60_000, represents the number of milliseconds in 1 minute (1000 milliseconds per 1 second, 60 seconds in 1 minute)
+3. The last, 5, represents the number of times the userID can appear to have done a particular action before we stop them.  In this case, 5 times. 
+4. The user is able to upload 5 photos (action) within a given minute before being blocked or stopped.
+
+```
+# limit file uploads to x per minute per user
+userId = getUserId()
+case Hammer.check_rate("action:#{userId}", 60_000, 5) do
+  {:allow, _count} ->
+    # let them do it
+  {:deny, _limit} ->
+    # nope too many
+end
+```
+
+### Network Level Rate Limiting 
+Network level rate limiting involves limiting the internet traffic that is destined for the application's host, web server, or web services.  In web applications, when a client makes a request for an application's resources by internet address, that request is made using the HTTP/HTTPS protocol across the internet and is then the service responds using an HTTP response status code indicating if the resource was successfully returned or if there has been an error, or other message as appropriate. 
+
+At the network level, a firewall can be configured to sit between the internet and your application servers/services to control traffic entering and leaving your environment.  Firewalls, are traditionally a network device that filters traffic based on configured access control list that defines good traffic and depending on the firewall captures/analyzes network packets and blocks bad traffic.  
+
+Web Application Firewalls (WAF) operate in a similar fashion to protect applications from incoming network traffic. They look at web traffic over HTTP/HTTPS (ports 80 and 443) respectively for malicious incoming traffic with your application as it's destination and can be configured to allow only known good requests.  They can also to restrict the number of repeated bad attempts from a single source ip address.  Third party hosted WAFs have the ability to monitor for and mitigate large distributed denial of service attacks.
+
+### <span style="color:blue;">Example</span>
+
+**If your public facing URI/URL for your application is hxxps://yourelixirapplication.org/login:**
+
+*The following is an example of requests that can come from across the internet targeting your application 
+from the same source IP 555.555.555.555 for instance:*
+
+```
+hxxps://yourelixirapplication.org/secret
+hxxps://yourelixirapplication.org/admin
+hxxps://yourelixirapplication.org/login?user=test
+hxxps://yourelixirapplication.org/login?user=test&pass=test
+hxxps://yourelixirapplication.org/login?user=';&pass=/www/app/...
+.....
+
+```
+Your site will handle these incoming requests either by returning 404 responses, or other, depending on your configuration.  
+
+Imagine receiving thousands of these requests.  Automated tools are freely available to malicious users who may attempt a variety of attacks, like triggering a denial of service.  If while building the server/service this scenario was not anticipated, the server could crash and your legitimate users won't be able to login to your application.
+
+A WAF can be configured to limit the number of tries from the same IP address.  In the above example, if the same IP is the source for more than 100 of these attempts within 5 seconds, the WAF can prevent those requests from reach your application.  
 
 ### Prevention
 
@@ -88,7 +147,7 @@ Per OWASP, consider limits on the following (please see Rate Limiting References
 * Number of file descriptors
 * Number of processes
 * Request payload size (e.g., uploads)
-* Number of requests per client/resource
+* Number of requests per client/resource/source ip address
 * Number of records per page to return in a single request response
 
 When rate limiting a new action, begin by asking these questions:
@@ -101,62 +160,12 @@ If the answer to one or more of those questions is yes, consider putting a limit
 
 More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
 
-Two approaches to rate limiting
--Application Level...
--Network level...
-
-### Application Level Rate Limiting - 
-
-Rate limiting around Application Features and Functionality - For instance a single user who has access to your application and therefore certain features within the application that respond to user requests for specific actions for instance like uploading a file, sending messages, etc. While developing an application, it is important to implement limits around how much and what actions users can take and how often. 
-
-### <span style="color:blue;">Example</span>
-
-The Elixir language has a built-in rate-limiter called Hammer (https://hexdocs.pm/hammer/frontpage.html).  Some organizations chose to apply limits based on userId as in the example below. 
-
-The check_rate function below takes 3 arguments:
-
-1. The first is what we've decided apply the limit to, in this case, the userID
-2. The second, 60_000, represents the number of milliseconds in 1 minute (1000 milliseconds per 1 second, 60 seconds in 1 minute)
-3. The last, 10, represents the number of times the userID can appear to have done a particular action before we stop them.  In this case, 10 times. 
-
-```
-# limit file uploads to x per minute per user
-userId = getUserId()
-case Hammer.check_rate("action:#{userId}", 60_000, 10) do
-  {:allow, _count} ->
-    # let them do it
-  {:deny, _limit} ->
-    # nope
-end
-```
-
-### Network Level Rate Limiting - Network traffic -> Firewalls 
-Source IP address, destination for server hosting your service
-Firewall, are traditionally a network device that filters traffic based on configured access control list that defines good traffic and depending on the firewall captures/analyzes network packets and blocks bad traffic.  
-
-Firewall functionality implemented at the application level, Web Application Firewalls (WAF) operate similarly by specificly looking at Web traffic, over HTTP/HTTPS port 80 443 for malicious incoming from sources across the internet.  
-
-### <span style="color:blue;">Example</span>
-
-If your public facing URI/URL for your application is hxxps://yourapplication.org/login
-
-```
-The following is an example of requests that can come from across the internet targeting your application from the same source IP 123.123.123.123 for instance:
-hxxps://yourelixirapplication.org/secret
-hxxps://yourelixirapplication.org/admin
-hxxps://yourelixirapplication.org/login?user=test
-hxxps://yourelixirapplication.org/login?user=test&pass=test
-.....
-
-```
-Your site will handle these incoming requests either by returning 404 responses, etc.  Imagine receiving thousands of these requests, however, as can be generated by automated tools freely available to malicious users.  If your server/service processing these request was not built/designed to anticipate this scenario, the server could crash. 
-
-A WAF can be configured to limit the number of tries from the same IP address.  In the above example, if the same IP is the source for more than 100 of these attempts within 5 seconds, the WAF can ensure those requests don't reach your application.  
 
 
 ### Rate Limiting References
 1. https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting
 2. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md
+3. https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html
 
 ## Principle of Least Privilege
 
