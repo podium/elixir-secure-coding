@@ -1,59 +1,40 @@
-# ESCT: Part 12 - Cryptography (Draft)
+# ESCT: Part 12 - Cryptography 
 
 ## Introduction
 
-> ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
-
-
-## Table of Contents
-
-* [Past and Present](#past-and-present)
-* [Types and Algorithms](#types-and-algorithms)
-* [Implementation in Modern Applications](#implementation-in-modern-applications)
-* [Related Concepts](#related-concepts)
-* [Security Concerns](#security-concerns)
-
-## Past and Present
-
-### Description
+Cryptography is the process of transforming information or data from it's original form into one that is unreadable by systems, tools, or people unless they have a key.  The part of the process that converts source data/information into the unreadable version is called encryption.   Reversing that process is called decryption. 
 
 Like many concepts/technologies in security, cryptography is not new.  Centuries of devisings ways to send messages between and among 
 known and trusted senders/receivers while making those messages unreadable for enemies or anyone else for whom the message is not intended.
 Secret codes, etc. 
 
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+Cryptography, like speaking or writing in code, is used whenever there something that needs to be kept secret in an environment where there are multiple other parties who could see or hear the secret but are not the intentended receiptient.  The sender and receiver agree upon a code to exchange messages.  Additionally,  written notes can be stored and unless a reader has the code, won't know what the actual message is.
 
-*TODO: Make Example or Quiz Question*
+Cryptography is used throughout applications to protect sensitive information that while is needed for the operation of the application and it's components, is not intended to be openly shared.  This module highlights how cryptography is applied  
 
-```elixir
+## Table of Contents
 
-```
+* [Types and Algorithms](#types-and-algorithms)
+* [Implementation in Modern Applications](#implementation-in-modern-applications)
+* [Related Concepts](#related-concepts)
+* [Security Concerns](#security-concerns)
 
 ## Types and Algorithms
 
 ### Description
-Different types depending on
+
+There are two categories of cryptography, symmetric and asymmetric and within these categories, there are a variety of algorthims that are distinguished by 
 -how data gets chopped up to be encrypted
 -how many keys are involved in the encryption/decryption process 
 -how the keys get generated/used (symmetric/asymmetric)
 -key size
 -number of cycles
--for complex algorithms etc..
 
-symmetric encryption - secret key - one key used for encryption and decryption .  Use this for performance/efficiency
---application 
-asymmetric encryption - aka public-key cryptography - two keys, one for encrypting one for decrpyting, one shared (pubic) one kept secret(private)
---application digital signatures 
+In symmetric encryption, which is also called secret key encryption, a single key used for both encryption and decryption.  Symmetric cryptography is bested used when performance and efficiency are important to the application component using/accessing the data to be secured.
 
-Old (Cracked - don't use)
+In asymmetric encryption, which is also called public-key cryptography, two related but separte keys are generated and then one is used for encrypting while the other for decrpyting.  The keys include one that is meant to be shared (pubic key) and one that must always be kept secret(private) but in this public key infrastructure (PKI) system, both keys work to secure client-server interactions, secure VPN connectsion, certificates, digital signatures, and help ensure the technology and data in the system is only accessible by authenticated, and authorized entities with keys. 
 
-Newer (Resilient/proven secure by industry)
-AES - symmetric;  CBC and GCM modes most secure
-
-Diffie-Hellman key exchange
-RSA
-
-TLS cipher suites 
+When selecting an algorithm, best practice is to never build your own, and to always use established and proven algorithms, vetted and recommended by industry experts like NIST.  
 
 [symmetric cryptography](https://developer.mozilla.org/en-US/docs/Glossary/Symmetric-key_cryptography)
 [NIST](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-77r1.pdf)
@@ -62,24 +43,32 @@ TLS cipher suites
 
 *TODO: Make Example or Quiz Question*
 
-```elixir
+```
+Older ciphers/algorithms have been proven to be insecure usually due to the weakness of the mathematics invovled in the algorithm or due to the key lenght.  Both of these can make it trivial for a malicious actor to decrypt information/data meant to be kept secret.  
+
+Newer (Resilient/proven secure by industry)
+AES - symmetric;  CBC and GCM modes most secure
+
+Diffie-Hellman key exchange
+RSA
 
 ```
 
 ## Implementation in Modern Applications
 
 ### Description
-In-transit
-TLS/SSL
-SSH
+Modern applications have many components that store, process, transmit a variety of information and data. Often that information/data consists of "secrets" or is otherwise sensitive.  This includes things like personal information on customers, user credentials, of anything else application developers would like to keep secret. 
 
-At rest
-Algorithms above
+API keys, tokens, passwords and other credentials to access privileged components and features, senstivitve data (PII, healthcare), private keys, signing certificates, are all examples of information that should not be available for every users and indeed, kept internal to the organization. 
 
-Best practices for secure algorithms
+Much of this information is not static, however, and need sto be transmitted between client and server, stored in databases, used in source code and thus to secure this data, look to implement cryptography both at rest and in transit.   
 
-Use those recommended by NIST -
-Programming language frameworks have built in libraries.
+Using. cryptography to protect this information wherever it is in the application, sent between services, stored in databases, used in source code is the best way to ensure it's security and confidentiality.
+
+In-transit, dnsure all requests/responses are sent using the secure version of the HTTP protocol, HTTPS.  HTTP over TLS.  Additionally, For remote access into development environments, SSH, VPN - for access to sensitive development environment internal to an organization/remote accessover a network. 
+
+In elixir, https (enabled) 
+
 
 For elixir, ExCrypto module[ExCrypto](https://hexdocs.pm/ex_crypto/ExCrypto.html)
 
@@ -98,7 +87,7 @@ use HTTPS which implements encrpytion over a channel. Diffie-Hellman
 *TODO: Make Example or Quiz Question*
 [
 ](https://hexdocs.pm/plug/https.html)
-
+[Erlang crypto module](https://elixir-lang.org/getting-started/erlang-libraries.html#the-crypto-module) 
 ```elixir
 
 ```
@@ -115,12 +104,6 @@ Hash Algorithms - SHA1, SHA2, MD5 (obsolete) - follow recommendations from
 
 NIST [Approved Hash Algorithms](https://csrc.nist.gov/Projects/Hash-Functions)
 
-Digital Certificates - Application of cryptography/private keys
-
-
-NIST
-[Erlang crypto module](https://elixir-lang.org/getting-started/erlang-libraries.html#the-crypto-module) 
-
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
 *TODO: Make Example or Quiz Question*
@@ -130,14 +113,6 @@ NIST
 ```
 
 ## Security Concerns
-
-Key Management
-Hardcoding keys in code
-Old/Cracked protocols 
-
-Recommendations
--Recommended algorithms
--Sources for publishing notices when algorithms become cracked/obsolete and new
 
 Cryptographic Failures are the number two most common issue on the OWASP Top 10
 A02:2021 – Cryptographic Failures
@@ -153,7 +128,11 @@ For authentication/TLS RSA, DSA, and ECDSA with 128-bit
 security strength (for example, RSA with
 3072-bit or larger key)
 
-[
+Beware of hardcoding keys, private keys, in source code where they can be discovered by malicious actors. Avoid building your own crytographic mechanisms or using outdated protocols. 
+
+Follow NIST Recommendations for configuring the most secure algorithms when building your applications and securing secrets and data.
+
+[Recommended algorithms
 ](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-77r1.pdf)[
 NIST](https://www.nist.gov/cryptography)
 [Encryption Standard](https://csrc.nist.gov/Projects/block-cipher-techniques)
