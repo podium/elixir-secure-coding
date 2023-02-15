@@ -58,8 +58,9 @@ Within the context of a GraphQL implementation, when errors occur, the server co
 
 ### Prevention
 
-OWASP recommends explicitly defining and enforcing all API response payload schemas including error messages.
-Any errors disclosed from the server and displayed to the user should be limited.  Boring is good when it comes to error messages displayed to users.
+Any errors disclosed from the server and displayed to the user should be limited- boring is good when it comes to error messages displayed to users!
+
+OWASP recommends explicitly defining and enforcing all API response payload schemas including error messages; one might be able to accomplish this in an Elixir GraphQL context through the use of [Absinthe.Middleware](https://hexdocs.pm/absinthe/Absinthe.Middleware.html).
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
