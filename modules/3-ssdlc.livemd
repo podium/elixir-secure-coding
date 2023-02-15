@@ -95,10 +95,11 @@ Let's say there is an application that assigns users a userID and allows users t
 
 Note, the check_rate function below takes 3 arguments:
 
-1. The first is what we've decided apply the limit to, in this case, the userID.  Each user has a unique userID.
-2. The second, 60_000, represents the number of milliseconds in 1 minute (1000 milliseconds per 1 second, 60 seconds in 1 minute)
-3. The last, 5, represents the number of times the userID can appear to have done a particular action before we stop them.  In this case, 5 times. 
-4. The user is able to upload 5 photos (action) within a given minute before being blocked or stopped.
+1. The first is what we've decided apply the limit to - in this case a unique identifier from the `userID`.
+2. The second argument (`60_000`) represents the number of milliseconds in 1 minute
+3. The last argument represents the number of times the identifier (our first argument) can appear to have done a particular action before we stop them. In this case, 5 times. 
+
+Ultimately we've created a case statement where the user is able to perform 5 upload photos actions within a minute before being blocked or stopped.
 
 ```
 # limit file uploads to x per minute per user
