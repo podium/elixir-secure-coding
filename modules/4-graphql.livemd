@@ -130,7 +130,7 @@ Resource exhaustion can occur inadvertently through legitimate use or could be t
 
 The structure of GraphQL queries make it particularly succeptible to this type of attack as they can be crafted to perform long running and extensive operations, depending on the data being queried.
 
-In addition to strategies like implementing some form of rate limiting to protect APIs in general (see the section about rate limiting in the previous module), another approach to protect GraphQL from resource exhaustion involves anticipating the cost of a query and allocating resources based on known available capacity.  The next section introduces this approach.
+In addition to strategies like rate limiting to protect APIs in general, another approach to protecting GraphQL from resource exhaustion involves anticipating the cost of a query and allocating resources based on known available capacity.  The next section introduces this approach.
 
 ## Cost Theory
 
