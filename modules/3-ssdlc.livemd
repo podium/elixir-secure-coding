@@ -167,7 +167,7 @@ More often than not, rate limiting should be as specific as possible. For instan
 
 
 
-### Rate Limiting References
+### Resources
 1. https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting
 2. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa4-lack-of-resources-and-rate-limiting.md
 3. https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html
