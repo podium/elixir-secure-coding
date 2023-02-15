@@ -52,7 +52,7 @@ IO.puts(answer)
 
 ### Description
 
-Another one of OWASP’s top 10 security risks for API’s is API7:2019 Security Misconfiguration.  This issue includes api's that issue overly verbose error messages that can unintentionally provide information to help a malicious actor seeking to craft an attack on an application or otherwise exploit the api.  It is a best practice to limit the amount of meaningful information that gets sent back to any user in the event there is an issue with a service, or other application component, including APIs.
+When an application responds with overly verbose error messages, it runs the risk of providing vital information to an attacker seeking to exploit the service. It is a best practice to limit the amount of meaningful information that gets sent back to any user in the event there is an issue with a service, or other application component, including APIs.
 
 Within the context of a GraphQL implementation, when errors occur, the server could send error messages that reveal internal details, application configurations, or data which could be used to further an attack on the application.   
 
