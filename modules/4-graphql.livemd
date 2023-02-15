@@ -113,7 +113,7 @@ Date: Tues, 16 Aug 2022 21:06:42 GMT
 	“error”:”/www/home/file.txt not found ”
 {
 ```
-### References
+### Resources
 1. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
 2. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
 
