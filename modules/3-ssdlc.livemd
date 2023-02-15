@@ -102,13 +102,15 @@ Note, the check_rate function below takes 3 arguments:
 Ultimately we've created a case statement where the user is able to perform 5 upload photos actions within a minute before being blocked or stopped.
 
 ```
-# limit file uploads to x per minute per user
-userId = getUserId()
-case Hammer.check_rate("action:#{userId}", 60_000, 5) do
-  {:allow, _count} ->
-    # let them do it
-  {:deny, _limit} ->
-    # nope too many
+defmodule PhotoStorage do
+  def upload(userID, _file) do
+    case Hammer.check_rate("action:#{userId}", 60_000, 5) do
+      {:allow, _count} ->
+        # let them do it
+      {:deny, _limit} ->
+        # nope too many
+    end
+  end
 end
 ```
 
