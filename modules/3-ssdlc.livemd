@@ -89,7 +89,9 @@ For instance, an application that allows users to submit documents will want to 
 
 ### <span style="color:blue;">Example</span>
 
-The Elixir language has a built-in rate-limiter called Hammer (https://hexdocs.pm/hammer/frontpage.html).  Let's say there is an application that assigns users a userID and allows users to upload photos.  Developers could decide to apply limits based on userId as in the example below. 
+When building Elixir applications, we recommend using the rate limiting library [Hammer](https://hexdocs.pm/hammer/frontpage.html). Let's take a look at how one would use it! 
+
+Let's say there is an application that assigns users a userID and allows users to upload photos.  Developers could decide to apply limits based on userId as in the example below. 
 
 Note, the check_rate function below takes 3 arguments:
 
