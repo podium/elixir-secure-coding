@@ -30,9 +30,8 @@ Excessive Data Exposure is number 3 on OWASP's API Security Top 2019 and APIs wi
 Best practice per OWASP is to limit access, including following least privilege, to introspection queries if it is not possible to completely disable it. Please see references for more details.
 
 ### References
-https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
-
-https://cybervelia.com/?p=736
+1. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
+2. https://cybervelia.com/?p=736
 
 ### <span style="color:red;">Quiz</span>
 
