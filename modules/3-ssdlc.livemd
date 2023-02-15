@@ -63,7 +63,7 @@ When building an application, it is necessary to consider approaches to manage t
 
 When resources are not well managed, applications become vulnerable to negative impacts in performance, service outages, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.  
 
-Uncontrolled Resource Consumption is ranked 23rd on the list of most dangerous software weaknesses. (https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html). Implementing rate limiting is one security best practice that can help mitigate the likelihood of an application inadvertently or being deliberately triggered into consuming vital resources.
+Uncontrolled Resource Consumption is ranked 23rd on the [list of most dangerous software weaknesses](https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html). Implementing rate limiting is one security best practice that can help mitigate the likelihood of an application inadvertently or being deliberately triggered into consuming vital resources.
 
 ### Implementation Approaches
 There are multiple approaches to implementing rate limiting within an application and in general the approach is based on anticipating at least one of the following problematic scenarios:
