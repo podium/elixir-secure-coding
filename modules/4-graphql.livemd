@@ -143,8 +143,8 @@ One approach for implementing validation on incoming queries to determine their 
 This approach also helps implement rate limiting by establishing a query cost based on the type, operation, and expected performance of each unique GraphQL request for data, and by anticipating the load on the server.  
 
 
-### References
-https://shopify.engineering/rate-limiting-graphql-apis-calculating-query-complexity
+### Resources
+1. https://shopify.engineering/rate-limiting-graphql-apis-calculating-query-complexity
 
 ### GraphQl References
 https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
