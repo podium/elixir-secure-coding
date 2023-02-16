@@ -17,7 +17,7 @@ But even the dullest blades can hurt someone! This module goes over Elixir speci
 * [Untrusted Code](#untrusted-code)
 * [Timing Attacks](#timing-attacks)
 * [Boolean Coercion](#boolean-coercion)
-* [Protecting Sensitive Data](#protecting-sensitive-data)
+* [Sensitive Data Exposure](#sensitive-data-exposure)
 
 ## Atom Exhaustion
 
