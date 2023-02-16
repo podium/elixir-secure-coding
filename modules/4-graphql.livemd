@@ -21,25 +21,25 @@ Introspection queries are a way of enumerating a particular GraphQL implementati
 
 If you are familiar with databases, this is similar to gathering info on the [database schema]( https://en.wikipedia.org/wiki/Database_schema) that includes information about table names, fields, database, structure etc.
 
-Malicious actors in their information gathering/reconnaissnce efforts can leverage this information as they look for ways to attack your application and construct malicious queries and requests to compromise data.
+Malicious actors in their information gathering/reconnaissnce efforts can leverage this information as they look for ways to attack your application and construct malicious queries and requests to expose and compromise data.
 
 Excessive Data Exposure is number 3 on OWASP's API Security Top 2019 and APIs with this issue return too much and/or sensitive information in response to incoming requests and queries.  Although it provides a useful function for GraphQL developers, the information returned by introspection can help facilitate attack. 
 
 ### Prevention
 
-The less an attacker can learn about your system or application, the more difficult (though not impossible given time and resources) it will be to identify vulnerablilities and craft exploits that could result in a successful compromise. 
+The less an attacker can learn about your system or application, the more difficult (though, of course, not impossible given time and resources) it will be to identify vulnerablilities and craft exploits that could result in a successful compromise. 
 
 Taking every opportunity to add a layer of difficulty (see defense in depth section in Module 3) for malicious actors is one aspect of securing data and applications.
 
-Imagine trying to surprise a friend who lives in another part of the country with a complete home makeover.  You've never been to their place but imagine trying to make arrangements, in secret, without having a map to their city, a website with a street view, or floorplans.  What if they live on the 30th floor of an apartment building, there's no street parking, and they have 4 large pets?   
+Imagine trying to surprise a friend who lives in another part of the country with a complete home makeover.  You've never been to their place but imagine trying to make arrangements, in secret, without having a map to their city, knowing their address, having access to a website with a street view, or having the floorplans.  What if they live on the 30th floor of an apartment building, there's no street parking, and they have 4 large pet dragons?   
 
-Since introspection queries provide the floorplans to your data, one step in making an attacker's job more difficult is to, if an evaluation of your application development processes determines it is not needed, disable introspection. If it is not possible to completely disable it, where possible, the next best defense is to limit access, by following least privilege. Please see references for more details.
+Since introspection queries provide the floorplans to your data, one step in making an attacker's job more difficult is to, if an evaluation of your application development processes determines it is not needed, disable introspection. If it is not possible to completely disable introspection, the next best defense is to limit access, by following least privilege, or implement other contols to limit exposure. Please see references for more details.
 
 ### <span style="color:blue;">Example</span> 
 
 [Vigil](https://github.com/podium/vigil) is an elixir package that when added to your application's dependencies, can intercept incoming GraphQL introspection requests and return an error/forbidden message to the client, instead of information about the schema. 
 
-It can also intercept responses to ensure no schema data is being leaked in any error messages. 
+It can also intercept responses to ensure no schema data is being leaked in any error messages shown to the client. 
 
 ### Resources
 1. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
