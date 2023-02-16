@@ -75,56 +75,61 @@ Any errors disclosed from the server and displayed to the user should be limited
 
 OWASP recommends explicitly defining and enforcing all API response payload schemas including error messages; one might be able to accomplish this in an Elixir GraphQL context through the use of [Absinthe.Middleware](https://hexdocs.pm/absinthe/Absinthe.Middleware.html).
 
-### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
+### <span style="color:red;">Quiz</span>
 
-Select the best example of a “good” error message, from the perspective of developer who is writing code that is intended to inform a user (who may or may not be a malicious actor) that the action they have attempted was unsuccessful:
+**Select the best example of a “good” error message, from the perspective of developer who is writing code that is intended to inform a user (who may or may not be a malicious actor) that the action they have attempted was unsuccessful:**
 
-1 - 
+*Uncomment the item number (1-4) with your answer*
 ```
-HTTP/2 401 Unauthorized
-Date: Tues, 16 Aug 2022 21:06:42 GMT
-…
-{
-	“error”:”token expired”
-{
-```
+# -------------------------------------------------------------
+# answer = :1 
+#
+#HTTP/2 401 Unauthorized
+#Date: Tues, 16 Aug 2022 21:06:42 GMT
+#…
+#{
+#	“error”:”token expired”
+#{
+# -------------------------------------------------------------
+# answer = :2
+#
+#HTTP/2 200 OK
+#Date: Tues, 16 Aug 2021 22:06:42 GMT
+#…
+#{
+#	“errors”:[
+#		{
+#			“locations”:[
+#			{
+#				“column”:2,
+#				:line”:2
+#			}
+#			],
+#			“message”: “Parsing failed at 
+#		}
+#	]
+#}
+# --------------------------------------------------------------
+# answer = :3
+#
+#HTTP/2 200 OK
+#Date: Tues, 16 Aug 2022 21:06:42 GMT
+#…
+#{
+#	“error”:”ID token for user 55e4cb07 at org 1234 expired”
+#{
+# ---------------------------------------------------------------
+# answer = :4 
+#
+#HTTP/2 404 File Not Found
+#Date: Tues, 16 Aug 2022 21:06:42 GMT
+#…
+#{
+#	“error”:”/www/home/file.txt not found ”
+#{
+# ---------------------------------------------------------------
 
-2-
-```
-HTTP/2 200 OK
-Date: Tues, 16 Aug 2021 22:06:42 GMT
-…
-{
-	“errors”:[
-		{
-			“locations”:[
-			{
-				“column”:2,
-				:line”:2
-			}
-			],
-			“message”: “Parsing failed at 
-		}
-	]
-}
-```
-3-
-```
-HTTP/2 200 OK
-Date: Tues, 16 Aug 2022 21:06:42 GMT
-…
-{
-	“error”:”ID token for user 55e4cb07 at org 1234 expired”
-{
-```
-4- 
-```
-HTTP/2 404 File Not Found
-Date: Tues, 16 Aug 2022 21:06:42 GMT
-…
-{
-	“error”:”/www/home/file.txt not found ”
-{
+IO.puts(answer)
 ```
 ### Resources
 1. https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa7-security-misconfiguration.md
