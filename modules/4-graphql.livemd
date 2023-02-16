@@ -33,7 +33,7 @@ Taking every opportunity to add a layer of difficulty (see defense in depth sect
 
 Imagine trying to surprise a friend who lives in another part of the country with a complete home makeover.  You've never been to their place but imagine trying to make arrangements, in secret, without having a map to their city, knowing their address, having access to a website with a street view, or having the floorplans.  What if they live on the 30th floor of an apartment building, there's no street parking, and they have 4 large pet dragons?   
 
-Since introspection queries provide the floorplans to your data, one step in making an attacker's job more difficult is to, if an evaluation of your application development processes determines it is not needed, disable introspection. If it is not possible to completely disable introspection, the next best defense is to limit access, by following least privilege, or implement other contols to limit exposure. Please see references for more details.
+Since introspection queries provide the floorplans to your data, one step in making an attacker's job more difficult is to, if an evaluation of your application development processes determines it is not needed, disable introspection. If it is not possible to completely disable introspection, the next best defense is to limit access, by following least privilege, or implement other controls to limit exposure. Please see references for more details.
 
 ### <span style="color:blue;">Example</span> 
 
