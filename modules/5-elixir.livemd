@@ -235,7 +235,9 @@ Another approach, useful in functions that call the standard library (e.g. crypt
 
 ## ETS Tables
 
-ETS tables can be declared as ‘private’ (:private option), preventing the table from being read by other processes, such as remote shell sessions. Private tables are also not visible in ‘observer’.
+[ETS tables](https://elixir-lang.org/getting-started/mix-otp/ets.html) are commonly used as a go to caching mechanism in-app. But did you know that they can be declared as private (through the use of the `:private` option when instantiating them)? 
+
+This prevents the table from being read by other processes, such as remote shell sessions. Private tables are also not visible in Observer.
 
 ### <span style="color:red;">Quiz</span>
 
