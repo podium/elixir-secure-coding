@@ -205,7 +205,7 @@ user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
 # if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
 ```
 
-## Protecting Sensitive Data
+## Sensitive Data Exposure
 
 ### Description
 
