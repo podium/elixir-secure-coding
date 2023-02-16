@@ -215,8 +215,6 @@ While it's obvious that we don't want data of this nature to get exposed, let's 
 
 ### Prevention
 
-I think we can all agree that making sure this information is secure is important, but let's dive into how to actually protect it:
-
 ## Wrapping
 
 Exceptions may result in console or log output that includes a stack trace. Mostly a stack trace shows the module/function/arity and the filename/line where the exception occurred, but for the function at the top of the stack the actual list of arguments may be included instead of the function arity.
