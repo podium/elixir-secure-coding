@@ -27,11 +27,27 @@ Excessive Data Exposure is number 3 on OWASP's API Security Top 2019 and APIs wi
 
 ### Prevention
 
-Best practice per OWASP is to limit access, including following least privilege, to introspection queries if it is not possible to completely disable it. Please see references for more details.
+The less an attacker can learn about your system or application, the more difficult (though not impossible given time and resources) it will be to identify vulnerablilities and craft exploits that could result in a successful compromise. 
+
+Making a malicious actor work as hard as possible to achieve their objectives is a worthy effort and any opportunity to add a layer of difficulty (i.e. see defense in depth section in Module 3), where possible and appropriate is ideal.
+
+Imagine trying to gain entry into a 
+
+building without having a map, floorplans, or a website or flashlight. That's good for building security, but makes for a more difficult time for an intruder to plan their entry/exit without getting seen or caught.  
+
+One of the ways to do this for applications that use GraphQL is to limit access to , including following least privilege, to introspection queries if it is not possible to completely disable it. Please see references for more details.
+
+### <span style="color:blue;">Example</span> 
+
+Vigil is an elixir package [Vigil](https://github.com/podium/vigil)that when added to your application's dependencies, can intercept incoming GraphQL introspection requests and return an error/forbidden message to the client, instead of information about the schema. 
+
+It can also intercept responses to ensure no schema data is being leaked in any error messages. 
+
 
 ### Resources
 1. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
 2. https://cybervelia.com/?p=736
+3. https://github.com/podium/vigil
 
 ### <span style="color:red;">Quiz</span>
 
