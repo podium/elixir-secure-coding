@@ -211,6 +211,8 @@ user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
 
 Sensitive data is any information that should be out of reach from all outsiders unless they have permission to access it, which in most cases would be considered "confidential data". Some examples of sensitive data are PHI (Protected Health Information) or PII (Personally Identifiable Information).
 
+While it's obvious that we don't want data of this nature to get exposed, let's walk through some of the common instances in which it _can_ occur while using Elixir and how to prevent it from happening!
+
 ### Prevention
 
 I think we can all agree that making sure this information is secure is important, but let's dive into how to actually protect it:
