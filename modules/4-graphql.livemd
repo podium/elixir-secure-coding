@@ -37,7 +37,7 @@ Since introspection queries provide the floorplans to your data, one step in mak
 
 ### <span style="color:blue;">Example</span> 
 
-Vigil is an elixir package [Vigil](https://github.com/podium/vigil)that when added to your application's dependencies, can intercept incoming GraphQL introspection requests and return an error/forbidden message to the client, instead of information about the schema. 
+[Vigil](https://github.com/podium/vigil) is an elixir package that when added to your application's dependencies, can intercept incoming GraphQL introspection requests and return an error/forbidden message to the client, instead of information about the schema. 
 
 It can also intercept responses to ensure no schema data is being leaked in any error messages. 
 
