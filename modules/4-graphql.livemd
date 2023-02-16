@@ -159,14 +159,6 @@ This approach also helps implement rate limiting by establishing a query cost ba
 ### Resources
 1. https://shopify.engineering/rate-limiting-graphql-apis-calculating-query-complexity
 
-### GraphQl References
-https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
-https://owasp.org/www-project-api-security/
-https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
-https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html
-https://owasp.org/www-project-api-security/  
-https://www.howtographql.com/advanced/4-security/
-(https://hexdocs.pm/hammer/tutorial.html)
 <!-- livebook:{"branch_parent_index":4} -->
 
 
