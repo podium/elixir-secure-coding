@@ -165,7 +165,44 @@ A WAF can be configured to limit the number of tries from the same IP address.  
 
 ### <span style="color:red">QUIZ</span>
 
-"Using the Hammer library, protect the provided function with these specifications..."
+***Using the Hammer library, protect the provided function with these specifications:  limit each user to 3 login attempts in 1 minute***
+
+```elixir
+defmodule LoginAttempt do
+  def login(user, attempt) do
+    # code below to be added here
+    end
+  end
+end
+```
+
+*Uncomment the line (1-3) that indicates the code block that goes into the funtion above*
+
+```
+# answer = :1
+#    case Hammer.check_rate("login_try:#{user}", 60_000, 3) do
+#      {:allow, _count} ->
+#        # try again
+#      {:deny, _limit} ->
+#        # lock out for 10 min
+# ------------------------------------------------------
+# answer = :2
+#    case Hammer("login_try:#{user}", 60_000, 3) do
+#      {:allow, _count} ->
+#        # try again
+#      {:deny, _limit} ->
+#        # lock out for 30 min
+# ------------------------------------------------------ 
+# answer = :3
+#    case Hammer.check_rate("login_try:#{user}", 30_000, 100) do
+#      {:allow, _count} ->
+#        # try again
+#      {:deny, _limit} ->
+#        # lock out for 5 min
+       
+IO.puts(answer)
+```
+
 
 ### Resources
 1. https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting
