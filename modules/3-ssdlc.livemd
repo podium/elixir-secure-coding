@@ -101,7 +101,7 @@ Note, the check_rate function below takes 3 arguments:
 
 Ultimately we've created a case statement where the user is able to perform 5 upload photos actions within a minute before being blocked or stopped.
 
-```
+```elixir
 defmodule PhotoStorage do
   def upload(userID, _file) do
     case Hammer.check_rate("action:#{userId}", 60_000, 5) do
