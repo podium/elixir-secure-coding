@@ -231,7 +231,22 @@ wrapped_secret = fn -> System.get_env("SECRET") end
 
 ## Stacktrace Pruning
 
-Another approach, useful in functions that call the standard library (e.g. crypto) or other functions that do not support wrapping secrets in a closure, is stripping argument values from the stack trace when an exception occurs. This can be done by wrapping the function call(s) in a try … catch expression (Erlang) or adding a rescue clause to a function body (Elixir), and stripping the function arguments before re-raising the exception:
+Another approach, useful in functions that call the standard library (e.g. crypto) or other functions that do not support wrapping secrets in a closure, is stripping argument values from the stack trace when an exception occurs. This can be done by wrapping the function call(s) in a try … catch expression (Erlang) or adding a rescue clause to a function body (Elixir), and stripping the function arguments before re-raising the exception
+
+### <span style="color:blue;">Example</span>
+
+```elixir
+def encrypt_with_secret(message, wrapped_secret) do
+  ComeCryptoLib.encrypt(message, wrapped_secret.())
+rescue
+  e -> reraise e, prune_stacktrace(System.stacktrace())
+end
+
+defp prune_stacktrace([{mod, fun, [_ | _] = args, info} | rest]),
+  do: [{mod, fun, length(args), info} | rest]
+
+defp prune_stacktrace(stacktrace), do: stacktrace
+```
 
 ## ETS Tables
 
