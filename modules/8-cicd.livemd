@@ -45,7 +45,7 @@ Let's say you are interested finding in places in your application that may be s
 
 There are several types of injection.  Referring to the CWE list, we see #17 CWE-77 for Command Injection, #25 CWE-94 is Code Injection, and #3 CWE-89 is SQL Injection.  If we look at the OWASP Top 10 for 2021, A03:2021-Injection is third on the list.  Sobelow has the capability to detect these types of security issues.
 
-Injection vulnerabilies are places in an application where a malicious actor can send commands, queries, and other input that gets processed and executed as code.  Injection attacks can trigger the application into performing an unauthorized action or exposing sensitive data.
+Injection vulnerabilities are places in an application where a malicious actor can send commands, queries, and other input that gets processed and executed as code.  Injection attacks can trigger the application into performing an unauthorized action or exposing sensitive data.
 
 [The following modules are supported by Sobelow for the discovery of Command Injection Vulnerabilities](https://hexdocs.pm/sobelow/0.2.4/Sobelow.CI.html#content)
 
