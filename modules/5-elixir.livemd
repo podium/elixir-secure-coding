@@ -13,7 +13,7 @@ But even the dullest blades can hurt someone! This module goes over Elixir speci
 ## Table of Contents
 
 * [Atom Exhaustion](#atom-exhaustion)
-* [Protecting Sensitive Data](#protecting-sensitive-data)
+* [Serialization and Deserialization](#serialization-and-deserialization)
 * [Untrusted Code](#untrusted-code)
 * [Timing Attacks](#timing-attacks)
 * [Boolean Coercion](#boolean-coercion)
@@ -60,6 +60,21 @@ end
 IO.puts("Are you protected against Atom Exhaustion?")
 IO.puts(:erlang.system_info(:atom_count) == prev_count)
 ```
+
+## Serialization and Deserialization
+
+### Description
+
+Deserialization of untrusted input can result in atom creation, which can lead to your application being vulnerable to denial of service (DOS) attacks. When you do use a deserialization library, make sure that the library does not create arbitrary atoms: either configure the library to return strings/binaries or enable schema validation to constrain the input
+
+### Prevention
+
+* Use the :safe option when calling `:erlang.binary_to_term/2` on untrusted input (should be familiar from atom exhaustion 😀)
+* Prevent function deserialisation from untrusted input, e.g. using `Plug.Crypto.non_executable_binary_to_term/1,2`
+
+### Resource
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/serialisation
+
 
 ## Untrusted Code
 

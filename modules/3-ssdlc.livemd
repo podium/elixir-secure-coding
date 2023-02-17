@@ -9,7 +9,13 @@ Welcome to Part 3! This section is dedicated to discussing some of the more abst
 * [No Secrets In Code](#no-secrets-in-code)
 * [Making Secret Rotation Easy](#making-secret-rotation-easy)
 * [Rate Limiting](#rate-limiting)
-* [Principle of Least Privilege](#principle-of-least-privlege)
+* [Zero Trust Model](#zero-trust-model)
+  * [Principle of Least Privilege](principle-of-least-privlege)
+  * [Device Access Control](device-access-control)
+  * [Microsegmentation](microsegmentation)
+  * [Preventing Lateral Movement](preventing-lateral-movement)
+  * [Multi Factor Authentication](multi-factor-authentication)
+* [Defense In Depth](#defense-in-depth)
 
 ## No Secrets In Code
 
@@ -75,7 +81,9 @@ If the answer to one or more of those questions is yes, consider putting a limit
 
 More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
 
-## Principle of Least Privilege
+## Zero Trust Model
+
+### Principle of Least Privilege
 
 Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity* is only strictly given the essential privileges needed to perform its requirement.
 
@@ -83,10 +91,76 @@ E.g. A script that executes on a cron schedule that monitors the output of a log
 
 **Entity: generic term for an arbitrary process, user, program, etc. found within a Data System*
 
-### Benefits of the Principle
+#### Benefits of the Principle
 
 * **Better Data System Stability** - When an entity is limited in the scope of changes it can make to a system, it is easier to test its possible actions and interactions in the context of the Data System.
 * **Better Data System Security** - When an entity is limited in the system-wide actions it may perform, vulnerabilities / compromises in one application cannot be used to exploit the rest of the business or adjacent Data Systems.
 * **Ease of Deployment** - In general, the fewer privileges an entity requires, the easier it is to deploy within a larger environment.
   <br /><br />
-  [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
+
+### Device Access Control
+
+Zero Trust is not only about controlling user access, but requires strict controls on device access as well. With this, Zero Trust systems need to monitor how many different devices are trying to access their network, ensure that every device is authorized, and assess all devices to make sure they have not been compromised. This further minimizes the attack surface of the network.
+
+### Microsegmentation
+
+Microsegmentation is the practice of breaking up security perimeters into small zones to maintain separate access for separate parts of the network. Some of the benefits of doing so are: 
+* Granular Access Policies - we can create super specific policies for access to each segment! 
+* Targeted Security Controls - we can develop each micro-perimeter to specifically target the security risks and vulnerabilities of the resources in that micro-segment! 
+* Establishing Identities and Trust - we can implement, monitor, and control the “never trust, always verify” principle much easier! 
+
+### Preventing Lateral Movement 
+
+Zero Trust is designed to contain attackers so that they can not move laterally. You may be asking what does that even mean? In network security, “lateral movement” is when an attacker moves within a network after gaining access to it, which can be very difficult to detect. 
+
+Zero Trust helps contain attackers because the access is segmented and has to be reestablished periodically, limiting them from moving across to other microsegments within the network. 
+
+### Multi Factor Authentication
+
+It's no surprise that MFA is a core part of the Zero Trust Model. Systems using MFA require more than one piece of evidence to authenticate a user, with the most common form being a one time password (OTP). 
+
+### Resource
+1. https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/
+
+## Defense In Depth
+
+Defense in depth is a security approach of having defense mechanisms in a layered approach to protect valuable assets. Castles take a similar approach, where they have a moat, ramparts, towers, and drawbridges instead of just one wall as protection. 
+
+An example of developing a web application using defense in depth could be: 
+* The developers (like yourself) receive secure coding training
+* The codebase is checked automatically for vulnerabilities using Semgrep
+* The codebase is also checked for outdated dependencies using Dependabot
+* The application is regularly tested by the internal security team 
+* Multiple development environments are used such as Develpoment, Staging, and Production
+
+<br> </br> 
+
+Using more than one of the following layers constitutes an example of defense in depth: 
+
+### System and Application 
+
+* Authentication and password security
+  * Hashing passwords 
+  * Multi factor authentication (MFA) 
+* Encryption 
+* Security Tooling 
+* Security Awareness Training (sounds familiar 😉) 
+* Logging and Monitoring 
+
+### Network 
+
+* Firewalls (hardware and software) 
+* Demilitarized zones (DMZ) 
+* Virtual Private Networks (VPN)
+
+### Physical 
+
+* Biometrics 
+* Data-centric security 
+* Physical Security (such as locked server rooms) 
+
+### Resource
+1. https://www.forcepoint.com/cyber-edu/defense-depth
+
+
+[**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
