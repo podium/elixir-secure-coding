@@ -87,6 +87,16 @@ Application rate limiting involves limiting interactions with functionality with
 
 For instance, an application that allows users to submit documents will want to limit file size and the number of repeated upload attempts.  Users who  upload gigantic files or who try to send too many files back-to-back could case a crash.  Implementing rate limiting around the file upload functionality will help ensure that components of the application that respond to unpredictable or intentionally malicious user input, will not exceed the application's server processing capacity or available storage space.
 
+When rate limiting a new action, begin by asking these questions:
+
+* "What are the maximum number of calls to my action that a reasonable non-malicious user would feasibly make in a given time period?"
+* "Is calling this action an expensive operation? If yes, how many calls in a minute would be enough to overburden the service?"
+* "Is this action a candidate for brute force attacks?" (E.g. passwords, authentication tokens, one time passcodes)
+
+If the answer to one or more of those questions is yes, consider putting a limit on the number of times that the action can be called. Good rate limiting keeps in mind legitimate use cases and does not block regular user functionality, but protects the service from malicious or burdensome behavior.
+
+More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
+
 ### <span style="color:blue;">Example</span>
 
 When building Elixir applications, we recommend using the rate limiting library [Hammer](https://hexdocs.pm/hammer/frontpage.html). Let's take a look at how one would use it! 
@@ -121,6 +131,16 @@ At the network level, a firewall can be configured to sit between the internet a
 
 Web Application Firewalls (WAF) operate in a similar fashion to protect applications from incoming network traffic. They look at web traffic over HTTP/HTTPS (ports 80 and 443) respectively for malicious incoming traffic with your application as it's destination and can be configured to allow only known good requests.  They can also to restrict the number of repeated bad attempts from a single source ip address.  Third party hosted WAFs have the ability to monitor for and mitigate large distributed denial of service attacks.
 
+Per OWASP, consider limits on the following (please see Rate Limiting References below):
+
+* Execution timeouts
+* Max allocable memory
+* Number of file descriptors
+* Number of processes
+* Request payload size (e.g., uploads)
+* Number of requests per client/resource/source ip address
+* Number of records per page to return in a single request response
+
 ### <span style="color:blue;">Example</span>
 
 **If your public facing URI/URL for your application is hxxps://yourelixirapplication.org/login:**
@@ -143,29 +163,9 @@ Imagine receiving thousands of these requests.  Automated tools are freely avail
 
 A WAF can be configured to limit the number of tries from the same IP address.  In the above example, if the same IP is the source for more than 100 of these attempts within 5 seconds, the WAF can prevent those requests from reach your application.  
 
-### Prevention
+### <span style="color:red">QUIZ</span>
 
-Per OWASP, consider limits on the following (please see Rate Limiting References below):
-
-* Execution timeouts
-* Max allocable memory
-* Number of file descriptors
-* Number of processes
-* Request payload size (e.g., uploads)
-* Number of requests per client/resource/source ip address
-* Number of records per page to return in a single request response
-
-When rate limiting a new action, begin by asking these questions:
-
-* "What are the maximum number of calls to my action that a reasonable non-malicious user would feasibly make in a given time period?"
-* "Is calling this action an expensive operation? If yes, how many calls in a minute would be enough to overburden the service?"
-* "Is this action a candidate for brute force attacks?" (E.g. passwords, authentication tokens, one time passcodes)
-
-If the answer to one or more of those questions is yes, consider putting a limit on the number of times that the action can be called. Good rate limiting keeps in mind legitimate use cases and does not block regular user functionality, but protects the service from malicious or burdensome behavior.
-
-More often than not, rate limiting should be as specific as possible. For instance, it is better to add rate limiting on a single GraphQL type than to add a generic limit to the entire /GraphQL endpoint.
-
-
+"Using the Hammer library, protect the provided function with these specifications..."
 
 ### Resources
 1. https://cheatsheetseries.owasp.org/cheatsheets/GraphQL_Cheat_Sheet.html#rate-limiting
