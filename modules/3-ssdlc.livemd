@@ -105,7 +105,7 @@ Zero Trust is not only about controlling user access, but requires strict contro
 ### Microsegmentation
 
 Microsegmentation is the practice of breaking up security perimeters into small zones to maintain separate access for separate parts of the network. Some of the benefits of doing so are: 
-* Granular Access Policies- we can create super specific policies for access to each segment! 
+* Granular Access Policies - we can create super specific policies for access to each segment! 
 * Targeted Security Controls - we can develop each micro-perimeter to specifically target the security risks and vulnerabilities of the resources in that micro-segment! 
 * Establishing Identities and Trust - we can implement, monitor, and control the “never trust, always verify” principle much easier! 
 
@@ -119,7 +119,7 @@ Zero Trust helps contain attackers because the access is segmented and has to be
 
 It's no surprise that MFA is a core part of the Zero Trust Model. Systems using MFA require more than one piece of evidence to authenticate a user, with the most common form being a one time password (OTP). 
 
-### Reference
+### Resource
 1. https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/
 
 ## Defense In Depth
@@ -159,7 +159,7 @@ Using more than one of the following layers constitutes an example of defense in
 * Data-centric security 
 * Physical Security (such as locked server rooms) 
 
-### Reference
+### Resource
 1. https://www.forcepoint.com/cyber-edu/defense-depth
 
 
