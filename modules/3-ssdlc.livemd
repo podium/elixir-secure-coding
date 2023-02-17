@@ -69,15 +69,15 @@ Uncontrolled Resource Consumption is ranked 23rd on the [list of most dangerous 
 There are multiple approaches to implementing rate limiting within an application and in general the approach is based on anticipating at least one of the following problematic scenarios:
 
 * Malicious actor-generating abusive traffic designed to force the application into a compromised state 
-* Malicious or legitimate users perform large load activities that requires significant processing power 
-* Malicious or legitimate users sending large number of queries, often repeatedly to the service
-* Malicious or legitimate users sending large number of queries in a narrow timeframe
+* Malicious or legitimate users perform large load activities that require significant processing power 
+* Malicious or legitimate users sending a large number of queries, often repeatedly to the service
+* Malicious or legitimate users sending a large number of queries in a narrow timeframe
 
 Rate limiting can be implemented to protect against a variety of attacks or abuses by:
 
 * Preventing Denial Of Service attacks (limiting the number of calls to resource expensive endpoints)
 * Limiting brute force attempts (such as on one time codes and passwords)
-* Programmatic abuse of services
+* Addressing programmatic abuse of services
 
 There are generally two approaches to rate limiting:  that which occurs at the application level, and that which occurs at the network level.
 
@@ -125,21 +125,11 @@ end
 ```
 
 ### Network Level Rate Limiting 
-Network level rate limiting involves limiting the internet traffic that is destined for the application's host, web server, or web services.  In web applications, when a client makes a request for an application's resources by internet address, that request is made using the HTTP/HTTPS protocol across the internet and is then the service responds using an HTTP response status code indicating if the resource was successfully returned or if there has been an error, or other message as appropriate. 
+Network level rate limiting involves limiting the internet traffic that is destined for the application's host, web server, or web services.  In web applications, when a client makes a request for an application's resources by internet address (via DNS <-> URL domain), that request is made using the HTTP/HTTPS protocol across the internet. Then the service responds using an HTTP response status code indicating if the resource was successfully returned, if there has been an error, or other message as appropriate. 
 
-At the network level, a firewall can be configured to sit between the internet and your application servers/services to control traffic entering and leaving your environment.  Firewalls, are traditionally a network device that filters traffic based on configured access control list that defines good traffic and depending on the firewall captures/analyzes network packets and blocks bad traffic.  
+At the network level, a firewall can be configured to sit between the internet and your application servers/services to control traffic entering and leaving your hosting environment.  Firewalls, are traditionally a network device that filters traffic based on a configured access control list that defines good traffic and, depending on the firewall captures/analyzes network packets, and blocks bad traffic.  
 
-Web Application Firewalls (WAF) operate in a similar fashion to protect applications from incoming network traffic. They look at web traffic over HTTP/HTTPS (ports 80 and 443) respectively for malicious incoming traffic with your application as it's destination and can be configured to allow only known good requests.  They can also to restrict the number of repeated bad attempts from a single source ip address.  Third party hosted WAFs have the ability to monitor for and mitigate large distributed denial of service attacks.
-
-Per OWASP, consider limits on the following (please see Rate Limiting References below):
-
-* Execution timeouts
-* Max allocable memory
-* Number of file descriptors
-* Number of processes
-* Request payload size (e.g., uploads)
-* Number of requests per client/resource/source ip address
-* Number of records per page to return in a single request response
+Web Application Firewalls (WAF) operate in a similar fashion to protect applications from incoming network traffic. They look at web traffic over HTTP/HTTPS (ports 80 and 443) respectively for malicious incoming traffic with your application as it's destination and can be configured to allow only known good requests.  They can also restrict the number of repeated bad attempts from a single source ip address.  Third party hosted WAFs have the ability to monitor for and mitigate large distributed denial of service attacks.
 
 ### <span style="color:blue;">Example</span>
 
@@ -162,6 +152,16 @@ Your site will handle these incoming requests either by returning 404 responses,
 Imagine receiving thousands of these requests.  Automated tools are freely available to malicious users who may attempt a variety of attacks, like triggering a denial of service.  If while building the server/service this scenario was not anticipated, the server could crash and your legitimate users won't be able to login to your application.
 
 A WAF can be configured to limit the number of tries from the same IP address.  In the above example, if the same IP is the source for more than 100 of these attempts within 5 seconds, the WAF can prevent those requests from reach your application.  
+
+When implementing rate limiting, consider limits on the following (please see Rate Limiting References below):
+
+* Execution timeouts
+* Max allocable memory
+* Number of file descriptors
+* Number of processes
+* Request payload size (e.g., uploads)
+* Number of requests per client/resource/source ip address
+* Number of records per page to return in a single request response
 
 ### <span style="color:red">QUIZ</span>
 
