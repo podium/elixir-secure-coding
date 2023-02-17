@@ -244,7 +244,8 @@ This prevents the table from being read by other processes, such as remote shell
 **We have decided that we do not want this ETS table to be read from other processes, so try making it private:**
 
 ```elixir
-cool_table = :ets.new(:cool_table, [])
+secret_table = :ets.new(:secret_table, [:public]) # ONLY EDIT THIS LINE
+:ets.info(secret_table)[:protection]
 ```
 
 ## Resource
