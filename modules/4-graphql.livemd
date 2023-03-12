@@ -21,7 +21,7 @@ Introspection queries are a way of enumerating a particular GraphQL implementati
 
 If you are familiar with databases, this is similar to gathering info on the [database schema]( https://en.wikipedia.org/wiki/Database_schema) that includes information about table names, fields, database, structure etc.
 
-Malicious actors in their information gathering/reconnaissnce efforts can leverage this information as they look for ways to attack your application and construct malicious queries and requests to expose and compromise data.
+Malicious actors in their information gathering/reconnaissance efforts can leverage this information as they look for ways to attack your application and construct malicious queries and requests to expose and compromise data.
 
 Excessive Data Exposure is number 3 on OWASP's API Security Top 2019 and APIs with this issue return too much and/or sensitive information in response to incoming requests and queries.  Although it provides a useful function for GraphQL developers, the information returned by introspection can help facilitate attack. 
 
