@@ -2,6 +2,7 @@ defmodule GradingServerWeb.AnswerController do
   use GradingServerWeb, :controller
 
   alias GradingServer.AnswerStore
+  alias GradingServer.Answers
 
   action_fallback(GradingServerWeb.FallbackController)
 
@@ -9,18 +10,18 @@ defmodule GradingServerWeb.AnswerController do
     render(conn, "index.json")
   end
 
-  def show(conn, %{"id" => question_id}) do
+  def check(conn, %{"question_id" => question_id, "answer" => answer}) do
     case Integer.parse(question_id) do
       :error ->
         render(conn, "no_answer.json", question_id: question_id)
 
       {question_id, _} ->
-        case AnswerStore.get_answer(question_id) do
-          nil ->
-            render(conn, "no_answer.json", question_id: question_id)
+        case Answers.check(question_id, answer) do
+          :correct ->
+            render(conn, "correct.json", question_id: question_id)
 
-          answer ->
-            render(conn, "show.json", answer: answer)
+          {:incorrect, help_text} ->
+            render(conn, "incorrect.json", question_id: question_id, help_text: help_text)
         end
     end
   end

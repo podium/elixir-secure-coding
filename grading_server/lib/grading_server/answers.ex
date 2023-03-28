@@ -9,14 +9,18 @@ defmodule GradingServer.Answers do
   @doc """
   Checks if the given answer is correct.
   """
-  @spec is_correct(integer(), String.t()) :: true | %{help_text: String.t()}
-  def is_correct(question_id, answer) do
+  @spec check(integer(), String.t()) :: :correct | {:incorrect, String.t()}
+  def check(question_id, answer) do
     case AnswerStore.get_answer(question_id) do
       nil ->
-        false
+        {:incorrect, "Question not found"}
 
-      %Answer{answer: correct_answer} ->
-        String.trim(answer) == String.trim(correct_answer)
+      %{answer: correct_answer, help_text: help_text} ->
+        if String.trim(answer) == String.trim(correct_answer) do
+          :correct
+        else
+          {:incorrect, help_text}
+        end
     end
   end
 end

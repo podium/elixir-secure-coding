@@ -5,6 +5,8 @@ defmodule GradingServer.AnswerStore do
 
   use GenServer
 
+  alias GradingServer.Answer
+
   @table :answer_store
 
   def start_link(opts) do
@@ -28,7 +30,7 @@ defmodule GradingServer.AnswerStore do
     {:ok, %{"answers" => answers}} = YamlElixir.read_from_file(file)
 
     Enum.map(answers, fn data ->
-      %{
+      %Answer{
         answer: data["answer"],
         help_text: data["help_text"],
         question_id: data["question_id"]
