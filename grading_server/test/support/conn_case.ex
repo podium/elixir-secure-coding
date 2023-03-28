@@ -31,8 +31,7 @@ defmodule GradingServerWeb.ConnCase do
     end
   end
 
-  setup tags do
-    GradingServer.DataCase.setup_sandbox(tags)
+  setup _tags do
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

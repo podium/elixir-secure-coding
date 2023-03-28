@@ -8,8 +8,7 @@
 import Config
 
 config :grading_server,
-  answer_store_file: "answers.yml",
-  ecto_repos: []
+  answer_store_file: "answers.yml"
 
 # Configures the endpoint
 config :grading_server, GradingServerWeb.Endpoint,

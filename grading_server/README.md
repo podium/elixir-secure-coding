@@ -15,3 +15,4 @@ This only applies if you've created your own Grading Server and wish to lock dow
 
 1. Uncomment the `plug SimpleTokenAuthentication` line in the `router.ex` file
 2. Change the value of the config for `:simple_token_authentication` in `config/config.exs`
+3. Update the `priv/answers.yml` to reference actual answers.
