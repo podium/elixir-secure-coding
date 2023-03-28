@@ -1,6 +1,6 @@
 defmodule GradingServer.AnswerStore do
   @moduledoc """
-  This is a representatino of the `priv/${ENV}_answers.yml` file. It utilizes a write back caching mechanism.
+  This is a representatino of the `priv/answers.yml` file. It utilizes a write back caching mechanism.
   """
 
   use GenServer
@@ -15,12 +15,25 @@ defmodule GradingServer.AnswerStore do
   def init(state) do
     :ets.new(@table, [:set, :named_table])
 
+    Enum.each(load_answers(), fn answer -> :ets.insert(@table, {answer.question_id, answer}) end)
+
     {:ok, state}
   end
 
-  @impl true
-  def handle_call(:pop, _from, [head | tail]) do
-    {:reply, head, tail}
+  # load a file from the priv folder
+  defp load_answers() do
+    file = Application.fetch_env!(:grading_server, :answer_store_file)
+    file = Path.join([:code.priv_dir(:grading_server), file])
+
+    {:ok, %{"answers" => answers}} = YamlElixir.read_from_file(file)
+
+    Enum.map(answers, fn data ->
+      %{
+        answer: data["answer"],
+        help_text: data["help_text"],
+        question_id: data["question_id"]
+      }
+    end)
   end
 
   @impl true
@@ -29,8 +42,7 @@ defmodule GradingServer.AnswerStore do
 
     item =
       if Enum.empty?(item) do
-        answer = "TODO: Need to fetch from YAML file + store"
-        cache(id, answer)
+        nil
       else
         [{_id, item}] = item
         item
@@ -39,22 +51,10 @@ defmodule GradingServer.AnswerStore do
     {:reply, item, nil}
   end
 
-  @impl true
-  def handle_call({:cache, value}, _, _) do
-    {:reply, :ets.insert(@table, value), nil}
-  end
-
   @doc """
   Fetches the given answer from the store.
   """
-  def fetch(id) do
-    GenServer.call(__MODULE__, {:fetch, id})
-  end
-
-  @doc """
-  Caches the given answer.
-  """
-  def cache(id, answer) do
-    GenServer.call(__MODULE__, {:cache, {id, answer}})
+  def get_answer(question_id) do
+    GenServer.call(__MODULE__, {:fetch, question_id})
   end
 end

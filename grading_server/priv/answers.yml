@@ -1,0 +1,4 @@
+answers:
+  - question_id: 0
+    help_text: "This is helpful text that can be used."
+    answer: "Not a real answer, but an example."
