@@ -36,12 +36,13 @@ defmodule GradingServer.MixProject do
       {:phoenix, "~> 1.6.11"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
+      {:yaml_elixir, "~> 2.9"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.6"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.4"},
-      #{:jason, "~> 1.4"}, uncomment when {:jason, "1.5.0"} is out for GA
+      # {:jason, "~> 1.4"}, uncomment when {:jason, "1.5.0"} is out for GA
       {:plug_cowboy, "~> 2.5"},
       {:sobelow, "~> 0.11"},
       {:simple_token_authentication, "~> 0.7.0"}

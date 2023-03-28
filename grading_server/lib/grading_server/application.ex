@@ -8,10 +8,9 @@ defmodule GradingServer.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      GradingServer.Repo,
       # Start the Telemetry supervisor
       GradingServerWeb.Telemetry,
+      GradingServer.AnswerStore,
       # Start the PubSub system
       {Phoenix.PubSub, name: GradingServer.PubSub},
       # Start the Endpoint (http/https)

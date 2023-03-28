@@ -18,8 +18,6 @@ defmodule GradingServer.DataCase do
 
   using do
     quote do
-      alias GradingServer.Repo
-
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
@@ -35,9 +33,7 @@ defmodule GradingServer.DataCase do
   @doc """
   Sets up the sandbox based on the test tags.
   """
-  def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(GradingServer.Repo, shared: not tags[:async])
-    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+  def setup_sandbox(_tags) do
   end
 
   @doc """
