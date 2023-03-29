@@ -1,5 +1,11 @@
 # ESCT: Part 3 - Secure SDLC Concepts
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+```
+
 ## Introduction
 
 Welcome to Part 3! This section is dedicated to discussing some of the more abstract, non-vulnerability related parts of Application Security. Concepts to keep in mind as you work your craft at building code.

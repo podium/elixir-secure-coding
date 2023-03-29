@@ -1,7 +1,11 @@
 # ESCT: Part 8 - CI/CD Tools
 
 ```elixir
-Mix.install([:sobelow])
+
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"},
+  :sobelow
+])
 ```
 
 ## Introduction

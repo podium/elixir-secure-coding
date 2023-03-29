@@ -1,5 +1,11 @@
 # ESCT: Part 4 - GraphQL Security
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+```
+
 ## Introduction
 
 > ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>

@@ -1,5 +1,11 @@
 # ESCT: Part 7 - Security Anti-Patterns
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+```
+
 ## Introduction
 
 In Software Engineering, an Anti-Pattern typically is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.

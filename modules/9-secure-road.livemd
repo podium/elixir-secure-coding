@@ -1,5 +1,11 @@
 # ESCT: Part 9 - The Secure Road
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+```
+
 ## Introduction
 
 > <i>Two roads diverged in a wood, and I,<br />

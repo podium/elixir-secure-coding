@@ -1,7 +1,18 @@
 # ESCT: Part 5 - Elixir Security
 
+## Section
+
 ```elixir
-Mix.install([:benchwarmer, :kino, :plug])
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"},
+  :benchwarmer,
+  :kino,
+  :plug
+])
+```
+
+```elixir
+Mix.install([])
 ```
 
 ## Introduction
