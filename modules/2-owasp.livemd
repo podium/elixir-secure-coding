@@ -2,6 +2,7 @@
 
 ```elixir
 Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"},
   :bcrypt_elixir,
   :httpoison,
   {:absinthe, "~> 1.7.0"},

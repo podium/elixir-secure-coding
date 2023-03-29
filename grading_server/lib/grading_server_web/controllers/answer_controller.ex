@@ -10,19 +10,23 @@ defmodule GradingServerWeb.AnswerController do
     render(conn, "index.json")
   end
 
-  def check(conn, %{"question_id" => question_id, "answer" => answer}) do
+  def check(conn, %{"question_id" => question_id} = payload) when is_binary(question_id) do
     case Integer.parse(question_id) do
       :error ->
         render(conn, "no_answer.json", question_id: question_id)
 
       {question_id, _} ->
-        case Answers.check(question_id, answer) do
-          :correct ->
-            render(conn, "correct.json", question_id: question_id)
+        check(conn, %{payload | "question_id" => question_id})
+    end
+  end
 
-          {:incorrect, help_text} ->
-            render(conn, "incorrect.json", question_id: question_id, help_text: help_text)
-        end
+  def check(conn, %{"question_id" => question_id, "answer" => answer}) do
+    case Answers.check(question_id, answer) do
+      :correct ->
+        render(conn, "correct.json", question_id: question_id)
+
+      {:incorrect, help_text} ->
+        render(conn, "incorrect.json", question_id: question_id, help_text: help_text)
     end
   end
 end

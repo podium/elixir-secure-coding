@@ -9,7 +9,7 @@ defmodule GradingServerWeb.Router do
   scope "/api", GradingServerWeb do
     pipe_through(:api)
     get("/", DefaultController, :index)
-    post("/answers", AnswerController, :check)
+    post("/answers/check", AnswerController, :check)
   end
 
   pipeline :browser do
