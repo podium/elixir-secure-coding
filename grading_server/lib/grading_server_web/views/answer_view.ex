@@ -11,11 +11,15 @@ defmodule GradingServerWeb.AnswerView do
     }
   end
 
-  def render("correct.json", %{question_id: question_id}) do
-    %{question_id: question_id, correct: true, help_text: nil}
+  def render("correct.json", %{question_id: question_id, module_id: module_id}) do
+    %{module_id: module_id, question_id: question_id, correct: true, help_text: nil}
   end
 
-  def render("incorrect.json", %{question_id: question_id, help_text: help_text}) do
-    %{question_id: question_id, correct: false, help_text: help_text}
+  def render("incorrect.json", %{
+        question_id: question_id,
+        module_id: module_id,
+        help_text: help_text
+      }) do
+    %{module_id: module_id, question_id: question_id, correct: false, help_text: help_text}
   end
 end

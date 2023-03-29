@@ -9,9 +9,9 @@ defmodule GradingServer.Answers do
   @doc """
   Checks if the given answer is correct.
   """
-  @spec check(integer(), String.t()) :: :correct | {:incorrect, String.t()}
-  def check(question_id, answer) do
-    case AnswerStore.get_answer(question_id) do
+  @spec check(integer(), integer(), String.t()) :: :correct | {:incorrect, String.t()}
+  def check(module_id, question_id, answer) do
+    case AnswerStore.get_answer(module_id, question_id) do
       nil ->
         {:incorrect, "Question not found"}
 
