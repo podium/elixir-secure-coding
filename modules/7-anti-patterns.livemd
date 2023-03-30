@@ -4,6 +4,12 @@
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"}
 ])
+
+check_answer = fn answer, question_id ->
+  GradingClient.check_answer(answer, 7, question_id)
+end
+
+:ok
 ```
 
 ## Introduction
@@ -79,7 +85,7 @@ Penguin.slide([3, 4, 5, 2, 1])
 # answer = :quick_sort
 # answer = :random_sort
 
-IO.puts(answer)
+check_answer.(answer, 1)
 ```
 
 ## Frontend Authorization Checks

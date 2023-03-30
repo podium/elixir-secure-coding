@@ -9,10 +9,10 @@ Mix.install([
   :kino,
   :plug
 ])
-```
 
-```elixir
-Mix.install([])
+check_answer = fn answer, question_id ->
+  GradingClient.check_answer(answer, 5, question_id)
+end
 ```
 
 ## Introduction
@@ -68,8 +68,7 @@ rescue
   e -> {ArgumentError, e}
 end
 
-IO.puts("Are you protected against Atom Exhaustion?")
-IO.puts(:erlang.system_info(:atom_count) == prev_count)
+check_answer.(:erlang.system_info(:atom_count) == prev_count, 1)
 ```
 
 ## Untrusted Code

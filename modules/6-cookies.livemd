@@ -3,17 +3,20 @@
 ```elixir
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"},
-  :phoenix, 
+  :phoenix,
   :plug
 ])
 
 alias Phoenix.ConnTest
 alias Plug
 conn = ConnTest.build_conn()
+
+check_answer = fn answer, question_id ->
+  GradingClient.check_answer(answer, 6, question_id)
+end
+
 :ok
 ```
-
-
 
 ## Introduction
 

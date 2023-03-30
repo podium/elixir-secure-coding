@@ -4,34 +4,40 @@
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"}
 ])
+
+check_answer = fn answer, question_id ->
+  GradingClient.check_answer(answer, 4, question_id)
+end
+
+:ok
 ```
 
 ## Introduction
 
 > ### 🛠 <span style="color:goldenrod;">MODULE UNDER CONSTRUCTION - Please move to next module</span>
 
-*TODO: Write Introduction*
+_TODO: Write Introduction_
 
 ## Table of Contents
 
-* [Disabling Introspection](#disabling-introspection)
-* [Error Disclosure](#error-disclosure)
-* [Resource Exhaustion](#resource-disclosure)
-  * [Cost Theory](#cost-theory)
+- [Disabling Introspection](#disabling-introspection)
+- [Error Disclosure](#error-disclosure)
+- [Resource Exhaustion](#resource-disclosure)
+  - [Cost Theory](#cost-theory)
 
 ## Disabling Introspection
 
 ### Description
 
-*TODO: Write Description*
+_TODO: Write Description_
 
 ### Prevention
 
-*TODO: Write Prevention*
+_TODO: Write Prevention_
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
+_TODO: Make Example or Quiz Question_
 
 ```elixir
 
@@ -41,15 +47,15 @@ Mix.install([
 
 ### Description
 
-*TODO: Write Description*
+_TODO: Write Description_
 
 ### Prevention
 
-*TODO: Write Prevention*
+_TODO: Write Prevention_
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
+_TODO: Make Example or Quiz Question_
 
 ```elixir
 
@@ -59,15 +65,15 @@ Mix.install([
 
 ### Description
 
-*TODO: Write Description*
+_TODO: Write Description_
 
 ### Prevention
 
-*TODO: Write Prevention*
+_TODO: Write Prevention_
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
+_TODO: Make Example or Quiz Question_
 
 ```elixir
 
@@ -79,15 +85,15 @@ Mix.install([
 
 ### Description
 
-*TODO: Write Description*
+_TODO: Write Description_
 
 ### Prevention
 
-*TODO: Write Prevention*
+_TODO: Write Prevention_
 
 ### <span style="color:blue;">Example</span> / <span style="color:red;">Quiz</span>
 
-*TODO: Make Example or Quiz Question*
+_TODO: Make Example or Quiz Question_
 
 ```elixir
 

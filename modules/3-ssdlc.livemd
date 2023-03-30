@@ -4,6 +4,12 @@
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"}
 ])
+
+check_answer = fn answer, question_id ->
+  GradingClient.check_answer(answer, 3, question_id)
+end
+
+:ok
 ```
 
 ## Introduction
@@ -12,10 +18,10 @@ Welcome to Part 3! This section is dedicated to discussing some of the more abst
 
 ## Table of Contents
 
-* [No Secrets In Code](#no-secrets-in-code)
-* [Making Secret Rotation Easy](#making-secret-rotation-easy)
-* [Rate Limiting](#rate-limiting)
-* [Principle of Least Privilege](#principle-of-least-privlege)
+- [No Secrets In Code](#no-secrets-in-code)
+- [Making Secret Rotation Easy](#making-secret-rotation-easy)
+- [Rate Limiting](#rate-limiting)
+- [Principle of Least Privilege](#principle-of-least-privlege)
 
 ## No Secrets In Code
 
@@ -35,14 +41,14 @@ A very easy way to prevent secrets being added to go though is to access them vi
 
 **Remove the hard-coded secret from the code sample below and replace it with an environment variable named `envar_secret`.**
 
-*Use `System.get_env/1` on line 2.*
+_Use `System.get_env/1` on line 2._
 
 ```elixir
 # let's assume there is an environment variable named 'envar_secret'
 super_secret_password = "p@ssw0rd"
 
 # DO NOT CHANGE CODE BELOW THIS COMMENT
-GradingClient.check_answer(super_secret_password, 3, 1)
+check_answer.(super_secret_password, 1)
 ```
 
 ## Making Secret Rotation Easy
@@ -65,17 +71,17 @@ Additionally, thought can be put into how you architect data flows with regards 
 
 Rate limiting restricts the number of requests that can be allowed in a certain time frame on a specific resource. Rate limiting can be implemented to protect against a variety of attacks or abuses:
 
-* Preventing Denial Of Service attacks (limiting the number of calls to expensive endpoints)
-* Limiting brute force attempts (such as on one time codes and passwords)
-* Programmatic abuse of services
+- Preventing Denial Of Service attacks (limiting the number of calls to expensive endpoints)
+- Limiting brute force attempts (such as on one time codes and passwords)
+- Programmatic abuse of services
 
 ### Prevention
 
 When rate limiting a new action, begin by asking these questions:
 
-* "What are the maximum number of calls to my action that a reasonable non-malicious user would feasibly make in a given time period?"
-* "Is calling this action an expensive operation? If yes, how many calls in a minute would be enough to overburden the service?"
-* "Is this action a candidate for brute force attacks?" (E.g. passwords, authentication tokens, one time passcodes)
+- "What are the maximum number of calls to my action that a reasonable non-malicious user would feasibly make in a given time period?"
+- "Is calling this action an expensive operation? If yes, how many calls in a minute would be enough to overburden the service?"
+- "Is this action a candidate for brute force attacks?" (E.g. passwords, authentication tokens, one time passcodes)
 
 If the answer to one or more of those questions is yes, consider putting a limit on the number of times that the action can be called. Good rate limiting keeps in mind legitimate use cases and does not block regular user functionality, but protects the service from malicious or burdensome behavior.
 
@@ -83,16 +89,16 @@ More often than not, rate limiting should be as specific as possible. For instan
 
 ## Principle of Least Privilege
 
-Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity* is only strictly given the essential privileges needed to perform its requirement.
+Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity\* is only strictly given the essential privileges needed to perform its requirement.
 
 E.g. A script that executes on a cron schedule that monitors the output of a log file only needs read privileges and should not be given write privileges.
 
-**Entity: generic term for an arbitrary process, user, program, etc. found within a Data System*
+\*_Entity: generic term for an arbitrary process, user, program, etc. found within a Data System_
 
 ### Benefits of the Principle
 
-* **Better Data System Stability** - When an entity is limited in the scope of changes it can make to a system, it is easier to test its possible actions and interactions in the context of the Data System.
-* **Better Data System Security** - When an entity is limited in the system-wide actions it may perform, vulnerabilities / compromises in one application cannot be used to exploit the rest of the business or adjacent Data Systems.
-* **Ease of Deployment** - In general, the fewer privileges an entity requires, the easier it is to deploy within a larger environment.
+- **Better Data System Stability** - When an entity is limited in the scope of changes it can make to a system, it is easier to test its possible actions and interactions in the context of the Data System.
+- **Better Data System Security** - When an entity is limited in the system-wide actions it may perform, vulnerabilities / compromises in one application cannot be used to exploit the rest of the business or adjacent Data Systems.
+- **Ease of Deployment** - In general, the fewer privileges an entity requires, the easier it is to deploy within a larger environment.
   <br /><br />
   [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)
