@@ -9,7 +9,6 @@ Mix.install([
   :kino,
   :plug
 ])
-
 ```
 
 ## Introduction
@@ -20,12 +19,12 @@ But even the dullest blades can hurt someone! This module goes over Elixir speci
 
 ## Table of Contents
 
-- [Atom Exhaustion](#atom-exhaustion)
-- [Serialization and Deserialization](#serialization-and-deserialization)
-- [Untrusted Code](#untrusted-code)
-- [Timing Attacks](#timing-attacks)
-- [Boolean Coercion](#boolean-coercion)
-- [Sensitive Data Exposure](#sensitive-data-exposure)
+* [Atom Exhaustion](#atom-exhaustion)
+* [Serialization and Deserialization](#serialization-and-deserialization)
+* [Untrusted Code](#untrusted-code)
+* [Timing Attacks](#timing-attacks)
+* [Boolean Coercion](#boolean-coercion)
+* [Sensitive Data Exposure](#sensitive-data-exposure)
 
 ## Atom Exhaustion
 
@@ -78,8 +77,8 @@ Deserialization of untrusted input can result in atom creation, which can lead t
 
 ### Prevention
 
-- Use the :safe option when calling `:erlang.binary_to_term/2` on untrusted input (should be familiar from atom exhaustion 😀)
-- Prevent function deserialisation from untrusted input, e.g. using `Plug.Crypto.non_executable_binary_to_term/1,2`
+* Use the :safe option when calling `:erlang.binary_to_term/2` on untrusted input (should be familiar from atom exhaustion 😀)
+* Prevent function deserialisation from untrusted input, e.g. using `Plug.Crypto.non_executable_binary_to_term/1,2`
 
 ### Resource
 
@@ -190,10 +189,10 @@ This can lead to subtle and unexpected bugs, especially when interworking with E
 
 By using expressions that do not use boolean coercion, the incorrect assumption about the function's return type is caught early:
 
-- Prefer `case` over `if`, `unless` or `cond`
-- Prefer `and` over `&&`
-- Prefer `or` over `||`
-- Prefer `not` over `!`
+* Prefer `case` over `if`, `unless` or `cond`
+* Prefer `and` over `&&`
+* Prefer `or` over `||`
+* Prefer `not` over `!`
 
 The latter will raise a "BadBooleanError" when the function returns :ok or {:error, \_}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
 
@@ -282,7 +281,8 @@ This prevents the table from being read by other processes, such as remote shell
 **We have decided that we do not want this ETS table to be read from other processes, so try making it private:**
 
 ```elixir
-secret_table = :ets.new(:secret_table, [:public]) # ONLY EDIT THIS LINE
+# ONLY EDIT THIS LINE
+secret_table = :ets.new(:secret_table, [:public])
 :ets.info(secret_table)[:protection]
 ```
 

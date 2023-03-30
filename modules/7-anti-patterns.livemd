@@ -20,8 +20,8 @@ Important to differentiate though that Security Anti-Patterns are not themselves
 
 ## Tables of Contents
 
-- [Security Through Obscurity](#security-through-obscurity)
-- [Frontend Authorization Checks](#frontend-authorization-checks)
+* [Security Through Obscurity](#security-through-obscurity)
+* [Frontend Authorization Checks](#frontend-authorization-checks)
 
 ## Security Through Obscurity
 
@@ -94,12 +94,12 @@ Here's a scenario that helps paint the picture of this Security Anti-Pattern:
 
 You're signing up for an account to a free SaaS product and upon account creation, you're asked to input your desired password. It can be anything you want provided it follows the criteria outlined:
 
-- Must be longer than 8 characters
-- Must contain at least one of each:
-  - Uppercase letter
-  - Lowercase letter
-  - Number
-  - Symbol
+* Must be longer than 8 characters
+* Must contain at least one of each:
+  * Uppercase letter
+  * Lowercase letter
+  * Number
+  * Symbol
 
 Pretty secure criteria! You type `this_is_MY_super_secure_password` and hit enter. You get an error, "Missing number" - shoot! You've heard that you shouldn't add a 1 to the end of passwords and this is the password you use for everything so you really, really want it.
 

@@ -28,8 +28,8 @@ With all that in mind, in this final module let's explore some examples of Data 
 
 ## Table of Contents
 
-- [Example: Service to Service Authentication](#example:-service-to-service-authentication)
-- [Example: User Authorization](#example:-user-authorization)
+* [Example: Service to Service Authentication](#example:-service-to-service-authentication)
+* [Example: User Authorization](#example:-user-authorization)
 
 ## Example: Service to Service Authentication
 

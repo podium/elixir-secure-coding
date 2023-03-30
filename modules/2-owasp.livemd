@@ -20,9 +20,9 @@ bcrypt_salted_hash = Bcrypt.hash_pwd_salt("users_password")
 
 The [Open Web Application Security Project (OWASP)](https://owasp.org/) is a nonprofit foundation that works to improve the security of software. Their programming includes:
 
-- Community-led open source software projects
-- Over 250+ local chapters worldwide
-- Educational and training conferences
+* Community-led open source software projects
+* Over 250+ local chapters worldwide
+* Educational and training conferences
 
 They are an open community dedicated to enabling organizations to conceive, develop, acquire, operate, and maintain applications that can be trusted. All of their projects, tools, documents, forums, and chapters are free and open to anyone interested in improving application security.
 
@@ -30,18 +30,18 @@ Having been in the Application Security space since 2001, they are somewhat of t
 
 ## Tables of Contents
 
-- [Glossary](#glossary)
-- [OWASP Top 10](#owasp-top-10)
-  - [Broken Access Control](#broken-access-control)
-  - [Cryptographic Failures](#cryptographic-failures)
-  - [Injection](#injection)
-  - [Insecure Design](#insecure-design)
-  - [Security Misconfiguration](#security-misconfiguration)
-  - [Vulnerable and Outdated Components](#vulnerable-and-outdated-components)
-  - [Identification and Authentication Failures](#identification-and-authentication-failures)
-  - [Software and Data Integrity Failures](#software-and-data-integrity-failures)
-  - [Security Logging and Monitoring Failures](#security-logging-and-monitoring-failures)
-  - [Server-Side Request Forgery](#server-side-request-forgery)
+* [Glossary](#glossary)
+* [OWASP Top 10](#owasp-top-10)
+  * [Broken Access Control](#broken-access-control)
+  * [Cryptographic Failures](#cryptographic-failures)
+  * [Injection](#injection)
+  * [Insecure Design](#insecure-design)
+  * [Security Misconfiguration](#security-misconfiguration)
+  * [Vulnerable and Outdated Components](#vulnerable-and-outdated-components)
+  * [Identification and Authentication Failures](#identification-and-authentication-failures)
+  * [Software and Data Integrity Failures](#software-and-data-integrity-failures)
+  * [Security Logging and Monitoring Failures](#security-logging-and-monitoring-failures)
+  * [Server-Side Request Forgery](#server-side-request-forgery)
 
 ## Glossary
 
@@ -79,23 +79,23 @@ Notable CWEs included are CWE-259: Use of Hard-coded Password, CWE-327: Broken o
 
 ### Prevention
 
-- Don't store sensitive data unnecessarily.
-  - Discard it as soon as possible or use PCI DSS compliant tokenization or even truncation.
-  - Data that is not retained cannot be stolen.
-- Ensure up-to-date and strong standard algorithms, protocols, and keys are in place; use proper key management.
-- Encrypt all data in transit with secure protocols.
-  - Use TLS with forward secrecy (FS) ciphers, cipher prioritization by the server, and other secure parameters.
-  - Enforce encryption using directives like HTTP Strict Transport Security (HSTS).
-- Make sure to encrypt all sensitive data at rest.
-- Disable caching for responses that contain sensitive data.
-- Do not use legacy protocols such as FTP and SMTP.
-- Store passwords using strong and salted hashing functions with a delay factor.
-  - Argon2, scrypt, bcrypt or PBKDF2 are good examples.
-- Always use [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption) instead of just encryption.
-- Ensure that cryptographic randomness is used where appropriate, and that it has not been seeded in a predictable way or with low entropy.
-- Avoid deprecated cryptographic functions and padding schemes, such as MD5, SHA1, PKCS number 1 v1.5
-- Classify data processed, stored, or transmitted by an application. Identify which data is sensitive according to privacy laws, regulatory requirements, or business needs.
-  - Apply required security controls as per the data classification.
+* Don't store sensitive data unnecessarily.
+  * Discard it as soon as possible or use PCI DSS compliant tokenization or even truncation.
+  * Data that is not retained cannot be stolen.
+* Ensure up-to-date and strong standard algorithms, protocols, and keys are in place; use proper key management.
+* Encrypt all data in transit with secure protocols.
+  * Use TLS with forward secrecy (FS) ciphers, cipher prioritization by the server, and other secure parameters.
+  * Enforce encryption using directives like HTTP Strict Transport Security (HSTS).
+* Make sure to encrypt all sensitive data at rest.
+* Disable caching for responses that contain sensitive data.
+* Do not use legacy protocols such as FTP and SMTP.
+* Store passwords using strong and salted hashing functions with a delay factor.
+  * Argon2, scrypt, bcrypt or PBKDF2 are good examples.
+* Always use [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption) instead of just encryption.
+* Ensure that cryptographic randomness is used where appropriate, and that it has not been seeded in a predictable way or with low entropy.
+* Avoid deprecated cryptographic functions and padding schemes, such as MD5, SHA1, PKCS number 1 v1.5
+* Classify data processed, stored, or transmitted by an application. Identify which data is sensitive according to privacy laws, regulatory requirements, or business needs.
+  * Apply required security controls as per the data classification.
 
 ### <span style="color:red">QUIZ</span>
 
@@ -138,14 +138,14 @@ Notable CWEs included are CWE-79: Cross-site Scripting, CWE-89: SQL Injection, a
 
 ### Prevention
 
-- Don't blindly trust user input.
-- Use an allowlist if functionality permits.
-  - Denylists are an acceptable ancillary protection, but they should not be the only form of protection for user input as there is no way to unilaterally protect against all malicious input possibilities.
-- Use a safe API, namely use the [Ecto](https://hexdocs.pm/ecto/Ecto.html) library as its queries use parameterized inputs by default.
-- Use server-side input validation.
-  - This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.
-- For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.
-- Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.
+* Don't blindly trust user input.
+* Use an allowlist if functionality permits.
+  * Denylists are an acceptable ancillary protection, but they should not be the only form of protection for user input as there is no way to unilaterally protect against all malicious input possibilities.
+* Use a safe API, namely use the [Ecto](https://hexdocs.pm/ecto/Ecto.html) library as its queries use parameterized inputs by default.
+* Use server-side input validation.
+  * This is not a complete defense as many applications require special characters, such as text areas or APIs for mobile applications.
+* For any residual dynamic queries, escape special characters using the specific escape syntax for that interpreter.
+* Use LIMIT and other SQL controls within queries to prevent mass disclosure of records in case of SQL injection.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -163,15 +163,15 @@ Secure design is a culture and methodology that constantly evaluates threats and
 
 ### Prevention
 
-- Establish and use a secure development lifecycle with AppSec professionals to help evaluate and design security and privacy-related controls.
-- Establish and use a library of secure design patterns or paved road ready to use components.
-- Use threat modeling for critical authentication, access control, business logic, and key flows.
-- Integrate security language and controls into user stories.
-- Integrate plausibility checks at each tier of your application (from frontend to backend).
-- Write unit and integration tests to validate that all critical flows are resistant to the threat model. Compile use-cases and misuse-cases for each tier of your application.
-- Segregate tier layers on the system and network layers depending on the exposure and protection needs.
-- Segregate tenants robustly by design throughout all tiers.
-- Limit resource consumption by user or service.
+* Establish and use a secure development lifecycle with AppSec professionals to help evaluate and design security and privacy-related controls.
+* Establish and use a library of secure design patterns or paved road ready to use components.
+* Use threat modeling for critical authentication, access control, business logic, and key flows.
+* Integrate security language and controls into user stories.
+* Integrate plausibility checks at each tier of your application (from frontend to backend).
+* Write unit and integration tests to validate that all critical flows are resistant to the threat model. Compile use-cases and misuse-cases for each tier of your application.
+* Segregate tier layers on the system and network layers depending on the exposure and protection needs.
+* Segregate tenants robustly by design throughout all tiers.
+* Limit resource consumption by user or service.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -183,27 +183,27 @@ Aside from what is obvious from the name of this concern area, Security Misconfi
 
 Further Examples:
 
-- Missing appropriate security hardening across any part of the application stack or improperly configured permissions on cloud services.
-- Unnecessary features are enabled or installed (e.g., unnecessary ports, services, pages, accounts, or privileges).
-- Default accounts and their passwords are still enabled and unchanged.
-- Error handling reveals stack traces or other overly informative error messages to users.
-- For upgraded systems, the latest security features are disabled or not configured securely.
-- The security settings in the application servers, application frameworks, libraries, databases, etc., are not set to secure values.
-- The server does not send security headers or directives, or they are not set to secure values.
+* Missing appropriate security hardening across any part of the application stack or improperly configured permissions on cloud services.
+* Unnecessary features are enabled or installed (e.g., unnecessary ports, services, pages, accounts, or privileges).
+* Default accounts and their passwords are still enabled and unchanged.
+* Error handling reveals stack traces or other overly informative error messages to users.
+* For upgraded systems, the latest security features are disabled or not configured securely.
+* The security settings in the application servers, application frameworks, libraries, databases, etc., are not set to secure values.
+* The server does not send security headers or directives, or they are not set to secure values.
 
 Notable CWEs included are CWE-16 Configuration and CWE-611 Improper Restriction of XML External Entity Reference.
 
 ### Prevention
 
-- A repeatable hardening process makes it fast and easy to deploy another environment that is appropriately locked down.
-  - Development, QA, and production environments should all be configured identically, with different credentials used in each environment.
-  - This process should be automated to minimize the effort required to set up a new secure environment.
-- A minimal platform without any unnecessary features, components, documentation, and samples.
-  - Remove or do not install unused features and frameworks.
-- Have a thorough and robust patch management process.
-- Continual review and update of the configurations appropriate to all security notes, updates, and patches.
-- Review cloud storage permissions.
-- An automated process to verify the effectiveness of the configurations and settings in all environments.
+* A repeatable hardening process makes it fast and easy to deploy another environment that is appropriately locked down.
+  * Development, QA, and production environments should all be configured identically, with different credentials used in each environment.
+  * This process should be automated to minimize the effort required to set up a new secure environment.
+* A minimal platform without any unnecessary features, components, documentation, and samples.
+  * Remove or do not install unused features and frameworks.
+* Have a thorough and robust patch management process.
+* Continual review and update of the configurations appropriate to all security notes, updates, and patches.
+* Review cloud storage permissions.
+* An automated process to verify the effectiveness of the configurations and settings in all environments.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -215,32 +215,32 @@ Vulnerable Components are a known issue that we struggle to test and assess risk
 
 You are likely vulnerable:
 
-- If you do not know the versions of all components you use (both client-side and server-side).
-  - This includes components you directly use as well as nested dependencies.
-- If the software is vulnerable, unsupported, or out of date.
-  - This includes:
-    - Operating System
-    - Web/Application Server
-    - Databases
-    - APIs and all associated components
-    - Runtime Environments
-    - Libraries / Dependencies
-- If you do not scan for vulnerabilities regularly and subscribe to security bulletins related to the components you use.
-- If you do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion.
-  - This commonly happens in environments when patching is a monthly or quarterly task under change control, leaving organizations open to days or months of unnecessary exposure to fixed vulnerabilities.
-- If software developers do not test the compatibility of updated, upgraded, or patched libraries.
+* If you do not know the versions of all components you use (both client-side and server-side).
+  * This includes components you directly use as well as nested dependencies.
+* If the software is vulnerable, unsupported, or out of date.
+  * This includes:
+    * Operating System
+    * Web/Application Server
+    * Databases
+    * APIs and all associated components
+    * Runtime Environments
+    * Libraries / Dependencies
+* If you do not scan for vulnerabilities regularly and subscribe to security bulletins related to the components you use.
+* If you do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion.
+  * This commonly happens in environments when patching is a monthly or quarterly task under change control, leaving organizations open to days or months of unnecessary exposure to fixed vulnerabilities.
+* If software developers do not test the compatibility of updated, upgraded, or patched libraries.
 
 Notable CWE included is CWE-1104: Use of Unmaintained Third-Party Components
 
 ### Prevention
 
-- Keep all dependencies and/or components up to date on an on-going basis.
-- Remove unused dependencies, unnecessary features, components, files, and documentation.
-- Continuously inventory the versions of both client-side and server-side components and their dependencies.
-- Only obtain components from official sources over secure links.
-  - Prefer signed packages to reduce the chance of including a modified, malicious component.
-- Monitor for libraries and components that are unmaintained or do not create security patches for older versions.
-  - If patching is not possible, consider deploying a virtual patch to monitor, detect, or protect against the discovered issue.
+* Keep all dependencies and/or components up to date on an on-going basis.
+* Remove unused dependencies, unnecessary features, components, files, and documentation.
+* Continuously inventory the versions of both client-side and server-side components and their dependencies.
+* Only obtain components from official sources over secure links.
+  * Prefer signed packages to reduce the chance of including a modified, malicious component.
+* Monitor for libraries and components that are unmaintained or do not create security patches for older versions.
+  * If patching is not possible, consider deploying a virtual patch to monitor, detect, or protect against the discovered issue.
 
 ### <span style="color:red">QUIZ</span>
 
@@ -269,29 +269,29 @@ Unlike [Broken Access Control](#broken-access-control), this category covers the
 
 Confirmation of the user's identity, authentication, and session management is critical to protect against authentication-related attacks. There may be authentication weaknesses if the application:
 
-- Permits automated attacks such as credential stuffing, where the attacker has a list of valid usernames and passwords.
-- Permits brute force or other automated attacks.
-- Permits default, weak, or well-known passwords, such as "Password1" or "admin/admin".
-- Uses weak or ineffective credential recovery and forgot-password processes.
-- Has missing or ineffective multi-factor authentication.
-- Exposes session identifier in the URL.
-- Reuse of a session identifier after successful login.
-- Does not correctly invalidate Session IDs.
-  - User sessions or authentication tokens (mainly single sign-on (SSO) tokens) aren't properly invalidated during logout or a period of inactivity.
+* Permits automated attacks such as credential stuffing, where the attacker has a list of valid usernames and passwords.
+* Permits brute force or other automated attacks.
+* Permits default, weak, or well-known passwords, such as "Password1" or "admin/admin".
+* Uses weak or ineffective credential recovery and forgot-password processes.
+* Has missing or ineffective multi-factor authentication.
+* Exposes session identifier in the URL.
+* Reuse of a session identifier after successful login.
+* Does not correctly invalidate Session IDs.
+  * User sessions or authentication tokens (mainly single sign-on (SSO) tokens) aren't properly invalidated during logout or a period of inactivity.
 
 Notable CWEs included are CWE-297: Improper Validation of Certificate with Host Mismatch, CWE-287: Improper Authentication, and CWE-384: Session Fixation.
 
 ### Prevention
 
-- Implement multi-factor authentication to prevent automated credential stuffing, brute force, and stolen credential reuse attacks.
-- Do not ship or deploy with any default credentials.
-- Implement mechanisms for proactively performing weak password checks and enforce users to set strong passwords for their accounts.
-- Align password length, complexity, and rotation policies with industry standards.
-- Ensure registration, credential recovery, and API pathways are hardened against account enumeration attacks by using the same messages for all outcomes.
-- Limit or increasingly delay failed login attempts.
-  - Log all failures and alert the Security team when credential stuffing, brute force, or other attacks are detected.
-- Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login.
-  - Session identifier should not be in the URL, be securely stored, and invalidated after logout, idle,
+* Implement multi-factor authentication to prevent automated credential stuffing, brute force, and stolen credential reuse attacks.
+* Do not ship or deploy with any default credentials.
+* Implement mechanisms for proactively performing weak password checks and enforce users to set strong passwords for their accounts.
+* Align password length, complexity, and rotation policies with industry standards.
+* Ensure registration, credential recovery, and API pathways are hardened against account enumeration attacks by using the same messages for all outcomes.
+* Limit or increasingly delay failed login attempts.
+  * Log all failures and alert the Security team when credential stuffing, brute force, or other attacks are detected.
+* Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login.
+  * Session identifier should not be in the URL, be securely stored, and invalidated after logout, idle,
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -309,13 +309,13 @@ Notable CWEs include CWE-829: Inclusion of Functionality from Untrusted Control 
 
 ### Prevention
 
-- Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.
-- Ensure libraries and dependencies are consuming trusted repositories.
-  - When it can be avoided, do not use libraries and dependencies directly out of personal open-source repositories.
-  - Consider hosting an internal known-good repository that's vetted.
-- Ensure that a software supply chain security tool is used to verify that components do not contain known vulnerabilities.
-- Ensure that there is a review process for code and configuration changes to minimize the chance that malicious code or configuration could be introduced into your software pipeline.
-- Ensure that your CI/CD pipeline has proper segregation, configuration, and access control to ensure the integrity of the code flowing through the build and deploy processes.
+* Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.
+* Ensure libraries and dependencies are consuming trusted repositories.
+  * When it can be avoided, do not use libraries and dependencies directly out of personal open-source repositories.
+  * Consider hosting an internal known-good repository that's vetted.
+* Ensure that a software supply chain security tool is used to verify that components do not contain known vulnerabilities.
+* Ensure that there is a review process for code and configuration changes to minimize the chance that malicious code or configuration could be introduced into your software pipeline.
+* Ensure that your CI/CD pipeline has proper segregation, configuration, and access control to ensure the integrity of the code flowing through the build and deploy processes.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -329,13 +329,13 @@ Notable CWES include CWE-778 Insufficient Logging to include CWE-117 Improper Ou
 
 ### Prevention
 
-- Ensure all login, access control, and server-side input validation failures can be logged with sufficient user context to identify suspicious or malicious accounts and held for enough time to allow delayed forensic analysis.
-  - Do not add unnecessary PII/PHI to logs - only the bare minimum needed to establish context.
-- Ensure that logs are generated in a format that log management solutions can easily consume.
-- Ensure log data is encoded correctly to prevent injections or attacks on the logging or monitoring systems.
-- Ensure high-value transactions have an audit trail with integrity controls to prevent tampering or deletion, such as append-only database tables or similar.
-- Establish or adopt an incident response and recovery plan.
-- Do not expose error logs in response to client when not necessary.
+* Ensure all login, access control, and server-side input validation failures can be logged with sufficient user context to identify suspicious or malicious accounts and held for enough time to allow delayed forensic analysis.
+  * Do not add unnecessary PII/PHI to logs - only the bare minimum needed to establish context.
+* Ensure that logs are generated in a format that log management solutions can easily consume.
+* Ensure log data is encoded correctly to prevent injections or attacks on the logging or monitoring systems.
+* Ensure high-value transactions have an audit trail with integrity controls to prevent tampering or deletion, such as append-only database tables or similar.
+* Establish or adopt an incident response and recovery plan.
+* Do not expose error logs in response to client when not necessary.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -351,19 +351,19 @@ This is determental since these flaws could be leveraged as part of a botnet or 
 
 #### Network Layer
 
-- Segment remote resource access functionality in separate networks to reduce the impact of SSRF
-- Enforce “deny by default” firewall policies or network access control rules to block all but essential intranet traffic.
-  - Establish an ownership and a lifecycle for firewall rules based on applications.
-  - Log all accepted and blocked network flows on firewalls.
+* Segment remote resource access functionality in separate networks to reduce the impact of SSRF
+* Enforce “deny by default” firewall policies or network access control rules to block all but essential intranet traffic.
+  * Establish an ownership and a lifecycle for firewall rules based on applications.
+  * Log all accepted and blocked network flows on firewalls.
 
 #### Application Layer
 
-- Do not initialize HTTP Clients to continually have access to credentials to intranet services.
-- Sanitize and validate all client-supplied input data.
-- Enforce the URL schema, port, and destination with a positive allow list.
-- Do not send raw responses to clients.
-- Disable HTTP redirections.
-- Be aware of the URL consistency to avoid attacks such as DNS rebinding and "time of check, time of use" (TOCTOU) race conditions.
+* Do not initialize HTTP Clients to continually have access to credentials to intranet services.
+* Sanitize and validate all client-supplied input data.
+* Enforce the URL schema, port, and destination with a positive allow list.
+* Do not send raw responses to clients.
+* Disable HTTP redirections.
+* Be aware of the URL consistency to avoid attacks such as DNS rebinding and "time of check, time of use" (TOCTOU) race conditions.
 
 Do not mitigate SSRF via the use of a denylist or regular expression. Attackers have payload lists, tools, and skills to bypass deny lists.
 

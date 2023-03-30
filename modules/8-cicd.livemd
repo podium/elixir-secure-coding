@@ -19,9 +19,9 @@ This module will cover over some of the automated processes you may see in a CI/
 
 ## Table of Contents
 
-- [Sobelow](#sobelow)
-  - [Salus](#salus)
-- [Semgrep](#semgrep)
+* [Sobelow](#sobelow)
+  * [Salus](#salus)
+* [Semgrep](#semgrep)
 
 ## Sobelow
 

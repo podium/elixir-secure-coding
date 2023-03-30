@@ -21,7 +21,6 @@ defmodule GradingClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:credo, "~> 1.7"},
       {:httpoison, "~> 2.1"},
       {:jason, "~> 1.4"}
     ]
