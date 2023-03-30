@@ -44,11 +44,13 @@ defmodule GradingServer.AnswerStore do
   @doc """
   Fetches the given answer from the store.
   """
+  @spec get_answer(integer(), integer()) :: Answer.t() | nil
   def get_answer(module_id, question_id) do
     GenServer.call(__MODULE__, {:fetch, module_id, question_id})
   end
 
   # load a file from the priv folder
+  @spec load_answers() :: [Answer.t()]
   def load_answers() do
     file = Application.fetch_env!(:grading_server, :answer_store_file)
     file = Path.join([:code.priv_dir(:grading_server), file])
