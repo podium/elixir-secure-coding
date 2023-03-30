@@ -123,6 +123,7 @@ end
 
 # PasswordCompare.option_one("users_password", md5_hash)
 # PasswordCompare.option_two("users_password", bcrypt_salted_hash)
+|> GradingClient.check_answer(2, 1)
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->
@@ -254,8 +255,7 @@ Notable CWE included is CWE-1104: Use of Unmaintained Third-Party Components
 vulnerable_dependency = :vulnerable_dependency
 
 # DO NOT CHANGE CODE BELOW THIS LINE ============================
-Application.spec(vulnerable_dependency)[:vsn] |> List.to_string() |> IO.puts()
-IO.puts(vulnerable_dependency)
+GradingClient.check_answer(vulnerable_dependency, 2, 2)
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->

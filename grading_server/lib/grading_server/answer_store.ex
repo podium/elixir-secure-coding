@@ -49,7 +49,7 @@ defmodule GradingServer.AnswerStore do
   end
 
   # load a file from the priv folder
-  defp load_answers() do
+  def load_answers() do
     file = Application.fetch_env!(:grading_server, :answer_store_file)
     file = Path.join([:code.priv_dir(:grading_server), file])
 
