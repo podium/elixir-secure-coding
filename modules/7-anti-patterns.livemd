@@ -5,10 +5,6 @@ Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"}
 ])
 
-check_answer = fn answer, question_id ->
-  GradingClient.check_answer(answer, 7, question_id)
-end
-
 :ok
 ```
 
@@ -24,8 +20,8 @@ Important to differentiate though that Security Anti-Patterns are not themselves
 
 ## Tables of Contents
 
-* [Security Through Obscurity](#security-through-obscurity)
-* [Frontend Authorization Checks](#frontend-authorization-checks)
+- [Security Through Obscurity](#security-through-obscurity)
+- [Frontend Authorization Checks](#frontend-authorization-checks)
 
 ## Security Through Obscurity
 
@@ -37,7 +33,7 @@ Obscurity means keeping the underlying system's security loopholes a secret to a
 
 Typically, a hacker's approach in exploiting a system begins with mapping the attack surface. If there is no public information on those weak areas, hackers will find the system more difficult to penetrate and will eventually delay or postpone its malicious objective.
 
-**Here's the secret**...hackers are really, *really* good at figuring out what you don't want them to. If you were to take an obfuscator to your code before deploying it to production, you would definitely throw a wrench in an attackers plan, but it just delays the inevitable. It is not a tangible, technical mechanism that cannot be undone (e.g. hashing algorithms).
+**Here's the secret**...hackers are really, _really_ good at figuring out what you don't want them to. If you were to take an obfuscator to your code before deploying it to production, you would definitely throw a wrench in an attackers plan, but it just delays the inevitable. It is not a tangible, technical mechanism that cannot be undone (e.g. hashing algorithms).
 
 ### <span style="color:blue;">Example</span>
 
@@ -77,7 +73,7 @@ Penguin.slide([3, 4, 5, 2, 1])
 
 **What sort method is the module above using?**
 
-*Uncomment the line with your answer.*
+_Uncomment the line with your answer._
 
 ```elixir
 # answer = :bubble_sort
@@ -85,7 +81,7 @@ Penguin.slide([3, 4, 5, 2, 1])
 # answer = :quick_sort
 # answer = :random_sort
 
-check_answer.(answer, 1)
+IO.puts(answer)
 ```
 
 ## Frontend Authorization Checks
@@ -98,12 +94,12 @@ Here's a scenario that helps paint the picture of this Security Anti-Pattern:
 
 You're signing up for an account to a free SaaS product and upon account creation, you're asked to input your desired password. It can be anything you want provided it follows the criteria outlined:
 
-* Must be longer than 8 characters
-* Must contain at least one of each:
-  * Uppercase letter
-  * Lowercase letter
-  * Number
-  * Symbol
+- Must be longer than 8 characters
+- Must contain at least one of each:
+  - Uppercase letter
+  - Lowercase letter
+  - Number
+  - Symbol
 
 Pretty secure criteria! You type `this_is_MY_super_secure_password` and hit enter. You get an error, "Missing number" - shoot! You've heard that you shouldn't add a 1 to the end of passwords and this is the password you use for everything so you really, really want it.
 

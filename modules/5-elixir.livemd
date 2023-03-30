@@ -10,9 +10,6 @@ Mix.install([
   :plug
 ])
 
-check_answer = fn answer, question_id ->
-  GradingClient.check_answer(answer, 5, question_id)
-end
 ```
 
 ## Introduction
@@ -23,11 +20,11 @@ But even the dullest blades can hurt someone! This module goes over Elixir speci
 
 ## Table of Contents
 
-* [Atom Exhaustion](#atom-exhaustion)
-* [Protecting Sensitive Data](#protecting-sensitive-data)
-* [Untrusted Code](#untrusted-code)
-* [Timing Attacks](#timing-attacks)
-* [Boolean Coercion](#boolean-coercion)
+- [Atom Exhaustion](#atom-exhaustion)
+- [Protecting Sensitive Data](#protecting-sensitive-data)
+- [Untrusted Code](#untrusted-code)
+- [Timing Attacks](#timing-attacks)
+- [Boolean Coercion](#boolean-coercion)
 
 ## Atom Exhaustion
 
@@ -53,7 +50,7 @@ Beware of functions in applications/libraries that create atoms from input value
 
 **Fix the vulnerable function below by changing the String function used on line 7.**
 
-*You should get a `true` result when you successfully fix the function.*
+_You should get a `true` result when you successfully fix the function._
 
 ```elixir
 random_number = :rand.uniform(10000)
@@ -68,7 +65,8 @@ rescue
   e -> {ArgumentError, e}
 end
 
-check_answer.(:erlang.system_info(:atom_count) == prev_count, 1)
+IO.puts("Are you protected against Atom Exhaustion?")
+IO.puts(:erlang.system_info(:atom_count) == prev_count)
 ```
 
 ## Untrusted Code
@@ -103,7 +101,7 @@ textfield_value = Kino.Input.read(name)
 
 **BONUS QUESTION**: How would you go about securing the code above?
 
-Hint: Deleting it *entirely* is a fair approach 😉
+Hint: Deleting it _entirely_ is a fair approach 😉
 
 ## Timing Attacks
 
@@ -131,7 +129,7 @@ Note: constant time operations tend to take longer, that is the trade off for se
 
 **Observe the two functions outlined below, one is susceptible to timing attacks and the other uses constant time to compare strings. Change the value of `user_input` and see if you notice any time difference in the execution time.**
 
-*Simply uncomment the IO.puts on the last line of the code block for credit on this question.*
+_Simply uncomment the IO.puts on the last line of the code block for credit on this question._
 
 ```elixir
 defmodule Susceptible do
@@ -176,12 +174,12 @@ This can lead to subtle and unexpected bugs, especially when interworking with E
 
 By using expressions that do not use boolean coercion, the incorrect assumption about the function's return type is caught early:
 
-* Prefer `case` over `if`, `unless` or `cond`
-* Prefer `and` over `&&`
-* Prefer `or` over `||`
-* Prefer `not` over `!`
+- Prefer `case` over `if`, `unless` or `cond`
+- Prefer `and` over `&&`
+- Prefer `or` over `||`
+- Prefer `not` over `!`
 
-The latter will raise a "BadBooleanError" when the function returns :ok or {:error, _}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
+The latter will raise a "BadBooleanError" when the function returns :ok or {:error, \_}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
 
 ### Resources
 
@@ -191,7 +189,7 @@ The latter will raise a "BadBooleanError" when the function returns :ok or {:err
 
 **The function `SecurityCheck` below does not return a truthy value but is treated as such in both of the commented out function calls, which if statement is the correct way to call this function?**
 
-*Uncomment the if statement that uses the correct boolean comparison.*
+_Uncomment the if statement that uses the correct boolean comparison._
 
 ```elixir
 defmodule SecurityCheck do

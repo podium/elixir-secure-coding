@@ -5,10 +5,6 @@ Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"}
 ])
 
-check_answer = fn answer, question_id ->
-  GradingClient.check_answer(answer, 3, question_id)
-end
-
 :ok
 ```
 
@@ -48,7 +44,7 @@ _Use `System.get_env/1` on line 2._
 super_secret_password = "p@ssw0rd"
 
 # DO NOT CHANGE CODE BELOW THIS COMMENT
-check_answer.(super_secret_password, 1)
+IO.puts(super_secret_password)
 ```
 
 ## Making Secret Rotation Easy

@@ -6,10 +6,6 @@ Mix.install([
   :sobelow
 ])
 
-check_answer = fn answer, question_id ->
-  GradingClient.check_answer(answer, 8, question_id)
-end
-
 :ok
 ```
 

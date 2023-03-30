@@ -13,10 +13,6 @@ Mix.install([
 md5_hash = :crypto.hash(:md5, "users_password")
 bcrypt_salted_hash = Bcrypt.hash_pwd_salt("users_password")
 
-check_answer = fn answer, question_id ->
-  GradingClient.check_answer(answer, 2, question_id)
-end
-
 :ok
 ```
 
@@ -128,7 +124,6 @@ end
 
 # PasswordCompare.option_one("users_password", md5_hash)
 # PasswordCompare.option_two("users_password", bcrypt_salted_hash)
-|> check_answer.(1)
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->
@@ -260,7 +255,8 @@ _HINT: Installed dependencies can be found at the very top, it was the very firs
 vulnerable_dependency = :vulnerable_dependency
 
 # DO NOT CHANGE CODE BELOW THIS LINE ============================
-check_answer.(vulnerable_dependency, 2)
+Application.spec(vulnerable_dependency)[:vsn] |> List.to_string() |> IO.puts()
+IO.puts(vulnerable_dependency)
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->

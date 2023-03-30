@@ -11,10 +11,6 @@ alias Phoenix.ConnTest
 alias Plug
 conn = ConnTest.build_conn()
 
-check_answer = fn answer, question_id ->
-  GradingClient.check_answer(answer, 6, question_id)
-end
-
 :ok
 ```
 
@@ -30,9 +26,9 @@ Cookies are mainly used for three purposes:
 
 ## Tables of Contents
 
-* [Ingredients of a Cookie](#ingredients-of-a-cookie)
-* [The Perfect Cookie](#the-perfect-cookie)
-* [Elixir Phoenix Cookies](#elixir-phoenix-cookies)
+- [Ingredients of a Cookie](#ingredients-of-a-cookie)
+- [The Perfect Cookie](#the-perfect-cookie)
+- [Elixir Phoenix Cookies](#elixir-phoenix-cookies)
 
 ## Ingredients of a Cookie
 
@@ -58,10 +54,10 @@ HttpOnly enabled cookies can still be replaced by overflowing the cookie jar fro
 
 The Domain attribute specifies which hosts can receive a cookie.
 
-* If unspecified, the attribute defaults to the same host that set the cookie, excluding subdomains.
-* If Domain is specified, then subdomains are always included.
+- If unspecified, the attribute defaults to the same host that set the cookie, excluding subdomains.
+- If Domain is specified, then subdomains are always included.
 
-Therefore, specifying Domain is *less* restrictive than omitting it. However, it can be helpful when subdomains need to share information about a user.
+Therefore, specifying Domain is _less_ restrictive than omitting it. However, it can be helpful when subdomains need to share information about a user.
 
 For example, if you set `Domain=mozilla.org`, cookies are available on subdomains like `developer.mozilla.org`.
 
@@ -71,16 +67,16 @@ The Path attribute indicates a URL path that must exist in the requested URL in 
 
 For example, if you set `Path=/docs`, these request paths match:
 
-* `/docs`
-* `/docs/`
-* `/docs/Web/`
-* `/docs/Web/HTTP`
+- `/docs`
+- `/docs/`
+- `/docs/Web/`
+- `/docs/Web/HTTP`
 
 But these request paths don't:
 
-* `/`
-* `/docsets`
-* `/fr/docs`
+- `/`
+- `/docsets`
+- `/fr/docs`
 
 #### SameSite
 
@@ -88,10 +84,10 @@ The SameSite attribute lets servers specify whether/when cookies are sent with c
 
 There are three different settings for the SameSite attribute:
 
-* **Strict** - The cookie is only sent to the site where it originated.
-* **Lax** - Similar to "Strict" except that cookies are sent when the user navigates to the cookie's origin site. 
-  * E.g. Following a link from an external site.
-* **None** - specifies that cookies are sent on both originating and cross-site requests, but only in secure contexts (i.e., if SameSite=None then the Secure attribute must also be set).
+- **Strict** - The cookie is only sent to the site where it originated.
+- **Lax** - Similar to "Strict" except that cookies are sent when the user navigates to the cookie's origin site.
+  - E.g. Following a link from an external site.
+- **None** - specifies that cookies are sent on both originating and cross-site requests, but only in secure contexts (i.e., if SameSite=None then the Secure attribute must also be set).
 
 If no SameSite attribute is set, the cookie is treated as Lax.
 
@@ -109,10 +105,10 @@ Two prefixes are available:
 
 If a cookie name has this prefix, it's accepted in a `Set-Cookie` header only if it meets all these conditions:
 
-* It's also marked with the "Secure" attribute
-* It was sent from a secure origin
-* It does not include a Domain attribute
-* It has the Path attribute set to `/`
+- It's also marked with the "Secure" attribute
+- It was sent from a secure origin
+- It does not include a Domain attribute
+- It has the Path attribute set to `/`
 
 This way, these cookies can be seen as "domain-locked".
 
@@ -120,10 +116,10 @@ This way, these cookies can be seen as "domain-locked".
 
 If a cookie name has this prefix, it's accepted in a Set-Cookie header only if it meets all these conditions:
 
-* It's marked with the Secure attribute
-* It was sent from a secure origin.
+- It's marked with the Secure attribute
+- It was sent from a secure origin.
 
-This is weaker than the __Host- prefix.
+This is weaker than the \_\_Host- prefix.
 
 #### Strict Secure Cookies
 
@@ -133,11 +129,11 @@ This adds restrictions on cookies marked with the "Secure" attribute. Currently,
 
 Ooie-gooie and fresh out of the oven, perfectly golden brown. Here are some attributes that would go into making one of the most secure cookies out there!
 
-* **Cookie Prefix:** `__Host`
-* **Path:** `/`
-* **Secure:** `True`
-* **HttpOnly:** `True`
-* **SameSite:** `Strict`
+- **Cookie Prefix:** `__Host`
+- **Path:** `/`
+- **Secure:** `True`
+- **HttpOnly:** `True`
+- **SameSite:** `Strict`
 
 Ideally the cookie is also cryptographically signed or encrypted, but how that is done is typically up to the implementation.
 
@@ -151,7 +147,7 @@ In the Phoenix Framework, you would use functionality found within the [Plug lib
 
 **Given the "Perfect Cookie" outlined above, how would you assign that cookie using the Plug library?**
 
-*Fill out the `put_resp_cookie/4` function arguments with the settings outlined in the previous section, no other code changes should be necessary.*
+_Fill out the `put_resp_cookie/4` function arguments with the settings outlined in the previous section, no other code changes should be necessary._
 
 ```elixir
 cookie_name = "CHANGE_ME_TOO"
@@ -164,7 +160,7 @@ conn
   # path: ,
   # secure: ,
   # http_only: ,
-  # same_site: 
+  # same_site:
 )
 ```
 
