@@ -42,7 +42,7 @@ defmodule GradingServer.MixProject do
       {:jason, "~> 1.4"},
       # {:jason, "~> 1.4"}, uncomment when {:jason, "1.5.0"} is out for GA
       {:plug_cowboy, "~> 2.5"},
-      {:sobelow, "~> 0.11"},
+      {:sobelow, "~> 0.12"},
       {:simple_token_authentication, "~> 0.7.0"}
     ]
   end
