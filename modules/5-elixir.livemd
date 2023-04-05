@@ -1,7 +1,14 @@
 # ESCT: Part 5 - Elixir Security
 
+## Section
+
 ```elixir
-Mix.install([:benchwarmer, :kino, :plug])
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"},
+  :benchwarmer,
+  :kino,
+  :plug
+])
 ```
 
 ## Introduction
@@ -43,7 +50,7 @@ Beware of functions in applications/libraries that create atoms from input value
 
 **Fix the vulnerable function below by changing the String function used on line 7.**
 
-*You should get a `true` result when you successfully fix the function.*
+_You should get a `true` result when you successfully fix the function._
 
 ```elixir
 random_number = :rand.uniform(10000)
@@ -74,8 +81,8 @@ Deserialization of untrusted input can result in atom creation, which can lead t
 * Prevent function deserialisation from untrusted input, e.g. using `Plug.Crypto.non_executable_binary_to_term/1,2`
 
 ### Resource
-1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/serialisation
 
+1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/serialisation
 
 ## Untrusted Code
 
@@ -109,7 +116,7 @@ textfield_value = Kino.Input.read(name)
 
 **BONUS QUESTION**: How would you go about securing the code above?
 
-Hint: Deleting it *entirely* is a fair approach 😉
+Hint: Deleting it _entirely_ is a fair approach 😉
 
 ## Timing Attacks
 
@@ -137,7 +144,7 @@ Note: constant time operations tend to take longer, that is the trade off for se
 
 **Observe the two functions outlined below, one is susceptible to timing attacks and the other uses constant time to compare strings. Change the value of `user_input` and see if you notice any time difference in the execution time.**
 
-*Simply uncomment the IO.puts on the last line of the code block for credit on this question.*
+_Simply uncomment the IO.puts on the last line of the code block for credit on this question._
 
 ```elixir
 defmodule Susceptible do
@@ -187,7 +194,7 @@ By using expressions that do not use boolean coercion, the incorrect assumption 
 * Prefer `or` over `||`
 * Prefer `not` over `!`
 
-The latter will raise a "BadBooleanError" when the function returns :ok or {:error, _}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
+The latter will raise a "BadBooleanError" when the function returns :ok or {:error, \_}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
 
 ### Resources
 
@@ -197,7 +204,7 @@ The latter will raise a "BadBooleanError" when the function returns :ok or {:err
 
 **The function `SecurityCheck` below does not return a truthy value but is treated as such in both of the commented out function calls, which if statement is the correct way to call this function?**
 
-*Uncomment the if statement that uses the correct boolean comparison.*
+_Uncomment the if statement that uses the correct boolean comparison._
 
 ```elixir
 defmodule SecurityCheck do
@@ -234,7 +241,7 @@ While it's obvious that we don't want data of this nature to get exposed, let's 
 
 Exceptions may result in console or log output that includes a stack trace. Mostly a stack trace shows the module/function/arity and the filename/line where the exception occurred, but for the function at the top of the stack the actual list of arguments may be included instead of the function arity.
 
-To prevent sensitive data from leaking in a stack trace, the value may be wrapped in a closure: a zero-arity anonymous function. The inner value can be easily unwrapped where it is needed by invoking the function. If an error occurs and function arguments are written to the console or a log, it is shown as `#Fun<...>` or `#Function<...>`. 
+To prevent sensitive data from leaking in a stack trace, the value may be wrapped in a closure: a zero-arity anonymous function. The inner value can be easily unwrapped where it is needed by invoking the function. If an error occurs and function arguments are written to the console or a log, it is shown as `#Fun<...>` or `#Function<...>`.
 
 Secrets wrapped in a closure are also safe from introspection using [Observer](https://elixir-lang.org/getting-started/debugging.html#observer) and from being written to crash dumps.
 
@@ -265,7 +272,7 @@ defp prune_stacktrace(stacktrace), do: stacktrace
 
 ## ETS Tables
 
-[ETS tables](https://elixir-lang.org/getting-started/mix-otp/ets.html) are commonly used as a go to caching mechanism in-app. But did you know that they can be declared as private (through the use of the `:private` option when instantiating them)? 
+[ETS tables](https://elixir-lang.org/getting-started/mix-otp/ets.html) are commonly used as a go to caching mechanism in-app. But did you know that they can be declared as private (through the use of the `:private` option when instantiating them)?
 
 This prevents the table from being read by other processes, such as remote shell sessions. Private tables are also not visible in Observer.
 
@@ -274,14 +281,13 @@ This prevents the table from being read by other processes, such as remote shell
 **We have decided that we do not want this ETS table to be read from other processes, so try making it private:**
 
 ```elixir
-secret_table = :ets.new(:secret_table, [:public]) # ONLY EDIT THIS LINE
+# ONLY EDIT THIS LINE
+secret_table = :ets.new(:secret_table, [:public])
 :ets.info(secret_table)[:protection]
 ```
 
 ## Resource
 
 1. https://erlef.github.io/security-wg/secure_coding_and_deployment_hardening/sensitive_data.html
-
-
 
 [**<- Previous Module: GraphQL Security**](./4-graphql.livemd) || [**Next Module: Cookie Security ->**](./6-cookies.livemd)

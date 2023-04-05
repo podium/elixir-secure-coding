@@ -1,11 +1,18 @@
 # ESCT: Part 9 - The Secure Road
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+
+:ok
+```
+
 ## Introduction
 
 > <i>Two roads diverged in a wood, and I,<br />
 > I took the one less traveled by,<br />
-> And that has made all the difference.<br />
-> \- Robert Frost, The Road Not Taken (1916)</i>
+> And that has made all the difference.<br /> > \- Robert Frost, The Road Not Taken (1916)</i>
 
 Wow! Look at us, it was a long journey to get here and major kudos to you for getting through it all. I bet you're killing those quiz questions!
 
@@ -15,9 +22,9 @@ Thinking about Robert Frost's poem above - choosing to build code in a secure ma
 
 When we build code using insecure techniques (intentionally or unintentionally) then technical debt is created in the form of security debt; even if building insecure code took less time, you inveitably will have to fix the security issues at some point.
 
-Can you imagine if Robert Frost decided to take the road *more* traveled, walked all that way, just to find out the road is out a ways ahead and had to walk back just to go down the road less traveled? It's the same for building Secure Code from the get-go.
+Can you imagine if Robert Frost decided to take the road _more_ traveled, walked all that way, just to find out the road is out a ways ahead and had to walk back just to go down the road less traveled? It's the same for building Secure Code from the get-go.
 
-With all that in mind, in this final module let's explore some examples of Data Systems that you *could* build...but they may not be the *most* secure systems from the onset and how we can go about rearchitecting them to be better.
+With all that in mind, in this final module let's explore some examples of Data Systems that you _could_ build...but they may not be the _most_ secure systems from the onset and how we can go about rearchitecting them to be better.
 
 ## Table of Contents
 
@@ -36,7 +43,7 @@ A) Have a single, securely generated token that each of the sender services has 
 
 B) Each sender service has a unique securely generated token and the receiver stores copies of each of those to check against whenever a request comes through?
 
-The answer in this case is **B** - even though technically both solutions *could* work, having a single version of the token increases the likelihood and impact if said token were leaked / exposed. Additionally, it would make it much harder to rotate the token in all the various services without causing an outage.
+The answer in this case is **B** - even though technically both solutions _could_ work, having a single version of the token increases the likelihood and impact if said token were leaked / exposed. Additionally, it would make it much harder to rotate the token in all the various services without causing an outage.
 
 In the event of a token exposure in situation B, you would simple have to rotate the single token pairing between the sender and the receiver with effecting or compromising other services.
 

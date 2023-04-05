@@ -1,5 +1,13 @@
 # ESCT: Part 3 - Secure SDLC Concepts
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+
+:ok
+```
+
 ## Introduction
 
 Welcome to Part 3! This section is dedicated to discussing some of the more abstract, non-vulnerability related parts of Application Security. Concepts to keep in mind as you work your craft at building code.
@@ -35,7 +43,7 @@ A very easy way to prevent secrets being added to go though is to access them vi
 
 **Remove the hard-coded secret from the code sample below and replace it with an environment variable named `envar_secret`.**
 
-*Use `System.get_env/1` on line 2.*
+_Use `System.get_env/1` on line 2._
 
 ```elixir
 # let's assume there is an environment variable named 'envar_secret'
@@ -85,11 +93,11 @@ More often than not, rate limiting should be as specific as possible. For instan
 
 ### Principle of Least Privilege
 
-Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity* is only strictly given the essential privileges needed to perform its requirement.
+Sometimes known as the Principle of Minimal Privilege or the Principle of Least Authority, the Principle of Least Privilege (PoLP) means that every entity\* is only strictly given the essential privileges needed to perform its requirement.
 
 E.g. A script that executes on a cron schedule that monitors the output of a log file only needs read privileges and should not be given write privileges.
 
-**Entity: generic term for an arbitrary process, user, program, etc. found within a Data System*
+\*_Entity: generic term for an arbitrary process, user, program, etc. found within a Data System_
 
 #### Benefits of the Principle
 
@@ -104,63 +112,66 @@ Zero Trust is not only about controlling user access, but requires strict contro
 
 ### Microsegmentation
 
-Microsegmentation is the practice of breaking up security perimeters into small zones to maintain separate access for separate parts of the network. Some of the benefits of doing so are: 
-* Granular Access Policies - we can create super specific policies for access to each segment! 
-* Targeted Security Controls - we can develop each micro-perimeter to specifically target the security risks and vulnerabilities of the resources in that micro-segment! 
-* Establishing Identities and Trust - we can implement, monitor, and control the “never trust, always verify” principle much easier! 
+Microsegmentation is the practice of breaking up security perimeters into small zones to maintain separate access for separate parts of the network. Some of the benefits of doing so are:
 
-### Preventing Lateral Movement 
+* Granular Access Policies - we can create super specific policies for access to each segment!
+* Targeted Security Controls - we can develop each micro-perimeter to specifically target the security risks and vulnerabilities of the resources in that micro-segment!
+* Establishing Identities and Trust - we can implement, monitor, and control the “never trust, always verify” principle much easier!
 
-Zero Trust is designed to contain attackers so that they can not move laterally. You may be asking what does that even mean? In network security, “lateral movement” is when an attacker moves within a network after gaining access to it, which can be very difficult to detect. 
+### Preventing Lateral Movement
 
-Zero Trust helps contain attackers because the access is segmented and has to be reestablished periodically, limiting them from moving across to other microsegments within the network. 
+Zero Trust is designed to contain attackers so that they can not move laterally. You may be asking what does that even mean? In network security, “lateral movement” is when an attacker moves within a network after gaining access to it, which can be very difficult to detect.
+
+Zero Trust helps contain attackers because the access is segmented and has to be reestablished periodically, limiting them from moving across to other microsegments within the network.
 
 ### Multi Factor Authentication
 
-It's no surprise that MFA is a core part of the Zero Trust Model. Systems using MFA require more than one piece of evidence to authenticate a user, with the most common form being a one time password (OTP). 
+It's no surprise that MFA is a core part of the Zero Trust Model. Systems using MFA require more than one piece of evidence to authenticate a user, with the most common form being a one time password (OTP).
 
 ### Resource
+
 1. https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/
 
 ## Defense In Depth
 
-Defense in depth is a security approach of having defense mechanisms in a layered approach to protect valuable assets. Castles take a similar approach, where they have a moat, ramparts, towers, and drawbridges instead of just one wall as protection. 
+Defense in depth is a security approach of having defense mechanisms in a layered approach to protect valuable assets. Castles take a similar approach, where they have a moat, ramparts, towers, and drawbridges instead of just one wall as protection.
 
-An example of developing a web application using defense in depth could be: 
+An example of developing a web application using defense in depth could be:
+
 * The developers (like yourself) receive secure coding training
 * The codebase is checked automatically for vulnerabilities using Semgrep
 * The codebase is also checked for outdated dependencies using Dependabot
-* The application is regularly tested by the internal security team 
+* The application is regularly tested by the internal security team
 * Multiple development environments are used such as Develpoment, Staging, and Production
 
-<br> </br> 
+<br />
 
-Using more than one of the following layers constitutes an example of defense in depth: 
+Using more than one of the following layers constitutes an example of defense in depth:
 
-### System and Application 
+### System and Application
 
 * Authentication and password security
-  * Hashing passwords 
-  * Multi factor authentication (MFA) 
-* Encryption 
-* Security Tooling 
-* Security Awareness Training (sounds familiar 😉) 
-* Logging and Monitoring 
+  * Hashing passwords
+  * Multi factor authentication (MFA)
+* Encryption
+* Security Tooling
+* Security Awareness Training (sounds familiar 😉)
+* Logging and Monitoring
 
-### Network 
+### Network
 
-* Firewalls (hardware and software) 
-* Demilitarized zones (DMZ) 
+* Firewalls (hardware and software)
+* Demilitarized zones (DMZ)
 * Virtual Private Networks (VPN)
 
-### Physical 
+### Physical
 
-* Biometrics 
-* Data-centric security 
-* Physical Security (such as locked server rooms) 
+* Biometrics
+* Data-centric security
+* Physical Security (such as locked server rooms)
 
 ### Resource
-1. https://www.forcepoint.com/cyber-edu/defense-depth
 
+1. https://www.forcepoint.com/cyber-edu/defense-depth
 
 [**<- Previous Module: OWASP**](./2-owasp.livemd) || [**Next Module: GraphQL Security ->**](./4-graphql.livemd)

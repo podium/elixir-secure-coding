@@ -1,16 +1,21 @@
 # ESCT: Part 8 - CI/CD Tools
 
 ```elixir
-Mix.install([:sobelow])
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"},
+  :sobelow
+])
+
+:ok
 ```
 
 ## Introduction
 
-Just like there's more to making software than just writing code, there's more to *securing* software than just reviewing code.
+Just like there's more to making software than just writing code, there's more to _securing_ software than just reviewing code.
 
 Part of the development lifecycle includes deploying code and it is here that we can institute automated tooling and tests to assist in the detection of insecurities and potentially prevent vulnerabilities from reach production whatsoever!
 
-This module will cover over some of the automated processes you may see in a CI/CD pipeline and how they work at a high level. Important to note is most of these tools can be run in a number of different ways - meaning they don't *have* to be run in the CI/CD pipeline and instead can be run locally.
+This module will cover over some of the automated processes you may see in a CI/CD pipeline and how they work at a high level. Important to note is most of these tools can be run in a number of different ways - meaning they don't _have_ to be run in the CI/CD pipeline and instead can be run locally.
 
 ## Table of Contents
 

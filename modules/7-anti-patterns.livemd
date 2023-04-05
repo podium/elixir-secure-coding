@@ -1,5 +1,13 @@
 # ESCT: Part 7 - Security Anti-Patterns
 
+```elixir
+Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"}
+])
+
+:ok
+```
+
 ## Introduction
 
 In Software Engineering, an Anti-Pattern typically is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
@@ -25,7 +33,7 @@ Obscurity means keeping the underlying system's security loopholes a secret to a
 
 Typically, a hacker's approach in exploiting a system begins with mapping the attack surface. If there is no public information on those weak areas, hackers will find the system more difficult to penetrate and will eventually delay or postpone its malicious objective.
 
-**Here's the secret**...hackers are really, *really* good at figuring out what you don't want them to. If you were to take an obfuscator to your code before deploying it to production, you would definitely throw a wrench in an attackers plan, but it just delays the inevitable. It is not a tangible, technical mechanism that cannot be undone (e.g. hashing algorithms).
+**Here's the secret**...hackers are really, _really_ good at figuring out what you don't want them to. If you were to take an obfuscator to your code before deploying it to production, you would definitely throw a wrench in an attackers plan, but it just delays the inevitable. It is not a tangible, technical mechanism that cannot be undone (e.g. hashing algorithms).
 
 ### <span style="color:blue;">Example</span>
 
@@ -65,7 +73,7 @@ Penguin.slide([3, 4, 5, 2, 1])
 
 **What sort method is the module above using?**
 
-*Uncomment the line with your answer.*
+_Uncomment the line with your answer._
 
 ```elixir
 # answer = :bubble_sort

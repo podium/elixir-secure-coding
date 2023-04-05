@@ -2,6 +2,7 @@
 
 ```elixir
 Mix.install([
+  {:grading_client, path: "#{__DIR__}/grading_client"},
   :bcrypt_elixir,
   :httpoison,
   {:absinthe, "~> 1.7.0"},
@@ -11,6 +12,7 @@ Mix.install([
 
 md5_hash = :crypto.hash(:md5, "users_password")
 bcrypt_salted_hash = Bcrypt.hash_pwd_salt("users_password")
+
 :ok
 ```
 
@@ -24,7 +26,7 @@ The [Open Web Application Security Project (OWASP)](https://owasp.org/) is a non
 
 They are an open community dedicated to enabling organizations to conceive, develop, acquire, operate, and maintain applications that can be trusted. All of their projects, tools, documents, forums, and chapters are free and open to anyone interested in improving application security.
 
-Having been in the Application Security space since 2001, they are somewhat of the defacto standard when it comes to best practices. It is *highly* encouraged to give their site a visit and look around at available materials!
+Having been in the Application Security space since 2001, they are somewhat of the defacto standard when it comes to best practices. It is _highly_ encouraged to give their site a visit and look around at available materials!
 
 ## Tables of Contents
 
@@ -77,7 +79,7 @@ Notable CWEs included are CWE-259: Use of Hard-coded Password, CWE-327: Broken o
 
 ### Prevention
 
-* Don't store sensitive data unnecessarily. 
+* Don't store sensitive data unnecessarily.
   * Discard it as soon as possible or use PCI DSS compliant tokenization or even truncation.
   * Data that is not retained cannot be stolen.
 * Ensure up-to-date and strong standard algorithms, protocols, and keys are in place; use proper key management.
@@ -87,7 +89,7 @@ Notable CWEs included are CWE-259: Use of Hard-coded Password, CWE-327: Broken o
 * Make sure to encrypt all sensitive data at rest.
 * Disable caching for responses that contain sensitive data.
 * Do not use legacy protocols such as FTP and SMTP.
-* Store passwords using strong and salted hashing functions with a delay factor. 
+* Store passwords using strong and salted hashing functions with a delay factor.
   * Argon2, scrypt, bcrypt or PBKDF2 are good examples.
 * Always use [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption) instead of just encryption.
 * Ensure that cryptographic randomness is used where appropriate, and that it has not been seeded in a predictable way or with low entropy.
@@ -99,7 +101,7 @@ Notable CWEs included are CWE-259: Use of Hard-coded Password, CWE-327: Broken o
 
 **Which of the following functions is performing password comparisons in the most secure way?**
 
-*Please uncomment the function call that you believe is correct.*
+_Please uncomment the function call that you believe is correct._
 
 ```elixir
 defmodule PasswordCompare do
@@ -213,10 +215,10 @@ Vulnerable Components are a known issue that we struggle to test and assess risk
 
 You are likely vulnerable:
 
-* If you do not know the versions of all components you use (both client-side and server-side). 
+* If you do not know the versions of all components you use (both client-side and server-side).
   * This includes components you directly use as well as nested dependencies.
-* If the software is vulnerable, unsupported, or out of date. 
-  * This includes: 
+* If the software is vulnerable, unsupported, or out of date.
+  * This includes:
     * Operating System
     * Web/Application Server
     * Databases
@@ -224,7 +226,7 @@ You are likely vulnerable:
     * Runtime Environments
     * Libraries / Dependencies
 * If you do not scan for vulnerabilities regularly and subscribe to security bulletins related to the components you use.
-* If you do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion. 
+* If you do not fix or upgrade the underlying platform, frameworks, and dependencies in a risk-based, timely fashion.
   * This commonly happens in environments when patching is a monthly or quarterly task under change control, leaving organizations open to days or months of unnecessary exposure to fixed vulnerabilities.
 * If software developers do not test the compatibility of updated, upgraded, or patched libraries.
 
@@ -244,9 +246,9 @@ Notable CWE included is CWE-1104: Use of Unmaintained Third-Party Components
 
 **Which of the outdated components currently installed is vulnerable?**
 
-*Please change the atom below to the name of the vulnerable package installed in this Livebook AND update the afflicted package.*
+_Please change the atom below to the name of the vulnerable package installed in this Livebook AND update the afflicted package._
 
-*HINT: Installed dependencies can be found at the very top, it was the very first cell you ran.*
+_HINT: Installed dependencies can be found at the very top, it was the very first cell you ran._
 
 ```elixir
 # CHANGE ME
@@ -274,7 +276,7 @@ Confirmation of the user's identity, authentication, and session management is c
 * Has missing or ineffective multi-factor authentication.
 * Exposes session identifier in the URL.
 * Reuse of a session identifier after successful login.
-* Does not correctly invalidate Session IDs. 
+* Does not correctly invalidate Session IDs.
   * User sessions or authentication tokens (mainly single sign-on (SSO) tokens) aren't properly invalidated during logout or a period of inactivity.
 
 Notable CWEs included are CWE-297: Improper Validation of Certificate with Host Mismatch, CWE-287: Improper Authentication, and CWE-384: Session Fixation.
@@ -286,9 +288,9 @@ Notable CWEs included are CWE-297: Improper Validation of Certificate with Host 
 * Implement mechanisms for proactively performing weak password checks and enforce users to set strong passwords for their accounts.
 * Align password length, complexity, and rotation policies with industry standards.
 * Ensure registration, credential recovery, and API pathways are hardened against account enumeration attacks by using the same messages for all outcomes.
-* Limit or increasingly delay failed login attempts. 
+* Limit or increasingly delay failed login attempts.
   * Log all failures and alert the Security team when credential stuffing, brute force, or other attacks are detected.
-* Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login. 
+* Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login.
   * Session identifier should not be in the URL, be securely stored, and invalidated after logout, idle,
 
 <!-- livebook:{"branch_parent_index":3} -->
