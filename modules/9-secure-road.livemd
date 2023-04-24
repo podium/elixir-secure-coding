@@ -35,7 +35,7 @@ With all that in mind, in this final module let's explore some examples of Data 
 
 In a microservice architecture, it is common for backend services to need to communicate with one another - sometimes that could be a call and response interaction other times a "fire and forget" interaction. Regardless of how they interface with one another, there still remains a need for the receipent of the interaction to verify the communication is coming from a trusted source.
 
-In its most basic form, you can have this authentication paradigm look like a Service to Service Token - where the reciepent looks for a securely generated code provided as data along with the request.
+In its most basic form, you can have this authentication paradigm look like a Service to Service Token - where the recipient looks for a securely generated code provided as data along with the request.
 
 Now let's say in our scenario, the receiving service is being communicated with by multiple senders (meaning more than one other service is writing to its API). Would it be better to:
 

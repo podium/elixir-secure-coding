@@ -92,7 +92,7 @@ _Uncomment the item number (1-4) with your answer_
 
 ```elixir
 # -------------------------------------------------------------
-# answer = :1
+# answer = 1
 #
 # HTTP/2 401 Unauthorized
 # Date: Tues, 16 Aug 2022 21:06:42 GMT
@@ -101,7 +101,7 @@ _Uncomment the item number (1-4) with your answer_
 # 	“error”:”token expired”
 # {
 # -------------------------------------------------------------
-# answer = :2
+# answer = 2
 #
 # HTTP/2 200 OK
 # Date: Tues, 16 Aug 2021 22:06:42 GMT
@@ -120,7 +120,7 @@ _Uncomment the item number (1-4) with your answer_
 # 	]
 # }
 # --------------------------------------------------------------
-# answer = :3
+# answer = 3
 #
 # HTTP/2 200 OK
 # Date: Tues, 16 Aug 2022 21:06:42 GMT
@@ -129,7 +129,7 @@ _Uncomment the item number (1-4) with your answer_
 # 	“error”:”ID token for user 55e4cb07 at org 1234 expired”
 # {
 # ---------------------------------------------------------------
-# answer = :4
+# answer = 4
 #
 # HTTP/2 404 File Not Found
 # Date: Tues, 16 Aug 2022 21:06:42 GMT
