@@ -291,7 +291,7 @@ Notable CWEs included are CWE-297: Improper Validation of Certificate with Host 
 * Limit or increasingly delay failed login attempts.
   * Log all failures and alert the Security team when credential stuffing, brute force, or other attacks are detected.
 * Use a server-side, secure, built-in session manager that generates a new random session ID with high entropy after login.
-  * Session identifier should not be in the URL, be securely stored, and invalidated after logout, idle,
+  * Session identifier should not be in the URL, be securely stored, and invalidated after logout, idle, and absolute timeouts.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
@@ -345,7 +345,7 @@ Notable CWES include CWE-778 Insufficient Logging to include CWE-117 Improper Ou
 
 Server-Side Request Forgery (SSRF) flaws occur whenever a web application is fetching a remote resource without validating the user-supplied URL. It allows an attacker to coerce the application to send a crafted request to an unexpected destination, even when protected by a firewall, VPN, or another type of network access control list (ACL).
 
-This is determental since these flaws could be leveraged as part of a botnet or even to further exploit other services in your network that are only accessible in a Service-to-Service context (e.g. not available to public internet, but only to services in the same VPC).
+This is detrimental since these flaws could be leveraged as part of a botnet or even to further exploit other services in your network that are only accessible in a Service-to-Service context (e.g. not available to public internet, but only to services in the same VPC).
 
 ### Prevention
 
