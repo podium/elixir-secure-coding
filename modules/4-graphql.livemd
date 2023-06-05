@@ -63,8 +63,8 @@ _Uncomment the line with your answer._
 
 ```elixir
 # answer = :API6_2019_Mass_Assignment
-answer = :API10_2019_Insufficient_Logging_Monitoring
-# answer = :API3_2019_Excessive_Data_Exposure
+# answer = :API10_2019_Insufficient_Logging_Monitoring
+answer = :API3_2019_Excessive_Data_Exposure
 # answer = :API4_2019_Lack_of_Resources_Rate_Limiting
 
 IO.puts(answer)
