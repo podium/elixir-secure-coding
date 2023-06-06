@@ -64,7 +64,7 @@ _Uncomment the line with your answer._
 ```elixir
 # answer = :API6_2019_Mass_Assignment
 # answer = :API10_2019_Insufficient_Logging_Monitoring
-# answer = :API3_2019_Excessive_Data_Exposure
+answer = :API3_2019_Excessive_Data_Exposure
 # answer = :API4_2019_Lack_of_Resources_Rate_Limiting
 
 IO.puts(answer)
@@ -92,7 +92,7 @@ _Uncomment the item number (1-4) with your answer_
 
 ```elixir
 # -------------------------------------------------------------
-# answer = 1
+answer = 1
 #
 # HTTP/2 401 Unauthorized
 # Date: Tues, 16 Aug 2022 21:06:42 GMT
