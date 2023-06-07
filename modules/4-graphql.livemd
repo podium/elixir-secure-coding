@@ -16,10 +16,10 @@ Since GraphQL can be implemented as a component of an application's API, there a
 
 ## Table of Contents
 
-- [Disabling Introspection](#disabling-introspection)
-- [Error Disclosure](#error-disclosure)
-- [Resource Exhaustion](#resource-exhaustion)
-- [Cost Theory](#cost-theory)
+* [Disabling Introspection](#disabling-introspection)
+* [Error Disclosure](#error-disclosure)
+* [Resource Exhaustion](#resource-exhaustion)
+* [Cost Theory](#cost-theory)
 
 ## Disabling Introspection
 
@@ -121,7 +121,7 @@ answer = 1
 # }
 # --------------------------------------------------------------
 # answer = 3
-
+#
 # HTTP/2 200 OK
 # Date: Tues, 16 Aug 2022 21:06:42 GMT
 # …
