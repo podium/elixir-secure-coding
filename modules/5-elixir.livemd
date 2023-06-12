@@ -11,6 +11,12 @@ Mix.install([
 ])
 ```
 
+## Introduction
+
+Luckily for developers in the Elixir ecosystem (and unluckily for folks trying to create Secure Coding Training materials), Elixir is a rather secure language by default.
+
+But even the dullest blades can hurt someone! This module goes over Elixir specific insecurities to look out for when using the language to build with.
+
 ## Table of Contents
 
 * [Atom Exhaustion](#atom-exhaustion)
@@ -19,12 +25,6 @@ Mix.install([
 * [Timing Attacks](#timing-attacks)
 * [Boolean Coercion](#boolean-coercion)
 * [Sensitive Data Exposure](#sensitive-data-exposure)
-
-## Introduction
-
-Luckily for developers in the Elixir ecosystem (and unluckily for folks trying to create Secure Coding Training materials), Elixir is a rather secure language by default.
-
-But even the dullest blades can hurt someone! This module goes over Elixir specific insecurities to look out for when using the language to build with.
 
 ## Atom Exhaustion
 
