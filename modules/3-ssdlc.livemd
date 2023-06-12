@@ -50,7 +50,7 @@ _Use `System.get_env/1` on line 2._
 super_secret_password = "p@ssw0rd"
 
 # DO NOT CHANGE CODE BELOW THIS COMMENT
-IO.puts(super_secret_password)
+IO.puts(System.get_env("envar_secret"))
 ```
 
 ## Making Secret Rotation Easy

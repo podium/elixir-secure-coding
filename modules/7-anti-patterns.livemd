@@ -78,7 +78,7 @@ _Uncomment the line with your answer._
 ```elixir
 # answer = :bubble_sort
 # answer = :merge_sort
-# answer = :quick_sort
+answer = :quick_sort
 # answer = :random_sort
 
 IO.puts(answer)
