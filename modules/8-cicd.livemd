@@ -41,7 +41,7 @@ Refer to Sobelow's [README](https://github.com/nccgroup/sobelow#installation) fo
 
 ### Description
 
-[Salus](https://github.com/coinbase/salus) is a Static Application Security Testing (SAST) orchestration tool - developed by the Security team over at Coinbase. Under the hood it is a Ruby program that determines the language of what codebase it is attempting to run on and with selectively run other open source SAST tools for that language.
+[Salus](https://github.com/coinbase/salus) is a Static Application Security Testing (SAST) orchestration tool - developed by the Security team over at Coinbase. Under the hood it is a Ruby program that determines the language of what codebase it is attempting to run on and will selectively run other open source SAST tools for that language.
 
 There is currently an [PR in progress](https://github.com/coinbase/salus/pull/651) for integrating Sobelow into Salus.
 
