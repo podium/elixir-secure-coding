@@ -18,7 +18,7 @@ This Training material is also ideally used in an educational environment for or
 
 If you've never used an Elixir [Livebook](https://livebook.dev/) before, you're in for a treat! They are a very exciting new tool that is actively under development - very similar in application to [Jupyter Notebooks](https://jupyter.org/), but for the Elixir ecosystem!
 
-It would not do the Livebook any justice to try and summize here how to fully take advantage of all its capabilities, for a better introduction there is a great tutorial offered in local installations of Livebook.
+It would not do the Livebook any justice to try and summarize here how to fully take advantage of all its capabilities, for a better introduction there is a great tutorial offered in local installations of Livebook.
 
 **For the purposes of this Training material, just know that you need to run the "Setup" step for the "Notebook dependencies and setup" section at the very top of EVERY module before running any code samples found within the module you're working on.**
 

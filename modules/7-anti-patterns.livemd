@@ -105,7 +105,7 @@ Pretty secure criteria! You type `this_is_MY_super_secure_password` and hit ente
 
 You decide to proxy the request and see that the password is never actually being sent to the server when you press enter - the validation check MUST be happening exclusively client-side.
 
-You appease the JavaScript by adding a 1 to the end then proxy the request in transit, seeing that your input (`this_is_MY_super_secure_password1`) is about to be sent as the one of the payload data objects to the server. Before it leaves your browser though, you change the payload back to your original password that didn't met the criteria and let the request go through.
+You appease the JavaScript by adding a 1 to the end then proxy the request in transit, seeing that your input (`this_is_MY_super_secure_password1`) is about to be sent as the one of the payload data objects to the server. Before it leaves your browser though, you change the payload back to your original password that didn't meet the criteria and let the request go through.
 
 To your surprise; the server didn't balk at you! You go to log in to the site with your desired password and it worked!
 

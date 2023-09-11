@@ -142,7 +142,7 @@ An example of developing a web application using defense in depth could be:
 * The codebase is checked automatically for vulnerabilities using Semgrep
 * The codebase is also checked for outdated dependencies using Dependabot
 * The application is regularly tested by the internal security team
-* Multiple development environments are used such as Develpoment, Staging, and Production
+* Multiple development environments are used such as Development, Staging, and Production
 
 <br />
 
