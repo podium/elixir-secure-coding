@@ -180,17 +180,17 @@ In the Phoenix Framework, you would use functionality found within the [Plug lib
 _Fill out the `put_resp_cookie/4` function arguments with the settings outlined in the previous section, no other code changes should be necessary._
 
 ```elixir
-cookie_name = "CHANGE_ME_TOO"
+cookie_name = "THIS_IS_COOKIE"
 
 conn
 |> Plug.Conn.put_resp_cookie(
   cookie_name,
-  <<42::16>>
+  <<42::16>>,
   # domain: ,
-  # path: ,
-  # secure: ,
-  # http_only: ,
-  # same_site:
+  path: "/",
+  secure: true,
+  http_only: true,
+  same_site: "Strict"
 )
 ```
 

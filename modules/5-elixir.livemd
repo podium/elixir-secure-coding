@@ -5,7 +5,7 @@
 ```elixir
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"},
-  :benchwarmer,
+  {:benchwarmer, path: "#{__DIR__}/../../benchwarmer"},
   :kino,
   :plug
 ])
@@ -60,7 +60,7 @@ prev_count = :erlang.system_info(:atom_count)
 try do
   malicious_user_input
   # ONLY CHANGE LINE 8
-  |> String.to_atom()
+  |> String.to_existing_atom()
 rescue
   e -> {ArgumentError, e}
 end
@@ -109,9 +109,7 @@ name = Kino.Input.text("What's your name?")
 ```
 
 ```elixir
-textfield_value = Kino.Input.read(name)
-{result, binding} = Code.eval_string("a", a: textfield_value)
-"Hello, " <> result
+
 ```
 
 **BONUS QUESTION**: How would you go about securing the code above?
@@ -168,13 +166,13 @@ end
 password = "HASH_OF_THE_USERS_ACTUAL_PASSWORD"
 # DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
 
-user_input = "HASH_OF_asdfasdf"
+user_input = "no_relation_whatsoever"
 
 # DO NOT EDIT ANY CODE BELOW THIS LINE (you may uncomment IO.puts) =============
 Benchwarmer.benchmark(fn -> Susceptible.compare(user_input, password) end)
 Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
 
-# IO.puts(:comparison_ran)
+IO.puts(:comparison_ran)
 ```
 
 ## Boolean Coercion
@@ -223,7 +221,10 @@ user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
 :ok
 # DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
 
-# if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end
+if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do
+  :you_let_a_baddie_in
+end
+
 # if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
 ```
 
@@ -282,7 +283,7 @@ This prevents the table from being read by other processes, such as remote shell
 
 ```elixir
 # ONLY EDIT THIS LINE
-secret_table = :ets.new(:secret_table, [:public])
+secret_table = :ets.new(:secret_table, [:private])
 :ets.info(secret_table)[:protection]
 ```
 
