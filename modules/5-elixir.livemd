@@ -5,7 +5,7 @@
 ```elixir
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"},
-  :benchwarmer,
+  :benchee,
   :kino,
   :plug
 ])
@@ -171,8 +171,10 @@ password = "HASH_OF_THE_USERS_ACTUAL_PASSWORD"
 user_input = "HASH_OF_asdfasdf"
 
 # DO NOT EDIT ANY CODE BELOW THIS LINE (you may uncomment IO.puts) =============
-Benchwarmer.benchmark(fn -> Susceptible.compare(user_input, password) end)
-Benchwarmer.benchmark(fn -> Constant.compare(user_input, password) end)
+Benchee.run(%{
+  "Susceptible" => fn -> Susceptible.compare(user_input, password) end,
+  "Constant" => fn -> Constant.compare(user_input, password) end
+}, time: 3, warmup: 2)
 
 # IO.puts(:comparison_ran)
 ```
