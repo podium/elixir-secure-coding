@@ -185,7 +185,7 @@ cookie_name = "CHANGE_ME_TOO"
 conn
 |> Plug.Conn.put_resp_cookie(
   cookie_name,
-  <<42::16>>
+  "PerfectCookieValue"
   # domain: ,
   # path: ,
   # secure: ,
