@@ -1,7 +1,5 @@
 # ESCT: Part 5 - Elixir Security
 
-## Section
-
 ```elixir
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"},
