@@ -265,7 +265,7 @@ IO.puts(vulnerable_dependency)
 
 ### Description
 
-Unlike [Broken Access Control](#broken-access-control), this category covers the other half of the "Auth" picture - Authentication; or in otherwords, the validation of "Who" is performing an action within a Data System.
+Unlike [Broken Access Control](#broken-access-control), this category covers the other half of the "Auth" picture - Authentication; or in other words, the validation of "Who" is performing an action within a Data System.
 
 Confirmation of the user's identity, authentication, and session management is critical to protect against authentication-related attacks. There may be authentication weaknesses if the application:
 
@@ -335,7 +335,7 @@ Notable CWES include CWE-778 Insufficient Logging to include CWE-117 Improper Ou
 * Ensure log data is encoded correctly to prevent injections or attacks on the logging or monitoring systems.
 * Ensure high-value transactions have an audit trail with integrity controls to prevent tampering or deletion, such as append-only database tables or similar.
 * Establish or adopt an incident response and recovery plan.
-* Do not expose error logs in response to client when not necessary.
+* Do not expose error logs in response to the client when not necessary.
 
 <!-- livebook:{"branch_parent_index":3} -->
 
