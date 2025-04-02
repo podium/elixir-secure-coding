@@ -135,7 +135,7 @@ Bypassing MFA
 JWT token vulnerabilities
 
 Authentication Issues, Weaknesses, Failures make an appearance on multiple lists
-OWASP Top 10 for Web Applications A07:2021-Identification and Authentication Failurs (used to be called Broken Authenticication
+OWASP Top 10 for Web Applications A07:2021-Identification and Authentication Failures (used to be called Broken Authenticication
 
 ## Prevention and Countermeasures
 Use built and tested authentication mechanisms in your code language framework.  

@@ -35,7 +35,7 @@ Excessive Data Exposure is number 3 on OWASP's API Security Top 2019 and APIs wi
 
 ### Prevention
 
-The less an attacker can learn about your system or application, the more difficult (though, of course, not impossible given time and resources) it will be to identify vulnerablilities and craft exploits that could result in a successful compromise.
+The less an attacker can learn about your system or application, the more difficult (though, of course, not impossible given time and resources) it will be to identify vulnerabilities and craft exploits that could result in a successful compromise.
 
 Taking every opportunity to add a layer of difficulty (see defense in depth section in Module 3) for malicious actors is one aspect of securing data and applications.
 
