@@ -51,8 +51,8 @@ It can also intercept responses to ensure no schema data is being leaked in any 
 
 ### Resources
 
-1. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/01-Testing_GraphQL
-2. https://cybervelia.com/?p=736
+1. https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/99-Testing_GraphQL, [webarchive](https://web.archive.org/web/20250130173002/https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/12-API_Testing/99-Testing_GraphQL)
+2. https://cybervelia.com/?p=736, [webarchive](https://web.archive.org/web/20240519073536/https://cybervelia.com/?p=736)
 3. https://github.com/podium/vigil
 
 ### <span style="color:red;">Quiz</span>
