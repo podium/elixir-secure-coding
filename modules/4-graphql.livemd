@@ -152,13 +152,13 @@ IO.puts(answer)
 
 ### Description
 
-When building an application, it is necessary to manage the access and use of all relevant internal and external resources involved in the context of the application. This will help ensure the continued availablilty of the application and its functionality for all legitimate users and entities.
+When building an application, it is necessary to manage the access and use of all relevant internal and external resources involved in the context of the application. This will help ensure the continued availability of the application and its functionality for all legitimate users and entities.
 
 Resource exhaustion occurs when memory, processes handling application requests, network traffic transmissions, server capacity, storage, and other host operating system or device limitations are exceeded while an application is running. When resource allocation is not well managed, applications become vulnerable to negative impacts in performance, unintentional service failures, and denial of service attacks, in which a malicious actor takes advantage of resource limitations to intentionally overwhelm and crash a system.
 
 Resource exhaustion can occur inadvertently through legitimate use or could be triggered intentionally in a DoS attack by a malicious actor who sends a large number or resource intensive requests to overload the application.
 
-The structure of GraphQL queries make it particularly succeptible to this type of attack as they can be crafted to perform long running and extensive operations, depending on the data being queried.
+The structure of GraphQL queries make it particularly susceptible to this type of attack as they can be crafted to perform long running and extensive operations, depending on the data being queried.
 
 In addition to strategies like rate limiting to protect APIs in general, another approach to protecting GraphQL from resource exhaustion involves anticipating the cost of a query and allocating resources based on known available capacity. The next section introduces this approach.
 

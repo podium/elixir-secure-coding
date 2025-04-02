@@ -124,9 +124,9 @@ A timing attack is a side-channel attack in which the attacker attempts to compr
 
 Plainly speaking, response time it takes to compute a given function measured at the pico-second level is analyzed for microscopic variations.
 
-This technique is primarily used to analyze string comparisons of secret values to brute-force the identify of the secret.
+This technique is primarily used to analyze string comparisons of secret values to brute-force the identity of the secret.
 
-e.g. When comparing two strings, the function exits when variation is detected. Take a secret value `MY_SECRET` and a user input `MY_PASSWORD`, the string compariosn (`MY_PASSWORD == MY_SECRET`) would go character by character until there's a complete match or a discrepancy. So if the new input was `MY_SAUCE`, that new string would take marginally longer to compare against the secret than `MY_PASSWORD` because of one more similar character as `MY_SECRET`.
+e.g. When comparing two strings, the function exits when variation is detected. Take a secret value `MY_SECRET` and a user input `MY_PASSWORD`, the string comparison (`MY_PASSWORD == MY_SECRET`) would go character by character until there's a complete match or a discrepancy. So if the new input was `MY_SAUCE`, that new string would take marginally longer to compare against the secret than `MY_PASSWORD` because of one more similar character as `MY_SECRET`.
 
 ### Prevention
 
@@ -192,7 +192,7 @@ By using expressions that do not use boolean coercion, the incorrect assumption 
 * Prefer `or` over `||`
 * Prefer `not` over `!`
 
-The latter will raise a "BadBooleanError" when the function returns :ok or {:error, \_}. In the interest of clarity if may even be better to use a case construct, matching explicitly on true and false.
+The latter will raise a "BadBooleanError" when the function returns :ok or {:error, \_}. In the interest of clarity it may even be better to use a case construct, matching explicitly on true and false.
 
 ### Resources
 
