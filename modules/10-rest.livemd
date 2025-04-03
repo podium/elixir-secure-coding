@@ -1,0 +1,92 @@
+# ESCT: Part X - REST Security (DRAFT)
+
+## Introduction
+
+REST stands for REpresentational State Transfer.  It is an approach used by applications to govern communications, commonly as an API (Application programming interface).
+
+Characteristics of a RESTful style of application data exchange include the use of the HTTP protocol, and specific methods to interact with data, resources, and functionality.
+
+REST is a “software architectural style that defines the set of rules to be used for creating web services” and a service is said to follow the REST architectural style, or is considered “RESTful if it adheres to the approach explained here: https://www.geeksforgeeks.org/rest-api-architectural-constraints/?ref=lbp
+
+In applications that implement this style, the general flow is the following:
+- A client interacts with resources where their actions result in requests based on CRUD functionality; That is Create, Retrieve, Update, and Delete via corresponding HTTP methods: POST, GET, PUT, DELETE 
+- The API Server hosts routes or api endpoints to resources; Routes in the form of URI/URLs for data/resource access or other backend services.
+- Resources are objects that are acted upon that get modified by the application functionality
+
+REST's 6 Design Principles distinguish a REST API from others like GraphQL, however, it shares many of the same security concerns.  
+This Module highlights some of the key concerns around apis implemented with the REST style.
+
+## Table of Contents
+
+* [General API Security](#api-security)
+* [Authentication Authorization and Access Controls](#authentication-authorization-and-access-controls)
+* [Deprecate Old API Endpoints](#deprecate-old-endpoints)
+* [Restrict HTTP Methods](#restrict-http-methods)
+
+## API Security
+
+### Description
+
+REST security, like API security in general, involves ensuring authenticated users are able to send requests to the api endpoints, that users are only able to send requests to perform specific actions based on user permissions/roles, and securing the endpoints and any data involved against things like enumeration, inadvertent data exposure, and untrusted input.  
+
+APIs are succeptible to a number of attacks like denial of service, inadvertent data exposure and unauthorized access to functions and data.  See OWASP API Security Project for a list of API Security Top 10 2019 issues.
+
+### Prevention
+
+APIs should be clearly/strictly defined and documented with updates made as later versions are implemented.  APIs should only use HTTPS, and implement some form of authentication.  
+
+Validate all content types, implement appropriate security headers, and ensure no sensitive information (like api keys) is sent in the API's HTTP requests. Audit logs should be configured for critical operations, and ensure there is no data leakage through overly verbose error messages.
+
+All API developers should understand the sensitivity of the data that is accessible by the API and ensure old APIs are completely deprecated. Old versions of an API that are still accessible may inadvertently expose sensitive data to malicious actors. 
+
+## Authentication Authorization and Access Controls
+
+### Description
+
+REST security involves ensuring authenticated users are able to send requests to the api endpoints, users are only able to send request to perform specific actions based on user permissions/roles, and also securing the endpoints and any data involved against things like enumeration, inadvertent data exposure, and untrusted input.
+
+Access Controls, Authorization, Authenticantion are closely linked in their implementation to secure API call requests and to ensure only permitted activity due to REST api's being stateless in nature.  Stateless meaning each call acts as an independent, self-contained, requests that is not aware of previous or subsequent requests.  As such, each call is usually made with some combination of password, key, or token.  
+
+### Prevention
+
+Ensuring API calls are restricted/allowed based on an allow list, and implementing a web application firewall can help ensure only legitimate access.
+
+## Deprecate Old Endpoints
+
+### Description
+
+One of the items on OWASP API top 10 list is Improper Assets Management. This issue involves keeping an inventory around what is publicly accessible, specifically when as applications change, API's get updated and older versions fall out of use. 
+
+When api's are updated to current versions, the older version of the API, if not properly deprecated, can still be used to access data.  This is especially risky if that data is sensitive and can be discovered/enumerated by malicious actors.  This can be easily done if the api url contains version identifiers, like v1/.../ v2/.../, and the urls are systematically tampered with to retrieve legacy versions. 
+
+### Resource
+https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa9-improper-assets-management.md
+
+### Prevention
+
+Completely deprecate any old version of an API.  Inventory all API servers, hosts, endpoints and keep documents up to date. Be aware that older version may still be running in your environment and can be discoverable and abused by malicious actors.  
+
+## Restrict HTTP Methods
+
+### Description
+Access and other interactions with resources in a Resftully implemented api are done using HTTP methods, with requests/calls sending requests using 
+POST, GET, PUSH, DELETE Methods for Creating, Reading, Updating, and Deleting Resources respectively and the service using HTTP Return Codes in response.
+
+Depending on the application, not all of these methods may be needed for client to interact with the api. 
+
+### Prevention
+When designing/building an api, documentation should include an allow list of permitted methods (actions) that are allowed to be processed by the api server, and therefore allowed to be performed on the data/resources.
+
+
+### Additional References
++ https://owasp.org/www-project-api-security/
++ https://cheatsheetseries.owasp.org/cheatsheets/REST_Assessment_Cheat_Sheet.html
++ https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html
++ https://www.invicti.com/blog/web-security/rest-api-web-service-security/
++ https://restfulapi.net/security-essentials/
++ https://restfulapi.net/
++ https://stackoverflow.blog/2021/10/06/best-practices-for-authentication-and-authorization-for-rest-apis/
+
+<!-- livebook:{"branch_parent_index":4} -->
+
+[**<- Previous Module: Secure SDLC Concepts**](./3-ssdlc.livemd) || [**Next Module: Elixir Security ->**](./5-elixir.livemd)
