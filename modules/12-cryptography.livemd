@@ -63,7 +63,7 @@ Data classification, regulatory implications that must be protected from unautho
 Confidentiality
 
 For in-transit 
-use HTTPS which implements encrpytion over a channel. Diffie-Hellman 
+use HTTPS which implements encryption over a channel. Diffie-Hellman 
 [Serving over HTTPS
 ](https://hexdocs.pm/plug/https.html)
 
@@ -87,12 +87,12 @@ Cryptographic Failures are the number two most common issue on the OWASP Top 10 
 Related weaknesses  include CWE-327: Broken or Risky Crypto Algorithm, and CWE-331 Insufficient Entropy.
 
 Most of the concerns around cytography amount to data being inadvertently being sent in cleartext, sensitive data, the use of old, weak or custom cryptographic algorithms or protocols that are ineffective against attacker efforts to uncover keys,  .  Best practics is to never build your own crypto mechanisms.  Use proven and secure methods like the following:
--Secure Hashes:  SHA-1 has been deprecated as of 2011 with a transition plan released in 2022.  Recommenation to move towards orther families SHA256
+-Secure Hashes:  SHA-1 has been deprecated as of 2011 with a transition plan released in 2022.  Recommendation to move towards orther families SHA256
 -Secure Encryption Algorithms; AES is the current standard;  secure modes must be emplemented
 
 Follow NIST Recommendations for configuring the most secure algorithms when building your applications and securing secrets and data.
 
-Beware of hardcoding keys, private keys, in source code where they can be discovered by malicious actors. Avoid building your own crytographic mechanisms or using outdated protocols. 
+Beware of hardcoding keys, private keys, in source code where they can be discovered by malicious actors. Avoid building your own cryptographic mechanisms or using outdated protocols. 
 
 [Recommended algorithms
 ](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-77r1.pdf)[

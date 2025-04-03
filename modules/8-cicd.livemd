@@ -32,7 +32,7 @@ This module will cover over some of the automated processes you may see in a CI/
 Built in Elixir, for Elixir, by NCC Group - this tool will try to determine whether your codebase has a number of web vulnerabilities as well as the insecurites outlined in [Module 5 - Elixir Security](./5-elixir.livemd).
 
  ### <span style="color:blue;">Example</span> 
-Install [Sobelow](https://sobelow.io/) and add it to your application dependicies or install it by following the instructions https://hexdocs.pm/sobelow/readme.html
+Install [Sobelow](https://sobelow.io/) and add it to your application dependencies or install it by following the instructions https://hexdocs.pm/sobelow/readme.html
 
 Scan your project by running the following at a terminal in your project's root directory
 ```
