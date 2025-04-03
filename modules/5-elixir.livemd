@@ -4,6 +4,7 @@
 Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"},
   {:benchwarmer, github: "mroth/benchwarmer", ref: "12b5a96b38cef09f2bd49e5c2dd5024100c1e8af"},
+  :uuid,
   :kino,
   :plug
 ])
@@ -51,20 +52,18 @@ Beware of functions in applications/libraries that create atoms from input value
 _You should get a `true` result when you successfully fix the function._
 
 ```elixir
-random_number = :rand.uniform(10000)
-malicious_user_input = Integer.to_string(random_number)
-prev_count = :erlang.system_info(:atom_count)
+malicious_user_input = UUID.uuid4()
 
 try do
   malicious_user_input
   # ONLY CHANGE LINE 8
   |> String.to_atom()
 rescue
-  e -> {ArgumentError, e}
+  _ -> 
+    IO.puts("Are you protected against Atom Exhaustion?")
+    IO.puts("true")
+    nil
 end
-
-IO.puts("Are you protected against Atom Exhaustion?")
-IO.puts(:erlang.system_info(:atom_count) == prev_count)
 ```
 
 ## Serialization and Deserialization
