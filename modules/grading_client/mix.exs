@@ -14,6 +14,7 @@ defmodule GradingClient.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {GradingClient.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -21,8 +22,10 @@ defmodule GradingClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:grading_server, path: "#{__DIR__}/../../grading_server"},
       {:httpoison, "~> 2.1"},
-      {:jason, "~> 1.4"}
+      {:jason, "~> 1.4"},
+      {:kino, "~> 0.10"}
     ]
   end
 end

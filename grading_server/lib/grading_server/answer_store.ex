@@ -24,7 +24,7 @@ defmodule GradingServer.AnswerStore do
     {:ok, state}
   end
 
-  defp key(module_id, question_id), do: "module_#{module_id}-#{question_id}}"
+  defp key(module_id, question_id), do: "#{module_id}-#{question_id}"
 
   @impl true
   def handle_call({:fetch, module_id, question_id}, _from, _) do
@@ -63,12 +63,9 @@ defmodule GradingServer.AnswerStore do
   end
 
   defp map_module({module_name, answers}) do
-    [_, module_id] = String.split(module_name, "module_")
-    module_id = String.to_integer(module_id)
-
     Enum.map(answers, fn data ->
       %Answer{
-        module_id: module_id,
+        module_id: module_name,
         answer: data["answer"],
         help_text: data["help_text"],
         question_id: data["question_id"]
