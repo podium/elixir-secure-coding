@@ -21,11 +21,13 @@ defmodule GradingClient.Answers do
 
     {answers, _} = Code.eval_file(filename)
 
-    Enum.each(answers, fn answer ->
-      :ets.insert(@table, {{answer.module_id, answer.question_id}, answer})
-    end)
+    modules =
+      MapSet.new(answers, fn answer ->
+        :ets.insert(@table, {{answer.module_id, answer.question_id}, answer})
+        answer.module_id
+      end)
 
-    {:ok, nil}
+    {:ok, %{modules: modules}}
   end
 
   @doc """
@@ -36,6 +38,19 @@ defmodule GradingClient.Answers do
     GenServer.call(__MODULE__, {:check, module_id, question_id, answer})
   end
 
+  @doc """
+  Returns the list of modules.
+  """
+  @spec get_modules() :: [atom()]
+  def get_modules() do
+    GenServer.call(__MODULE__, :get_modules)
+  end
+
+  @impl true
+  def handle_call(:get_modules, _from, state) do
+    {:reply, state.modules, state}
+  end
+
   @impl true
   def handle_call({:check, module_id, question_id, answer}, _from, state) do
     result =
@@ -44,6 +59,9 @@ defmodule GradingClient.Answers do
           {:incorrect, "Question not found"}
 
         [{_id, %Answer{answer: correct_answer, help_text: help_text}}] ->
+          dbg(answer)
+          dbg(correct_answer)
+
           if answer == correct_answer do
             :correct
           else

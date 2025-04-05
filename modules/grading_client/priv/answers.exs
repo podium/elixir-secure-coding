@@ -14,8 +14,13 @@ end
 owasp_questions = [
   %{
     question_id: 1,
-    answer: "A",
-    help_text: "A"
+    answer: :entry_granted_op2,
+    help_text: "Research MD5 Rainbow Tables"
+  },
+  %{
+    question_id: 2,
+    answer: :plug,
+    help_text: "Check the changelog for the next minor or major release of each option."
   }
 ]
 

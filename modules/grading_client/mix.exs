@@ -22,7 +22,9 @@ defmodule GradingClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:kino, "~> 0.10"}
+      {:kino, "~> 0.10"},
+      {:bcrypt_elixir, "~> 3.2"},
+      {:httpoison, "~> 2.2"}
     ]
   end
 end
