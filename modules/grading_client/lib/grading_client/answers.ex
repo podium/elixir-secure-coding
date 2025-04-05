@@ -59,8 +59,6 @@ defmodule GradingClient.Answers do
           {:incorrect, "Question not found"}
 
         [{_id, %Answer{answer: correct_answer, help_text: help_text}}] ->
-          dbg(answer)
-          dbg(correct_answer)
 
           if answer == correct_answer do
             :correct
