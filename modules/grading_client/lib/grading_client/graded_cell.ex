@@ -7,8 +7,7 @@ defmodule GradingClient.GradedCell do
   def init(attrs, ctx) do
     source = attrs["source"] || ""
 
-    {:ok, assign(ctx, source: source, module_id: nil, question_id: nil),
-     editor: [source: source, language: "elixir"]}
+    {:ok, assign(ctx, source: source), editor: [source: source, language: "elixir"]}
   end
 
   @impl true
@@ -18,11 +17,7 @@ defmodule GradingClient.GradedCell do
 
   @impl true
   def to_attrs(ctx) do
-    %{
-      "source" => ctx.assigns.source,
-      "module_id" => ctx.assigns.module_id,
-      "question_id" => ctx.assigns.question_id
-    }
+    %{"source" => ctx.assigns.source}
   end
 
   @impl true
@@ -93,7 +88,7 @@ defmodule GradingClient.GradedCell do
       ctx.importCSS("main.css");
 
       root.innerHTML = `
-        <div class="app header">
+        <div class="app">
           <div class="text-lg font-bold">Graded Cell</div>
         </div>
       `;
@@ -108,12 +103,6 @@ defmodule GradingClient.GradedCell do
       border: solid 1px #cad5e0;
       border-radius: 0.5rem 0.5rem 0 0;
       border-bottom: none;
-    }
-
-    .header {
-      display: grid;
-      grid-template-columns: 3fr 1fr 1fr;
-      gap: 8px;
     }
     """
   end
