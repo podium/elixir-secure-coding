@@ -1,7 +1,7 @@
-defmodule GradingClient.GradingCell do
+defmodule GradingClient.GradedCell do
   use Kino.JS
   use Kino.JS.Live
-  use Kino.SmartCell, name: "Graded"
+  use Kino.SmartCell, name: "Graded Cell"
 
   @impl true
   def init(attrs, ctx) do
