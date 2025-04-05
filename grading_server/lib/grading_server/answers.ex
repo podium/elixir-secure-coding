@@ -16,7 +16,7 @@ defmodule GradingServer.Answers do
         {:incorrect, "Question not found"}
 
       %{answer: correct_answer, help_text: help_text} ->
-        if String.trim(inspect(answer)) == String.trim(correct_answer) do
+        if String.trim(answer) == String.trim(correct_answer) do
           :correct
         else
           {:incorrect, help_text}
