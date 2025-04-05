@@ -1,14 +1,12 @@
 # ESCT: Part 2 - OWASP
 
 ```elixir
-Mix.install([
-  {:grading_client, path: "#{__DIR__}/grading_client"},
-  :bcrypt_elixir,
-  :httpoison,
-  {:absinthe, "~> 1.7.0"},
-  {:phoenix, "~> 1.0"},
-  {:plug, "~> 1.3.2"}
-])
+Mix.install(
+  [
+    {:grading_client, path: "#{__DIR__}/grading_client"}
+  ],
+  config_path: "#{__DIR__}/grading_client/config/config.exs"
+)
 
 md5_hash = :crypto.hash(:md5, "users_password")
 bcrypt_salted_hash = Bcrypt.hash_pwd_salt("users_password")
@@ -103,27 +101,55 @@ Notable CWEs included are CWE-259: Use of Hard-coded Password, CWE-327: Broken o
 
 _Please uncomment the function call that you believe is correct._
 
+<!-- livebook:{"attrs":"eyJtb2R1bGVfaWQiOm51bGwsInF1ZXN0aW9uX2lkIjpudWxsLCJzb3VyY2UiOiIjT1dBU1A6MVxuZGVmbW9kdWxlIFBhc3N3b3JkQ29tcGFyZSBkb1xuICBkZWYgb3B0aW9uX29uZShwYXNzd29yZCwgbWQ1X2hhc2gpIGRvXG4gICAgY2FzZSA6Y3J5cHRvLmhhc2goOm1kNSwgcGFzc3dvcmQpID09IG1kNV9oYXNoIGRvXG4gICAgICB0cnVlIC0+IDplbnRyeV9ncmFudGVkX29wMVxuICAgICAgZmFsc2UgLT4gOmVudHJ5X2RlbmllZF9vcDFcbiAgICBlbmRcbiAgZW5kXG5cbiAgZGVmIG9wdGlvbl90d28ocGFzc3dvcmQsIGJjcnlwdF9zYWx0ZWRfaGFzaCkgZG9cbiAgICBjYXNlIEJjcnlwdC52ZXJpZnlfcGFzcyhwYXNzd29yZCwgYmNyeXB0X3NhbHRlZF9oYXNoKSBkb1xuICAgICAgdHJ1ZSAtPiA6ZW50cnlfZ3JhbnRlZF9vcDJcbiAgICAgIGZhbHNlIC0+IDplbnRyeV9kZW5pZWRfb3AyXG4gICAgZW5kXG4gIGVuZFxuZW5kXG5cbiMgRE8gTk9UIENIQU5HRSBDT0RFIEFCT1ZFIFRISVMgTElORSA9PT09PT09PT09PT09PT09PT09PT09PT09XG5cbiMgUGFzc3dvcmRDb21wYXJlLm9wdGlvbl9vbmUoXCJ1c2Vyc19wYXNzd29yZFwiLCBtZDVfaGFzaClcbiMgUGFzc3dvcmRDb21wYXJlLm9wdGlvbl90d28oXCJ1c2Vyc19wYXNzd29yZFwiLCBiY3J5cHRfc2FsdGVkX2hhc2gpIn0","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
+
 ```elixir
-defmodule PasswordCompare do
-  def option_one(password, md5_hash) do
-    case :crypto.hash(:md5, password) == md5_hash do
-      true -> :entry_granted_op1
-      false -> :entry_denied_op1
+result =
+  defmodule PasswordCompare do
+    def option_one(password, md5_hash) do
+      case :crypto.hash(:md5, password) == md5_hash do
+        true -> :entry_granted_op1
+        false -> :entry_denied_op1
+      end
+    end
+
+    def option_two(password, bcrypt_salted_hash) do
+      case Bcrypt.verify_pass(password, bcrypt_salted_hash) do
+        true -> :entry_granted_op2
+        false -> :entry_denied_op2
+      end
     end
   end
 
-  def option_two(password, bcrypt_salted_hash) do
-    case Bcrypt.verify_pass(password, bcrypt_salted_hash) do
-      true -> :entry_granted_op2
-      false -> :entry_denied_op2
-    end
+[module_id, question_id] =
+  "#OWASP:1\ndefmodule PasswordCompare do\n  def option_one(password, md5_hash) do\n    case :crypto.hash(:md5, password) == md5_hash do\n      true -> :entry_granted_op1\n      false -> :entry_denied_op1\n    end\n  end\n\n  def option_two(password, bcrypt_salted_hash) do\n    case Bcrypt.verify_pass(password, bcrypt_salted_hash) do\n      true -> :entry_granted_op2\n      false -> :entry_denied_op2\n    end\n  end\nend\n\n# DO NOT CHANGE CODE ABOVE THIS LINE =========================\n\n# PasswordCompare.option_one(\"users_password\", md5_hash)\n# PasswordCompare.option_two(\"users_password\", bcrypt_salted_hash)"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{"OWASP" => OWASP}[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
   end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
 end
-
-# DO NOT CHANGE CODE ABOVE THIS LINE =========================
-
-# PasswordCompare.option_one("users_password", md5_hash)
-# PasswordCompare.option_two("users_password", bcrypt_salted_hash)
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->
@@ -244,19 +270,57 @@ Notable CWE included is CWE-1104: Use of Unmaintained Third-Party Components
 
 ### <span style="color:red">QUIZ</span>
 
-**Which of the outdated components currently installed is vulnerable?**
+**Which of the outdated components listed below is vulnerable?**
 
 _Please change the atom below to the name of the vulnerable package installed in this Livebook AND update the afflicted package._
 
-_HINT: Installed dependencies can be found at the very top, it was the very first cell you ran._
+_HINT: Check the changelogs for each dependency._
+
+<!-- livebook:{"attrs":"eyJtb2R1bGVfaWQiOm51bGwsInF1ZXN0aW9uX2lkIjpudWxsLCJzb3VyY2UiOiIjT1dBU1A6MlxuYW5zd2VyID0gXG4gIEtpbm8uSW5wdXQuc2VsZWN0KFwiQW5zd2VyXCIsIFtcbiAgICB7OmVjdG8sIFwiRWN0byB2Mi4yLjJcIn0sXG4gICAgezpueCwgXCJOeCB2MC41LjBcIn0sXG4gICAgezpwbHVnLCBcIlBsdWcgdjEuMy4yXCJ9XG4gIF0pXG5cbktpbm8ucmVuZGVyKGFuc3dlcilcblxuS2luby5JbnB1dC5yZWFkKGFuc3dlcikifQ","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
 
 ```elixir
-# CHANGE ME
-vulnerable_dependency = :vulnerable_dependency
+result =
+  (
+    answer =
+      Kino.Input.select("Answer",
+        ecto: "Ecto v2.2.2",
+        nx: "Nx v0.5.0",
+        plug: "Plug v1.3.2"
+      )
 
-# DO NOT CHANGE CODE BELOW THIS LINE ============================
-Application.spec(vulnerable_dependency)[:vsn] |> List.to_string() |> IO.puts()
-IO.puts(vulnerable_dependency)
+    Kino.render(answer)
+    Kino.Input.read(answer)
+  )
+
+[module_id, question_id] =
+  "#OWASP:2\nanswer = \n  Kino.Input.select(\"Answer\", [\n    {:ecto, \"Ecto v2.2.2\"},\n    {:nx, \"Nx v0.5.0\"},\n    {:plug, \"Plug v1.3.2\"}\n  ])\n\nKino.render(answer)\n\nKino.Input.read(answer)"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{"OWASP" => OWASP}[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
+  end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
+end
 ```
 
 <!-- livebook:{"branch_parent_index":3} -->

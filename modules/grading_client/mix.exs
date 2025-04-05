@@ -14,6 +14,7 @@ defmodule GradingClient.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {GradingClient.Application, []},
       extra_applications: [:logger]
     ]
   end
@@ -21,8 +22,9 @@ defmodule GradingClient.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 2.1"},
-      {:jason, "~> 1.4"}
+      {:kino, "~> 0.10"},
+      {:bcrypt_elixir, "~> 3.2"},
+      {:httpoison, "~> 2.2"}
     ]
   end
 end
