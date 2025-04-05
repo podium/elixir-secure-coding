@@ -12,11 +12,6 @@ defmodule GradingClient.GradedCell do
   end
 
   @impl true
-  def handle_connect(ctx) do
-    {:ok, %{}, ctx}
-  end
-
-  @impl true
   def handle_editor_change(source, ctx) do
     {:ok, assign(ctx, source: source)}
   end
@@ -32,28 +27,40 @@ defmodule GradingClient.GradedCell do
 
   @impl true
   def to_source(attrs) do
-    dbg(attrs)
-
-    options = Enum.map(GradingClient.Answers.get_modules(), &{&1, inspect(&1)})
-
-    inputs =
-      quote do
-        module_id = Kino.Input.select("Module", unquote(options))
-        question_id = Kino.Input.number("Question ID")
-
-        Kino.render(Kino.Layout.grid([module_id, question_id], columns: 2))
-        nil
-      end
+    modules = Map.new(GradingClient.Answers.get_modules(), &{inspect(&1), &1})
 
     source_ast =
       try do
-        source = Code.string_to_quoted!(attrs["source"])
+        source_attr = attrs["source"]
+        source = Code.string_to_quoted!(source_attr)
 
         quote do
-          module_id = Kino.Input.read(module_id)
-          question_id = Kino.Input.read(question_id)
-
           result = unquote(source)
+
+          [module_id, question_id] =
+            unquote(source_attr)
+            |> String.split("\n", parts: 2)
+            |> hd()
+            |> String.trim_leading("#")
+            |> String.split(":", parts: 2)
+
+          module_id =
+            case unquote(Macro.escape(modules))[String.trim(module_id)] do
+              nil ->
+                raise "invalid module id: #{module_id}"
+
+              module_id ->
+                module_id
+            end
+
+          question_id =
+            case Integer.parse(String.trim(question_id)) do
+              {id, ""} ->
+                id
+
+              _ ->
+                raise "invalid question id: #{question_id}"
+            end
 
           case GradingClient.check_answer(module_id, question_id, result) do
             :correct ->
@@ -72,10 +79,7 @@ defmodule GradingClient.GradedCell do
           {:<<>>, [delimiter: ~s["""]], [attrs["source"] <> "\n"]}
       end
 
-    [
-      Kino.SmartCell.quoted_to_string(inputs),
-      Kino.SmartCell.quoted_to_string(source_ast)
-    ]
+    Kino.SmartCell.quoted_to_string(source_ast)
   end
 
   @impl true
