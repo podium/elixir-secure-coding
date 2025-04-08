@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Cryptography is the process of transforming information or data from it's original form into one that is unreadable by systems, tools, or people unless they have a key.  The part of the process that converts source data/information into the unreadable version is called encryption.   Reversing that process is called decryption. 
+Cryptography is the process of transforming information or data from its original form into one that is unreadable by systems, tools, or people unless they have a key.  The part of the process that converts source data/information into the unreadable version is called encryption.   Reversing that process is called decryption. 
 
 Like many concepts/technologies in security, cryptography is not new.  Centuries of devisings ways to send messages between and among 
 known and trusted senders/receivers while making those messages unreadable for enemies or anyone else for whom the message is not intended.
@@ -10,7 +10,7 @@ Secret codes, etc.
 
 Cryptography, like speaking or writing in code, is used whenever there something that needs to be kept secret in an environment where there are multiple other parties who could see or hear the secret but are not the intended recipient.  The sender and receiver agree upon a code to exchange messages.  Additionally,  written notes can be stored and unless a reader has the code, won't know what the actual message is.
 
-Cryptography is used throughout applications to protect sensitive information that while is needed for the operation of the application and it's components, is not intended to be openly shared.  This module highlights how cryptography is applied  
+Cryptography is used throughout applications to protect sensitive information that while is needed for the operation of the application and its components, is not intended to be openly shared.  This module highlights how cryptography is applied  
 
 ## Table of Contents
 
@@ -77,7 +77,7 @@ use HTTPS which implements encryption over a channel. Diffie-Hellman
 
 Hashing is sometimes implemented alongside encryption but has a different purpose.  Cryptography used for confidentiality; keeping information secret except for intended recipient/audience.  
 
-Hashes are used to ensure the integrity of the data, meaning ensuring from it's creation/generation to it's final state, it remains unmodified and untampered with. Hash algorithms are one way functions that - compare starting hash from known good data, to end hash which will indicate changes.  Hashing passwords is a common application.  Comparing hashes to determine if correct password entered.
+Hashes are used to ensure the integrity of the data, meaning ensuring from its creation/generation to its final state, it remains unmodified and untampered with. Hash algorithms are one way functions that - compare starting hash from known good data, to end hash which will indicate changes.  Hashing passwords is a common application.  Comparing hashes to determine if correct password entered.
 Hash Algorithms - SHA1, SHA2, MD5 (obsolete) - follow recommendations from  NIST [Approved Hash Algorithms](https://csrc.nist.gov/Projects/Hash-Functions)
 
 ## Security Concerns

@@ -1,3 +1,5 @@
+<!-- livebook:{"file_entries":[{"name":"OptInvsOptOutCookies.png","type":"attachment"}]} -->
+
 # ESCT: Part 6 - Cookie Security
 
 ```elixir
@@ -210,7 +212,7 @@ For systems that use third party ad serving networks, such as Google's AdSense /
 
 Under an opt out scheme, consumers are notified via an alert or window when they load a website. The user must consent to the notice before they can navigate the site and any cookies are planted. At a minimum, the notice is to contain the following: disclosure of information gathering practices, the uses for this information, and policies for processing and disposing of this data.
 
-Opt-out cookies are essentially cookies used to avoid cookies. When a website creates an opt-out cookie in your browser folder, it enables you to block that same website from installing future cookies.With this, Opt Out cookies offer safeguards for user information, and help secure systems against potential security concerns regarding “hidden” cookies
+Opt-out cookies are essentially cookies used to avoid cookies. When a website creates an opt-out cookie in your browser folder, it enables you to block that same website from installing future cookies. With this, Opt Out cookies offer safeguards for user information, and help secure systems against potential security concerns regarding “hidden” cookies
 
 #### Opt In Cookies
 
@@ -220,7 +222,7 @@ Opt-in is the process that describes an affirmative action user takes to offer t
 
 If you want to be legally compliant, it is safer to have both the options with opt-out as the default.
 
-<img src="../assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450" />
+<img src="files/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450" />
 
 ### Resources
 

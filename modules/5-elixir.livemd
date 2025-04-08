@@ -56,7 +56,7 @@ malicious_user_input = UUID.uuid4()
 
 try do
   malicious_user_input
-  # ONLY CHANGE LINE 8
+  # ONLY CHANGE NEXT LINE
   |> String.to_atom()
 rescue
   _ -> 

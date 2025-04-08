@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="https://github.com/podium/elixir-secure-coding/archive/master.zip"><img src="./assets/images/secure_elixir_gold.png" alt="Elixir Secure Coding Training" width="25%"></a>
+<a href="https://github.com/podium/elixir-secure-coding/archive/master.zip"><img src="./modules/files/secure_elixir_gold.png" alt="Elixir Secure Coding Training" width="25%"></a>
 
 # Elixir Secure Coding Training (ESCT)
 

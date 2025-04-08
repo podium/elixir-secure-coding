@@ -10,7 +10,7 @@ One of two things follow:
 
 Imagine you get a knock on your door. You ask who it is, and the person on the other side says you have a package delivery.  In fact, you're not expecting a package and you can see the person is not wearing a uniform and doesn't have a package in their hands.  Something doesn't match.  They don't seem to be who they say they are and so, you don't open the door. 
 
-Authentication is the mechanism that helps guard the front door of an application.  It's the mechanism that helps control who gets into your system and if they are there legitimately. 
+Authentication is the mechanism that helps guard the front door of an application. It's the mechanism that helps control who gets into your system and if they are there legitimately. 
 
 ## Table of Contents
 
@@ -59,7 +59,7 @@ Tokens are long strings of random characters used to identify an entity, session
 ### OAuth
 Open Authorization(OAuth) is a protocol in which a multi-step arrangement generates a token for a specific users, the user presents as a credential in lieu of a password. There is an extra server (authorization/token generating service or server) that after a user authenticates with it, it generates a token, and brokers authentication/authorization between initial entity and a resource.
 
-Originally built for authorization, as it's name suggests, it has evolved for use in the authentication and authorization mechanisms.  A very good resource that describes the OAuth in context of it's history and current implementations is here: https://www.youtube.com/watch?v=996OiexHze0
+Originally built for authorization, as its name suggests, it has evolved for use in the authentication and authorization mechanisms.  A very good resource that describes the OAuth in context of its history and current implementations is here: https://www.youtube.com/watch?v=996OiexHze0
 
 Why use OAuth? When users need access to third party services, outside of your environment where you don't want to share your credentials with those third parties.  In OAuth protocol/architecture, an authorization service brokers access and grants users an access token to present, in place of credentials. 
 
@@ -140,7 +140,7 @@ OWASP Top 10 for Web Applications A07:2021-Identification and Authentication Fai
 ## Prevention and Countermeasures
 Use built and tested authentication mechanisms in your code language framework.  
 
-Authentication is a key component of an application but given its integration with some of the other concepts mentioned in this module, it's implementation in your products can become complex. This module touched on some of the highlights but please refer to the references below for extensive explanations of authentication and related. 
+Authentication is a key component of an application but given its integration with some of the other concepts mentioned in this module, its implementation in your products can become complex. This module touched on some of the highlights but please refer to the references below for extensive explanations of authentication and related. 
 
 ### <span style="color:red;">Quiz</span>
 

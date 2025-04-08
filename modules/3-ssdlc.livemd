@@ -37,7 +37,7 @@ More than that, while it may be convenient for testing / building typically in p
 
 There are a number of different ways you can manage your secrets for use in production systems. Most of them are implementation specific which varies on your build and deploy processes.
 
-A very easy way to prevent secrets being added to go though is to access them via Environment Variables!
+A very easy way to prevent secrets being added to files is to access them via Environment Variables!
 
 ### <span style="color:red">QUIZ</span>
 
