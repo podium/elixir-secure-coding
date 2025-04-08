@@ -7,6 +7,7 @@
 [![Run in Livebook](https://livebook.dev/badge/v1/blue.svg)](https://livebook.dev/run?url=https%3A%2F%2Fgithub.com%2Fpodium%2Felixir-secure-coding%2Fblob%2Fmain%2Fmodules%2F1-introduction.livemd)
 <br />
 
+[![EEF Security WG project](https://img.shields.io/badge/EEF-Security-black)](https://github.com/erlef/security-wg)
 ![GitHub contributors](https://img.shields.io/github/contributors-anon/podium/elixir-secure-coding)
 ![GitHub last commit](https://img.shields.io/github/last-commit/podium/elixir-secure-coding)
 ![GitHub issues by-label](https://img.shields.io/github/issues-raw/podium/elixir-secure-coding/new%20content)
