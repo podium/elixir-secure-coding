@@ -1,3 +1,5 @@
+<!-- livebook:{"file_entries":[{"name":"OptInvsOptOutCookies.png","type":"attachment"}]} -->
+
 # ESCT: Part 6 - Cookie Security
 
 ```elixir
@@ -220,7 +222,7 @@ Opt-in is the process that describes an affirmative action user takes to offer t
 
 If you want to be legally compliant, it is safer to have both the options with opt-out as the default.
 
-<img src="../assets/images/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450" />
+<img src="files/OptInvsOptOutCookies.png" alt="OptInOptOutCookies" width="1000" height="450" />
 
 ### Resources
 
