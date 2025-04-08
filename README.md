@@ -98,5 +98,15 @@ Using the ESCT as a purveyor of the curriculum is relatively straight-forward:
 ## Contributing
 Please refer to our [CONTRIBUTING Guide](./CONTRIBUTING.md) for more details on how to add to this project!
 
+## Sponsors
+
+In addition to our contributors, this library receives support and maintenance from [TV Labs](https://tvlabs.ai)
+
+<p align="center">
+  <a href="https://tvlabs.ai">
+    <img alt="TV Labs Logo" width="200" src="https://tvlabs.ai/images/tvlabs.svg">
+  </a>
+</p>
+
 ## License
 ![GitHub](https://img.shields.io/github/license/podium/elixir-secure-coding)
