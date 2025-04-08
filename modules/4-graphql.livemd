@@ -166,7 +166,7 @@ In addition to strategies like rate limiting to protect APIs in general, another
 
 ### Description
 
-Resource intensive queries, like those where a GraphQL query tries to traverse and then return a significant amount of highly nest data can cause a server/service to expend a significant amount of it's processing power and other resources. These high cost queries can render a server and therefore the application useless.
+Resource intensive queries, like those where a GraphQL query tries to traverse and then return a significant amount of highly nested data can cause a server/service to expend a significant amount of its processing power and other resources. These high cost queries can render a server and therefore the application useless.
 
 One approach for implementing validation on incoming queries to determine their "cost" in terms of the resources the use. Queries are defined by how much load they place on the server/service processing the request, allowing developers to plan for how best to manage resources. This is a little like making a budget.
 
