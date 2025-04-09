@@ -14,10 +14,6 @@
 ![GitHub pull requests by-label](https://img.shields.io/github/issues-pr-raw/podium/elixir-secure-coding/new%20content)
 <br />
 
-![GitHub forks](https://img.shields.io/github/forks/podium/elixir-secure-coding?style=social)
-![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Furl%3Dhttps%253A%252F%252Fgithub.com%252Fpodium%252Felixir-secure-coding%26text%3DCheck%2520out%2520Elixir%2520Secure%2520Coding%2520Training%2520-%2520originally%2520authored%2520by%2520%40HoldenOullette%2520for%2520%40PodiumHQ%253A)
-<br />
-
 ### An all-encompassing, opinionated cybersecurity curriculum designed for enterprise use at software companies using the [Elixir](https://elixir-lang.org/) programming language. 
 
 [About](#about) |
@@ -73,7 +69,7 @@ Currently the curriculum is broken into the following 8 primary topics, each con
     - Service to Service Authentication
     - User Authorization
 
-*If you do not see a topic or lesson you would like covered, please review our [open issues](https://github.com/podium/elixir-secure-coding/labels/new%20content) and our [CONTRIBUTING Guide](./CONTRIBUTING.md) before opening a new issue - but we encourage requests!*
+*If you do not see a topic or lesson you would like covered, please review our [open issues](https://github.com/erlef/elixir-secure-coding/labels/new%20content) and our [CONTRIBUTING Guide](./CONTRIBUTING.md) before opening a new issue - but we encourage requests!*
 
 ## Usage
 ### For "Learners"
@@ -84,10 +80,7 @@ Using the ESCT as a consumer of the content is easy by just following these simp
 3. **Load the Live Markdown files in an instance of Livebook**
     - For further instructions on getting Livebook setup locally, please refer to [their documentation](https://livebook.dev/#install).
 4. **Complete the training as instructed and save your progress along the way!**
-5. **When you think you're finished, create a PR to **your own fork** of the training repo**
-    - You will receive feedback as to whether you completed it or not in the CI stage of your version control system<sup>*</sup>
-
-*<sup>\*</sup>Feedback functionality will initially work in GitLab, GitHub support is [in the works](https://github.com/podium/elixir-secure-coding/issues/17) but lower priority*
+5. **Feedback will be provided directly within Livebook via the "Graded Cell" smart cell**
 
 ### For "Educators"
 Using the ESCT as a purveyor of the curriculum is relatively straight-forward:
