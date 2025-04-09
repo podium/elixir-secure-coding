@@ -8,6 +8,7 @@
 <br />
 
 [![EEF Security WG project](https://img.shields.io/badge/EEF-Security-black)](https://github.com/erlef/security-wg)
+[![EEF Education WG project](https://img.shields.io/badge/EEF-Education-black)](https://github.com/erlef/education-wg)
 ![GitHub contributors](https://img.shields.io/github/contributors-anon/podium/elixir-secure-coding)
 ![GitHub last commit](https://img.shields.io/github/last-commit/podium/elixir-secure-coding)
 ![GitHub issues by-label](https://img.shields.io/github/issues-raw/podium/elixir-secure-coding/new%20content)
