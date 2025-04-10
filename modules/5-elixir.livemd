@@ -74,7 +74,7 @@ Deserialization of untrusted input can result in atom creation, which can lead t
 
 ### Prevention
 
-* Use the :safe option when calling `:erlang.binary_to_term/2` on untrusted input (should be familiar from atom exhaustion 😀)
+* Use the `:safe` option when calling `:erlang.binary_to_term/2` on untrusted input (should be familiar from atom exhaustion 😀)
 * Prevent function deserialisation from untrusted input, e.g. using `Plug.Crypto.non_executable_binary_to_term/1,2`
 
 ### Resource
@@ -191,7 +191,7 @@ By using expressions that do not use boolean coercion, the incorrect assumption 
 * Prefer `or` over `||`
 * Prefer `not` over `!`
 
-The latter will raise a "BadBooleanError" when the function returns :ok or {:error, \_}. In the interest of clarity it may even be better to use a case construct, matching explicitly on true and false.
+The latter will raise a `BadBooleanError` when the function returns `:ok` or `{:error, _}`. In the interest of clarity it may even be better to use a case construct, matching explicitly on true and false.
 
 ### Resources
 
