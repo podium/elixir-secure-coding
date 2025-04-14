@@ -32,7 +32,21 @@ esct_questions = [
   }
 ]
 
+graphql_questions = [
+  %{
+    question_id: 1,
+    answer: :c,
+    help_text: "Read the first paragraph of this livebook again!"
+  },
+  %{
+    question_id: 2,
+    answer: :a,
+    help_text: "Read the first paragraph of this livebook again!"
+  }
+]
+
 List.flatten([
   to_answers.(OWASP, owasp_questions),
-  to_answers.(ESCT, esct_questions)
+  to_answers.(ESCT, esct_questions),
+  to_answers.(GRAPHQL, graphql_questions)
 ])
