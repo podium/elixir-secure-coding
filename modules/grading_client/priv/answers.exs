@@ -24,6 +24,15 @@ owasp_questions = [
   }
 ]
 
+esct_questions = [
+  %{
+    question_id: 1,
+    answer: "some-secret-password",
+    help_text: "Use System.get_env/1 to get the password from the environment variable."
+  }
+]
+
 List.flatten([
-  to_answers.(OWASP, owasp_questions)
+  to_answers.(OWASP, owasp_questions),
+  to_answers.(ESCT, esct_questions)
 ])

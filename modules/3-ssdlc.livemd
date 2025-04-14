@@ -5,6 +5,8 @@ Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"}
 ])
 
+System.put_env("envar_secret", "some-secret-password")
+
 :ok
 ```
 
@@ -45,12 +47,40 @@ A very easy way to prevent secrets being added to files is to access them via En
 
 _Use `System.get_env/1` on line 2._
 
-```elixir
-# let's assume there is an environment variable named 'envar_secret'
-super_secret_password = "p@ssw0rd"
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIEVTQ1Q6MVxuc3VwZXJfc2VjcmV0X3Bhc3N3b3JkID0gXCJwQHNzdzByZFwiIn0","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
 
-# DO NOT CHANGE CODE BELOW THIS COMMENT
-IO.puts(super_secret_password)
+```elixir
+result = super_secret_password = "p@ssw0rd"
+
+[module_id, question_id] =
+  "# ESCT:1\nsuper_secret_password = \"p@ssw0rd\""
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{"ESCT" => ESCT, "OWASP" => OWASP}[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
+  end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
+end
 ```
 
 ## Making Secret Rotation Easy
