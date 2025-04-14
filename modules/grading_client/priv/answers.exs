@@ -24,7 +24,7 @@ owasp_questions = [
   }
 ]
 
-esct_questions = [
+sdlc_questions = [
   %{
     question_id: 1,
     answer: "some-secret-password",
@@ -47,6 +47,6 @@ graphql_questions = [
 
 List.flatten([
   to_answers.(OWASP, owasp_questions),
-  to_answers.(ESCT, esct_questions),
+  to_answers.(SDLC, part3_questions),
   to_answers.(GRAPHQL, graphql_questions)
 ])

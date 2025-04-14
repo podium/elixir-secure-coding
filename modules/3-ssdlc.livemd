@@ -47,13 +47,13 @@ A very easy way to prevent secrets being added to files is to access them via En
 
 _Use `System.get_env/1` on line 2._
 
-<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIEVTQ1Q6MVxuc3VwZXJfc2VjcmV0X3Bhc3N3b3JkID0gXCJwQHNzdzByZFwiIn0","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIFNETEM6MVxuc3VwZXJfc2VjcmV0X3Bhc3N3b3JkID0gXCJwQHNzdzByZFwiIn0","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
 
 ```elixir
 result = super_secret_password = "p@ssw0rd"
 
 [module_id, question_id] =
-  "# ESCT:1\nsuper_secret_password = \"p@ssw0rd\""
+  "# SDLC:1\nsuper_secret_password = \"p@ssw0rd\""
   |> String.split("\n", parts: 2)
   |> hd()
   |> String.trim_leading("#")
