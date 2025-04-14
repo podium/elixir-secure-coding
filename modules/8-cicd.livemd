@@ -31,22 +31,25 @@ This module will cover over some of the automated processes you may see in a CI/
 
 Built in Elixir, for Elixir, by NCC Group - this tool will try to determine whether your codebase has a number of web vulnerabilities as well as the insecurites outlined in [Module 5 - Elixir Security](./5-elixir.livemd).
 
- ### <span style="color:blue;">Example</span> 
+### <span style="color:blue;">Example</span>
+
 Install [Sobelow](https://sobelow.io/) and add it to your application dependencies or install it by following the instructions https://hexdocs.pm/sobelow/readme.html
 
 Scan your project by running the following at a terminal in your project's root directory
+
 ```
 $ mix sobelow
 ```
-As a vulnerability scanner, there are multiple categories of vulnerabilities sobelow is capable of discovering and reporting on.    
 
-For instance, there are a number of security issues published on the Common Weakness Enumeration (CWE) site - [CWE's](https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html) and on OWASP Top 10 [OWASP Top 10](https://owasp.org/www-project-top-ten/).  
+As a vulnerability scanner, there are multiple categories of vulnerabilities sobelow is capable of discovering and reporting on.
+
+For instance, there are a number of security issues published on the Common Weakness Enumeration (CWE) site - [CWE's](https://cwe.mitre.org/top25/archive/2022/2022_cwe_top25.html) and on OWASP Top 10 [OWASP Top 10](https://owasp.org/www-project-top-ten/).
 
 Scanning tools like Sobelow identify code patterns that match these issues and report them back to developers/users.
 
- ### <span style="color:blue;">Example</span> 
- 
-Let's say you are interested finding in places in your application that may be susceptible to injection attacks.  
+### <span style="color:blue;">Example</span>
+
+Let's say you are interested finding in places in your application that may be susceptible to injection attacks.
 
 There are several types of injection.  Referring to the CWE list, we see #17 CWE-77 for Command Injection, #25 CWE-94 is Code Injection, and #3 CWE-89 is SQL Injection.  If we look at the OWASP Top 10 for 2021, A03:2021-Injection is third on the list.  Sobelow has the capability to detect these types of security issues.
 
@@ -59,7 +62,7 @@ Sobelow.CI
 Sobelow.CI.OS 
 Sobelow.CI.System 
 ```
-  
+
 Reference: https://docs.guardrails.io/docs/vulnerabilities/elixir/insecure_use_of_dangerous_function
 
 ### Usage
