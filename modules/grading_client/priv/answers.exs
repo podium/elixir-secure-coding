@@ -69,9 +69,30 @@ elixir_security_questions = [
   }
 ]
 
+cookie_security_questions = [
+  %{
+    question_id: 1,
+    answer: {
+      %{value: <<0, 42>>, path: "/", secure: true, http_only: true, same_site: "Strict"},
+      "__Host"
+    },
+    help_text: "Read the section about the __Host prefix."
+  }
+]
+
+antipatterns_questions = [
+  %{
+    question_id: 1,
+    answer: :c,
+    help_text: "Look-up the pseudocode for each algorithm."
+  }
+]
+
 List.flatten([
   to_answers.(OWASP, owasp_questions),
   to_answers.(SDLC, sdlc_questions),
   to_answers.(GRAPHQL, graphql_questions),
-  to_answers.(ELIXIR_SECURITY, elixir_security_questions)
+  to_answers.(ELIXIR_SECURITY, elixir_security_questions),
+  to_answers.(COOKIE_SECURITY, cookie_security_questions),
+  to_answers.(ANTIPATTERNS, antipatterns_questions)
 ])

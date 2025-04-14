@@ -75,13 +75,59 @@ Penguin.slide([3, 4, 5, 2, 1])
 
 _Uncomment the line with your answer._
 
-```elixir
-# answer = :bubble_sort
-# answer = :merge_sort
-# answer = :quick_sort
-# answer = :random_sort
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIEFOVElQQVRURVJOUzoxXG5cbmlucHV0ID0gS2luby5JbnB1dC5zZWxlY3QoXCJBbnN3ZXJcIiwgW1xuICBhOiBcIkJ1YmJsZSBTb3J0XCIsXG4gIGI6IFwiTWVyZ2UgU29ydFwiLFxuICBjOiBcIlF1aWNrIFNvcnRcIixcbiAgZDogXCJSYW5kb20gU29ydFwiXG5dKVxuXG5LaW5vLnJlbmRlcihpbnB1dClcblxuS2luby5JbnB1dC5yZWFkKGlucHV0KSJ9","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
 
-IO.puts(answer)
+```elixir
+result =
+  (
+    input =
+      Kino.Input.select("Answer",
+        a: "Bubble Sort",
+        b: "Merge Sort",
+        c: "Quick Sort",
+        d: "Random Sort"
+      )
+
+    Kino.render(input)
+    Kino.Input.read(input)
+  )
+
+[module_id, question_id] =
+  "# ANTIPATTERNS:1\n\ninput = Kino.Input.select(\"Answer\", [\n  a: \"Bubble Sort\",\n  b: \"Merge Sort\",\n  c: \"Quick Sort\",\n  d: \"Random Sort\"\n])\n\nKino.render(input)\n\nKino.Input.read(input)"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{
+         "ANTIPATTERNS" => ANTIPATTERNS,
+         "COOKIE_SECURITY" => COOKIE_SECURITY,
+         "ELIXIR_SECURITY" => ELIXIR_SECURITY,
+         "GRAPHQL" => GRAPHQL,
+         "OWASP" => OWASP,
+         "SDLC" => SDLC
+       }[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
+  end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
+end
 ```
 
 ## Frontend Authorization Checks
