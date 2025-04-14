@@ -76,26 +76,7 @@ result =
     Kino.Input.read(input)
   )
 
-[module_id, question_id] =
-  "# GRAPHQL:1\n\ninput = Kino.Input.select(\"Choose your answer\", [\n  a: \"API6_2019_Mass_Assignment\", \n  b: \"API10_2019_Insufficient_Logging_Monitoring\", \n  c: \"API3_2019_Excessive_Data_Exposure\",\n  d: \"API4_2019_Lack_of_Resources_Rate_Limiting\"\n])\n\nKino.render(input)\n\nKino.Input.read(input)"
-  |> String.split("\n", parts: 2)
-  |> hd()
-  |> String.trim_leading("#")
-  |> String.split(":", parts: 2)
-
-module_id =
-  case %{"ESCT" => ESCT, "GRAPHQL" => GRAPHQL, "OWASP" => OWASP}[String.trim(module_id)] do
-    nil -> raise "invalid module id: #{module_id}"
-    module_id -> module_id
-  end
-
-question_id =
-  case Integer.parse(String.trim(question_id)) do
-    {id, ""} -> id
-    _ -> raise "invalid question id: #{question_id}"
-  end
-
-case GradingClient.check_answer(module_id, question_id, result) do
+case GradingClient.check_answer(GRAPHQL, 1, result) do
   :correct ->
     IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
 
@@ -141,26 +122,7 @@ result =
     Kino.Input.read(input)
   )
 
-[module_id, question_id] =
-  "# GRAPHQL:2\n\n# -------------------------------------------------------------\n# Option 1\n#\n# HTTP/2 401 Unauthorized\n# Date: Tues, 16 Aug 2022 21:06:42 GMT\n# …\n# {\n# \t“error”:”token expired”\n# {\n# -------------------------------------------------------------\n# Option 2\n#\n# HTTP/2 200 OK\n# Date: Tues, 16 Aug 2021 22:06:42 GMT\n# …\n# {\n# \t“errors”:[\n# \t\t{\n# \t\t\t“locations”:[\n# \t\t\t{\n# \t\t\t\t“column”:2,\n# \t\t\t\t:line”:2\n# \t\t\t}\n# \t\t\t],\n# \t\t\t“message”: “Parsing failed at\n# \t\t}\n# \t]\n# }\n# --------------------------------------------------------------\n# Option 3\n#\n# HTTP/2 200 OK\n# Date: Tues, 16 Aug 2022 21:06:42 GMT\n# …\n# {\n# \t“error”:”ID token for user 55e4cb07 at org 1234 expired”\n# {\n# ---------------------------------------------------------------\n# Option 4\n#\n# HTTP/2 404 File Not Found\n# Date: Tues, 16 Aug 2022 21:06:42 GMT\n# …\n# {\n# \t“error”:”/www/home/file.txt not found ”\n# {\n# ---------------------------------------------------------------\n\ninput = Kino.Input.select(\"Choose your answer\", [\n  none: \"\",\n  a: \"Option 1\", \n  b: \"Option 2\", \n  c: \"Option 3\",\n  d: \"Option 4\"\n], default: :none)\n\nKino.render(input)\n\nKino.Input.read(input)"
-  |> String.split("\n", parts: 2)
-  |> hd()
-  |> String.trim_leading("#")
-  |> String.split(":", parts: 2)
-
-module_id =
-  case %{"ESCT" => ESCT, "GRAPHQL" => GRAPHQL, "OWASP" => OWASP}[String.trim(module_id)] do
-    nil -> raise "invalid module id: #{module_id}"
-    module_id -> module_id
-  end
-
-question_id =
-  case Integer.parse(String.trim(question_id)) do
-    {id, ""} -> id
-    _ -> raise "invalid question id: #{question_id}"
-  end
-
-case GradingClient.check_answer(module_id, question_id, result) do
+case GradingClient.check_answer(GRAPHQL, 2, result) do
   :correct ->
     IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
 

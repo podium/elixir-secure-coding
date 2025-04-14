@@ -29,35 +29,34 @@ defmodule GradingClient.GradedCell do
         source_attr = attrs["source"]
         source = Code.string_to_quoted!(source_attr)
 
+        [module_id, question_id] =
+          String.split(source_attr, "\n", parts: 2)
+          |> hd()
+          |> String.trim_leading("#")
+          |> String.split(":", parts: 2)
+
+        module_id =
+          case modules[String.trim(module_id)] do
+            nil ->
+              raise "invalid module id: #{module_id}"
+
+            module_id ->
+              module_id
+          end
+
+        question_id =
+          case Integer.parse(String.trim(question_id)) do
+            {id, ""} ->
+              id
+
+            _ ->
+              raise "invalid question id: #{question_id}"
+          end
+
         quote do
           result = unquote(source)
 
-          [module_id, question_id] =
-            unquote(source_attr)
-            |> String.split("\n", parts: 2)
-            |> hd()
-            |> String.trim_leading("#")
-            |> String.split(":", parts: 2)
-
-          module_id =
-            case unquote(Macro.escape(modules))[String.trim(module_id)] do
-              nil ->
-                raise "invalid module id: #{module_id}"
-
-              module_id ->
-                module_id
-            end
-
-          question_id =
-            case Integer.parse(String.trim(question_id)) do
-              {id, ""} ->
-                id
-
-              _ ->
-                raise "invalid question id: #{question_id}"
-            end
-
-          case GradingClient.check_answer(module_id, question_id, result) do
+          case GradingClient.check_answer(unquote(module_id), unquote(question_id), result) do
             :correct ->
               IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
 
@@ -71,7 +70,23 @@ defmodule GradingClient.GradedCell do
       rescue
         error ->
           IO.inspect(error)
-          {:<<>>, [delimiter: ~s["""]], [attrs["source"] <> "\n"]}
+          source_attr = attrs["source"]
+          {:ok, ast} = Code.Fragment.container_cursor_to_quoted(source_attr)
+
+          case ast do
+            {:__block__, meta, args} ->
+              {
+                :__block__,
+                meta,
+                Enum.reject(args, fn node ->
+                  match?({:__cursor__, _, _}, node)
+                end) ++
+                  [:ok]
+              }
+
+            _ ->
+              ast
+          end
       end
 
     Kino.SmartCell.quoted_to_string(source_ast)

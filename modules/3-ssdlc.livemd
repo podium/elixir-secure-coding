@@ -52,26 +52,7 @@ _Use `System.get_env/1` on line 2._
 ```elixir
 result = super_secret_password = "p@ssw0rd"
 
-[module_id, question_id] =
-  "# SDLC:1\nsuper_secret_password = \"p@ssw0rd\""
-  |> String.split("\n", parts: 2)
-  |> hd()
-  |> String.trim_leading("#")
-  |> String.split(":", parts: 2)
-
-module_id =
-  case %{"ESCT" => ESCT, "OWASP" => OWASP}[String.trim(module_id)] do
-    nil -> raise "invalid module id: #{module_id}"
-    module_id -> module_id
-  end
-
-question_id =
-  case Integer.parse(String.trim(question_id)) do
-    {id, ""} -> id
-    _ -> raise "invalid question id: #{question_id}"
-  end
-
-case GradingClient.check_answer(module_id, question_id, result) do
+case GradingClient.check_answer(SDLC, 1, result) do
   :correct ->
     IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
 
