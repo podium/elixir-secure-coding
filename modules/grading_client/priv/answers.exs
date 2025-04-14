@@ -45,8 +45,33 @@ graphql_questions = [
   }
 ]
 
+elixir_security_questions = [
+  %{
+    question_id: 1,
+    answer: %ArgumentError{
+      message:
+        "errors were found at the given arguments:\n\n  * 1st argument: not an already existing atom\n"
+    },
+    help_text: "Read the Prevention section above."
+  },
+  %{
+    question_id: 2,
+    answer: %BadBooleanError{
+      term: :access_denied,
+      operator: :or
+    },
+    help_text: "Read the Prevention section above."
+  },
+  %{
+    question_id: 3,
+    answer: :private,
+    help_text: "Read the documentation for :ets.new/2"
+  }
+]
+
 List.flatten([
   to_answers.(OWASP, owasp_questions),
-  to_answers.(SDLC, part3_questions),
-  to_answers.(GRAPHQL, graphql_questions)
+  to_answers.(SDLC, sdlc_questions),
+  to_answers.(GRAPHQL, graphql_questions),
+  to_answers.(ELIXIR_SECURITY, elixir_security_questions)
 ])

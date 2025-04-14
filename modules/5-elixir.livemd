@@ -5,7 +5,6 @@ Mix.install([
   {:grading_client, path: "#{__DIR__}/grading_client"},
   {:benchwarmer, github: "mroth/benchwarmer", ref: "12b5a96b38cef09f2bd49e5c2dd5024100c1e8af"},
   :uuid,
-  :kino,
   :plug
 ])
 ```
@@ -51,18 +50,53 @@ Beware of functions in applications/libraries that create atoms from input value
 
 _You should get a `true` result when you successfully fix the function._
 
-```elixir
-malicious_user_input = UUID.uuid4()
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIEVMSVhJUl9TRUNVUklUWToxXG5tYWxpY2lvdXNfdXNlcl9pbnB1dCA9IFVVSUQudXVpZDQoKVxuXG50cnkgZG9cbiAgbWFsaWNpb3VzX3VzZXJfaW5wdXRcbiAgIyBPTkxZIENIQU5HRSBORVhUIExJTkVcbiAgfD4gU3RyaW5nLnRvX2F0b20oKVxucmVzY3VlXG4gIGUgLT4gZVxuZW5kIn0","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
 
-try do
-  malicious_user_input
-  # ONLY CHANGE NEXT LINE
-  |> String.to_atom()
-rescue
-  _ -> 
-    IO.puts("Are you protected against Atom Exhaustion?")
-    IO.puts("true")
-    nil
+```elixir
+result =
+  (
+    malicious_user_input = UUID.uuid4()
+
+    try do
+      malicious_user_input |> String.to_atom()
+    rescue
+      e -> e
+    end
+  )
+
+[module_id, question_id] =
+  "# ELIXIR_SECURITY:1\nmalicious_user_input = UUID.uuid4()\n\ntry do\n  malicious_user_input\n  # ONLY CHANGE NEXT LINE\n  |> String.to_atom()\nrescue\n  e -> e\nend"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{
+         "ELIXIR_SECURITY" => ELIXIR_SECURITY,
+         "GRAPHQL" => GRAPHQL,
+         "OWASP" => OWASP,
+         "SDLC" => SDLC
+       }[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
+  end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
 end
 ```
 
@@ -203,25 +237,66 @@ The latter will raise a `BadBooleanError` when the function returns `:ok` or `{:
 
 _Uncomment the if statement that uses the correct boolean comparison._
 
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIEVMSVhJUl9TRUNVUklUWToyXG5cbmRlZm1vZHVsZSBTZWN1cml0eUNoZWNrIGRvXG4gIGRlZiB2YWxpZGF0ZShpbnB1dCwgcGFzc3dvcmRfaGFzaCkgZG9cbiAgICBjYXNlIFBsdWcuQ3J5cHRvLnNlY3VyZV9jb21wYXJlKGlucHV0LCBwYXNzd29yZF9oYXNoKSBkb1xuICAgICAgdHJ1ZSAtPiA6b2tcbiAgICAgIGZhbHNlIC0+IDphY2Nlc3NfZGVuaWVkXG4gICAgZW5kXG4gIGVuZFxuXG4gIGRlZmV4Y2VwdGlvbiBtZXNzYWdlOiBcIlRoZXJlIHdhcyBhbiBpc3N1ZVwiXG5lbmRcblxucGFzc3dvcmQgPSBcInNvbWVfc2VjdXJlX3Bhc3N3b3JkX2hhc2hcIlxudXNlcl9pbnB1dCA9IFwic29tZV9zdHJpbmdfd2hpY2hfb2J2aW91c2x5X2lzbnRfdGhlX3NhbWVfYXNfdGhlX3Bhc3N3b3JkXCJcbjpva1xuIyBETyBOT1QgRURJVCBBTlkgQ09ERSBBQk9WRSBUSElTIExJTkUgPT09PT09PT09PT09PT09PT09PT09XG5cbnRyeSBkb1xuIyBpZiBTZWN1cml0eUNoZWNrLnZhbGlkYXRlKHVzZXJfaW5wdXQsIHBhc3N3b3JkKSBvciByYWlzZShTZWN1cml0eUNoZWNrKSBkbyA6eW91X2xldF9hX2JhZGRpZV9pbiBlbmRcbiMgaWYgU2VjdXJpdHlDaGVjay52YWxpZGF0ZSh1c2VyX2lucHV0LCBwYXNzd29yZCkgfHwgcmFpc2UoU2VjdXJpdHlDaGVjaykgZG8gOnlvdV9sZXRfYV9iYWRkaWVfaW4gZW5kXG5yZXNjdWVcbiAgZSAtPiBlXG5lbmQifQ","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
+
 ```elixir
-defmodule SecurityCheck do
-  def validate(input, password_hash) do
-    case Plug.Crypto.secure_compare(input, password_hash) do
-      true -> :ok
-      false -> :access_denied
+result =
+  (
+    defmodule SecurityCheck do
+      def validate(input, password_hash) do
+        case Plug.Crypto.secure_compare(input, password_hash) do
+          true -> :ok
+          false -> :access_denied
+        end
+      end
+
+      defexception message: "There was an issue"
     end
+
+    password = "some_secure_password_hash"
+    user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
+    :ok
+
+    try do
+    rescue
+      e -> e
+    end
+  )
+
+[module_id, question_id] =
+  "# ELIXIR_SECURITY:2\n\ndefmodule SecurityCheck do\n  def validate(input, password_hash) do\n    case Plug.Crypto.secure_compare(input, password_hash) do\n      true -> :ok\n      false -> :access_denied\n    end\n  end\n\n  defexception message: \"There was an issue\"\nend\n\npassword = \"some_secure_password_hash\"\nuser_input = \"some_string_which_obviously_isnt_the_same_as_the_password\"\n:ok\n# DO NOT EDIT ANY CODE ABOVE THIS LINE =====================\n\ntry do\n# if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end\n# if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end\nrescue\n  e -> e\nend"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{
+         "ELIXIR_SECURITY" => ELIXIR_SECURITY,
+         "GRAPHQL" => GRAPHQL,
+         "OWASP" => OWASP,
+         "SDLC" => SDLC
+       }[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
   end
 
-  defexception message: "There was an issue"
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
 end
-
-password = "some_secure_password_hash"
-user_input = "some_string_which_obviously_isnt_the_same_as_the_password"
-:ok
-# DO NOT EDIT ANY CODE ABOVE THIS LINE =====================
-
-# if SecurityCheck.validate(user_input, password) or raise(SecurityCheck) do :you_let_a_baddie_in end
-# if SecurityCheck.validate(user_input, password) || raise(SecurityCheck) do :you_let_a_baddie_in end
 ```
 
 ## Sensitive Data Exposure
@@ -277,10 +352,49 @@ This prevents the table from being read by other processes, such as remote shell
 
 **We have decided that we do not want this ETS table to be read from other processes, so try making it private:**
 
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIEVMSVhJUl9TRUNVUklUWTozXG5cbiMgT05MWSBFRElUIFRISVMgTElORVxuc2VjcmV0X3RhYmxlID0gOmV0cy5uZXcoOnNlY3JldF90YWJsZSwgWzpwdWJsaWNdKVxuOmV0cy5pbmZvKHNlY3JldF90YWJsZSlbOnByb3RlY3Rpb25dIn0","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
+
 ```elixir
-# ONLY EDIT THIS LINE
-secret_table = :ets.new(:secret_table, [:public])
-:ets.info(secret_table)[:protection]
+result =
+  (
+    secret_table = :ets.new(:secret_table, [:public])
+    :ets.info(secret_table)[:protection]
+  )
+
+[module_id, question_id] =
+  "# ELIXIR_SECURITY:3\n\n# ONLY EDIT THIS LINE\nsecret_table = :ets.new(:secret_table, [:public])\n:ets.info(secret_table)[:protection]"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{
+         "ELIXIR_SECURITY" => ELIXIR_SECURITY,
+         "GRAPHQL" => GRAPHQL,
+         "OWASP" => OWASP,
+         "SDLC" => SDLC
+       }[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
+  end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
+end
 ```
 
 ## Resource
