@@ -181,19 +181,57 @@ In the Phoenix Framework, you would use functionality found within the [Plug lib
 
 _Fill out the `put_resp_cookie/4` function arguments with the settings outlined in the previous section, no other code changes should be necessary._
 
-```elixir
-cookie_name = "CHANGE_ME_TOO"
+<!-- livebook:{"attrs":"eyJzb3VyY2UiOiIjIENPT0tJRV9TRUNVUklUWToxIFxuXG5jb29raWVfbmFtZSA9IFwiQ0hBTkdFX01FXCJcblxuIyBVbmNvbW1lbnQgYW5kIGNoYW5nZSB0aGUgcHV0X3Jlc3BfY29va2llIGNhbGwgYmVsb3dcbiMgY29ubiA9XG4jICAgUGx1Zy5Db25uLnB1dF9yZXNwX2Nvb2tpZShcbiMgICAgIGNvbm4sXG4jICAgICBjb29raWVfbmFtZSxcbiMgICAgIDw8MDo6OCwgNDI6Ojg+PixcbiMgICAgIGRvbWFpbjogLi4uLFxuIyAgICAgcGF0aDogLi4uLFxuIyAgICAgc2VjdXJlOiAuLi4sXG4jICAgICBodHRwX29ubHk6IC4uLixcbiMgICAgIHNhbWVfc2l0ZTogLi4uXG4jICAgKVxuXG5jb29raWUgPSBcbiAgY29ublxuICB8PiBQbHVnLkNvbm4uZmV0Y2hfY29va2llcygpXG4gIHw+IFBsdWcuQ29ubi5nZXRfcmVzcF9jb29raWVzKClcbiAgfD4gTWFwLmZldGNoIShjb29raWVfbmFtZSlcblxue2Nvb2tpZSwgYmluYXJ5X3BhcnQoY29va2llX25hbWUsIDAsIDYpfSJ9","chunks":null,"kind":"Elixir.GradingClient.GradedCell","livebook_object":"smart_cell"} -->
 
-conn
-|> Plug.Conn.put_resp_cookie(
-  cookie_name,
-  <<42::16>>
-  # domain: ,
-  # path: ,
-  # secure: ,
-  # http_only: ,
-  # same_site:
-)
+```elixir
+result =
+  (
+    cookie_name = "CHANGE_ME"
+
+    cookie =
+      conn
+      |> Plug.Conn.fetch_cookies()
+      |> Plug.Conn.get_resp_cookies()
+      |> Map.fetch!(cookie_name)
+
+    {cookie, binary_part(cookie_name, 0, 6)}
+  )
+
+[module_id, question_id] =
+  "# COOKIE_SECURITY:1 \n\ncookie_name = \"CHANGE_ME\"\n\n# Uncomment and change the put_resp_cookie call below\n# conn =\n#   Plug.Conn.put_resp_cookie(\n#     conn,\n#     cookie_name,\n#     <<0::8, 42::8>>,\n#     domain: ...,\n#     path: ...,\n#     secure: ...,\n#     http_only: ...,\n#     same_site: ...\n#   )\n\ncookie = \n  conn\n  |> Plug.Conn.fetch_cookies()\n  |> Plug.Conn.get_resp_cookies()\n  |> Map.fetch!(cookie_name)\n\n{cookie, binary_part(cookie_name, 0, 6)}"
+  |> String.split("\n", parts: 2)
+  |> hd()
+  |> String.trim_leading("#")
+  |> String.split(":", parts: 2)
+
+module_id =
+  case %{
+         "COOKIE_SECURITY" => COOKIE_SECURITY,
+         "ELIXIR_SECURITY" => ELIXIR_SECURITY,
+         "GRAPHQL" => GRAPHQL,
+         "OWASP" => OWASP,
+         "SDLC" => SDLC
+       }[String.trim(module_id)] do
+    nil -> raise "invalid module id: #{module_id}"
+    module_id -> module_id
+  end
+
+question_id =
+  case Integer.parse(String.trim(question_id)) do
+    {id, ""} -> id
+    _ -> raise "invalid question id: #{question_id}"
+  end
+
+case GradingClient.check_answer(module_id, question_id, result) do
+  :correct ->
+    IO.puts([IO.ANSI.green(), "Correct!", IO.ANSI.reset()])
+
+  {:incorrect, help_text} when is_binary(help_text) ->
+    IO.puts([IO.ANSI.red(), "Incorrect: ", IO.ANSI.reset(), help_text])
+
+  _ ->
+    IO.puts([IO.ANSI.red(), "Incorrect.", IO.ANSI.reset()])
+end
 ```
 
 ## Data Privacy For Cookies
